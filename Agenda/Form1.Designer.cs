@@ -1,6 +1,6 @@
 ﻿namespace Agenda
 {
-    partial class Form1
+    partial class frmLogin
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -28,13 +28,170 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
+            this.pBackColor = new System.Windows.Forms.Panel();
+            this.pLogin = new System.Windows.Forms.Panel();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.labLogin = new System.Windows.Forms.Label();
+            this.labPassword = new System.Windows.Forms.Label();
+            this.labVersion = new System.Windows.Forms.Label();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.cbUser = new System.Windows.Forms.ComboBox();
+            this.pBackColor.SuspendLayout();
+            this.pLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // pBackColor
+            // 
+            this.pBackColor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            this.pBackColor.Controls.Add(this.btnClose);
+            this.pBackColor.Controls.Add(this.pbLogo);
+            this.pBackColor.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pBackColor.Location = new System.Drawing.Point(0, 0);
+            this.pBackColor.Name = "pBackColor";
+            this.pBackColor.Size = new System.Drawing.Size(400, 250);
+            this.pBackColor.TabIndex = 0;
+            // 
+            // pLogin
+            // 
+            this.pLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.pLogin.Controls.Add(this.cbUser);
+            this.pLogin.Controls.Add(this.txtPassword);
+            this.pLogin.Controls.Add(this.labPassword);
+            this.pLogin.Controls.Add(this.labLogin);
+            this.pLogin.Location = new System.Drawing.Point(40, 133);
+            this.pLogin.Name = "pLogin";
+            this.pLogin.Size = new System.Drawing.Size(320, 234);
+            this.pLogin.TabIndex = 0;
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
+            this.pbLogo.Location = new System.Drawing.Point(125, -19);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(150, 150);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Roboto", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.ForeColor = System.Drawing.Color.White;
+            this.btnClose.Location = new System.Drawing.Point(360, 0);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(40, 40);
+            this.btnClose.TabIndex = 1;
+            this.btnClose.Text = "X";
+            this.btnClose.UseVisualStyleBackColor = true;
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogin.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.ForeColor = System.Drawing.Color.White;
+            this.btnLogin.Location = new System.Drawing.Point(91, 347);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(218, 40);
+            this.btnLogin.TabIndex = 0;
+            this.btnLogin.Text = "Acessar";
+            this.btnLogin.UseVisualStyleBackColor = false;
+            // 
+            // labLogin
+            // 
+            this.labLogin.AutoSize = true;
+            this.labLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.labLogin.Location = new System.Drawing.Point(20, 55);
+            this.labLogin.Name = "labLogin";
+            this.labLogin.Size = new System.Drawing.Size(38, 15);
+            this.labLogin.TabIndex = 0;
+            this.labLogin.Text = "Login";
+            // 
+            // labPassword
+            // 
+            this.labPassword.AutoSize = true;
+            this.labPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.labPassword.Location = new System.Drawing.Point(20, 125);
+            this.labPassword.Name = "labPassword";
+            this.labPassword.Size = new System.Drawing.Size(43, 15);
+            this.labPassword.TabIndex = 1;
+            this.labPassword.Text = "Senha";
+            // 
+            // labVersion
+            // 
+            this.labVersion.AutoSize = true;
+            this.labVersion.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.labVersion.Location = new System.Drawing.Point(158, 433);
+            this.labVersion.Name = "labVersion";
+            this.labVersion.Size = new System.Drawing.Size(85, 19);
+            this.labVersion.TabIndex = 1;
+            this.labVersion.Text = "Versão 0.5";
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(23, 150);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(275, 30);
+            this.txtPassword.TabIndex = 2;
+            // 
+            // cbUser
+            // 
+            this.cbUser.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbUser.FormattingEnabled = true;
+            this.cbUser.Location = new System.Drawing.Point(23, 80);
+            this.cbUser.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.cbUser.Name = "cbUser";
+            this.cbUser.Size = new System.Drawing.Size(275, 31);
+            this.cbUser.TabIndex = 3;
+            // 
+            // frmLogin
+            // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(400, 500);
+            this.Controls.Add(this.labVersion);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.pLogin);
+            this.Controls.Add(this.pBackColor);
+            this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmLogin";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.pBackColor.ResumeLayout(false);
+            this.pLogin.ResumeLayout(false);
+            this.pLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pBackColor;
+        private System.Windows.Forms.Panel pLogin;
+        private System.Windows.Forms.PictureBox pbLogo;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.ComboBox cbUser;
+        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.Label labPassword;
+        private System.Windows.Forms.Label labLogin;
+        private System.Windows.Forms.Label labVersion;
     }
 }
 
