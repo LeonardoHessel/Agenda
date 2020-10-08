@@ -30,18 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.pBackColor = new System.Windows.Forms.Panel();
-            this.pLogin = new System.Windows.Forms.Panel();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.labLogin = new System.Windows.Forms.Label();
-            this.labPassword = new System.Windows.Forms.Label();
-            this.labVersion = new System.Windows.Forms.Label();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.pLogin = new System.Windows.Forms.Panel();
             this.cbUser = new System.Windows.Forms.ComboBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.labPassword = new System.Windows.Forms.Label();
+            this.labLogin = new System.Windows.Forms.Label();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.labVersion = new System.Windows.Forms.Label();
             this.pBackColor.SuspendLayout();
-            this.pLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
+            this.pLogin.SuspendLayout();
             this.SuspendLayout();
             // 
             // pBackColor
@@ -55,28 +55,6 @@
             this.pBackColor.Size = new System.Drawing.Size(400, 250);
             this.pBackColor.TabIndex = 0;
             // 
-            // pLogin
-            // 
-            this.pLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.pLogin.Controls.Add(this.cbUser);
-            this.pLogin.Controls.Add(this.txtPassword);
-            this.pLogin.Controls.Add(this.labPassword);
-            this.pLogin.Controls.Add(this.labLogin);
-            this.pLogin.Location = new System.Drawing.Point(40, 133);
-            this.pLogin.Name = "pLogin";
-            this.pLogin.Size = new System.Drawing.Size(320, 234);
-            this.pLogin.TabIndex = 0;
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
-            this.pbLogo.Location = new System.Drawing.Point(125, -19);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(150, 150);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLogo.TabIndex = 0;
-            this.pbLogo.TabStop = false;
-            // 
             // btnClose
             // 
             this.btnClose.FlatAppearance.BorderSize = 0;
@@ -89,6 +67,68 @@
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
+            this.pbLogo.Location = new System.Drawing.Point(125, -19);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(150, 150);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 0;
+            this.pbLogo.TabStop = false;
+            // 
+            // pLogin
+            // 
+            this.pLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.pLogin.Controls.Add(this.cbUser);
+            this.pLogin.Controls.Add(this.txtPassword);
+            this.pLogin.Controls.Add(this.labPassword);
+            this.pLogin.Controls.Add(this.labLogin);
+            this.pLogin.Location = new System.Drawing.Point(40, 133);
+            this.pLogin.Name = "pLogin";
+            this.pLogin.Size = new System.Drawing.Size(320, 234);
+            this.pLogin.TabIndex = 0;
+            // 
+            // cbUser
+            // 
+            this.cbUser.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbUser.FormattingEnabled = true;
+            this.cbUser.Location = new System.Drawing.Point(23, 80);
+            this.cbUser.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.cbUser.Name = "cbUser";
+            this.cbUser.Size = new System.Drawing.Size(275, 31);
+            this.cbUser.TabIndex = 3;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPassword.Location = new System.Drawing.Point(23, 150);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(275, 30);
+            this.txtPassword.TabIndex = 2;
+            // 
+            // labPassword
+            // 
+            this.labPassword.AutoSize = true;
+            this.labPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.labPassword.Location = new System.Drawing.Point(20, 125);
+            this.labPassword.Name = "labPassword";
+            this.labPassword.Size = new System.Drawing.Size(43, 15);
+            this.labPassword.TabIndex = 1;
+            this.labPassword.Text = "Senha";
+            // 
+            // labLogin
+            // 
+            this.labLogin.AutoSize = true;
+            this.labLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.labLogin.Location = new System.Drawing.Point(20, 55);
+            this.labLogin.Name = "labLogin";
+            this.labLogin.Size = new System.Drawing.Size(38, 15);
+            this.labLogin.TabIndex = 0;
+            this.labLogin.Text = "Login";
             // 
             // btnLogin
             // 
@@ -103,26 +143,7 @@
             this.btnLogin.TabIndex = 0;
             this.btnLogin.Text = "Acessar";
             this.btnLogin.UseVisualStyleBackColor = false;
-            // 
-            // labLogin
-            // 
-            this.labLogin.AutoSize = true;
-            this.labLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.labLogin.Location = new System.Drawing.Point(20, 55);
-            this.labLogin.Name = "labLogin";
-            this.labLogin.Size = new System.Drawing.Size(38, 15);
-            this.labLogin.TabIndex = 0;
-            this.labLogin.Text = "Login";
-            // 
-            // labPassword
-            // 
-            this.labPassword.AutoSize = true;
-            this.labPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.labPassword.Location = new System.Drawing.Point(20, 125);
-            this.labPassword.Name = "labPassword";
-            this.labPassword.Size = new System.Drawing.Size(43, 15);
-            this.labPassword.TabIndex = 1;
-            this.labPassword.Text = "Senha";
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // labVersion
             // 
@@ -134,25 +155,6 @@
             this.labVersion.Size = new System.Drawing.Size(85, 19);
             this.labVersion.TabIndex = 1;
             this.labVersion.Text = "Versão 0.5";
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(23, 150);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(275, 30);
-            this.txtPassword.TabIndex = 2;
-            // 
-            // cbUser
-            // 
-            this.cbUser.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(23, 80);
-            this.cbUser.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.cbUser.Name = "cbUser";
-            this.cbUser.Size = new System.Drawing.Size(275, 31);
-            this.cbUser.TabIndex = 3;
             // 
             // frmLogin
             // 
@@ -171,10 +173,11 @@
             this.Name = "frmLogin";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             this.pBackColor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.pLogin.ResumeLayout(false);
             this.pLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

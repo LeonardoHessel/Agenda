@@ -1,0 +1,10 @@
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csprojAssemblyReference.cache
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmLogin.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.Properties.Resources.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csproj.GenerateResource.cache
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csproj.CoreCompileInputs.cache
+C:\DevFiles\Agenda\Agenda\bin\Debug\Agenda.exe.config
+C:\DevFiles\Agenda\Agenda\bin\Debug\Agenda.exe
+C:\DevFiles\Agenda\Agenda\bin\Debug\Agenda.pdb
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.exe
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.pdb
