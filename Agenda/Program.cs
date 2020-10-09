@@ -18,10 +18,9 @@ namespace Agenda
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            //SplashScreen splashScreen = new SplashScreen();
-            //DialogResult dialogResult = DialogResult.Cancel;//splashScreen.ShowDialog();
+            SplashScreen splashScreen = new SplashScreen();
             
-            if (true/*dialogResult != DialogResult.Cancel*/)
+            if (splashScreen.ShowDialog() == DialogResult.OK)
             {
                 bool exit = false;
                 while (!exit)
@@ -32,13 +31,13 @@ namespace Agenda
 
                     if (login.ShowDialog() == DialogResult.Yes)
                     {
-                        FormAgenda Agenda = new FormAgenda();
-                        Agenda.Usuario = login.Usuario;
-                        DialogResult respOS = Agenda.ShowDialog();
-                        if (respOS == DialogResult.Ignore)
-                        {
-                            exit = false;
-                        }
+                        //FormAgenda Agenda = new FormAgenda();
+                        //Agenda.Usuario = login.Usuario;
+                        //DialogResult respOS = Agenda.ShowDialog();
+                        //if (respOS == DialogResult.Ignore)
+                        //{
+                        //    exit = false;
+                        //}
                     }
                 }
             }

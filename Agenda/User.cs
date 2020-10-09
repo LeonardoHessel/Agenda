@@ -59,6 +59,15 @@ namespace Agenda
             return this.Password == password;
         }
 
+        public bool HasAcces(long module_id)
+        {
+            Access access = Access.LoadAccess(this.ID, module_id);
+            if (access != null)
+                return access.HasAccess;
+            else
+                return false;
+        }
+
         private List<User> TableToLst(DataTable table, bool addAllObj = false)
         {
             List<User> users = new List<User>();

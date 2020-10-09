@@ -20,7 +20,7 @@ namespace Agenda
         }
 
         private User user;
-        public string Module;
+        private const long module_id = 1;
 
         public User User
         {
@@ -61,9 +61,9 @@ namespace Agenda
 
             if (this.User.CheckPassword(txtPassword.Text))
             {
-                if (Access.CheckAccess(this.User, this.Module))
+                if (this.User.HasAcces(module_id))
                 {
-                    this.DialogResult = DialogResult.
+                    //this.DialogResult = DialogResult.
                 }
             }
 

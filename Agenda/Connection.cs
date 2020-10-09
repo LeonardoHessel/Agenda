@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Agenda.Properties;
 using MySql.Data.MySqlClient;
 
 namespace Agenda
@@ -28,12 +29,12 @@ namespace Agenda
         // Define a linha de conexão.
         private void SetConnInfo()
         {
-            this.server = "127.0.0.1";
-            this.database = "teste";
-            this.user = "root";
-            this.password = "root";
-            this.door = "3306";
-            this.charset = "utf8";
+            this.server = Settings.Default.Server;
+            this.database = Settings.Default.Database;
+            this.user = Settings.Default.User;
+            this.password = Settings.Default.Password;
+            this.door = Settings.Default.Door;
+            this.charset = Settings.Default.Charset;
 
             this.connection = "SERVER =" + this.server + ";";
             this.connection += "DATABASE =" + this.database + ";";
