@@ -17,8 +17,9 @@ namespace Agenda
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            
             //SplashScreen splashScreen = new SplashScreen();
-            DialogResult dialogResult = DialogResult.Cancel;//splashScreen.ShowDialog();
+            //DialogResult dialogResult = DialogResult.Cancel;//splashScreen.ShowDialog();
             
             if (true/*dialogResult != DialogResult.Cancel*/)
             {
@@ -28,21 +29,17 @@ namespace Agenda
                     exit = true;
 
                     frmLogin login = new frmLogin();
-                    
-                    login.color = Color.Red;
-                    DialogResult respLog = login.ShowDialog();
-                    
 
-                    //if (respLog == DialogResult.Yes)
-                    //{
-                    //    FormAgenda Agenda = new FormAgenda();
-                    //    Agenda.Usuario = login.Usuario;
-                    //    DialogResult respOS = Agenda.ShowDialog();
-                    //    if (respOS == DialogResult.Ignore)
-                    //    {
-                    //        exit = false;
-                    //    }
-                    //}
+                    if (login.ShowDialog() == DialogResult.Yes)
+                    {
+                        FormAgenda Agenda = new FormAgenda();
+                        Agenda.Usuario = login.Usuario;
+                        DialogResult respOS = Agenda.ShowDialog();
+                        if (respOS == DialogResult.Ignore)
+                        {
+                            exit = false;
+                        }
+                    }
                 }
             }
         }

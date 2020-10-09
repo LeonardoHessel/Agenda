@@ -28,7 +28,7 @@ namespace Agenda
             set 
             {
                 this.user = value;
-                if (cbUser.SelectedItem != this.User)
+                if ((cbUser.SelectedItem as User).ID != this.User.ID)
                     cbUser.SelectedItem = this.User;
             }
         }
