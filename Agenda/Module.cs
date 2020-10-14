@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Agenda
 {
-    class Module:Connection
+    public class Module:Connection
     {
         public long ID;
         public string Name;
@@ -43,6 +43,11 @@ namespace Agenda
         public bool Save()
         {
             string sql = "UPDATE `module` SET `name` = @name, `restrict` = @restrict WHERE `id` = @id";
+            TextCommand(sql);
+            AddParameter("name", this.Name);
+            AddParameter("restrict", this.Restrict);
+            AddParameter("id", this.ID);
+            return Execute();
         }
 
         private List<Module> TableToList(DataTable table)

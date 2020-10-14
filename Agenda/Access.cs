@@ -26,7 +26,7 @@ namespace Agenda
             return Execute();
         }
 
-        public static Access LoadAccess(long user_id, long module_id)
+        public static Access CheckAccess(long user_id, long module_id)
         {
             Access access = new Access();
             string sql = "SELECT * FROM `access` WHERE `user` = @user AND `module` = @module";

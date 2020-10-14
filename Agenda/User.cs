@@ -39,6 +39,7 @@ namespace Agenda
             }
 
             user.TextCommand(sql);
+
             if (search != null)
                 user.AddParameter("search", search);
             if (status == Util.ActiveStatus.Active)
@@ -59,21 +60,12 @@ namespace Agenda
             return this.Password == password;
         }
 
-        public bool HasAcces(long module_id)
-        {
-            Access access = Access.LoadAccess(this.ID, module_id);
-            if (access != null)
-                return access.HasAccess;
-            else
-                return false;
-        }
-
         private List<User> TableToLst(DataTable table, bool addAllObj = false)
         {
             List<User> users = new List<User>();
             if (table != null)
             {
-                users = (from DataRow row in table.AsEnumerable()
+                users = (from DataRow row in table.Rows
                          select new User()
                          {
                              ID = Convert.ToInt64(row["id"]),

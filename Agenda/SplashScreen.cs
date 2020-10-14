@@ -15,6 +15,7 @@ namespace Agenda
         public SplashScreen()
         {
             InitializeComponent();
+            ShowCompany();
         }
 
         private void SplashScreen_KeyDown(object sender, KeyEventArgs e)
@@ -22,7 +23,8 @@ namespace Agenda
             if (e.KeyCode == Keys.F12)
             {
                 tToClose.Stop();
-                MessageBox.Show("Teste");
+                frmDBConfig dbConfig = new frmDBConfig();
+                dbConfig.ShowDialog();
                 tToClose.Start();
             }
         }
@@ -41,7 +43,7 @@ namespace Agenda
             tToClose.Start();
         }
 
-        private void LoadCompany()
+        private void ShowCompany()
         {
             // Carregar e exibir os dados da empresa.
         }

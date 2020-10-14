@@ -1,4 +1,3 @@
-C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csprojAssemblyReference.cache
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmLogin.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.Properties.Resources.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csproj.GenerateResource.cache
@@ -24,3 +23,6 @@ C:\DevFiles\Agenda\Agenda\bin\Debug\MySql.Data.xml
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.exe.config
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.SplashScreen.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csproj.CopyComplete
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmDBConfig.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csprojAssemblyReference.cache
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmHome.resources

@@ -28,6 +28,7 @@ namespace Agenda
                     exit = true;
 
                     frmLogin login = new frmLogin();
+                    login.Module = Module.GetModule(1);
 
                     if (login.ShowDialog() == DialogResult.Yes)
                     {

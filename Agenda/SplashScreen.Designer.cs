@@ -39,6 +39,7 @@
             this.labCompanyName = new System.Windows.Forms.Label();
             this.labInfo = new System.Windows.Forms.Label();
             this.tToClose = new System.Windows.Forms.Timer(this.components);
+            this.labShortcut = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,11 +129,22 @@
             this.tToClose.Interval = 400;
             this.tToClose.Tick += new System.EventHandler(this.tToClose_Tick);
             // 
+            // labShortcut
+            // 
+            this.labShortcut.AutoSize = true;
+            this.labShortcut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(159)))), ((int)(((byte)(184)))));
+            this.labShortcut.Location = new System.Drawing.Point(670, 383);
+            this.labShortcut.Name = "labShortcut";
+            this.labShortcut.Size = new System.Drawing.Size(128, 15);
+            this.labShortcut.TabIndex = 8;
+            this.labShortcut.Text = "Configurações ( F12 )";
+            // 
             // SplashScreen
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
             this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.labShortcut);
             this.Controls.Add(this.labInfo);
             this.Controls.Add(this.labLicense);
             this.Controls.Add(this.labCompanyName);
@@ -167,5 +179,6 @@
         private System.Windows.Forms.Label labCompanyName;
         private System.Windows.Forms.Label labInfo;
         private System.Windows.Forms.Timer tToClose;
+        private System.Windows.Forms.Label labShortcut;
     }
 }

@@ -33,7 +33,7 @@ namespace Agenda
             this.database = Settings.Default.Database;
             this.user = Settings.Default.User;
             this.password = Settings.Default.Password;
-            this.door = Settings.Default.Door;
+            this.door = Settings.Default.Port;
             this.charset = Settings.Default.Charset;
 
             this.connection = "SERVER =" + this.server + ";";

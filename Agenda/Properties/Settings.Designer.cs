@@ -37,7 +37,7 @@ namespace Agenda.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("agenda")]
+        [global::System.Configuration.DefaultSettingValueAttribute("schedule")]
         public string Database {
             get {
                 return ((string)(this["Database"]));
@@ -74,12 +74,12 @@ namespace Agenda.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3306")]
-        public string Door {
+        public string Port {
             get {
-                return ((string)(this["Door"]));
+                return ((string)(this["Port"]));
             }
             set {
-                this["Door"] = value;
+                this["Port"] = value;
             }
         }
         

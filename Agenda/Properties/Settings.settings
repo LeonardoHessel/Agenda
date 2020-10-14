@@ -6,7 +6,7 @@
       <Value Profile="(Default)">localhost</Value>
     </Setting>
     <Setting Name="Database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">agenda</Value>
+      <Value Profile="(Default)">schedule</Value>
     </Setting>
     <Setting Name="User" Type="System.String" Scope="User">
       <Value Profile="(Default)">root</Value>
@@ -14,7 +14,7 @@
     <Setting Name="Password" Type="System.String" Scope="User">
       <Value Profile="(Default)">root</Value>
     </Setting>
-    <Setting Name="Door" Type="System.String" Scope="User">
+    <Setting Name="Port" Type="System.String" Scope="User">
       <Value Profile="(Default)">3306</Value>
     </Setting>
     <Setting Name="Charset" Type="System.String" Scope="User">

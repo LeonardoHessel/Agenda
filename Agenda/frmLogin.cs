@@ -16,26 +16,29 @@ namespace Agenda
         public frmLogin()
         {
             InitializeComponent();
-            LoadUsers();
         }
 
         private User user;
-        private const long module_id = 1;
+        public Module Module;
 
         public User User
         {
             get { return this.user; }
             set 
             {
-                this.user = value;
-                if ((cbUser.SelectedItem as User).ID != this.User.ID)
-                    cbUser.SelectedItem = this.User;
+                if (value != null)
+                {
+                    this.user = value;
+                    if ((cbUser.SelectedItem as User).ID != this.User.ID)
+                        cbUser.SelectedItem = this.User;
+                }
             }
         }
 
         private void LoadUsers()
         {
-            cbUser.DataSource = User.GetUsers(Util.ActiveStatus.Active);
+            List<User> users = User.GetUsers(Util.ActiveStatus.Active);
+            cbUser.DataSource = users;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -61,8 +64,9 @@ namespace Agenda
 
             if (this.User.CheckPassword(txtPassword.Text))
             {
-                if (this.User.HasAcces(module_id))
+                if (Access.CheckAccess(this.User.ID, this.Module.ID).HasAccess)
                 {
+                    MessageBox.Show("Logado com sucesso");
                     //this.DialogResult = DialogResult.
                 }
             }
@@ -85,6 +89,11 @@ namespace Agenda
             //        }
             //    }
             //}
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadUsers();
         }
     }
 }
