@@ -16,6 +16,9 @@ namespace Agenda
         public frmLogin()
         {
             InitializeComponent();
+            List<User> users = User.GetUsers(Util.ActiveStatus.Active);
+
+            cbUser.DataSource = users;
         }
 
         private User user;
@@ -37,8 +40,12 @@ namespace Agenda
 
         private void LoadUsers()
         {
+            cbUser.DisplayMember = "Name";
             List<User> users = User.GetUsers(Util.ActiveStatus.Active);
-            cbUser.DataSource = users;
+
+            cbUser.DataSource = users.ToList();
+            cbUser.DisplayMember = "Login";
+            
         }
 
         private void btnClose_Click(object sender, EventArgs e)

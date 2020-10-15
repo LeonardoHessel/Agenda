@@ -105,8 +105,7 @@
             // 
             // cbUser
             // 
-            this.cbUser.DisplayMember = "\"Name\"";
-            this.cbUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbUser.DisplayMember = "Name";
             this.cbUser.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbUser.FormattingEnabled = true;
             this.cbUser.Location = new System.Drawing.Point(23, 80);
@@ -114,7 +113,7 @@
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(275, 31);
             this.cbUser.TabIndex = 3;
-            this.cbUser.ValueMember = "\"Name\"";
+            this.cbUser.ValueMember = "Name";
             // 
             // txtPassword
             // 
@@ -205,12 +204,12 @@
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.ComboBox cbUser;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label labPassword;
         private System.Windows.Forms.Label labLogin;
         private System.Windows.Forms.Label labVersion;
         private System.Windows.Forms.Button button1;
+        public System.Windows.Forms.ComboBox cbUser;
     }
 }
 

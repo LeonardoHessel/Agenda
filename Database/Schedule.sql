@@ -106,7 +106,7 @@ DELIMITER ;
 
 -- Inserts --
 INSERT INTO `module` (`name`, `restrict`) VALUES ("Login", FALSE);
-INSERT INTO `user` VALUES (0,"Default", "123", "Default","2000-01-01","Masculino","426738998","43261603810","000000000000","",true);
+INSERT INTO `user` VALUES (0,"Default", "123", "Default",null,null,"426738998","43261603810","000000000000","",true);
 
 -- INSERT INTO `user` (`login`, `password`, `name`) VALUES ("Default", "123", "Default");
 

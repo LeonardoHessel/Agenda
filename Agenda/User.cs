@@ -26,12 +26,15 @@ namespace Agenda
         {
             User user = new User();
             string addSql = " WHERE ";
-            string sql = @"SELECT * FROM `user`";
+
+            string sql = "SELECT * FROM `user`";
+
             if (search != null)
             {
                 sql += addSql + "(`name` LIKE (%, @search,%))";
                 addSql = " AND ";
             }
+
             if (status != Util.ActiveStatus.All)
             {
                 sql += addSql + "`active` = @active";
@@ -42,6 +45,7 @@ namespace Agenda
 
             if (search != null)
                 user.AddParameter("search", search);
+
             if (status == Util.ActiveStatus.Active)
                 user.AddParameter("active", true);
             else if (status == Util.ActiveStatus.Disabled)
