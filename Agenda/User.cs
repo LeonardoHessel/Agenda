@@ -20,7 +20,41 @@ namespace Agenda
         public string CPF;
         public string CNH;
         public string ProfileIMGAddress;
+        // public Address Address;
         public bool Active;
+
+        public static User QueryUser;
+        public static List<User> QueryUsers;
+
+        public bool Insert()
+        {
+            string sql = @"INSERT INTO `user` (`login`,`password`,`name`,`born_date`,`sex`,`rg`,`cpf`,`cnh`,
+            `profile_img_address`,`address_id`) VALUES (@login,@password,@name,@born_date,@sex,@rg,@cpf,@cnh,
+            @profile_img_address,@address_id)";
+            TextCommand(sql);
+            Parameters("Insert");
+            if (Execute())
+            {
+                this.ID = Connection.LastInsertID;
+                this.Active = true;
+                return true;
+            }
+            return false;
+        }
+
+        public static bool GetByID(long user_id)
+        {
+            User user = new User();
+            string sql = "SELECT * FROM `user` WHERE `id`=@id";
+            user.TextCommand(sql);
+            user.AddParameter("id", user_id);
+            if (user.ExecuteQuery())
+            {
+                User.QueryUser = user.TableToLst(Connection.SelectedTable)[0];
+                return true;
+            }
+            return false;
+        }
 
         public static List<User> GetUsers(Util.ActiveStatus status, string search = null, bool addAllObj = false)
         {
@@ -59,9 +93,29 @@ namespace Agenda
             return null;
         }
 
-        public bool CheckPassword(string password)
+        public bool Update()
         {
-            return this.Password == password;
+            return false;
+        }
+
+        private void Parameters(string action)
+        {
+            AddParameter("login", this.Login);
+            AddParameter("password", this.Password);
+            AddParameter("name", this.Name);
+            AddParameter("born_date", this.BornDate);
+            AddParameter("sex", this.Sex);
+            AddParameter("rg", this.RG);
+            AddParameter("cpf", this.CPF);
+            AddParameter("cnh", this.CNH);
+            AddParameter("profile_img_address", this.ProfileIMGAddress);
+            //AddParameter("address_id", this.Address.ID);
+
+            if (action == "Update")
+            {
+                AddParameter("active", this.Active);
+                AddParameter("id", this.ID);
+            }
         }
 
         private List<User> TableToLst(DataTable table, bool addAllObj = false)
@@ -86,9 +140,8 @@ namespace Agenda
                          }).ToList<User>();
 
                 if (addAllObj)
-                {
                     users.Add(UserALL());
-                }
+
                 return users;
             }
             return null;
@@ -98,8 +151,15 @@ namespace Agenda
         {
             User user = new User();
             user.ID = 0;
+            user.Login = "Todos";
+            user.Password = "123456";
             user.Name = "Todos";
             return user;
+        }
+
+        public bool CheckPassword(string password)
+        {
+            return this.Password == password;
         }
     }
 }

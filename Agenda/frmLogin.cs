@@ -16,9 +16,8 @@ namespace Agenda
         public frmLogin()
         {
             InitializeComponent();
-            List<User> users = User.GetUsers(Util.ActiveStatus.Active);
-
-            cbUser.DataSource = users;
+            LoadUsers();
+            cbUser.SelectedIndex = 0;
         }
 
         private User user;
@@ -40,12 +39,11 @@ namespace Agenda
 
         private void LoadUsers()
         {
-            cbUser.DisplayMember = "Name";
-            List<User> users = User.GetUsers(Util.ActiveStatus.Active);
-
-            cbUser.DataSource = users.ToList();
-            cbUser.DisplayMember = "Login";
-            
+            List<User> users = User.GetUsers(Util.ActiveStatus.Active, null, true);
+            foreach (User user in users)
+            {
+                cbUser.Items.Add(user.Login);
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -69,12 +67,13 @@ namespace Agenda
         {
             this.User = cbUser.SelectedItem as User;
 
+
+
             if (this.User.CheckPassword(txtPassword.Text))
             {
                 if (Access.CheckAccess(this.User.ID, this.Module.ID).HasAccess)
                 {
-                    MessageBox.Show("Logado com sucesso");
-                    //this.DialogResult = DialogResult.
+                    this.DialogResult = DialogResult.Yes;
                 }
             }
 
@@ -101,6 +100,12 @@ namespace Agenda
         private void button1_Click(object sender, EventArgs e)
         {
             LoadUsers();
+        }
+
+        private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<User> users = User.GetUsers(Util.ActiveStatus.Active, null, true);
+            this.user = users.Find(x => x.Login == cbUser.Text);
         }
     }
 }

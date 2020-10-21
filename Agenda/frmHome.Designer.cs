@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.pMenu = new System.Windows.Forms.Panel();
             this.labUserName = new System.Windows.Forms.Label();
@@ -42,8 +43,9 @@
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.pForm = new System.Windows.Forms.Panel();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.labTime = new System.Windows.Forms.Label();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.tMoment = new System.Windows.Forms.Timer(this.components);
             this.pMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoHome)).BeginInit();
             this.pForm.SuspendLayout();
@@ -66,7 +68,7 @@
             this.pMenu.Location = new System.Drawing.Point(0, 0);
             this.pMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pMenu.Name = "pMenu";
-            this.pMenu.Size = new System.Drawing.Size(180, 1024);
+            this.pMenu.Size = new System.Drawing.Size(180, 1005);
             this.pMenu.TabIndex = 0;
             // 
             // labUserName
@@ -104,6 +106,7 @@
             this.btnProduct.TabIndex = 5;
             this.btnProduct.Text = "Produtos";
             this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
             // btnSchedule
             // 
@@ -112,13 +115,14 @@
             this.btnSchedule.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSchedule.Image = ((System.Drawing.Image)(resources.GetObject("btnSchedule.Image")));
             this.btnSchedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSchedule.Location = new System.Drawing.Point(0, 470);
+            this.btnSchedule.Location = new System.Drawing.Point(0, 410);
             this.btnSchedule.Margin = new System.Windows.Forms.Padding(0);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(180, 50);
             this.btnSchedule.TabIndex = 3;
             this.btnSchedule.Text = "Agenda";
             this.btnSchedule.UseVisualStyleBackColor = true;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
             // 
             // btnUser
             // 
@@ -134,6 +138,7 @@
             this.btnUser.TabIndex = 4;
             this.btnUser.Text = "Técnicos";
             this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
             // btnCustomer
             // 
@@ -142,13 +147,14 @@
             this.btnCustomer.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomer.Image")));
             this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomer.Location = new System.Drawing.Point(0, 410);
+            this.btnCustomer.Location = new System.Drawing.Point(0, 470);
             this.btnCustomer.Margin = new System.Windows.Forms.Padding(0);
             this.btnCustomer.Name = "btnCustomer";
             this.btnCustomer.Size = new System.Drawing.Size(180, 50);
             this.btnCustomer.TabIndex = 2;
             this.btnCustomer.Text = "Clientes";
             this.btnCustomer.UseVisualStyleBackColor = true;
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnNewOS
             // 
@@ -162,8 +168,9 @@
             this.btnNewOS.Name = "btnNewOS";
             this.btnNewOS.Size = new System.Drawing.Size(180, 50);
             this.btnNewOS.TabIndex = 1;
-            this.btnNewOS.Text = "Novo OS";
+            this.btnNewOS.Text = "Nova OS";
             this.btnNewOS.UseVisualStyleBackColor = true;
+            this.btnNewOS.Click += new System.EventHandler(this.btnNewOS_Click);
             // 
             // pbLogoHome
             // 
@@ -175,6 +182,7 @@
             this.pbLogoHome.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbLogoHome.TabIndex = 0;
             this.pbLogoHome.TabStop = false;
+            this.pbLogoHome.Click += new System.EventHandler(this.pbLogoHome_Click);
             // 
             // btnClose
             // 
@@ -193,6 +201,7 @@
             this.btnClose.Text = "Sair";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnMinimize
             // 
@@ -211,6 +220,7 @@
             this.btnMinimize.Text = "Minimizar";
             this.btnMinimize.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // btnLogout
             // 
@@ -229,6 +239,7 @@
             this.btnLogout.Text = "Logout";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // pForm
             // 
@@ -240,21 +251,8 @@
             this.pForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pForm.Location = new System.Drawing.Point(180, 0);
             this.pForm.Name = "pForm";
-            this.pForm.Size = new System.Drawing.Size(1100, 1024);
+            this.pForm.Size = new System.Drawing.Size(1100, 1005);
             this.pForm.TabIndex = 4;
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
-            this.pbLogo.Location = new System.Drawing.Point(375, 300);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(350, 350);
-            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbLogo.TabIndex = 4;
-            this.pbLogo.TabStop = false;
             // 
             // labTime
             // 
@@ -267,11 +265,30 @@
             this.labTime.TabIndex = 5;
             this.labTime.Text = "00:00:00";
             // 
+            // pbLogo
+            // 
+            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
+            this.pbLogo.Location = new System.Drawing.Point(375, 300);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(350, 331);
+            this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbLogo.TabIndex = 4;
+            this.pbLogo.TabStop = false;
+            // 
+            // tMoment
+            // 
+            this.tMoment.Enabled = true;
+            this.tMoment.Interval = 1000;
+            this.tMoment.Tick += new System.EventHandler(this.tMoment_Tick);
+            // 
             // frmHome
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1280, 1024);
+            this.ClientSize = new System.Drawing.Size(1280, 1005);
             this.Controls.Add(this.pForm);
             this.Controls.Add(this.pMenu);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -309,5 +326,6 @@
         private System.Windows.Forms.Panel pForm;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.Label labTime;
+        private System.Windows.Forms.Timer tMoment;
     }
 }

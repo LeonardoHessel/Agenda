@@ -32,13 +32,10 @@ namespace Agenda
 
                     if (login.ShowDialog() == DialogResult.Yes)
                     {
-                        //FormAgenda Agenda = new FormAgenda();
-                        //Agenda.Usuario = login.Usuario;
-                        //DialogResult respOS = Agenda.ShowDialog();
-                        //if (respOS == DialogResult.Ignore)
-                        //{
-                        //    exit = false;
-                        //}
+                        frmHome frmHome = new frmHome();
+                        DialogResult result = frmHome.ShowDialog();
+                        if (result == DialogResult.Ignore)
+                            exit = false;
                     }
                 }
             }

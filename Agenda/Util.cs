@@ -14,6 +14,12 @@ namespace Agenda
             Male
         }
 
+        public enum ActionMode
+        {
+            New,
+            Edit
+        }
+
         public enum AccessMode
         {
             Login,
@@ -25,6 +31,14 @@ namespace Agenda
             All,
             Active,
             Disabled
+        }
+
+        public enum DatabaseAction
+        {
+            Insert,
+            Read,
+            Update,
+            Delete
         }
     }
 }

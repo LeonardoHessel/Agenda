@@ -26,3 +26,8 @@ C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csproj.CopyComplete
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmDBConfig.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csprojAssemblyReference.cache
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmHome.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.ucCustomer.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.ucProduct.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.ucSchedule.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.ucUser.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmServiceOrder.resources

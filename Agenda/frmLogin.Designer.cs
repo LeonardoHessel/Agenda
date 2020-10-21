@@ -33,7 +33,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pLogin = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.labPassword = new System.Windows.Forms.Label();
@@ -83,7 +82,6 @@
             // pLogin
             // 
             this.pLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.pLogin.Controls.Add(this.button1);
             this.pLogin.Controls.Add(this.cbUser);
             this.pLogin.Controls.Add(this.txtPassword);
             this.pLogin.Controls.Add(this.labPassword);
@@ -93,27 +91,16 @@
             this.pLogin.Size = new System.Drawing.Size(320, 234);
             this.pLogin.TabIndex = 0;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(127, 25);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // cbUser
             // 
-            this.cbUser.DisplayMember = "Name";
             this.cbUser.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbUser.FormattingEnabled = true;
             this.cbUser.Location = new System.Drawing.Point(23, 80);
             this.cbUser.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
+            this.cbUser.MaxDropDownItems = 4;
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(275, 31);
             this.cbUser.TabIndex = 3;
-            this.cbUser.ValueMember = "Name";
+            this.cbUser.SelectedIndexChanged += new System.EventHandler(this.cbUser_SelectedIndexChanged);
             // 
             // txtPassword
             // 
@@ -121,6 +108,7 @@
             this.txtPassword.Location = new System.Drawing.Point(23, 150);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(275, 30);
             this.txtPassword.TabIndex = 2;
             // 
@@ -208,8 +196,7 @@
         private System.Windows.Forms.Label labPassword;
         private System.Windows.Forms.Label labLogin;
         private System.Windows.Forms.Label labVersion;
-        private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.ComboBox cbUser;
+        private System.Windows.Forms.ComboBox cbUser;
     }
 }
 
