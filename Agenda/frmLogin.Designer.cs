@@ -53,7 +53,7 @@
             this.pBackColor.Location = new System.Drawing.Point(0, 0);
             this.pBackColor.Name = "pBackColor";
             this.pBackColor.Size = new System.Drawing.Size(400, 250);
-            this.pBackColor.TabIndex = 0;
+            this.pBackColor.TabIndex = 2;
             // 
             // btnClose
             // 
@@ -64,7 +64,7 @@
             this.btnClose.Location = new System.Drawing.Point(360, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(40, 40);
-            this.btnClose.TabIndex = 1;
+            this.btnClose.TabIndex = 0;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -93,13 +93,14 @@
             // 
             // cbUser
             // 
+            this.cbUser.DisplayMember = "Name";
             this.cbUser.Font = new System.Drawing.Font("Roboto", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbUser.Location = new System.Drawing.Point(23, 80);
             this.cbUser.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.cbUser.MaxDropDownItems = 4;
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(275, 31);
-            this.cbUser.TabIndex = 3;
+            this.cbUser.TabIndex = 0;
             this.cbUser.SelectedIndexChanged += new System.EventHandler(this.cbUser_SelectedIndexChanged);
             // 
             // txtPassword
@@ -110,7 +111,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(275, 30);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 1;
             // 
             // labPassword
             // 
@@ -142,7 +143,7 @@
             this.btnLogin.Location = new System.Drawing.Point(91, 347);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(218, 40);
-            this.btnLogin.TabIndex = 0;
+            this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Acessar";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);

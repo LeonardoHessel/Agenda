@@ -11,9 +11,9 @@ namespace Agenda
 {
     class Access:Connection
     {
-        public long User_ID;
-        public long Module_ID;
-        public bool HasAccess;
+        public long User_ID { set; get; }
+        public long Module_ID { set; get; }
+        public bool HasAccess { set; get; }
 
         public bool Save()
         {

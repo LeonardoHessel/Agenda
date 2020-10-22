@@ -9,20 +9,20 @@ namespace Agenda
 {
     public class Customer:Connection
     {
-        public long ID;
-        public string CNPJ;
-        public string IE;
-        public string Razao;
-        public string Name;
-        public string Telephone;
-        public string CellPhone;
-        public string Email;
-        //public Address Address;
-        public string Obs;
-        public bool Active;
+        public long ID { set; get; }
+        public string CNPJ { set; get; }
+        public string IE { set; get; }
+        public string Razao { set; get; }
+        public string Name { set; get; }
+        public string Telephone { set; get; }
+        public string CellPhone { set; get; }
+        public string Email { set; get; }
+        public Address Address { set; get; }
+        public string Obs { set; get; }
+        public bool Active { set; get; }
 
-        public static Customer QueryCustomer;
-        public static List<Customer> QueryCustomers;
+        public static Customer QueryCustomer { private set; get; }
+        public static List<Customer> QueryCustomers { private set; get; }
 
         public bool Insert()
         {
@@ -68,10 +68,9 @@ namespace Agenda
 
         public bool Update()
         {
-            string sql = @"UPDATE `serviceorder` SET `customer_id`=@customer_id,`who_requested`=@who_requested,
-            `user_id`=@user_id,`subject`=@subject,`description`=@description,`solution`=@solution,
-            `service_mode`=@service_mode,`status`=@status,`start`=@start,`end`=@end,
-            `active_status`=@active_status WHERE `id`=@id";
+            string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,
+            `razao`=@razao,`telephone`=@telephone,`cellphone`=@cellphone,`email`=@email,
+            `address_id`=@address_id,`obs`=@obs,`active`=@active WHERE `id`=@id";
             TextCommand(sql);
             Parameters("Update");
             return Execute();
@@ -86,12 +85,12 @@ namespace Agenda
             AddParameter("telephone", this.Telephone);
             AddParameter("cellphone", this.CellPhone);
             AddParameter("email", this.Email);
-            //AddParameter("address_id", this.Address.ID);
+            AddParameter("address_id", this.Address.ID);
             AddParameter("obs", this.Obs);
 
             if (action == "Update")
             {
-                AddParameter("active_status", this.ActiveStatus);
+                AddParameter("active", this.Active);
                 AddParameter("id", this.ID);
             }
         }
@@ -102,22 +101,34 @@ namespace Agenda
             {
                 List<Customer> customers;
                 customers = (from DataRow row in table.AsEnumerable()
-                                 select new Customer()
-                                 {
-                                     ID = Convert.ToInt64(row["id"]),
-                                     CNPJ = row["cnpj"].ToString(),
-                                     IE = row["ie"].ToString(),
-                                     Razao = row["razao"].ToString(),
-                                     Name = row["name"].ToString(),
-                                     Telephone = row["telephone"].ToString(),
-                                     CellPhone = row["cellphone"].ToString(),
-                                     Email = row["email"].ToString(),
-                                     //Address = row["address_id"] is DBNull ? null: Address.GetByID(Convert.ToInt64(row["product_id"])),
-                                     Obs = row["obs"].ToString(),
-                                 }).ToList();
+                             select new Customer()
+                             {
+                                 ID = Convert.ToInt64(row["id"]),
+                                 CNPJ = row["cnpj"].ToString(),
+                                 IE = row["ie"].ToString(),
+                                 Razao = row["razao"].ToString(),
+                                 Name = row["name"].ToString(),
+                                 Telephone = row["telephone"].ToString(),
+                                 CellPhone = row["cellphone"].ToString(),
+                                 Email = row["email"].ToString(),
+                                 GetAddress = row["address_id"],
+                                 Obs = row["obs"].ToString(),
+                             }).ToList();
                 return customers;
             }
             return null;
+        }
+
+        private object GetAddress
+        {
+            set
+            {
+                if (value is int || value is long)
+                {
+                    if (Address.GetByID(Convert.ToInt64(value)))
+                        this.Address = Address.QueryAddress;
+                }
+            }
         }
     }
 }

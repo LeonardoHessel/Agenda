@@ -32,9 +32,9 @@ namespace Agenda
 
                     if (login.ShowDialog() == DialogResult.Yes)
                     {
-                        frmHome frmHome = new frmHome();
-                        DialogResult result = frmHome.ShowDialog();
-                        if (result == DialogResult.Ignore)
+                        frmHome.User = login.User;
+                        frmHome home = new frmHome();
+                        if (home.ShowDialog() == DialogResult.Ignore)
                             exit = false;
                     }
                 }

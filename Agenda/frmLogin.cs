@@ -39,10 +39,9 @@ namespace Agenda
 
         private void LoadUsers()
         {
-            List<User> users = User.GetUsers(Util.ActiveStatus.Active, null, true);
-            foreach (User user in users)
+            if (User.GetUsers(Util.ActiveStatus.Active, null, true))
             {
-                cbUser.Items.Add(user.Login);
+                cbUser.DataSource = User.QueryUsers;
             }
         }
 
@@ -76,36 +75,11 @@ namespace Agenda
                     this.DialogResult = DialogResult.Yes;
                 }
             }
-
-            //this.Permissao = false;
-            //string login = cbLogin.Text;
-            //string senha = txtSenha.Text;
-            //foreach (Usuario user in TodosUsuarios)
-            //{
-            //    if (user.Login == login && user.Senha == senha)
-            //    {
-            //        this.Usuario = user;
-            //        user.LoadPermissoesUsuario();
-            //        bool perm = user.VerifPermissao(ID_Modulo);
-            //        if (perm)
-            //        {
-            //            this.Permissao = true;
-            //            this.DialogResult = DialogResult.Yes;
-            //            this.Close();
-            //        }
-            //    }
-            //}
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            LoadUsers();
         }
 
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<User> users = User.GetUsers(Util.ActiveStatus.Active, null, true);
-            this.user = users.Find(x => x.Login == cbUser.Text);
+            this.User = cbUser.SelectedItem as User;
         }
     }
 }

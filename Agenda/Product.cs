@@ -9,12 +9,12 @@ namespace Agenda
 {
     public class Product : Connection
     {
-        public long ID;
-        public string Name;
-        public bool Active;
+        public long ID { set; get; }
+        public string Name { set; get; }
+        public bool Active { set; get; }
 
-        public static Product QueryProduct;
-        public static List<Product> QueryProducts;
+        public static Product QueryProduct { private set; get; }
+        public static List<Product> QueryProducts { private set; get; }
 
         public bool Insert()
         {

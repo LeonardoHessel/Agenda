@@ -103,7 +103,7 @@
             this.btnProduct.Margin = new System.Windows.Forms.Padding(0);
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(180, 50);
-            this.btnProduct.TabIndex = 5;
+            this.btnProduct.TabIndex = 4;
             this.btnProduct.Text = "Produtos";
             this.btnProduct.UseVisualStyleBackColor = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
@@ -119,7 +119,7 @@
             this.btnSchedule.Margin = new System.Windows.Forms.Padding(0);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(180, 50);
-            this.btnSchedule.TabIndex = 3;
+            this.btnSchedule.TabIndex = 1;
             this.btnSchedule.Text = "Agenda";
             this.btnSchedule.UseVisualStyleBackColor = true;
             this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
@@ -135,7 +135,7 @@
             this.btnUser.Margin = new System.Windows.Forms.Padding(0);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(180, 50);
-            this.btnUser.TabIndex = 4;
+            this.btnUser.TabIndex = 3;
             this.btnUser.Text = "Técnicos";
             this.btnUser.UseVisualStyleBackColor = true;
             this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
@@ -167,7 +167,7 @@
             this.btnNewOS.Margin = new System.Windows.Forms.Padding(0);
             this.btnNewOS.Name = "btnNewOS";
             this.btnNewOS.Size = new System.Drawing.Size(180, 50);
-            this.btnNewOS.TabIndex = 1;
+            this.btnNewOS.TabIndex = 0;
             this.btnNewOS.Text = "Nova OS";
             this.btnNewOS.UseVisualStyleBackColor = true;
             this.btnNewOS.Click += new System.EventHandler(this.btnNewOS_Click);
@@ -197,7 +197,7 @@
             this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 60);
-            this.btnClose.TabIndex = 1;
+            this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Sair";
             this.btnClose.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnClose.UseVisualStyleBackColor = true;
@@ -216,7 +216,7 @@
             this.btnMinimize.Margin = new System.Windows.Forms.Padding(0);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(75, 60);
-            this.btnMinimize.TabIndex = 2;
+            this.btnMinimize.TabIndex = 1;
             this.btnMinimize.Text = "Minimizar";
             this.btnMinimize.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMinimize.UseVisualStyleBackColor = true;
@@ -235,7 +235,7 @@
             this.btnLogout.Margin = new System.Windows.Forms.Padding(0);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(75, 60);
-            this.btnLogout.TabIndex = 3;
+            this.btnLogout.TabIndex = 0;
             this.btnLogout.Text = "Logout";
             this.btnLogout.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLogout.UseVisualStyleBackColor = true;
@@ -252,7 +252,7 @@
             this.pForm.Location = new System.Drawing.Point(180, 0);
             this.pForm.Name = "pForm";
             this.pForm.Size = new System.Drawing.Size(1100, 1005);
-            this.pForm.TabIndex = 4;
+            this.pForm.TabIndex = 1;
             // 
             // labTime
             // 

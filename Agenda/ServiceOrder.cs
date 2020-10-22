@@ -9,29 +9,30 @@ namespace Agenda
 {
     public class ServiceOrder : Connection
     {
-        public long ID;
-        public Customer Customer;
-        public string WhoRequested;
-        public User User;
-        public string Subject;
-        public string Description;
-        public string Solution;
-        //public Product Product;
-        public string ServiceMode;
-        public string Status;
-        public DateTime Creation;
-        public DateTime Start;
-        public DateTime End;
-        public bool Active;
+        public long ID { set; get; }
+        public Customer Customer { set; get; }
+        public string WhoRequested { set; get; }
+        public User User { set; get; }
+        public string Subject { set; get; }
+        public string Description { set; get; }
+        public string Solution { set; get; }
+        public Product Product { set; get; }
+        public string Service { set; get; }
+        public string Status { set; get; }
+        public DateTime Creation { set; get; }
+        public DateTime Start { set; get; }
+        public DateTime End { set; get; }
+        public bool Active { set; get; }
 
-        public static ServiceOrder QueryServiceOrder;
-        public static List<ServiceOrder> QueryServiceOrders;
+        public static ServiceOrder QueryServiceOrder { private set; get; }
+        public static List<ServiceOrder> QueryServiceOrders { private set; get; }
 
         public bool Insert()
         {
             string sql = @"INSERT INTO `serviceorder` (`customer_id`,`who_requested`,`user_id`,`subject`,
-            `description`,`solution`,`service_mode`,`status`,`creation`,`start`,`end`) VALUES (@customer_id,
-            @who_requested,@user_id,@subject,@description,@solution,@service_mode,@status,@creation,@start,@end)";
+            `description`,`solution`,`product_id`,`service_mode`,`status`,`creation`,`start`,`end`) 
+            VALUES (@customer_id,@who_requested,@user_id,@subject,@description,@solution,@product_id,
+            @service,@status,@creation,@start,@end)";
             TextCommand(sql);
             Parameters("Insert");
             if (Execute())
@@ -75,8 +76,8 @@ namespace Agenda
         {
             string sql = @"UPDATE `serviceorder` SET `customer_id`=@customer_id,`who_requested`=@who_requested,
             `user_id`=@user_id,`subject`=@subject,`description`=@description,`solution`=@solution,
-            `service_mode`=@service_mode,`status`=@status,`start`=@start,`end`=@end,
-            `active_status`=@active WHERE `id`=@id";
+            `product_id`=@product_id,`service`=@service,`status`=@status,`start`=@start,`end`=@end,
+            `active`=@active WHERE `id`=@id";
             TextCommand(sql);
             Parameters("Update");
             return Execute();
@@ -90,8 +91,8 @@ namespace Agenda
             AddParameter("subject", this.Subject);
             AddParameter("description", this.Description);
             AddParameter("solution", this.Solution);
-            //AddParameter("product_id", this.Product.ID);
-            AddParameter("service_mode", this.ServiceMode);
+            AddParameter("product_id", this.Product.ID);
+            AddParameter("service", this.Service);
             AddParameter("status", this.Status);
             
             if (action == "Insert")
@@ -115,14 +116,14 @@ namespace Agenda
                 serviceOrders = (from DataRow row in table.AsEnumerable() select new ServiceOrder()
                 {
                     ID = Convert.ToInt64(row["id"]),
-                    GetCustomer = row["customer_id"] is DBNull ? 0 : Convert.ToInt64(row["customer_id"]),
+                    GetCustomer = row["customer_id"],
                     WhoRequested = row["who_requested"].ToString(),
-                    GetUser = row["user_id"] is DBNull ? 0 : Convert.ToInt64(row["user_id"]),
+                    GetUser = row["user_id"],
                     Subject = row["subject"].ToString(),
                     Description = row["description"].ToString(),
                     Solution = row["solution"].ToString(),
-                    GetProduct = row["product_id"] is DBNull ? 0 : Convert.ToInt64(row["product_id"]),
-                    ServiceMode = row["service_mode"].ToString(),
+                    GetProduct = row["product_id"],
+                    Service = row["service"].ToString(),
                     Status = row["status"].ToString(),
                     Creation = DateTime.Parse(row["creation"].ToString()),
                     Start = DateTime.Parse(row["start"].ToString()),
@@ -134,38 +135,38 @@ namespace Agenda
             return null;
         }
 
-        private long GetCustomer
+        private object GetCustomer
         {
             set
             {
-                if (value != 0)
+                if (value is int || value is long)
                 {
-                    if (Customer.GetByID(value))
+                    if (Customer.GetByID(Convert.ToInt64(value)))
                         this.Customer = Customer.QueryCustomer;
                 }
             }
         }
 
-        private long GetUser
+        private object GetUser
         {
             set
             {
-                if (value != 0)
+                if (value is int || value is long)
                 {
-                    //if (User.GetByID(value))
-                    //    this.User = User.QueryUser;
+                    if (User.GetByID(Convert.ToInt64(value)))
+                        this.User = User.QueryUser;
                 }
             }
         }
 
-        private long GetProduct
+        private object GetProduct
         {
             set
             {
-                if (value != 0)
+                if (value is int || value is long)
                 {
-                    //if (Product.GetByID(value))
-                    //    this.Product = Product.QueryProduct;
+                    if (Product.GetByID(Convert.ToInt64(value)))
+                        this.Product = Product.QueryProduct;
                 }
             }
         }

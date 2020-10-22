@@ -21,7 +21,7 @@ namespace Agenda
 
         private void frmHome_Load(object sender, EventArgs e)
         {
-            
+            labUserName.Text = frmHome.User.Name;
         }
 
         private void HideAllAndShowUserControl(UserControl userControl = null)

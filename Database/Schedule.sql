@@ -1,33 +1,48 @@
 CREATE DATABASE `schedule`;
-
 USE `schedule`;
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `schedule`.`address` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cep` CHAR(8) NULL,
+  `street` VARCHAR(45) NULL,
+  `number` VARCHAR(45) NULL,
+  `district` VARCHAR(45) NULL,
+  `city` VARCHAR(45) NULL,
+  `State` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `schedule`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NULL,
-  `borndate` DATE NULL,
+  `born` DATE NULL,
   `sex` VARCHAR(15) NULL,
   `rg` CHAR(9) NULL,
   `cpf` CHAR(11) NULL,
   `cnh` CHAR(12) NULL,
   `profileimgaddress` VARCHAR(250) NULL,
-  `active` TINYINT NOT NULL DEFAULT TRUE,
+  `address_id` INT NULL,
+  `active` TINYINT NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `login_UNIQUE` (`login` ASC) VISIBLE)
+  UNIQUE INDEX `login_UNIQUE` (`login` ASC) VISIBLE,
+  INDEX `fk_address_idx` (`address_id` ASC) VISIBLE,
+  CONSTRAINT `fk_address`
+    FOREIGN KEY (`address_id`)
+    REFERENCES `schedule`.`address` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-ALTER TABLE user MODIFY COLUMN active  bool default true;
-
-CREATE TABLE IF NOT EXISTS `module` (
+CREATE TABLE IF NOT EXISTS `schedule`.`module` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `restrict` TINYINT NULL,
-  PRIMARY KEY (`id`)
-)ENGINE = InnoDB;
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `access` (
+CREATE TABLE IF NOT EXISTS `schedule`.`access` (
   `user` INT NOT NULL,
   `module` INT NOT NULL,
   `hasaccess` TINYINT NULL,
@@ -35,16 +50,15 @@ CREATE TABLE IF NOT EXISTS `access` (
   INDEX `Module_FK_idx` (`module` ASC) VISIBLE,
   CONSTRAINT `user_fk`
     FOREIGN KEY (`user`)
-    REFERENCES `user` (`id`)
+    REFERENCES `schedule`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `module_fk`
     FOREIGN KEY (`module`)
-    REFERENCES `module` (`id`)
+    REFERENCES `schedule`.`module` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 
 
 -- trigers --
@@ -104,9 +118,9 @@ BEGIN
 END $$
 DELIMITER ;
 
--- Inserts --
-INSERT INTO `module` (`name`, `restrict`) VALUES ("Login", FALSE);
-INSERT INTO `user` VALUES (0,"Default", "123", "Default",null,null,"426738998","43261603810","000000000000","",true);
 
--- INSERT INTO `user` (`login`, `password`, `name`) VALUES ("Default", "123", "Default");
+INSERT INTO `module` (`name`, `restrict`) VALUES ("Login", FALSE);
+INSERT INTO `user` VALUES (0,"Default", "123", "Default","1994-08-18","Maculino","426738998","43261603810","000000000000",null,null,true);
+INSERT INTO `address` VALUES (0,"18270791","José Oliviéri","233","Pq. Santa Maria","Tatuí","São Paulo");
+INSERT INTO `user` VALUES (0,"Leonardo", "123", "Leonardo","1994-08-18","Maculino","426738998","43261603810","000000000000",null,1,true);
 

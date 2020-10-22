@@ -9,9 +9,9 @@ namespace Agenda
 {
     public class Module:Connection
     {
-        public long ID;
-        public string Name;
-        public bool Restrict;
+        public long ID { set; get; }
+        public string Name { set; get; }
+        public bool Restrict { set; get; }
 
         public static Module GetModule(long module_id)
         {

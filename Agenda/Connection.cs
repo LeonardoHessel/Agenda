@@ -11,20 +11,19 @@ namespace Agenda
 {
     public class Connection
     {
-        private MySqlCommand cmd;
-        private MySqlConnection conn;
-        private string connection;
+        private MySqlCommand cmd { set; get; }
+        private MySqlConnection conn { set; get; }
+        private string connection { set; get; }
+        private string server { set; get; }
+        private string database { set; get; }
+        private string user { set; get; }
+        private string password { set; get; }
+        private string door { set; get; }
+        private string charset { set; get; }
 
-        private string server;
-        private string database;
-        private string user;
-        private string password;
-        private string door;
-        private string charset;
-
-        public static string ErrorMessage;
-        public static long LastInsertID;
-        public static DataTable SelectedTable;
+        public static string ErrorMessage { private set; get; }
+        public static long LastInsertID { private set; get; }
+        public static DataTable SelectedTable { private set; get; }
 
         // Define a linha de conexão.
         private void SetConnInfo()

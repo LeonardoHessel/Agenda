@@ -20,7 +20,10 @@ namespace Agenda
 
         private void frmServiceOrder_Load(object sender, EventArgs e)
         {
-            cbUser.DataSource = User.GetUsers(Util.ActiveStatus.Active,null,true);
+            if (User.GetUsers(Util.ActiveStatus.Active, null, true))
+            {
+                cbUser.DataSource = User.QueryUsers;
+            }
             
             ////cbProduct.SelectedItem = 
             //cbServiceMode.SelectedIndex = 3;
@@ -60,17 +63,17 @@ namespace Agenda
         private void ShowServiceOrder()
         {
             txtServiceOrderID.Text = this.ServiceOrder.ID.ToString();
-            //txtCustomer.Text = this.ServiceOrder.Customer.Razao;
-            //txtCustomerCNPJ.Text = this.ServiceOrder.Customer.CNPJ;
+            txtCustomer.Text = this.ServiceOrder.Customer.Razao;
+            txtCustomerCNPJ.Text = this.ServiceOrder.Customer.CNPJ;
             txtWhoRequested.Text = this.ServiceOrder.WhoRequested;
             cbUser.SelectedItem = this.ServiceOrder.User;
             txtSubject.Text = this.ServiceOrder.Subject;
             txtDescription.Text = this.ServiceOrder.Description;
             txtSolution.Text = this.ServiceOrder.Solution;
-            //cbProduct.SelectedItem = this.ServiceOrder.Product;
-            cbServiceMode.Text = this.ServiceOrder.ServiceMode;
+            cbProduct.SelectedItem = this.ServiceOrder.Product;
+            cbServiceMode.Text = this.ServiceOrder.Service;
             cbStatus.Text = this.ServiceOrder.Status;
-            if (!this.ServiceOrder.ActiveStatus)
+            if (!this.ServiceOrder.Active)
             {
                 cbServiceOrderInactive.Checked = true;
             }
