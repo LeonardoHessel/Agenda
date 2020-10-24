@@ -51,7 +51,7 @@ namespace Agenda
             product.TextCommand(sql);
             if (product.ExecuteQuery())
             {
-                Product.QueryProducts = product.TableToList(Connection.SelectedTable);
+                Product.QueryProducts = product.TableToList(Connection.SelectedTable,addAll);
                 return true;
             }
             return false;

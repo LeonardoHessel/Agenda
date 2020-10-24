@@ -17,8 +17,12 @@ namespace Agenda
         public string Telephone { set; get; }
         public string CellPhone { set; get; }
         public string Email { set; get; }
-        public Address Address { set; get; }
         public string Obs { set; get; }
+        public Address Address { set; get; }
+        public string Accountant { set; get; }
+        public string AccountantEmail { set; get; }
+        public Product Product { set; get; }
+        public string Components { set; get; }
         public bool Active { set; get; }
 
         public static Customer QueryCustomer { private set; get; }
@@ -26,8 +30,9 @@ namespace Agenda
 
         public bool Insert()
         {
-            string sql = @"INSERT INTO `customer` (`cnpj`,`ie`,`razao`,`name`,`telephone`,`cellphone`,`email`,
-            `address_id`,`obs`) VALUES (@cnpj,@ir,@razao,@name,@telephone,@cellphone,@email,@address_id,@obs)";
+            string sql = @"INSERT INTO `customer` (`cnpj`,`ie`,`razao`,`name`,`telephone`,`cellphone`,`email`,`obs`,
+            `address_id`,`accountant`,`accountant_email`,`product_id`,`components`) VALUES (@cnpj,@ie,@razao,@name,
+            @telephone,@cellphone,@email,@obs,@address_id,@accountant,@accountant_email,@product_id,@components)";
             TextCommand(sql);
             Parameters("Insert");
             if (Execute())
@@ -68,9 +73,10 @@ namespace Agenda
 
         public bool Update()
         {
-            string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,
-            `razao`=@razao,`telephone`=@telephone,`cellphone`=@cellphone,`email`=@email,
-            `address_id`=@address_id,`obs`=@obs,`active`=@active WHERE `id`=@id";
+            string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,`razao`=@razao,`telephone`=@telephone,
+            `cellphone`=@cellphone,`email`=@email,`obs`=@obs,`address_id`=@address_id,`accountant`=@accountant,
+            `accountant_email`=@accountant_email,`product_id`=@product_id,`components`=@components,
+            `active`=@active WHERE `id`=@id";
             TextCommand(sql);
             Parameters("Update");
             return Execute();
@@ -85,8 +91,12 @@ namespace Agenda
             AddParameter("telephone", this.Telephone);
             AddParameter("cellphone", this.CellPhone);
             AddParameter("email", this.Email);
-            AddParameter("address_id", this.Address.ID);
             AddParameter("obs", this.Obs);
+            AddParameter("address_id", this.Address.ID);
+            AddParameter("accountant", this.Accountant);
+            AddParameter("accountant_email", this.AccountantEmail);
+            AddParameter("product_id", this.Product.ID);
+            AddParameter("components", this.Components);
 
             if (action == "Update")
             {
@@ -111,8 +121,13 @@ namespace Agenda
                                  Telephone = row["telephone"].ToString(),
                                  CellPhone = row["cellphone"].ToString(),
                                  Email = row["email"].ToString(),
-                                 GetAddress = row["address_id"],
                                  Obs = row["obs"].ToString(),
+                                 GetAddress = row["address_id"],
+                                 Accountant = row["accountant"].ToString(),
+                                 AccountantEmail = row["accountant_email"].ToString(),
+                                 GetProduct = row["product_id"],
+                                 Components = row["components"].ToString(),
+                                 Active = Convert.ToBoolean(row["active"]),
                              }).ToList();
                 return customers;
             }
@@ -127,6 +142,18 @@ namespace Agenda
                 {
                     if (Address.GetByID(Convert.ToInt64(value)))
                         this.Address = Address.QueryAddress;
+                }
+            }
+        }
+
+        private object GetProduct
+        {
+            set
+            {
+                if (value is int || value is long)
+                {
+                    if (Product.GetByID(Convert.ToInt64(value)))
+                        this.Product = Product.QueryProduct;
                 }
             }
         }

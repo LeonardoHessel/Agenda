@@ -15,30 +15,50 @@ namespace Agenda
         public long Module_ID { set; get; }
         public bool HasAccess { set; get; }
 
-        public bool Save()
-        {
-            string sql = "UPDATE `access` SET `hasaccess` = @hasaccess WHERE `user` = @user AND `module` = @module";
-            TextCommand(sql);
-            AddParameter("hasaccess", this.HasAccess);
-            AddParameter("user", this.User_ID);
-            AddParameter("module", this.Module_ID);
+        public static Access QueryAccess;
+        public static List<Access> QueryAccesses;
 
-            return Execute();
-        }
-
-        public static Access CheckAccess(long user_id, long module_id)
+        public static bool CheckAccess(long user_id, long module_id)
         {
             Access access = new Access();
-            string sql = "SELECT * FROM `access` WHERE `user` = @user AND `module` = @module";
+            string sql = "SELECT * FROM `access` WHERE `user_id`=@user_id AND `module_id`=@module_id";
             access.TextCommand(sql);
-            access.AddParameter("user", user_id);
-            access.AddParameter("module", module_id);
+            access.AddParameter("user_id", user_id);
+            access.AddParameter("module_id", module_id);
 
             if (access.ExecuteQuery())
             {
-                return access.TableToList(Connection.SelectedTable)[0];
+                Access.QueryAccess = access.TableToList(Connection.SelectedTable)[0];
+                return true;
             }
-            return null;
+            return false;
+        }
+
+        public static bool LoadAllFromUser(long user_id)
+        {
+            Access access = new Access();
+            string sql = "SELECT * FROM `access` WHERE `user_id`=@user_id";
+            access.TextCommand(sql);
+            access.AddParameter("user_id", user_id);
+
+            if (access.ExecuteQuery())
+            {
+                Access.QueryAccesses = access.TableToList(Connection.SelectedTable);
+                return true;
+            }
+            return false;
+        }
+
+        public bool Save()
+        {
+            string sql = @"UPDATE `access` SET `hasaccess`=@hasaccess 
+            WHERE `user_id`=@user_id AND `module_id`=@module_id";
+            TextCommand(sql);
+            AddParameter("hasaccess", this.HasAccess);
+            AddParameter("user_id", this.User_ID);
+            AddParameter("module_id", this.Module_ID);
+
+            return Execute();
         }
 
         private List<Access> TableToList(DataTable table)
@@ -49,8 +69,8 @@ namespace Agenda
                 accesses = (from DataRow row in table.Rows
                             select new Access()
                             {
-                                User_ID = Convert.ToInt64(row["user"]),
-                                Module_ID = Convert.ToInt64(row["module"]),
+                                User_ID = Convert.ToInt64(row["user_id"]),
+                                Module_ID = Convert.ToInt64(row["module_id"]),
                                 HasAccess = Convert.ToBoolean(row["hasaccess"]),
                             }).ToList();
                 return accesses;

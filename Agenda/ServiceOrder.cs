@@ -47,7 +47,7 @@ namespace Agenda
         public static bool GetByID(long serviceOrder_id)
         {
             ServiceOrder order = new ServiceOrder();
-            string sql = @"SELECT * FROM `service_order` WHERE `id`=@id";
+            string sql = @"SELECT * FROM `serviceorder` WHERE `id`=@id";
             order.TextCommand(sql);
             order.AddParameter("id", serviceOrder_id);
             if (order.ExecuteQuery())
@@ -61,7 +61,7 @@ namespace Agenda
         public static bool SearchAll()
         {
             ServiceOrder order = new ServiceOrder();
-            string sql = @"SELECT * FROM `service_order`";
+            string sql = @"SELECT * FROM `serviceorder`";
             order.TextCommand(sql);
             
             if (order.ExecuteQuery())

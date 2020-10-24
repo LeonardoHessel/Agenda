@@ -87,7 +87,7 @@ namespace Agenda
 
             if (user.ExecuteQuery())
             {
-                User.QueryUsers = user.TableToLst(Connection.SelectedTable, addAllObj);
+                User.QueryUsers = user.TableToLst(Connection.SelectedTable,true);
                 return true;
             }
             return false;
@@ -159,7 +159,7 @@ namespace Agenda
             User user = new User();
             user.ID = 0;
             user.Login = "Todos";
-            user.Password = "123456";
+            user.Password = "123";
             user.Name = "Todos";
             return user;
         }

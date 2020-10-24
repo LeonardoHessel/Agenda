@@ -13,7 +13,7 @@ namespace Agenda
 {
     public partial class frmLogin : Form
     {
-        public frmLogin()
+        public frmLogin(Module module, object User = null)
         {
             InitializeComponent();
             LoadUsers();
@@ -37,9 +37,14 @@ namespace Agenda
             }
         }
 
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void LoadUsers()
         {
-            if (User.GetUsers(Util.ActiveStatus.Active, null, true))
+            if (User.GetUsers(Util.ActiveStatus.Active))
             {
                 cbUser.DataSource = User.QueryUsers;
             }
@@ -66,14 +71,16 @@ namespace Agenda
         {
             this.User = cbUser.SelectedItem as User;
 
-
-
             if (this.User.CheckPassword(txtPassword.Text))
             {
-                if (Access.CheckAccess(this.User.ID, this.Module.ID).HasAccess)
+                if (Access.CheckAccess(this.User.ID, this.Module.ID))
                 {
-                    this.DialogResult = DialogResult.Yes;
+                    if (Access.QueryAccess.HasAccess)
+                        this.DialogResult = DialogResult.Yes;
+                    //Acesso negado.
                 }
+                // Erro Conexão
+                MessageBox.Show(Connection.ErrorMessage);
             }
         }
 

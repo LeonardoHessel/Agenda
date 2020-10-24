@@ -13,7 +13,10 @@ namespace Agenda
         public string Name { set; get; }
         public bool Restrict { set; get; }
 
-        public static Module GetModule(long module_id)
+        public static Module QueryModule { get; set; }
+        public static List<Module> QueryModules { get; set; }
+
+        public static bool GetModule(long module_id)
         {
             Module module = new Module();
             string sql = "SELECT * FROM `module` WHERE `id` = @id";
@@ -22,12 +25,13 @@ namespace Agenda
 
             if (module.ExecuteQuery())
             {
-                return module.TableToList(Connection.SelectedTable)[0];
+                Module.QueryModule = module.TableToList(Connection.SelectedTable)[0];
+                return true;
             }
-            return null;
+            return false;
         }
 
-        public static List<Module> GetModules()
+        public static bool GetModules()
         {
             Module module = new Module();
             string sql = "SELECT * FROM `module`";
@@ -35,9 +39,10 @@ namespace Agenda
 
             if (module.ExecuteQuery())
             {
-                return module.TableToList(Connection.SelectedTable);
+                Module.QueryModules = module.TableToList(Connection.SelectedTable);
+                return true;
             }
-            return null;
+            return false;
         }
         
         public bool Save()

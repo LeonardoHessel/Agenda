@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,24 +19,24 @@ namespace Agenda
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            SplashScreen splashScreen = new SplashScreen();
-            
-            if (splashScreen.ShowDialog() == DialogResult.OK)
+            if (new SplashScreen().ShowDialog() == DialogResult.OK)
             {
                 bool exit = false;
                 while (!exit)
                 {
                     exit = true;
-
-                    frmLogin login = new frmLogin();
-                    login.Module = Module.GetModule(1);
-
-                    if (login.ShowDialog() == DialogResult.Yes)
+                    if (Module.GetModule(1))
                     {
-                        frmHome.User = login.User;
-                        frmHome home = new frmHome();
-                        if (home.ShowDialog() == DialogResult.Ignore)
-                            exit = false;
+                        frmLogin login = new frmLogin(Module.QueryModule);
+
+                        login.Module = Module.QueryModule;
+                        if (login.ShowDialog() == DialogResult.Yes)
+                        {
+                            frmHome.User = login.User;
+                            frmHome home = new frmHome();
+                            if (home.ShowDialog() == DialogResult.Ignore)
+                                exit = false;
+                        }
                     }
                 }
             }

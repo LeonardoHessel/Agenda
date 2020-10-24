@@ -24,11 +24,11 @@ CREATE TABLE IF NOT EXISTS `schedule`.`user` (
   `cnh` CHAR(12) NULL,
   `profileimgaddress` VARCHAR(250) NULL,
   `address_id` INT NULL,
-  `active` TINYINT NOT NULL DEFAULT 1,
+  `active` TINYINT NULL DEFAULT 1,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `login_UNIQUE` (`login` ASC) VISIBLE,
   INDEX `fk_address_idx` (`address_id` ASC) VISIBLE,
-  CONSTRAINT `fk_address`
+  CONSTRAINT `fk_address_user`
     FOREIGN KEY (`address_id`)
     REFERENCES `schedule`.`address` (`id`)
     ON DELETE NO ACTION
@@ -43,23 +43,96 @@ CREATE TABLE IF NOT EXISTS `schedule`.`module` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `schedule`.`access` (
-  `user` INT NOT NULL,
-  `module` INT NOT NULL,
-  `hasaccess` TINYINT NULL,
-  INDEX `User_FK_idx` (`user` ASC) VISIBLE,
-  INDEX `Module_FK_idx` (`module` ASC) VISIBLE,
-  CONSTRAINT `user_fk`
-    FOREIGN KEY (`user`)
+  `user_id` INT NOT NULL,
+  `module_id` INT NOT NULL,
+  `hasaccess` TINYINT NULL DEFAULT 1,
+  INDEX `User_FK_idx` (`user_id` ASC) VISIBLE,
+  INDEX `Module_FK_idx` (`module_id` ASC) VISIBLE,
+  CONSTRAINT `fk_user_access`
+    FOREIGN KEY (`user_id`)
     REFERENCES `schedule`.`user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `module_fk`
-    FOREIGN KEY (`module`)
+  CONSTRAINT `fk_module_access`
+    FOREIGN KEY (`module_id`)
     REFERENCES `schedule`.`module` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+CREATE TABLE IF NOT EXISTS `schedule`.`product` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NULL,
+  `active` TINYINT NULL DEFAULT 1,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `schedule`.`customer` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `cnpj` CHAR(14) NULL,
+  `ie` VARCHAR(16) NULL,
+  `razao` VARCHAR(45) NULL,
+  `name` VARCHAR(45) NULL,
+  `telephone` VARCHAR(45) NULL,
+  `cellphone` VARCHAR(45) NULL,
+  `email` VARCHAR(250) NULL,
+  `obs` TEXT NULL,
+  `address_id` INT NULL,
+  `accountant` VARCHAR(45) NULL,
+  `accountant_email` VARCHAR(45) NULL,
+  `product_id` INT NULL,
+  `components` VARCHAR(45) NULL,
+  `active` TINYINT NULL DEFAULT 1,
+  PRIMARY KEY (`id`),
+  INDEX `fk_address_idx` (`address_id` ASC) VISIBLE,
+  INDEX `fk_product_idx` (`product_id` ASC) VISIBLE,
+  CONSTRAINT `fk_address_customer`
+    FOREIGN KEY (`address_id`)
+    REFERENCES `schedule`.`address` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_product_customer`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `schedule`.`product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE TABLE IF NOT EXISTS `schedule`.`serviceorder` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `customer_id` INT NULL,
+  `whorequested` VARCHAR(45) NULL,
+  `user_id` INT NULL,
+  `subject` VARCHAR(45) NULL,
+  `descripition` TEXT NULL,
+  `solution` TEXT NULL,
+  `product_id` INT NULL,
+  `service` VARCHAR(45) NULL,
+  `status` VARCHAR(45) NULL,
+  `creation` DATETIME NULL,
+  `start` DATETIME NULL,
+  `end` DATETIME NULL,
+  `active` TINYINT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_customer_idx` (`customer_id` ASC) VISIBLE,
+  INDEX `fk_user_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_product_idx` (`product_id` ASC) VISIBLE,
+  CONSTRAINT `fk_customer_serviceorder`
+    FOREIGN KEY (`customer_id`)
+    REFERENCES `schedule`.`customer` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_serviceorder`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `schedule`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_product_serviceorder`
+    FOREIGN KEY (`product_id`)
+    REFERENCES `schedule`.`product` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 -- trigers --
 -- DROP TRIGGER IF EXISTS `user_Ai`;
@@ -117,10 +190,4 @@ BEGIN
 	END LOOP SearchLoop;
 END $$
 DELIMITER ;
-
-
-INSERT INTO `module` (`name`, `restrict`) VALUES ("Login", FALSE);
-INSERT INTO `user` VALUES (0,"Default", "123", "Default","1994-08-18","Maculino","426738998","43261603810","000000000000",null,null,true);
-INSERT INTO `address` VALUES (0,"18270791","José Oliviéri","233","Pq. Santa Maria","Tatuí","São Paulo");
-INSERT INTO `user` VALUES (0,"Leonardo", "123", "Leonardo","1994-08-18","Maculino","426738998","43261603810","000000000000",null,1,true);
 
