@@ -59,5 +59,28 @@ namespace Agenda
         {
             LoadProducts();
         }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            frmProduto newProduct = new frmProduto(Util.ActionMode.New);
+            newProduct.ShowDialog();
+            LoadProducts();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            Product product = dgvData.CurrentRow.DataBoundItem as Product;
+            frmProduto editProduct = new frmProduto(Util.ActionMode.Edit, product);
+            editProduct.ShowDialog();
+            LoadProducts();
+        }
+
+        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Product product = dgvData.CurrentRow.DataBoundItem as Product;
+            frmProduto editProduct = new frmProduto(Util.ActionMode.Edit, product);
+            editProduct.ShowDialog();
+            LoadProducts();
+        }
     }
 }

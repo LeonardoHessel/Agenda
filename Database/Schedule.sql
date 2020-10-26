@@ -63,7 +63,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `schedule`.`product` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
-  `active` TINYINT NULL DEFAULT 1,
+  `is_inactive` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

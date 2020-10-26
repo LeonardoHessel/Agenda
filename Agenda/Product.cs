@@ -11,20 +11,20 @@ namespace Agenda
     {
         public long ID { set; get; }
         public string Name { set; get; }
-        public bool Active { set; get; }
+        public bool IsInactive { set; get; }
 
         public static Product QueryProduct { private set; get; }
         public static List<Product> QueryProducts { private set; get; }
 
         public bool Insert()
         {
-            string sql = "INSERT INTP `product` (`name`) VALUES (@name)";
+            string sql = "INSERT INTO `product` (`name`) VALUES (@name)";
             TextCommand(sql);
             Parameters("Insert");
             if (Execute())
             {
                 this.ID = Connection.LastInsertID;
-                this.Active = true;
+                this.IsInactive = false;
                 return true;
             }
             return false;
@@ -52,19 +52,19 @@ namespace Agenda
 
             if (status != Util.ActiveStatus.All)
             {
-                sql += addSQL + "`active`=@active";
+                sql += addSQL + "`is_inactive`=@is_inactive";
                 addSQL = " AND ";
             }
 
             if (search != null)
-                sql += addSQL + "`name` LIKE CONCAT(%,@search,%)";
+                sql += addSQL + "(`name` LIKE CONCAT('%',@search,'%'))";
 
             product.TextCommand(sql);
 
             if (status == Util.ActiveStatus.Active)
-                product.AddParameter("active", true);
+                product.AddParameter("is_inactive", false);
             else if (status == Util.ActiveStatus.Disabled)
-                product.AddParameter("active", false);
+                product.AddParameter("is_inactive", true);
 
             if (search != null)
                 product.AddParameter("search", search);
@@ -79,7 +79,7 @@ namespace Agenda
 
         public bool Update()
         {
-            string sql = "UPDATE `product` SET `name`=@name,`active`=@active WHERE `id`=@id";
+            string sql = "UPDATE `product` SET `name`=@name,`is_inactive`=@is_inactive WHERE `id`=@id";
             TextCommand(sql);
             Parameters("Update");
             return Execute();
@@ -87,10 +87,10 @@ namespace Agenda
 
         private void Parameters(string action)
         {
-            AddParameter("customer_id", this.Name);
+            AddParameter("name", this.Name);
             if (action == "Update")
             {
-                AddParameter("active", this.Active);
+                AddParameter("is_inactive", this.IsInactive);
                 AddParameter("id", this.ID);
             }
         }
@@ -105,7 +105,7 @@ namespace Agenda
                             {
                                 ID = Convert.ToInt64(row["id"]),
                                 Name = row["name"].ToString(),
-                                Active = Convert.ToBoolean(row["active"]),
+                                IsInactive = Convert.ToBoolean(row["is_inactive"]),
                             }).ToList();
 
                 if (addAllObj)
@@ -121,6 +121,7 @@ namespace Agenda
             Product product = new Product();
             product.ID = 0;
             product.Name = "Todos";
+            product.IsInactive = false;
             return product;
         }
     }
