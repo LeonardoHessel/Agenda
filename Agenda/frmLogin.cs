@@ -13,15 +13,15 @@ namespace Agenda
 {
     public partial class frmLogin : Form
     {
-        public frmLogin(Module module, object User = null)
+        public frmLogin(Module module, User user = null)
         {
             InitializeComponent();
-            LoadUsers();
-            cbUser.SelectedIndex = 0;
+            this.User = user;
+            this.Module = module;
         }
 
         private User user;
-        public Module Module;
+        private Module Module { get; set; }
 
         public User User
         {
@@ -39,15 +39,15 @@ namespace Agenda
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-
+            LoadUsers();
+            if (this.User != null)
+                cbUser.SelectedItem = this.User;
         }
 
         private void LoadUsers()
         {
             if (User.GetUsers(Util.ActiveStatus.Active))
-            {
                 cbUser.DataSource = User.QueryUsers;
-            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -71,22 +71,17 @@ namespace Agenda
         {
             this.User = cbUser.SelectedItem as User;
 
-            if (this.User.CheckPassword(txtPassword.Text))
+            if (this.User.CheckPassword(txtPassword.Text) && this.User.ID != 0)
             {
-                if (Access.CheckAccess(this.User.ID, this.Module.ID))
+                if (Access.LoadAccess(this.User.ID, this.Module.ID))
                 {
                     if (Access.QueryAccess.HasAccess)
                         this.DialogResult = DialogResult.Yes;
                     //Acesso negado.
                 }
-                // Erro Conexão
-                MessageBox.Show(Connection.ErrorMessage);
+                else
+                    MessageBox.Show(Connection.ErrorMessage);
             }
-        }
-
-        private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            this.User = cbUser.SelectedItem as User;
         }
     }
 }

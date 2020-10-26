@@ -27,16 +27,25 @@ namespace Agenda
                     exit = true;
                     if (Module.GetModule(1))
                     {
-                        frmLogin login = new frmLogin(Module.QueryModule);
-
-                        login.Module = Module.QueryModule;
-                        if (login.ShowDialog() == DialogResult.Yes)
+                        Module module = Module.QueryModule;
+                        // User user = ?
+                        if (module.Restrict || module.ID == 1)
                         {
-                            frmHome.User = login.User;
-                            frmHome home = new frmHome();
-                            if (home.ShowDialog() == DialogResult.Ignore)
-                                exit = false;
+                            frmLogin login = new frmLogin(Module.QueryModule);
+                            //login.User = user;
+                            if (login.ShowDialog() == DialogResult.Yes)
+                            {
+                                frmHome.User = login.User;
+                                if (new frmHome().ShowDialog() == DialogResult.Ignore)
+                                    exit = false;
+                            }
                         }
+                        //else if (!module.Restrict && module.ID != 1)
+                        //{
+                        //    frmHome.User = login.User;
+                        //    if (new frmHome().ShowDialog() == DialogResult.Ignore)
+                        //        exit = false;
+                        //}
                     }
                 }
             }

@@ -101,7 +101,6 @@
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(275, 31);
             this.cbUser.TabIndex = 0;
-            this.cbUser.SelectedIndexChanged += new System.EventHandler(this.cbUser_SelectedIndexChanged);
             // 
             // txtPassword
             // 

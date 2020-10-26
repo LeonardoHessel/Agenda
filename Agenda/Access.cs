@@ -18,7 +18,7 @@ namespace Agenda
         public static Access QueryAccess;
         public static List<Access> QueryAccesses;
 
-        public static bool CheckAccess(long user_id, long module_id)
+        public static bool LoadAccess(long user_id, long module_id)
         {
             Access access = new Access();
             string sql = "SELECT * FROM `access` WHERE `user_id`=@user_id AND `module_id`=@module_id";

@@ -72,7 +72,6 @@ namespace Agenda
             if (status != Util.ActiveStatus.All)
             {
                 sql += addSql + "`active` = @active";
-                addSql = " AND ";
             }
 
             user.TextCommand(sql);
@@ -87,7 +86,7 @@ namespace Agenda
 
             if (user.ExecuteQuery())
             {
-                User.QueryUsers = user.TableToLst(Connection.SelectedTable,true);
+                User.QueryUsers = user.TableToLst(Connection.SelectedTable,addAllObj);
                 return true;
             }
             return false;
