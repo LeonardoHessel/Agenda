@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS `schedule`.`user` (
   `cnh` CHAR(12) NULL,
   `profileimgaddress` VARCHAR(250) NULL,
   `address_id` INT NULL,
-  `active` TINYINT NULL DEFAULT 1,
+  `is_inactive` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `login_UNIQUE` (`login` ASC) VISIBLE,
   INDEX `fk_address_idx` (`address_id` ASC) VISIBLE,

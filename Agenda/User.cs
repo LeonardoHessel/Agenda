@@ -21,7 +21,7 @@ namespace Agenda
         public string CNH { set; get; }
         public string ProfileIMGAddress { set; get; }
         public Address Address { set; get; }
-        public bool Active { set; get; }
+        public bool IsInactive { set; get; }
 
         public static User QueryUser { private set; get; }
         public static List<User> QueryUsers { private set; get; }
@@ -36,7 +36,7 @@ namespace Agenda
             if (Execute())
             {
                 this.ID = Connection.LastInsertID;
-                this.Active = true;
+                this.IsInactive = false;
                 return true;
             }
             return false;
@@ -65,14 +65,12 @@ namespace Agenda
 
             if (search != null)
             {
-                sql += addSql + "(`name` LIKE (%, @search,%))";
+                sql += addSql + "(`name` LIKE ('%', @search,'%'))";
                 addSql = " AND ";
             }
 
             if (status != Util.ActiveStatus.All)
-            {
-                sql += addSql + "`active` = @active";
-            }
+                sql += addSql + "`is_inactive` = @is_inactive";
 
             user.TextCommand(sql);
 
@@ -80,9 +78,9 @@ namespace Agenda
                 user.AddParameter("search", search);
 
             if (status == Util.ActiveStatus.Active)
-                user.AddParameter("active", true);
+                user.AddParameter("is_inactive", false);
             else if (status == Util.ActiveStatus.Disabled)
-                user.AddParameter("active", false);
+                user.AddParameter("is_inactive", true);
 
             if (user.ExecuteQuery())
             {
@@ -96,7 +94,7 @@ namespace Agenda
         {
             string sql = @"UPDATE `user` SET `login`=@login,`password`=@password,`name`=@name,
             `born`=@born,`sex`=@sex,`cpf`=@cpf,`rg`=@rg,`cnh`=@cnh,
-            `profile_img_address`=@profile_img_address,`address_id`=@address_id,`active`=@active
+            `profile_img_address`=@profile_img_address,`address_id`=@address_id,`is_inactive`=@is_inactive
             WHERE `id`=@id";
             TextCommand(sql);
             Parameters("Update");
@@ -118,7 +116,7 @@ namespace Agenda
 
             if (action == "Update")
             {
-                AddParameter("active", this.Active);
+                AddParameter("is_inactive", this.IsInactive);
                 AddParameter("id", this.ID);
             }
         }
@@ -142,7 +140,7 @@ namespace Agenda
                              CNH = row["cnh"].ToString(),
                              ProfileIMGAddress = row["profileimgaddress"].ToString(),
                              GetAddress = row["address_id"],
-                             Active = Convert.ToBoolean(row["active"]),
+                             IsInactive = Convert.ToBoolean(row["is_inactive"]),
                          }).ToList<User>();
 
                 if (addAllObj)

@@ -45,6 +45,15 @@
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colBorn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCNH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProfileIMGAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsInactive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gbActiveStatus.SuspendLayout();
             this.pTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).BeginInit();
@@ -71,7 +80,6 @@
             this.rbInactive.Name = "rbInactive";
             this.rbInactive.Size = new System.Drawing.Size(64, 19);
             this.rbInactive.TabIndex = 2;
-            this.rbInactive.TabStop = true;
             this.rbInactive.Text = "Inativo";
             this.rbInactive.UseVisualStyleBackColor = true;
             // 
@@ -83,13 +91,13 @@
             this.rbActive.Name = "rbActive";
             this.rbActive.Size = new System.Drawing.Size(61, 19);
             this.rbActive.TabIndex = 1;
-            this.rbActive.TabStop = true;
             this.rbActive.Text = "Ativos";
             this.rbActive.UseVisualStyleBackColor = true;
             // 
             // rbAll
             // 
             this.rbAll.AutoSize = true;
+            this.rbAll.Checked = true;
             this.rbAll.Location = new System.Drawing.Point(6, 19);
             this.rbAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.rbAll.Name = "rbAll";
@@ -198,7 +206,7 @@
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -208,15 +216,30 @@
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
-            this.colName});
+            this.colName,
+            this.colLogin,
+            this.colBorn,
+            this.colSex,
+            this.colCPF,
+            this.colRG,
+            this.colCNH,
+            this.colProfileIMGAddress,
+            this.colAddress,
+            this.colIsInactive});
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvData.Location = new System.Drawing.Point(0, 279);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
+            this.dgvData.ReadOnly = true;
             this.dgvData.RowHeadersVisible = false;
             this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dgvData.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.dgvData.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Roboto", 10F);
+            this.dgvData.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.dgvData.RowTemplate.Height = 35;
+            this.dgvData.RowTemplate.ReadOnly = true;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(1100, 745);
             this.dgvData.TabIndex = 19;
@@ -235,6 +258,71 @@
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
             // 
+            // colLogin
+            // 
+            this.colLogin.DataPropertyName = "Login";
+            this.colLogin.HeaderText = "Login";
+            this.colLogin.Name = "colLogin";
+            this.colLogin.ReadOnly = true;
+            // 
+            // colBorn
+            // 
+            this.colBorn.DataPropertyName = "Born";
+            this.colBorn.HeaderText = "Nascimento";
+            this.colBorn.Name = "colBorn";
+            this.colBorn.ReadOnly = true;
+            // 
+            // colSex
+            // 
+            this.colSex.DataPropertyName = "Sex";
+            this.colSex.HeaderText = "Sexo";
+            this.colSex.Name = "colSex";
+            this.colSex.ReadOnly = true;
+            // 
+            // colCPF
+            // 
+            this.colCPF.DataPropertyName = "CPF";
+            this.colCPF.HeaderText = "CPF";
+            this.colCPF.Name = "colCPF";
+            this.colCPF.ReadOnly = true;
+            // 
+            // colRG
+            // 
+            this.colRG.DataPropertyName = "RG";
+            this.colRG.HeaderText = "RG";
+            this.colRG.Name = "colRG";
+            this.colRG.ReadOnly = true;
+            // 
+            // colCNH
+            // 
+            this.colCNH.DataPropertyName = "CNH";
+            this.colCNH.HeaderText = "CNH";
+            this.colCNH.Name = "colCNH";
+            this.colCNH.ReadOnly = true;
+            // 
+            // colProfileIMGAddress
+            // 
+            this.colProfileIMGAddress.DataPropertyName = "ProfileIMGAddress";
+            this.colProfileIMGAddress.HeaderText = "ProfileIMGAddress";
+            this.colProfileIMGAddress.Name = "colProfileIMGAddress";
+            this.colProfileIMGAddress.ReadOnly = true;
+            this.colProfileIMGAddress.Visible = false;
+            // 
+            // colAddress
+            // 
+            this.colAddress.DataPropertyName = "Address";
+            this.colAddress.HeaderText = "Address";
+            this.colAddress.Name = "colAddress";
+            this.colAddress.ReadOnly = true;
+            this.colAddress.Visible = false;
+            // 
+            // colIsInactive
+            // 
+            this.colIsInactive.DataPropertyName = "IsInactive";
+            this.colIsInactive.HeaderText = "Inativo";
+            this.colIsInactive.Name = "colIsInactive";
+            this.colIsInactive.ReadOnly = true;
+            // 
             // ucUser
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -250,6 +338,7 @@
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ucUser";
             this.Size = new System.Drawing.Size(1100, 1024);
+            this.Load += new System.EventHandler(this.ucUser_Load);
             this.gbActiveStatus.ResumeLayout(false);
             this.gbActiveStatus.PerformLayout();
             this.pTitle.ResumeLayout(false);
@@ -277,5 +366,14 @@
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLogin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colBorn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCPF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRG;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCNH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProfileIMGAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAddress;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colIsInactive;
     }
 }
