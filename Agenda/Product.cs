@@ -44,11 +44,31 @@ namespace Agenda
             return false;
         }
 
-        public static bool SearchAll(bool addAll = false)
+        public static bool SearchAll(Util.ActiveStatus status, string search = null, bool addAll = false)
         {
             Product product = new Product();
+            string addSQL = " WHERE ";
             string sql = @"SELECT * FROM `product`";
+
+            if (status != Util.ActiveStatus.All)
+            {
+                sql += addSQL + "`active`=@active";
+                addSQL = " AND ";
+            }
+
+            if (search != null)
+                sql += addSQL + "`name` LIKE CONCAT(%,@search,%)";
+
             product.TextCommand(sql);
+
+            if (status == Util.ActiveStatus.Active)
+                product.AddParameter("active", true);
+            else if (status == Util.ActiveStatus.Disabled)
+                product.AddParameter("active", false);
+
+            if (search != null)
+                product.AddParameter("search", search);
+
             if (product.ExecuteQuery())
             {
                 Product.QueryProducts = product.TableToList(Connection.SelectedTable,addAll);

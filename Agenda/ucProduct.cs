@@ -29,9 +29,35 @@ namespace Agenda
             }
         }
 
+        private void ucProduct_Load(object sender, EventArgs e)
+        {
+            LoadProducts();
+        }
+
         private void btnHide_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+        }
+
+        private void LoadProducts()
+        {
+            Util.ActiveStatus status = Util.ActiveStatus.All;
+            if (rbActive.Checked)
+                status = Util.ActiveStatus.Active;
+            else if (rbInactive.Checked)
+                status = Util.ActiveStatus.Disabled;
+
+            string search = txtSearch.Text == "" ? null : txtSearch.Text;
+
+            if (Product.SearchAll(status, search))
+                dgvData.DataSource = Product.QueryProducts;
+            else
+                MessageBox.Show(Connection.ErrorMessage);
+        }
+
+        private void FilterChanged(object sender, EventArgs e)
+        {
+            LoadProducts();
         }
     }
 }
