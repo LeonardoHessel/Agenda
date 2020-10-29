@@ -62,7 +62,7 @@ namespace Agenda
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmProduto newProduct = new frmProduto(Util.ActionMode.New);
+            frmProduct newProduct = new frmProduct(Util.ActionMode.New);
             newProduct.ShowDialog();
             LoadProducts();
         }
@@ -70,7 +70,7 @@ namespace Agenda
         private void btnEdit_Click(object sender, EventArgs e)
         {
             Product product = dgvData.CurrentRow.DataBoundItem as Product;
-            frmProduto editProduct = new frmProduto(Util.ActionMode.Edit, product);
+            frmProduct editProduct = new frmProduct(Util.ActionMode.Edit, product);
             editProduct.ShowDialog();
             LoadProducts();
         }
@@ -78,7 +78,7 @@ namespace Agenda
         private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Product product = dgvData.CurrentRow.DataBoundItem as Product;
-            frmProduto editProduct = new frmProduto(Util.ActionMode.Edit, product);
+            frmProduct editProduct = new frmProduct(Util.ActionMode.Edit, product);
             editProduct.ShowDialog();
             LoadProducts();
         }

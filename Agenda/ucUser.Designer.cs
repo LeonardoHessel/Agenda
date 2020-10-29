@@ -46,6 +46,7 @@
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLogin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBorn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,6 +83,7 @@
             this.rbInactive.TabIndex = 2;
             this.rbInactive.Text = "Inativo";
             this.rbInactive.UseVisualStyleBackColor = true;
+            this.rbInactive.CheckedChanged += new System.EventHandler(this.FilterChanged);
             // 
             // rbActive
             // 
@@ -93,6 +95,7 @@
             this.rbActive.TabIndex = 1;
             this.rbActive.Text = "Ativos";
             this.rbActive.UseVisualStyleBackColor = true;
+            this.rbActive.CheckedChanged += new System.EventHandler(this.FilterChanged);
             // 
             // rbAll
             // 
@@ -106,6 +109,7 @@
             this.rbAll.TabStop = true;
             this.rbAll.Text = "Todos";
             this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.FilterChanged);
             // 
             // btnNew
             // 
@@ -120,6 +124,7 @@
             this.btnNew.TabIndex = 14;
             this.btnNew.Text = "Novo";
             this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // btnEdit
             // 
@@ -134,6 +139,7 @@
             this.btnEdit.TabIndex = 13;
             this.btnEdit.Text = "Editar";
             this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // pTitle
             // 
@@ -195,6 +201,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(430, 23);
             this.txtSearch.TabIndex = 17;
+            this.txtSearch.TextChanged += new System.EventHandler(this.FilterChanged);
             // 
             // dgvData
             // 
@@ -206,7 +213,7 @@
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -218,6 +225,7 @@
             this.colID,
             this.colName,
             this.colLogin,
+            this.colPassword,
             this.colBorn,
             this.colSex,
             this.colCPF,
@@ -243,6 +251,7 @@
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(1100, 745);
             this.dgvData.TabIndex = 19;
+            this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             // 
             // colID
             // 
@@ -250,6 +259,7 @@
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
+            this.colID.Width = 80;
             // 
             // colName
             // 
@@ -257,6 +267,7 @@
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
+            this.colName.Width = 200;
             // 
             // colLogin
             // 
@@ -264,6 +275,14 @@
             this.colLogin.HeaderText = "Login";
             this.colLogin.Name = "colLogin";
             this.colLogin.ReadOnly = true;
+            // 
+            // colPassword
+            // 
+            this.colPassword.DataPropertyName = "Password";
+            this.colPassword.HeaderText = "Senha";
+            this.colPassword.Name = "colPassword";
+            this.colPassword.ReadOnly = true;
+            this.colPassword.Visible = false;
             // 
             // colBorn
             // 
@@ -278,6 +297,7 @@
             this.colSex.HeaderText = "Sexo";
             this.colSex.Name = "colSex";
             this.colSex.ReadOnly = true;
+            this.colSex.Width = 50;
             // 
             // colCPF
             // 
@@ -285,6 +305,7 @@
             this.colCPF.HeaderText = "CPF";
             this.colCPF.Name = "colCPF";
             this.colCPF.ReadOnly = true;
+            this.colCPF.Width = 110;
             // 
             // colRG
             // 
@@ -292,6 +313,7 @@
             this.colRG.HeaderText = "RG";
             this.colRG.Name = "colRG";
             this.colRG.ReadOnly = true;
+            this.colRG.Width = 110;
             // 
             // colCNH
             // 
@@ -299,6 +321,7 @@
             this.colCNH.HeaderText = "CNH";
             this.colCNH.Name = "colCNH";
             this.colCNH.ReadOnly = true;
+            this.colCNH.Width = 110;
             // 
             // colProfileIMGAddress
             // 
@@ -322,6 +345,7 @@
             this.colIsInactive.HeaderText = "Inativo";
             this.colIsInactive.Name = "colIsInactive";
             this.colIsInactive.ReadOnly = true;
+            this.colIsInactive.Width = 80;
             // 
             // ucUser
             // 
@@ -367,6 +391,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLogin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colPassword;
         private System.Windows.Forms.DataGridViewTextBoxColumn colBorn;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSex;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCPF;

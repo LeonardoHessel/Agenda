@@ -3,12 +3,12 @@ USE `schedule`;
 
 CREATE TABLE IF NOT EXISTS `schedule`.`address` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `cep` CHAR(8) NULL,
+  `cep` VARCHAR(8) NULL,
   `street` VARCHAR(45) NULL,
   `number` VARCHAR(45) NULL,
   `district` VARCHAR(45) NULL,
   `city` VARCHAR(45) NULL,
-  `State` VARCHAR(45) NULL,
+  `state` VARCHAR(45) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -18,11 +18,11 @@ CREATE TABLE IF NOT EXISTS `schedule`.`user` (
   `password` VARCHAR(45) NOT NULL,
   `name` VARCHAR(45) NULL,
   `born` DATE NULL,
-  `sex` VARCHAR(15) NULL,
-  `rg` CHAR(9) NULL,
-  `cpf` CHAR(11) NULL,
-  `cnh` CHAR(12) NULL,
-  `profileimgaddress` VARCHAR(250) NULL,
+  `sex` SET('Feminino', 'Masculino') NULL,
+  `rg` VARCHAR(12) NULL,
+  `cpf` VARCHAR(11) NULL,
+  `cnh` VARCHAR(11) NULL,
+  `profile_img_address` VARCHAR(250) NULL,
   `address_id` INT NULL,
   `is_inactive` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),

@@ -12,7 +12,7 @@ namespace Agenda
     {
         public long ID { set; get; }
         public string Login { set; get; }
-        private string Password { set; get; }
+        public string Password { set; get; }
         public string Name { set; get; }
         public DateTime Born { set; get; }
         public string Sex { set; get; }
@@ -63,14 +63,23 @@ namespace Agenda
 
             string sql = "SELECT * FROM `user`";
 
-            if (search != null)
+            if (status != Util.ActiveStatus.All)
             {
-                sql += addSql + "(`name` LIKE ('%', @search,'%'))";
+                sql += addSql + "`is_inactive` = @is_inactive";
                 addSql = " AND ";
             }
 
-            if (status != Util.ActiveStatus.All)
-                sql += addSql + "`is_inactive` = @is_inactive";
+            if (search != null)
+            {
+                sql += addSql + "(`name` LIKE CONCAT('%', @search,'%'))";
+
+                //sql += addSql + @"(`name` LIKE CONCAT('%', @search,'%') OR 
+                //`login` LIKE CONCAT('%', @search,'%') OR 
+                //`born` LIKE CONCAT('%', @search,'%') OR 
+                //`rg` LIKE CONCAT('%', @search,'%') OR 
+                //`cpf` LIKE CONCAT('%', @search,'%') OR 
+                //`cnh` LIKE CONCAT('%', @search,'%'))";
+            }
 
             user.TextCommand(sql);
 
@@ -106,7 +115,7 @@ namespace Agenda
             AddParameter("login", this.Login);
             AddParameter("password", this.Password);
             AddParameter("name", this.Name);
-            AddParameter("born_date", this.Born);
+            AddParameter("born", this.Born);
             AddParameter("sex", this.Sex);
             AddParameter("cpf", this.CPF);
             AddParameter("rg", this.RG);
@@ -138,7 +147,7 @@ namespace Agenda
                              RG = row["rg"].ToString(),
                              CPF = row["cpf"].ToString(),
                              CNH = row["cnh"].ToString(),
-                             ProfileIMGAddress = row["profileimgaddress"].ToString(),
+                             ProfileIMGAddress = row["profile_img_address"].ToString(),
                              GetAddress = row["address_id"],
                              IsInactive = Convert.ToBoolean(row["is_inactive"]),
                          }).ToList<User>();

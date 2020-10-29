@@ -23,7 +23,7 @@ namespace Agenda
         public bool Insert()
         {
             string sql = @"INSERT INTO `address` (`cep`,`street`,`number`,`district`,`city`,`state`) 
-            VALUES (@cep,@street,@number@,@district,@city,@state)";
+            VALUES (@cep,@street,@number,@district,@city,@state)";
             TextCommand(sql);
             Parameters("Insert");
             if (Execute())

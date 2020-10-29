@@ -31,4 +31,5 @@ C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.ucSchedule.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.ucUser.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmServiceOrder.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csprojAssemblyReference.cache
-C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmProduto.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmProduct.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmUser.resources

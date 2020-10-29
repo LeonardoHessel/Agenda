@@ -299,6 +299,7 @@
             this.Name = "frmHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmHome_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmHome_KeyDown);
             this.pMenu.ResumeLayout(false);
             this.pMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoHome)).EndInit();

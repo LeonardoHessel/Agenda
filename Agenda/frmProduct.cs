@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace Agenda
 {
-    public partial class frmProduto : Form
+    public partial class frmProduct : Form
     {
-        public frmProduto(Util.ActionMode action, Product product = null)
+        public frmProduct(Util.ActionMode action, Product product = null)
         {
             InitializeComponent();
 

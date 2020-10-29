@@ -99,5 +99,25 @@ namespace Agenda
             frmServiceOrder newServiceOrder = new frmServiceOrder(Util.ActionMode.New);
             newServiceOrder.ShowDialog();
         }
+
+        private void frmHome_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                int amountOfVisibleUserControl = 0;
+                foreach (object obj in pForm.Controls)
+                {
+                    if (obj is UserControl)
+                    {
+                        if ((obj as UserControl).Visible == true)
+                            amountOfVisibleUserControl++;
+                    }
+                }
+                if (amountOfVisibleUserControl > 0)
+                    HideAllAndShowUserControl();
+                else
+                    btnClose.PerformClick();
+            }
+        }
     }
 }

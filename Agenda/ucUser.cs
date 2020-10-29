@@ -54,5 +54,33 @@ namespace Agenda
             else
                 MessageBox.Show(Connection.ErrorMessage);
         }
+
+        private void FilterChanged(object sender, EventArgs e)
+        {
+            LoadUsers();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            frmUser newUser = new frmUser(Util.ActionMode.New);
+            newUser.ShowDialog();
+            LoadUsers();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            User user = dgvData.CurrentRow.DataBoundItem as User;
+            frmUser editUser = new frmUser(Util.ActionMode.Edit, user);
+            editUser.ShowDialog();
+            LoadUsers();
+        }
+
+        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            User user = dgvData.CurrentRow.DataBoundItem as User;
+            frmUser editUser = new frmUser(Util.ActionMode.Edit, user);
+            editUser.ShowDialog();
+            LoadUsers();
+        }
     }
 }
