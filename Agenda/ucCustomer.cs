@@ -33,5 +33,16 @@ namespace Agenda
         {
             this.Visible = false;
         }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            frmCustomer newCustomer = new frmCustomer();
+            newCustomer.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

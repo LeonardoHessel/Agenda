@@ -55,6 +55,12 @@
     <Compile Include="Address.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Customer.cs" />
+    <Compile Include="frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomer.Designer.cs">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDBConfig.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="Util.cs" />
+    <EmbeddedResource Include="frmCustomer.resx">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDBConfig.resx">
       <DependentUpon>frmDBConfig.cs</DependentUpon>
     </EmbeddedResource>

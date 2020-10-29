@@ -33,3 +33,4 @@ C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmServiceOrder.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csprojAssemblyReference.cache
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmProduct.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmUser.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmCustomer.resources
