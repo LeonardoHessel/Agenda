@@ -15,6 +15,7 @@ namespace Agenda
         public ucCustomer()
         {
             InitializeComponent();
+            LoadCustomers();
         }
 
         private static ucCustomer instance;
@@ -34,15 +35,48 @@ namespace Agenda
             this.Visible = false;
         }
 
+        private void LoadCustomers()
+        {
+            Util.ActiveStatus status = Util.ActiveStatus.All;
+            if (rbActive.Checked)
+                status = Util.ActiveStatus.Active;
+            else if (rbInactive.Checked)
+                status = Util.ActiveStatus.Disabled;
+
+            string search = txtSearch.Text == "" ? null : txtSearch.Text;
+
+            if (Customer.SearchAll(status, search))
+                dgvData.DataSource = Customer.QueryCustomers;
+            else
+                MessageBox.Show(Connection.ErrorMessage);
+        }
+
         private void btnNew_Click(object sender, EventArgs e)
         {
-            frmCustomer newCustomer = new frmCustomer();
+            frmCustomer newCustomer = new frmCustomer(Util.ActionMode.New);
             newCustomer.ShowDialog();
+            LoadCustomers();
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            Customer customer = dgvData.CurrentRow.DataBoundItem as Customer;
+            frmCustomer editCustomer = new frmCustomer(Util.ActionMode.Edit, customer);
+            editCustomer.ShowDialog();
+            LoadCustomers();
+        }
 
+        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Customer customer = dgvData.CurrentRow.DataBoundItem as Customer;
+            frmCustomer editCustomer = new frmCustomer(Util.ActionMode.Edit, customer);
+            editCustomer.ShowDialog();
+            LoadCustomers();
+        }
+
+        private void SearchChanged(object sender, EventArgs e)
+        {
+            LoadCustomers();
         }
     }
 }

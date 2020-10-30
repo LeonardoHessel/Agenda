@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCustomer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbActiveStatus = new System.Windows.Forms.GroupBox();
             this.rbInactive = new System.Windows.Forms.RadioButton();
             this.rbActive = new System.Windows.Forms.RadioButton();
@@ -44,7 +44,7 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colRazao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbActiveStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).BeginInit();
             this.pTitle.SuspendLayout();
@@ -71,9 +71,9 @@
             this.rbInactive.Name = "rbInactive";
             this.rbInactive.Size = new System.Drawing.Size(64, 19);
             this.rbInactive.TabIndex = 2;
-            this.rbInactive.TabStop = true;
             this.rbInactive.Text = "Inativo";
             this.rbInactive.UseVisualStyleBackColor = true;
+            this.rbInactive.CheckedChanged += new System.EventHandler(this.SearchChanged);
             // 
             // rbActive
             // 
@@ -83,13 +83,14 @@
             this.rbActive.Name = "rbActive";
             this.rbActive.Size = new System.Drawing.Size(61, 19);
             this.rbActive.TabIndex = 1;
-            this.rbActive.TabStop = true;
             this.rbActive.Text = "Ativos";
             this.rbActive.UseVisualStyleBackColor = true;
+            this.rbActive.CheckedChanged += new System.EventHandler(this.SearchChanged);
             // 
             // rbAll
             // 
             this.rbAll.AutoSize = true;
+            this.rbAll.Checked = true;
             this.rbAll.Location = new System.Drawing.Point(6, 19);
             this.rbAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.rbAll.Name = "rbAll";
@@ -98,6 +99,7 @@
             this.rbAll.TabStop = true;
             this.rbAll.Text = "Todos";
             this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.SearchChanged);
             // 
             // pbSearchImage
             // 
@@ -191,6 +193,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(430, 23);
             this.txtSearch.TabIndex = 17;
+            this.txtSearch.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // dgvData
             // 
@@ -200,30 +203,32 @@
             this.dgvData.AllowUserToResizeRows = false;
             this.dgvData.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvData.ColumnHeadersHeight = 35;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
-            this.colName});
+            this.colRazao});
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvData.Location = new System.Drawing.Point(0, 279);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
+            this.dgvData.ReadOnly = true;
             this.dgvData.RowHeadersVisible = false;
             this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(1100, 745);
             this.dgvData.TabIndex = 19;
+            this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             // 
             // colID
             // 
@@ -232,12 +237,12 @@
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
             // 
-            // colName
+            // colRazao
             // 
-            this.colName.DataPropertyName = "Name";
-            this.colName.HeaderText = "Name";
-            this.colName.Name = "colName";
-            this.colName.ReadOnly = true;
+            this.colRazao.DataPropertyName = "Razao";
+            this.colRazao.HeaderText = "Razao";
+            this.colRazao.Name = "colRazao";
+            this.colRazao.ReadOnly = true;
             // 
             // ucCustomer
             // 
@@ -280,6 +285,6 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colRazao;
     }
 }

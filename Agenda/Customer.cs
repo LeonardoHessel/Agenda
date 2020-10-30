@@ -23,7 +23,7 @@ namespace Agenda
         public string AccountantEmail { set; get; }
         public Product Product { set; get; }
         public string Components { set; get; }
-        public bool Active { set; get; }
+        public bool IsInactive { set; get; }
 
         public static Customer QueryCustomer { private set; get; }
         public static List<Customer> QueryCustomers { private set; get; }
@@ -38,7 +38,7 @@ namespace Agenda
             if (Execute())
             {
                 this.ID = Connection.LastInsertID;
-                this.Active = true;
+                this.IsInactive = false;
                 return true;
             }
             return false;
@@ -58,14 +58,14 @@ namespace Agenda
             return false;
         }
 
-        public static bool SearchAll()
+        public static bool SearchAll(Util.ActiveStatus status, string search = null, bool addAll = false, bool addNone = false)
         {
             Customer customer = new Customer();
             string sql = @"SELECT * FROM `customer`";
             customer.TextCommand(sql);
             if (customer.ExecuteQuery())
             {
-                Customer.QueryCustomers = customer.TableToList(Connection.SelectedTable);
+                Customer.QueryCustomers = customer.TableToList(Connection.SelectedTable,addAll,addNone);
                 return true;
             }
             return false;
@@ -73,10 +73,10 @@ namespace Agenda
 
         public bool Update()
         {
-            string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,`razao`=@razao,`telephone`=@telephone,
+            string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,`razao`=@razao,`name`=@name,`telephone`=@telephone,
             `cellphone`=@cellphone,`email`=@email,`obs`=@obs,`address_id`=@address_id,`accountant`=@accountant,
             `accountant_email`=@accountant_email,`product_id`=@product_id,`components`=@components,
-            `active`=@active WHERE `id`=@id";
+            `is_inactive`=@is_inactive WHERE `id`=@id";
             TextCommand(sql);
             Parameters("Update");
             return Execute();
@@ -92,20 +92,27 @@ namespace Agenda
             AddParameter("cellphone", this.CellPhone);
             AddParameter("email", this.Email);
             AddParameter("obs", this.Obs);
+
             AddParameter("address_id", this.Address.ID);
+            
             AddParameter("accountant", this.Accountant);
             AddParameter("accountant_email", this.AccountantEmail);
-            AddParameter("product_id", this.Product.ID);
+            
+            if (this.Product.ID != 0)
+                AddParameter("product_id", this.Product.ID);
+            else
+                AddParameter("product_id", null);
+
             AddParameter("components", this.Components);
 
             if (action == "Update")
             {
-                AddParameter("active", this.Active);
+                AddParameter("is_inactive", this.IsInactive);
                 AddParameter("id", this.ID);
             }
         }
 
-        private List<Customer> TableToList(DataTable table)
+        private List<Customer> TableToList(DataTable table, bool addAllObj = false, bool ddNoneObj = false)
         {
             if (table != null)
             {
@@ -127,11 +134,34 @@ namespace Agenda
                                  AccountantEmail = row["accountant_email"].ToString(),
                                  GetProduct = row["product_id"],
                                  Components = row["components"].ToString(),
-                                 Active = Convert.ToBoolean(row["active"]),
+                                 IsInactive = Convert.ToBoolean(row["is_inactive"]),
                              }).ToList();
+
+                if (addAllObj)
+                    customers.Insert(0, AddAll());
+
+                if (ddNoneObj)
+                    customers.Insert(0, AddNone());
+
                 return customers;
             }
             return null;
+        }
+
+        private Customer AddAll()
+        {
+            Customer customer = new Customer();
+            customer.ID = 0;
+            customer.Name = "Todos";
+            return customer;
+        }
+
+        private Customer AddNone()
+        {
+            Customer customer = new Customer();
+            customer.ID = 0;
+            customer.Name = "Nenhum";
+            return customer;
         }
 
         private object GetAddress

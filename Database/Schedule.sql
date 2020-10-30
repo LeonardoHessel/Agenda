@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `schedule`.`customer` (
   `accountant_email` VARCHAR(45) NULL,
   `product_id` INT NULL,
   `components` VARCHAR(45) NULL,
-  `active` TINYINT NULL DEFAULT 1,
+  `is_inactive` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_address_idx` (`address_id` ASC) VISIBLE,
   INDEX `fk_product_idx` (`product_id` ASC) VISIBLE,

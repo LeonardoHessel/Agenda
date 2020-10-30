@@ -44,7 +44,7 @@ namespace Agenda
             return false;
         }
 
-        public static bool SearchAll(Util.ActiveStatus status, string search = null, bool addAll = false)
+        public static bool SearchAll(Util.ActiveStatus status, string search = null, bool addAll = false, bool addNone = false)
         {
             Product product = new Product();
             string addSQL = " WHERE ";
@@ -71,7 +71,7 @@ namespace Agenda
 
             if (product.ExecuteQuery())
             {
-                Product.QueryProducts = product.TableToList(Connection.SelectedTable,addAll);
+                Product.QueryProducts = product.TableToList(Connection.SelectedTable,addAll,addNone);
                 return true;
             }
             return false;
@@ -95,7 +95,7 @@ namespace Agenda
             }
         }
 
-        private List<Product> TableToList(DataTable table, bool addAllObj = false)
+        private List<Product> TableToList(DataTable table, bool addAllObj = false, bool addNoneObj = false)
         {
             if (table != null)
             {
@@ -109,18 +109,30 @@ namespace Agenda
                             }).ToList();
 
                 if (addAllObj)
-                    products.Add(ProductAll());
+                    products.Insert(0, GetObjAll());
+
+                if (addNoneObj)
+                    products.Insert(0, GetObjNone());
 
                 return products;
             }
             return null;
         }
 
-        private Product ProductAll()
+        private Product GetObjAll()
         {
             Product product = new Product();
             product.ID = 0;
             product.Name = "Todos";
+            product.IsInactive = false;
+            return product;
+        }
+
+        private Product GetObjNone()
+        {
+            Product product = new Product();
+            product.ID = 0;
+            product.Name = "Nenhum";
             product.IsInactive = false;
             return product;
         }
