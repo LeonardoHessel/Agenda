@@ -71,14 +71,12 @@ namespace Agenda
 
             if (search != null)
             {
-                sql += addSql + "(`name` LIKE CONCAT('%', @search,'%'))";
-
-                //sql += addSql + @"(`name` LIKE CONCAT('%', @search,'%') OR 
-                //`login` LIKE CONCAT('%', @search,'%') OR 
-                //`born` LIKE CONCAT('%', @search,'%') OR 
-                //`rg` LIKE CONCAT('%', @search,'%') OR 
-                //`cpf` LIKE CONCAT('%', @search,'%') OR 
-                //`cnh` LIKE CONCAT('%', @search,'%'))";
+                sql += addSql + @"(`name` LIKE CONCAT('%', @search,'%') OR 
+                `login` LIKE CONCAT('%', @search,'%') OR 
+                `born` LIKE CONCAT('%', @search,'%') OR 
+                `rg` LIKE CONCAT('%', @search,'%') OR 
+                `cpf` LIKE CONCAT('%', @search,'%') OR 
+                `cnh` LIKE CONCAT('%', @search,'%'))";
             }
 
             user.TextCommand(sql);

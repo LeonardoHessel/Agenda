@@ -244,7 +244,6 @@
             this.dgvData.RowHeadersVisible = false;
             this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvData.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.dgvData.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Roboto", 10F);
             this.dgvData.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.dgvData.RowTemplate.Height = 35;
             this.dgvData.RowTemplate.ReadOnly = true;

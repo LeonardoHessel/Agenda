@@ -60,9 +60,38 @@ namespace Agenda
 
         public static bool SearchAll(Util.ActiveStatus status, string search = null, bool addAll = false, bool addNone = false)
         {
+            string addSQL = " WHERE ";
             Customer customer = new Customer();
             string sql = @"SELECT * FROM `customer`";
+
+            if (status != Util.ActiveStatus.All)
+            {
+                sql += addSQL + "`is_inactive`=@is_inactive";
+                addSQL = " AND ";
+            }
+
+            if (search != null)
+            {
+                sql += addSQL + @"(`cnpj` LIKE CONCAT('%', @search,'%') OR 
+                `ie` LIKE CONCAT('%', @search,'%') OR 
+                `razao` LIKE CONCAT('%', @search,'%') OR 
+                `name` LIKE CONCAT('%', @search,'%') OR 
+                `telephone` LIKE CONCAT('%', @search,'%') OR 
+                `cellphone` LIKE CONCAT('%', @search,'%') OR 
+                `email` LIKE CONCAT('%', @search,'%') OR 
+                `obs` LIKE CONCAT('%', @search,'%'))";
+            }
+
             customer.TextCommand(sql);
+
+            if (status == Util.ActiveStatus.Active)
+                customer.AddParameter("is_inactive", false);
+            else if (status == Util.ActiveStatus.Disabled)
+                customer.AddParameter("is_inactive", true);
+
+            if (search != null)
+                customer.AddParameter("search", search);
+
             if (customer.ExecuteQuery())
             {
                 Customer.QueryCustomers = customer.TableToList(Connection.SelectedTable,addAll,addNone);

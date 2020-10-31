@@ -112,11 +112,7 @@ namespace Agenda
             txtAccountant.Text = this.Customer.Accountant;
             txtAccountantEmail.Text = this.Customer.AccountantEmail;
 
-            if (this.Customer.Product != null)
-            {
-                cbProduct.SelectedItem = this.Customer.Product;
-            }
-            
+            cbProduct.SelectedItem = this.Customer.Product;
             txtModule.Text = this.Customer.Components;
         }
 
