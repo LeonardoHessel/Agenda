@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `schedule`.`serviceorder` (
   `whorequested` VARCHAR(45) NULL,
   `user_id` INT NULL,
   `subject` VARCHAR(45) NULL,
-  `descripition` TEXT NULL,
+  `description` TEXT NULL,
   `solution` TEXT NULL,
   `product_id` INT NULL,
   `service` VARCHAR(45) NULL,

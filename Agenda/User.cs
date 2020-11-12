@@ -151,7 +151,7 @@ namespace Agenda
                          }).ToList<User>();
 
                 if (addAllObj)
-                    users.Add(UserALL());
+                    users.Insert(0, UserALL());
 
                 return users;
             }

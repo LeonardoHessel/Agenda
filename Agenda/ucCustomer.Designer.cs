@@ -31,8 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCustomer));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbActiveStatus = new System.Windows.Forms.GroupBox();
             this.rbInactive = new System.Windows.Forms.RadioButton();
             this.rbActive = new System.Windows.Forms.RadioButton();
@@ -69,13 +67,14 @@
             // 
             // gbActiveStatus
             // 
+            this.gbActiveStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.gbActiveStatus.Controls.Add(this.rbInactive);
             this.gbActiveStatus.Controls.Add(this.rbActive);
             this.gbActiveStatus.Controls.Add(this.rbAll);
             this.gbActiveStatus.Location = new System.Drawing.Point(850, 115);
             this.gbActiveStatus.Name = "gbActiveStatus";
             this.gbActiveStatus.Size = new System.Drawing.Size(210, 48);
-            this.gbActiveStatus.TabIndex = 16;
+            this.gbActiveStatus.TabIndex = 1;
             this.gbActiveStatus.TabStop = false;
             this.gbActiveStatus.Text = "Status";
             // 
@@ -137,7 +136,7 @@
             this.btnNew.Location = new System.Drawing.Point(134, 220);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(100, 35);
-            this.btnNew.TabIndex = 14;
+            this.btnNew.TabIndex = 3;
             this.btnNew.Text = "Novo";
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -152,10 +151,10 @@
             this.btnEdit.Location = new System.Drawing.Point(26, 220);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 35);
-            this.btnEdit.TabIndex = 13;
+            this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Editar";
             this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.btnEdit.Click += new System.EventHandler(this.EditCustomer);
             // 
             // pTitle
             // 
@@ -166,7 +165,7 @@
             this.pTitle.Location = new System.Drawing.Point(0, 0);
             this.pTitle.Name = "pTitle";
             this.pTitle.Size = new System.Drawing.Size(1100, 60);
-            this.pTitle.TabIndex = 9;
+            this.pTitle.TabIndex = 5;
             // 
             // labTitle
             // 
@@ -183,7 +182,7 @@
             // 
             // btnHide
             // 
-            this.btnHide.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHide.FlatAppearance.BorderSize = 0;
             this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHide.Image = ((System.Drawing.Image)(resources.GetObject("btnHide.Image")));
@@ -208,7 +207,7 @@
             this.txtSearch.Location = new System.Drawing.Point(111, 131);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(430, 23);
-            this.txtSearch.TabIndex = 17;
+            this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.SearchChanged);
             // 
             // dgvData
@@ -219,6 +218,8 @@
             this.dgvData.AllowUserToResizeRows = false;
             this.dgvData.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvData.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -245,6 +246,7 @@
             this.colComponents,
             this.colIsInactive});
             this.dgvData.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvData.Location = new System.Drawing.Point(0, 279);
@@ -253,18 +255,18 @@
             this.dgvData.ReadOnly = true;
             this.dgvData.RowHeadersVisible = false;
             this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dgvData.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.dgvData.RowTemplate.Height = 35;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(1100, 745);
-            this.dgvData.TabIndex = 19;
-            this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
+            this.dgvData.TabIndex = 4;
+            this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditCustomer);
             // 
             // colID
             // 
             this.colID.DataPropertyName = "ID";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.colID.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colID.Frozen = true;
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
@@ -276,7 +278,7 @@
             this.colRazao.HeaderText = "Razao";
             this.colRazao.Name = "colRazao";
             this.colRazao.ReadOnly = true;
-            this.colRazao.Width = 250;
+            this.colRazao.Width = 300;
             // 
             // colName
             // 
@@ -290,22 +292,18 @@
             // colCNPJ
             // 
             this.colCNPJ.DataPropertyName = "CNPJ";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colCNPJ.DefaultCellStyle = dataGridViewCellStyle3;
             this.colCNPJ.HeaderText = "CNPJ";
             this.colCNPJ.Name = "colCNPJ";
             this.colCNPJ.ReadOnly = true;
-            this.colCNPJ.Width = 110;
+            this.colCNPJ.Width = 125;
             // 
             // colIE
             // 
             this.colIE.DataPropertyName = "IE";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colIE.DefaultCellStyle = dataGridViewCellStyle4;
             this.colIE.HeaderText = "IE";
             this.colIE.Name = "colIE";
             this.colIE.ReadOnly = true;
-            this.colIE.Width = 90;
+            this.colIE.Width = 95;
             // 
             // colTelephone
             // 
@@ -313,6 +311,7 @@
             this.colTelephone.HeaderText = "Telefone";
             this.colTelephone.Name = "colTelephone";
             this.colTelephone.ReadOnly = true;
+            this.colTelephone.Width = 105;
             // 
             // colCellphone
             // 
@@ -320,6 +319,7 @@
             this.colCellphone.HeaderText = "Celular";
             this.colCellphone.Name = "colCellphone";
             this.colCellphone.ReadOnly = true;
+            this.colCellphone.Width = 105;
             // 
             // colEmail
             // 
@@ -356,7 +356,7 @@
             // colAccountantEmail
             // 
             this.colAccountantEmail.DataPropertyName = "AccountantEmail";
-            this.colAccountantEmail.HeaderText = "Cont. Email";
+            this.colAccountantEmail.HeaderText = "Email Cont.";
             this.colAccountantEmail.Name = "colAccountantEmail";
             this.colAccountantEmail.ReadOnly = true;
             this.colAccountantEmail.Visible = false;
@@ -383,8 +383,8 @@
             this.colIsInactive.HeaderText = "Inativo";
             this.colIsInactive.Name = "colIsInactive";
             this.colIsInactive.ReadOnly = true;
-            this.colIsInactive.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.colIsInactive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colIsInactive.Width = 70;
             // 
             // ucCustomer
             // 
@@ -401,6 +401,7 @@
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ucCustomer";
             this.Size = new System.Drawing.Size(1100, 1024);
+            this.Load += new System.EventHandler(this.ucCustomer_Load);
             this.gbActiveStatus.ResumeLayout(false);
             this.gbActiveStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).EndInit();

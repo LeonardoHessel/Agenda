@@ -101,6 +101,12 @@
     <Compile Include="Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="frmSearchCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchCustomer.Designer.cs">
+      <DependentUpon>frmSearchCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServiceOrder.cs" />
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
@@ -164,6 +170,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmSearchCustomer.resx">
+      <DependentUpon>frmSearchCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>

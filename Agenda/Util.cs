@@ -40,5 +40,13 @@ namespace Agenda
             Update,
             Delete
         }
+
+        public static string NoMask(System.Windows.Forms.MaskedTextBox mtb)
+        {
+            mtb.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            string rtn = mtb.Text;
+            mtb.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            return rtn;
+        }
     }
 }

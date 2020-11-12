@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Agenda
 {
@@ -22,23 +23,28 @@ namespace Agenda
         public DateTime Creation { set; get; }
         public DateTime Start { set; get; }
         public DateTime End { set; get; }
-        public bool Active { set; get; }
+        public bool IsInactive { set; get; }
+
+        public String CustomerRazao { get { return Customer != null ? Customer.Razao : null; } }
+        public String CustomerCNPJ { get { return Customer != null ? Customer.CNPJ : null; } }
+        public string UserName { get { return User != null ? User.Name : null; } }
+        public string ProductName { get { return Product != null ? Product.Name : null; } }
 
         public static ServiceOrder QueryServiceOrder { private set; get; }
         public static List<ServiceOrder> QueryServiceOrders { private set; get; }
 
         public bool Insert()
         {
-            string sql = @"INSERT INTO `serviceorder` (`customer_id`,`who_requested`,`user_id`,`subject`,
-            `description`,`solution`,`product_id`,`service_mode`,`status`,`creation`,`start`,`end`) 
-            VALUES (@customer_id,@who_requested,@user_id,@subject,@description,@solution,@product_id,
+            string sql = @"INSERT INTO `serviceorder` (`customer_id`,`whorequested`,`user_id`,`subject`,
+            `description`,`solution`,`product_id`,`service`,`status`,`creation`,`start`,`end`) 
+            VALUES (@customer_id,@whorequested,@user_id,@subject,@description,@solution,@product_id,
             @service,@status,@creation,@start,@end)";
             TextCommand(sql);
             Parameters("Insert");
             if (Execute())
             {
                 this.ID = Connection.LastInsertID;
-                this.Active = true;
+                this.IsInactive = false;
                 return true;
             }
             return false;
@@ -58,12 +64,69 @@ namespace Agenda
             return false;
         }
 
-        public static bool SearchAll()
+        public static bool SearchAll(DateTime afDate, DateTime beDate, bool afBool, bool beBool, 
+            string search = null, string status = "Todos", long user_id = 0)
         {
+            afDate = afDate.Subtract(afDate.TimeOfDay);
+            beDate = beDate.Subtract(beDate.TimeOfDay);
+            beDate = beDate.AddDays(1);
             ServiceOrder order = new ServiceOrder();
-            string sql = @"SELECT * FROM `serviceorder`";
+            string addSql = " WHERE ";
+            string sql = @"SELECT `so`.* FROM `serviceorder` `so`
+            JOIN `customer` `c` ON `c`.`id` = `so`.`customer_id`";
+            if (afBool)
+            {
+                sql += addSql + "`so`.`creation` >= @afDate";
+                addSql = " AND ";
+            }
+
+            if (beBool)
+            {
+                sql += addSql + "`so`.`creation` < @beDate";
+                addSql = " AND ";
+            }
+
+            if (search != null && search != "")
+            {
+                sql += addSql + @"(`so`.`subject` LIKE CONCAT('%', @search,'%') OR 
+                `so`.`description` LIKE CONCAT('%', @search,'%') OR 
+                `c`.`razao` LIKE CONCAT('%', @search,'%') OR 
+                `c`.`name` LIKE CONCAT('%', @search,'%') OR 
+                `so`.`solution` LIKE CONCAT('%', @search,'%'))";
+                addSql = " AND ";
+            }
+
+            if (status != "Todos" && status != "")
+            {
+                sql += addSql + "`status` = @status";
+                addSql = " AND ";
+            }
+
+            if (user_id != 0)
+            {
+                sql += addSql + "`user_id` = @user_id";
+                addSql = " AND ";
+            }
+
+            sql += " ORDER BY `id` DESC";
+
             order.TextCommand(sql);
-            
+
+            if (afBool)
+                order.AddParameter("afDate", afDate);
+
+            if (beBool)
+                order.AddParameter("beDate", beDate);
+
+            if (search != null && search != "")
+                order.AddParameter("search", search);
+
+            if (status != "Todos" && status != "")
+                order.AddParameter("status", status);
+
+            if (user_id != 0)
+                order.AddParameter("user_id", user_id);
+
             if (order.ExecuteQuery())
             {
                 ServiceOrder.QueryServiceOrders = order.TableToList(Connection.SelectedTable);
@@ -74,10 +137,10 @@ namespace Agenda
 
         public bool Update()
         {
-            string sql = @"UPDATE `serviceorder` SET `customer_id`=@customer_id,`who_requested`=@who_requested,
+            string sql = @"UPDATE `serviceorder` SET `customer_id`=@customer_id,`whorequested`=@whorequested,
             `user_id`=@user_id,`subject`=@subject,`description`=@description,`solution`=@solution,
             `product_id`=@product_id,`service`=@service,`status`=@status,`start`=@start,`end`=@end,
-            `active`=@active WHERE `id`=@id";
+            `is_inactive`=@is_inactive WHERE `id`=@id";
             TextCommand(sql);
             Parameters("Update");
             return Execute();
@@ -86,12 +149,22 @@ namespace Agenda
         private void Parameters(string action)
         {
             AddParameter("customer_id", this.Customer.ID);
-            AddParameter("who_requested", this.WhoRequested);
-            AddParameter("user_id", this.User.ID);
+            AddParameter("whorequested", this.WhoRequested);
+            
+            if (this.User != null && this.User.ID > 0)
+                AddParameter("user_id", this.User.ID);
+            else
+                AddParameter("user_id", null);
+
             AddParameter("subject", this.Subject);
             AddParameter("description", this.Description);
             AddParameter("solution", this.Solution);
-            AddParameter("product_id", this.Product.ID);
+            
+            if (this.Product != null && this.Product.ID > 0)
+                AddParameter("product_id", this.Product.ID);
+            else
+                AddParameter("product_id", null);
+
             AddParameter("service", this.Service);
             AddParameter("status", this.Status);
             
@@ -103,7 +176,7 @@ namespace Agenda
 
             if (action == "Update")
             {
-                AddParameter("active", this.Active);
+                AddParameter("is_inactive", this.IsInactive);
                 AddParameter("id", this.ID);
             }
         }
@@ -117,7 +190,7 @@ namespace Agenda
                 {
                     ID = Convert.ToInt64(row["id"]),
                     GetCustomer = row["customer_id"],
-                    WhoRequested = row["who_requested"].ToString(),
+                    WhoRequested = row["whorequested"].ToString(),
                     GetUser = row["user_id"],
                     Subject = row["subject"].ToString(),
                     Description = row["description"].ToString(),
@@ -128,7 +201,7 @@ namespace Agenda
                     Creation = DateTime.Parse(row["creation"].ToString()),
                     Start = DateTime.Parse(row["start"].ToString()),
                     End = DateTime.Parse(row["end"].ToString()),
-                    Active = Convert.ToBoolean(row["active"]),
+                    IsInactive = Convert.ToBoolean(row["is_inactive"]),
                 }).ToList();
                 return serviceOrders;
             }
@@ -170,5 +243,7 @@ namespace Agenda
                 }
             }
         }
+
+        
     }
 }

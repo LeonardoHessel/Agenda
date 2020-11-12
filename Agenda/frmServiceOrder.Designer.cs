@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmServiceOrder));
             this.pForm = new System.Windows.Forms.Panel();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.labTabInfo = new System.Windows.Forms.Label();
             this.pTabInfo = new System.Windows.Forms.Panel();
             this.txtCustomerCNPJ = new System.Windows.Forms.MaskedTextBox();
@@ -63,8 +66,6 @@
             this.labIServiceOrderID = new System.Windows.Forms.Label();
             this.txtCustomer = new System.Windows.Forms.TextBox();
             this.labCustomer = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.labTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.pForm.SuspendLayout();
@@ -74,14 +75,63 @@
             // pForm
             // 
             this.pForm.BackColor = System.Drawing.Color.White;
+            this.pForm.Controls.Add(this.btnNew);
+            this.pForm.Controls.Add(this.btnCancel);
+            this.pForm.Controls.Add(this.btnSave);
             this.pForm.Controls.Add(this.labTabInfo);
             this.pForm.Controls.Add(this.pTabInfo);
-            this.pForm.Controls.Add(this.btnSave);
-            this.pForm.Controls.Add(this.btnEdit);
             this.pForm.Location = new System.Drawing.Point(0, 60);
             this.pForm.Name = "pForm";
             this.pForm.Size = new System.Drawing.Size(1024, 556);
             this.pForm.TabIndex = 0;
+            // 
+            // btnNew
+            // 
+            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(81)))), ((int)(((byte)(89)))));
+            this.btnNew.FlatAppearance.BorderSize = 0;
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNew.Font = new System.Drawing.Font("Roboto Bk", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.ForeColor = System.Drawing.Color.White;
+            this.btnNew.Location = new System.Drawing.Point(657, 491);
+            this.btnNew.Margin = new System.Windows.Forms.Padding(5);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(90, 30);
+            this.btnNew.TabIndex = 20;
+            this.btnNew.Text = "Novo";
+            this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(81)))), ((int)(((byte)(89)))));
+            this.btnCancel.FlatAppearance.BorderSize = 0;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Roboto Bk", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(857, 491);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(90, 30);
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "Cancelar";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(81)))), ((int)(((byte)(89)))));
+            this.btnSave.FlatAppearance.BorderSize = 0;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSave.Font = new System.Drawing.Font("Roboto Bk", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.Location = new System.Drawing.Point(757, 491);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(90, 30);
+            this.btnSave.TabIndex = 18;
+            this.btnSave.Text = "Salvar";
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // labTabInfo
             // 
@@ -292,6 +342,8 @@
             // 
             // cbProduct
             // 
+            this.cbProduct.DisplayMember = "Name";
+            this.cbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProduct.FormattingEnabled = true;
             this.cbProduct.Location = new System.Drawing.Point(158, 303);
             this.cbProduct.Name = "cbProduct";
@@ -301,6 +353,7 @@
             // cbUser
             // 
             this.cbUser.DisplayMember = "Name";
+            this.cbUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUser.FormattingEnabled = true;
             this.cbUser.Location = new System.Drawing.Point(630, 79);
             this.cbUser.Name = "cbUser";
@@ -427,34 +480,6 @@
             this.labCustomer.TabIndex = 0;
             this.labCustomer.Text = "Empresa:";
             // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(81)))), ((int)(((byte)(89)))));
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(844, 494);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 35);
-            this.btnSave.TabIndex = 16;
-            this.btnSave.Text = "Salvar";
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(81)))), ((int)(((byte)(89)))));
-            this.btnEdit.FlatAppearance.BorderSize = 0;
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(736, 494);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(100, 35);
-            this.btnEdit.TabIndex = 15;
-            this.btnEdit.Text = "Editar";
-            this.btnEdit.UseVisualStyleBackColor = false;
-            // 
             // labTitle
             // 
             this.labTitle.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -498,6 +523,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmServiceOrder_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmServiceOrder_KeyDown);
             this.pForm.ResumeLayout(false);
             this.pForm.PerformLayout();
             this.pTabInfo.ResumeLayout(false);
@@ -512,8 +538,6 @@
         private System.Windows.Forms.Panel pForm;
         private System.Windows.Forms.Label labTitle;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Panel pTabInfo;
         private System.Windows.Forms.Label labTabInfo;
         private System.Windows.Forms.TextBox txtSolution;
@@ -547,5 +571,8 @@
         private System.Windows.Forms.Button btnAddProduct;
         private System.Windows.Forms.ComboBox cbUser;
         private System.Windows.Forms.MaskedTextBox txtCustomerCNPJ;
+        private System.Windows.Forms.Button btnNew;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
     }
 }

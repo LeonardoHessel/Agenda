@@ -30,9 +30,37 @@ namespace Agenda
             }
         }
 
+        private void ucCustomer_Load(object sender, EventArgs e)
+        {
+            FormatDataGridView();
+        }
+
         private void btnHide_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            frmCustomer newCustomer = new frmCustomer(Util.ActionMode.New);
+            newCustomer.ShowDialog();
+            LoadCustomers();
+            FormatDataGridView();
+        }
+
+        private void EditCustomer(object sender, EventArgs e)
+        {
+            Customer customer = dgvData.CurrentRow.DataBoundItem as Customer;
+            frmCustomer editCustomer = new frmCustomer(Util.ActionMode.Edit, customer);
+            editCustomer.ShowDialog();
+            LoadCustomers();
+            FormatDataGridView();
+        }
+
+        private void SearchChanged(object sender, EventArgs e)
+        {
+            LoadCustomers();
+            FormatDataGridView();
         }
 
         private void LoadCustomers()
@@ -51,32 +79,15 @@ namespace Agenda
                 MessageBox.Show(Connection.ErrorMessage);
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void FormatDataGridView()
         {
-            frmCustomer newCustomer = new frmCustomer(Util.ActionMode.New);
-            newCustomer.ShowDialog();
-            LoadCustomers();
-        }
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                bool isInactive = Convert.ToBoolean(row.Cells["colIsInactive"].Value);
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            Customer customer = dgvData.CurrentRow.DataBoundItem as Customer;
-            frmCustomer editCustomer = new frmCustomer(Util.ActionMode.Edit, customer);
-            editCustomer.ShowDialog();
-            LoadCustomers();
-        }
-
-        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Customer customer = dgvData.CurrentRow.DataBoundItem as Customer;
-            frmCustomer editCustomer = new frmCustomer(Util.ActionMode.Edit, customer);
-            editCustomer.ShowDialog();
-            LoadCustomers();
-        }
-
-        private void SearchChanged(object sender, EventArgs e)
-        {
-            LoadCustomers();
+                if (isInactive)
+                    dgvData.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Gray;
+            }
         }
     }
 }

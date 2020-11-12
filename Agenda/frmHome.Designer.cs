@@ -68,7 +68,7 @@
             this.pMenu.Location = new System.Drawing.Point(0, 0);
             this.pMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pMenu.Name = "pMenu";
-            this.pMenu.Size = new System.Drawing.Size(180, 1005);
+            this.pMenu.Size = new System.Drawing.Size(180, 1024);
             this.pMenu.TabIndex = 0;
             // 
             // labUserName
@@ -251,7 +251,7 @@
             this.pForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pForm.Location = new System.Drawing.Point(180, 0);
             this.pForm.Name = "pForm";
-            this.pForm.Size = new System.Drawing.Size(1100, 1005);
+            this.pForm.Size = new System.Drawing.Size(1100, 1024);
             this.pForm.TabIndex = 1;
             // 
             // labTime
@@ -273,7 +273,7 @@
             this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
             this.pbLogo.Location = new System.Drawing.Point(375, 300);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(350, 331);
+            this.pbLogo.Size = new System.Drawing.Size(350, 350);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbLogo.TabIndex = 4;
             this.pbLogo.TabStop = false;
@@ -288,7 +288,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1280, 1005);
+            this.ClientSize = new System.Drawing.Size(1280, 1024);
             this.Controls.Add(this.pForm);
             this.Controls.Add(this.pMenu);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -297,7 +297,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmHome";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Load += new System.EventHandler(this.frmHome_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmHome_KeyDown);
             this.pMenu.ResumeLayout(false);

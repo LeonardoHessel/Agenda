@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucUser));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbActiveStatus = new System.Windows.Forms.GroupBox();
             this.rbInactive = new System.Windows.Forms.RadioButton();
             this.rbActive = new System.Windows.Forms.RadioButton();
@@ -211,6 +213,7 @@
             this.dgvData.AllowUserToResizeRows = false;
             this.dgvData.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -255,10 +258,12 @@
             // colID
             // 
             this.colID.DataPropertyName = "ID";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colID.DefaultCellStyle = dataGridViewCellStyle2;
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
-            this.colID.Width = 80;
+            this.colID.Width = 50;
             // 
             // colName
             // 
@@ -266,7 +271,7 @@
             this.colName.HeaderText = "Name";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
-            this.colName.Width = 200;
+            this.colName.Width = 300;
             // 
             // colLogin
             // 
@@ -274,6 +279,7 @@
             this.colLogin.HeaderText = "Login";
             this.colLogin.Name = "colLogin";
             this.colLogin.ReadOnly = true;
+            this.colLogin.Width = 140;
             // 
             // colPassword
             // 
@@ -296,7 +302,6 @@
             this.colSex.HeaderText = "Sexo";
             this.colSex.Name = "colSex";
             this.colSex.ReadOnly = true;
-            this.colSex.Width = 50;
             // 
             // colCPF
             // 
@@ -341,6 +346,8 @@
             // colIsInactive
             // 
             this.colIsInactive.DataPropertyName = "IsInactive";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colIsInactive.DefaultCellStyle = dataGridViewCellStyle3;
             this.colIsInactive.HeaderText = "Inativo";
             this.colIsInactive.Name = "colIsInactive";
             this.colIsInactive.ReadOnly = true;

@@ -30,16 +30,19 @@ namespace Agenda
 
         public bool Insert()
         {
-            string sql = @"INSERT INTO `customer` (`cnpj`,`ie`,`razao`,`name`,`telephone`,`cellphone`,`email`,`obs`,
-            `address_id`,`accountant`,`accountant_email`,`product_id`,`components`) VALUES (@cnpj,@ie,@razao,@name,
-            @telephone,@cellphone,@email,@obs,@address_id,@accountant,@accountant_email,@product_id,@components)";
-            TextCommand(sql);
-            Parameters("Insert");
-            if (Execute())
+            if (this.Address.Insert())
             {
-                this.ID = Connection.LastInsertID;
-                this.IsInactive = false;
-                return true;
+                string sql = @"INSERT INTO `customer` (`cnpj`,`ie`,`razao`,`name`,`telephone`,`cellphone`,`email`,`obs`,
+                `address_id`,`accountant`,`accountant_email`,`product_id`,`components`) VALUES (@cnpj,@ie,@razao,@name,
+                @telephone,@cellphone,@email,@obs,@address_id,@accountant,@accountant_email,@product_id,@components)";
+                TextCommand(sql);
+                Parameters("Insert");
+                if (Execute())
+                {
+                    this.ID = Connection.LastInsertID;
+                    this.IsInactive = false;
+                    return true;
+                }
             }
             return false;
         }
@@ -102,12 +105,15 @@ namespace Agenda
 
         public bool Update()
         {
-            string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,`razao`=@razao,`name`=@name,`telephone`=@telephone,
-            `cellphone`=@cellphone,`email`=@email,`obs`=@obs,`address_id`=@address_id,`accountant`=@accountant,
-            `accountant_email`=@accountant_email,`product_id`=@product_id,`components`=@components,
-            `is_inactive`=@is_inactive WHERE `id`=@id";
-            TextCommand(sql);
-            Parameters("Update");
+            if (this.Address.Update())
+            {
+                string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,`razao`=@razao,`name`=@name,`telephone`=@telephone,
+                `cellphone`=@cellphone,`email`=@email,`obs`=@obs,`address_id`=@address_id,`accountant`=@accountant,
+                `accountant_email`=@accountant_email,`product_id`=@product_id,`components`=@components,
+                `is_inactive`=@is_inactive WHERE `id`=@id";
+                TextCommand(sql);
+                Parameters("Update");
+            }
             return Execute();
         }
 

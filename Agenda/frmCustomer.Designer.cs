@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCustomer));
             this.labTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
@@ -47,13 +48,12 @@
             this.labAccountant = new System.Windows.Forms.Label();
             this.labTitleInfo = new System.Windows.Forms.Label();
             this.pAddress = new System.Windows.Forms.Panel();
-            this.txtState = new System.Windows.Forms.TextBox();
             this.labState = new System.Windows.Forms.Label();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.labCity = new System.Windows.Forms.Label();
             this.txtDistrict = new System.Windows.Forms.TextBox();
             this.labDistrict = new System.Windows.Forms.Label();
-            this.txtCEP = new System.Windows.Forms.MaskedTextBox();
+            this.mtbCEP = new System.Windows.Forms.MaskedTextBox();
             this.labCEP = new System.Windows.Forms.Label();
             this.labStreet = new System.Windows.Forms.Label();
             this.txtStreet = new System.Windows.Forms.TextBox();
@@ -62,9 +62,9 @@
             this.pInfo = new System.Windows.Forms.Panel();
             this.labCellphone = new System.Windows.Forms.Label();
             this.txtCellphone = new System.Windows.Forms.TextBox();
-            this.txtIE = new System.Windows.Forms.MaskedTextBox();
+            this.mtbIE = new System.Windows.Forms.MaskedTextBox();
             this.labIE = new System.Windows.Forms.Label();
-            this.txtCNPJ = new System.Windows.Forms.MaskedTextBox();
+            this.mtbCNPJ = new System.Windows.Forms.MaskedTextBox();
             this.labObs = new System.Windows.Forms.Label();
             this.txtObs = new System.Windows.Forms.TextBox();
             this.labEmail = new System.Windows.Forms.Label();
@@ -82,6 +82,9 @@
             this.btnNew = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.cbState = new System.Windows.Forms.ComboBox();
+            this.labSaved = new System.Windows.Forms.Label();
+            this.tShowSaved = new System.Windows.Forms.Timer(this.components);
             this.pTitle.SuspendLayout();
             this.pProduct.SuspendLayout();
             this.pAccountant.SuspendLayout();
@@ -115,6 +118,7 @@
             // pTitle
             // 
             this.pTitle.BackColor = System.Drawing.Color.White;
+            this.pTitle.Controls.Add(this.labSaved);
             this.pTitle.Controls.Add(this.labTitleProduct);
             this.pTitle.Controls.Add(this.labTitleAccountant);
             this.pTitle.Controls.Add(this.pProduct);
@@ -187,7 +191,10 @@
             // cbProduct
             // 
             this.cbProduct.DisplayMember = "Name";
+            this.cbProduct.DropDownHeight = 80;
+            this.cbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProduct.FormattingEnabled = true;
+            this.cbProduct.IntegralHeight = false;
             this.cbProduct.Location = new System.Drawing.Point(129, 13);
             this.cbProduct.Name = "cbProduct";
             this.cbProduct.Size = new System.Drawing.Size(193, 23);
@@ -229,6 +236,7 @@
             // 
             // txtAccountantEmail
             // 
+            this.txtAccountantEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtAccountantEmail.Location = new System.Drawing.Point(383, 11);
             this.txtAccountantEmail.Name = "txtAccountantEmail";
             this.txtAccountantEmail.Size = new System.Drawing.Size(304, 23);
@@ -274,35 +282,28 @@
             // pAddress
             // 
             this.pAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
-            this.pAddress.Controls.Add(this.txtState);
             this.pAddress.Controls.Add(this.labState);
             this.pAddress.Controls.Add(this.txtCity);
             this.pAddress.Controls.Add(this.labCity);
             this.pAddress.Controls.Add(this.txtDistrict);
             this.pAddress.Controls.Add(this.labDistrict);
-            this.pAddress.Controls.Add(this.txtCEP);
+            this.pAddress.Controls.Add(this.mtbCEP);
             this.pAddress.Controls.Add(this.labCEP);
             this.pAddress.Controls.Add(this.labStreet);
             this.pAddress.Controls.Add(this.txtStreet);
             this.pAddress.Controls.Add(this.labNumber);
             this.pAddress.Controls.Add(this.txtNumber);
+            this.pAddress.Controls.Add(this.cbState);
             this.pAddress.Location = new System.Drawing.Point(85, 319);
             this.pAddress.Name = "pAddress";
             this.pAddress.Padding = new System.Windows.Forms.Padding(40, 0, 40, 0);
             this.pAddress.Size = new System.Drawing.Size(730, 78);
             this.pAddress.TabIndex = 2;
             // 
-            // txtState
-            // 
-            this.txtState.Location = new System.Drawing.Point(584, 40);
-            this.txtState.Name = "txtState";
-            this.txtState.Size = new System.Drawing.Size(103, 23);
-            this.txtState.TabIndex = 5;
-            // 
             // labState
             // 
             this.labState.AutoSize = true;
-            this.labState.Location = new System.Drawing.Point(530, 43);
+            this.labState.Location = new System.Drawing.Point(556, 43);
             this.labState.Name = "labState";
             this.labState.Size = new System.Drawing.Size(49, 15);
             this.labState.TabIndex = 41;
@@ -312,7 +313,7 @@
             // 
             this.txtCity.Location = new System.Drawing.Point(337, 40);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(187, 23);
+            this.txtCity.Size = new System.Drawing.Size(212, 23);
             this.txtCity.TabIndex = 4;
             // 
             // labCity
@@ -340,13 +341,13 @@
             this.labDistrict.TabIndex = 39;
             this.labDistrict.Text = "Bairro:";
             // 
-            // txtCEP
+            // mtbCEP
             // 
-            this.txtCEP.Location = new System.Drawing.Point(129, 11);
-            this.txtCEP.Mask = "99,999-999";
-            this.txtCEP.Name = "txtCEP";
-            this.txtCEP.Size = new System.Drawing.Size(104, 23);
-            this.txtCEP.TabIndex = 0;
+            this.mtbCEP.Location = new System.Drawing.Point(129, 11);
+            this.mtbCEP.Mask = "99,999-999";
+            this.mtbCEP.Name = "mtbCEP";
+            this.mtbCEP.Size = new System.Drawing.Size(104, 23);
+            this.mtbCEP.TabIndex = 0;
             // 
             // labCEP
             // 
@@ -395,9 +396,9 @@
             this.pInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.pInfo.Controls.Add(this.labCellphone);
             this.pInfo.Controls.Add(this.txtCellphone);
-            this.pInfo.Controls.Add(this.txtIE);
+            this.pInfo.Controls.Add(this.mtbIE);
             this.pInfo.Controls.Add(this.labIE);
-            this.pInfo.Controls.Add(this.txtCNPJ);
+            this.pInfo.Controls.Add(this.mtbCNPJ);
             this.pInfo.Controls.Add(this.labObs);
             this.pInfo.Controls.Add(this.txtObs);
             this.pInfo.Controls.Add(this.labEmail);
@@ -434,13 +435,13 @@
             this.txtCellphone.Size = new System.Drawing.Size(263, 23);
             this.txtCellphone.TabIndex = 6;
             // 
-            // txtIE
+            // mtbIE
             // 
-            this.txtIE.Location = new System.Drawing.Point(424, 99);
-            this.txtIE.Mask = "999,999,999";
-            this.txtIE.Name = "txtIE";
-            this.txtIE.Size = new System.Drawing.Size(100, 23);
-            this.txtIE.TabIndex = 4;
+            this.mtbIE.Location = new System.Drawing.Point(424, 99);
+            this.mtbIE.Mask = "999,999,999,999";
+            this.mtbIE.Name = "mtbIE";
+            this.mtbIE.Size = new System.Drawing.Size(125, 23);
+            this.mtbIE.TabIndex = 4;
             // 
             // labIE
             // 
@@ -451,13 +452,13 @@
             this.labIE.TabIndex = 17;
             this.labIE.Text = "IE:";
             // 
-            // txtCNPJ
+            // mtbCNPJ
             // 
-            this.txtCNPJ.Location = new System.Drawing.Point(129, 99);
-            this.txtCNPJ.Mask = "99,999,999/9999-99";
-            this.txtCNPJ.Name = "txtCNPJ";
-            this.txtCNPJ.Size = new System.Drawing.Size(147, 23);
-            this.txtCNPJ.TabIndex = 3;
+            this.mtbCNPJ.Location = new System.Drawing.Point(129, 99);
+            this.mtbCNPJ.Mask = "99,999,999/9999-99";
+            this.mtbCNPJ.Name = "mtbCNPJ";
+            this.mtbCNPJ.Size = new System.Drawing.Size(147, 23);
+            this.mtbCNPJ.TabIndex = 3;
             // 
             // labObs
             // 
@@ -473,6 +474,7 @@
             this.txtObs.Location = new System.Drawing.Point(129, 186);
             this.txtObs.Multiline = true;
             this.txtObs.Name = "txtObs";
+            this.txtObs.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObs.Size = new System.Drawing.Size(558, 65);
             this.txtObs.TabIndex = 8;
             // 
@@ -487,6 +489,7 @@
             // 
             // txtEmail
             // 
+            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
             this.txtEmail.Location = new System.Drawing.Point(129, 157);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(558, 23);
@@ -558,6 +561,7 @@
             this.cbxIsInactive.TabIndex = 0;
             this.cbxIsInactive.Text = "Inativo";
             this.cbxIsInactive.UseVisualStyleBackColor = true;
+            this.cbxIsInactive.CheckedChanged += new System.EventHandler(this.cbxIsInactive_CheckedChanged);
             // 
             // txtID
             // 
@@ -629,6 +633,62 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // cbState
+            // 
+            this.cbState.DropDownHeight = 80;
+            this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbState.FormattingEnabled = true;
+            this.cbState.IntegralHeight = false;
+            this.cbState.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.cbState.Location = new System.Drawing.Point(611, 40);
+            this.cbState.Name = "cbState";
+            this.cbState.Size = new System.Drawing.Size(76, 23);
+            this.cbState.TabIndex = 12;
+            // 
+            // labSaved
+            // 
+            this.labSaved.AutoSize = true;
+            this.labSaved.Font = new System.Drawing.Font("Roboto Bk", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            this.labSaved.Location = new System.Drawing.Point(85, 555);
+            this.labSaved.Name = "labSaved";
+            this.labSaved.Size = new System.Drawing.Size(142, 24);
+            this.labSaved.TabIndex = 12;
+            this.labSaved.Text = "Registro salvo!";
+            this.labSaved.Visible = false;
+            // 
+            // tShowSaved
+            // 
+            this.tShowSaved.Interval = 2000;
+            this.tShowSaved.Tick += new System.EventHandler(this.tShowSaved_Tick);
+            // 
             // frmCustomer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -646,7 +706,6 @@
             this.MinimizeBox = false;
             this.Name = "frmCustomer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.frmCustomer_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCustomer_KeyDown);
             this.pTitle.ResumeLayout(false);
             this.pTitle.PerformLayout();
@@ -685,9 +744,9 @@
         private System.Windows.Forms.Label labID;
         private System.Windows.Forms.Label labCellphone;
         private System.Windows.Forms.TextBox txtCellphone;
-        private System.Windows.Forms.MaskedTextBox txtIE;
+        private System.Windows.Forms.MaskedTextBox mtbIE;
         private System.Windows.Forms.Label labIE;
-        private System.Windows.Forms.MaskedTextBox txtCNPJ;
+        private System.Windows.Forms.MaskedTextBox mtbCNPJ;
         private System.Windows.Forms.Label labObs;
         private System.Windows.Forms.TextBox txtObs;
         private System.Windows.Forms.Label labEmail;
@@ -699,13 +758,12 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label labRazao;
         private System.Windows.Forms.TextBox txtRazao;
-        private System.Windows.Forms.TextBox txtState;
         private System.Windows.Forms.Label labState;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.Label labCity;
         private System.Windows.Forms.TextBox txtDistrict;
         private System.Windows.Forms.Label labDistrict;
-        private System.Windows.Forms.MaskedTextBox txtCEP;
+        private System.Windows.Forms.MaskedTextBox mtbCEP;
         private System.Windows.Forms.Label labCEP;
         private System.Windows.Forms.Label labStreet;
         private System.Windows.Forms.TextBox txtStreet;
@@ -718,5 +776,8 @@
         private System.Windows.Forms.Label labModule;
         private System.Windows.Forms.Label labProduct;
         private System.Windows.Forms.TextBox txtModule;
+        private System.Windows.Forms.ComboBox cbState;
+        private System.Windows.Forms.Label labSaved;
+        private System.Windows.Forms.Timer tShowSaved;
     }
 }
