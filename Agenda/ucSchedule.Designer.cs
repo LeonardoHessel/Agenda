@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSchedule));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pTitle = new System.Windows.Forms.Panel();
             this.labTitle = new System.Windows.Forms.Label();
             this.btnHide = new System.Windows.Forms.Button();
@@ -71,20 +71,20 @@
             this.labBefore = new System.Windows.Forms.Label();
             this.labCaption = new System.Windows.Forms.Label();
             this.labStatusBlue = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pbStatusBlue = new System.Windows.Forms.PictureBox();
+            this.pbStatusRed = new System.Windows.Forms.PictureBox();
             this.labStatusRed = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pbStatusYellow = new System.Windows.Forms.PictureBox();
             this.labStatusYellow = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pbStatusGreen = new System.Windows.Forms.PictureBox();
             this.labStatusGreen = new System.Windows.Forms.Label();
             this.pTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatusBlue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatusRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatusYellow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatusGreen)).BeginInit();
             this.SuspendLayout();
             // 
             // pTitle
@@ -190,14 +190,14 @@
             this.dgvData.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgvData.ColumnHeadersHeight = 35;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -237,8 +237,8 @@
             // colID
             // 
             this.colID.DataPropertyName = "ID";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colID.DefaultCellStyle = dataGridViewCellStyle12;
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
@@ -291,8 +291,8 @@
             // colCreation
             // 
             this.colCreation.DataPropertyName = "Creation";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colCreation.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colCreation.DefaultCellStyle = dataGridViewCellStyle13;
             this.colCreation.HeaderText = "Criação";
             this.colCreation.Name = "colCreation";
             this.colCreation.ReadOnly = true;
@@ -301,8 +301,8 @@
             // colStart
             // 
             this.colStart.DataPropertyName = "Start";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colStart.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colStart.DefaultCellStyle = dataGridViewCellStyle14;
             this.colStart.HeaderText = "Início";
             this.colStart.Name = "colStart";
             this.colStart.ReadOnly = true;
@@ -311,8 +311,8 @@
             // colEnd
             // 
             this.colEnd.DataPropertyName = "End";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colEnd.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colEnd.DefaultCellStyle = dataGridViewCellStyle15;
             this.colEnd.HeaderText = "Fim";
             this.colEnd.Name = "colEnd";
             this.colEnd.ReadOnly = true;
@@ -430,9 +430,9 @@
             this.labAfter.AutoSize = true;
             this.labAfter.Location = new System.Drawing.Point(587, 170);
             this.labAfter.Name = "labAfter";
-            this.labAfter.Size = new System.Drawing.Size(49, 15);
+            this.labAfter.Size = new System.Drawing.Size(52, 15);
             this.labAfter.TabIndex = 14;
-            this.labAfter.Text = "Apartir:";
+            this.labAfter.Text = "A partir:";
             // 
             // dtpAfter
             // 
@@ -485,27 +485,27 @@
             this.labStatusBlue.TabIndex = 18;
             this.labStatusBlue.Text = "Agendado";
             // 
-            // pictureBox1
+            // pbStatusBlue
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(974, 137);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
+            this.pbStatusBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbStatusBlue.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusBlue.Image")));
+            this.pbStatusBlue.Location = new System.Drawing.Point(974, 137);
+            this.pbStatusBlue.Name = "pbStatusBlue";
+            this.pbStatusBlue.Size = new System.Drawing.Size(15, 15);
+            this.pbStatusBlue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbStatusBlue.TabIndex = 19;
+            this.pbStatusBlue.TabStop = false;
             // 
-            // pictureBox2
+            // pbStatusRed
             // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(974, 158);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 21;
-            this.pictureBox2.TabStop = false;
+            this.pbStatusRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbStatusRed.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusRed.Image")));
+            this.pbStatusRed.Location = new System.Drawing.Point(974, 158);
+            this.pbStatusRed.Name = "pbStatusRed";
+            this.pbStatusRed.Size = new System.Drawing.Size(15, 15);
+            this.pbStatusRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbStatusRed.TabIndex = 21;
+            this.pbStatusRed.TabStop = false;
             // 
             // labStatusRed
             // 
@@ -513,20 +513,20 @@
             this.labStatusRed.AutoSize = true;
             this.labStatusRed.Location = new System.Drawing.Point(995, 158);
             this.labStatusRed.Name = "labStatusRed";
-            this.labStatusRed.Size = new System.Drawing.Size(64, 15);
+            this.labStatusRed.Size = new System.Drawing.Size(67, 15);
             this.labStatusRed.TabIndex = 20;
-            this.labStatusRed.Text = "Agendado";
+            this.labStatusRed.Text = "Cancelado";
             // 
-            // pictureBox3
+            // pbStatusYellow
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(974, 200);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 25;
-            this.pictureBox3.TabStop = false;
+            this.pbStatusYellow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbStatusYellow.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusYellow.Image")));
+            this.pbStatusYellow.Location = new System.Drawing.Point(974, 200);
+            this.pbStatusYellow.Name = "pbStatusYellow";
+            this.pbStatusYellow.Size = new System.Drawing.Size(15, 15);
+            this.pbStatusYellow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbStatusYellow.TabIndex = 25;
+            this.pbStatusYellow.TabStop = false;
             // 
             // labStatusYellow
             // 
@@ -534,20 +534,20 @@
             this.labStatusYellow.AutoSize = true;
             this.labStatusYellow.Location = new System.Drawing.Point(995, 200);
             this.labStatusYellow.Name = "labStatusYellow";
-            this.labStatusYellow.Size = new System.Drawing.Size(64, 15);
+            this.labStatusYellow.Size = new System.Drawing.Size(61, 15);
             this.labStatusYellow.TabIndex = 24;
-            this.labStatusYellow.Text = "Agendado";
+            this.labStatusYellow.Text = "Pendente";
             // 
-            // pictureBox4
+            // pbStatusGreen
             // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(974, 179);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(15, 15);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox4.TabIndex = 23;
-            this.pictureBox4.TabStop = false;
+            this.pbStatusGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbStatusGreen.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusGreen.Image")));
+            this.pbStatusGreen.Location = new System.Drawing.Point(974, 179);
+            this.pbStatusGreen.Name = "pbStatusGreen";
+            this.pbStatusGreen.Size = new System.Drawing.Size(15, 15);
+            this.pbStatusGreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbStatusGreen.TabIndex = 23;
+            this.pbStatusGreen.TabStop = false;
             // 
             // labStatusGreen
             // 
@@ -555,21 +555,21 @@
             this.labStatusGreen.AutoSize = true;
             this.labStatusGreen.Location = new System.Drawing.Point(995, 179);
             this.labStatusGreen.Name = "labStatusGreen";
-            this.labStatusGreen.Size = new System.Drawing.Size(64, 15);
+            this.labStatusGreen.Size = new System.Drawing.Size(65, 15);
             this.labStatusGreen.TabIndex = 22;
-            this.labStatusGreen.Text = "Agendado";
+            this.labStatusGreen.Text = "Finalizado";
             // 
             // ucSchedule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pbStatusYellow);
             this.Controls.Add(this.labStatusYellow);
-            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.pbStatusGreen);
             this.Controls.Add(this.labStatusGreen);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pbStatusRed);
             this.Controls.Add(this.labStatusRed);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbStatusBlue);
             this.Controls.Add(this.labStatusBlue);
             this.Controls.Add(this.labCaption);
             this.Controls.Add(this.dtpBefore);
@@ -595,10 +595,10 @@
             this.pTitle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatusBlue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatusRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatusYellow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatusGreen)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -625,12 +625,12 @@
         private System.Windows.Forms.Label labBefore;
         private System.Windows.Forms.Label labCaption;
         private System.Windows.Forms.Label labStatusBlue;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbStatusBlue;
+        private System.Windows.Forms.PictureBox pbStatusRed;
         private System.Windows.Forms.Label labStatusRed;
-        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pbStatusYellow;
         private System.Windows.Forms.Label labStatusYellow;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pbStatusGreen;
         private System.Windows.Forms.Label labStatusGreen;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerCNPJ;

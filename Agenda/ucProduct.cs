@@ -15,6 +15,7 @@ namespace Agenda
         public ucProduct()
         {
             InitializeComponent();
+            LoadProducts();
         }
 
         private static ucProduct instance;
@@ -31,12 +32,35 @@ namespace Agenda
 
         private void ucProduct_Load(object sender, EventArgs e)
         {
-            LoadProducts();
+            FormatDataGridView();
         }
 
         private void btnHide_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            frmProduct newProduct = new frmProduct(Util.ActionMode.New);
+            newProduct.ShowDialog();
+            LoadProducts();
+            FormatDataGridView();
+        }
+
+        private void EditProduct(object sender, EventArgs e)
+        {
+            Product product = dgvData.CurrentRow.DataBoundItem as Product;
+            frmProduct editProduct = new frmProduct(Util.ActionMode.Edit, product);
+            editProduct.ShowDialog();
+            LoadProducts();
+            FormatDataGridView();
+        }
+
+        private void FilterChanged(object sender, EventArgs e)
+        {
+            LoadProducts();
+            FormatDataGridView();
         }
 
         private void LoadProducts()
@@ -55,32 +79,15 @@ namespace Agenda
                 MessageBox.Show(Connection.ErrorMessage);
         }
 
-        private void FilterChanged(object sender, EventArgs e)
+        private void FormatDataGridView()
         {
-            LoadProducts();
-        }
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                bool isInactive = Convert.ToBoolean(row.Cells["colIsInactive"].Value);
 
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            frmProduct newProduct = new frmProduct(Util.ActionMode.New);
-            newProduct.ShowDialog();
-            LoadProducts();
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            Product product = dgvData.CurrentRow.DataBoundItem as Product;
-            frmProduct editProduct = new frmProduct(Util.ActionMode.Edit, product);
-            editProduct.ShowDialog();
-            LoadProducts();
-        }
-
-        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Product product = dgvData.CurrentRow.DataBoundItem as Product;
-            frmProduct editProduct = new frmProduct(Util.ActionMode.Edit, product);
-            editProduct.ShowDialog();
-            LoadProducts();
+                if (isInactive)
+                    dgvData.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Gray;
+            }
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Agenda
 
         private void frmHome_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             labUserName.Text = frmHome.User.Name;
         }
 

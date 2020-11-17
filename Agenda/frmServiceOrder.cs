@@ -21,16 +21,26 @@ namespace Agenda
 
         private void frmServiceOrder_Load(object sender, EventArgs e)
         {
-            if (User.GetUsers(Util.ActiveStatus.Active))
+            if (User.GetUsers(Util.ActiveStatus.All))
                 cbUser.DataSource = User.QueryUsers;
 
-            cbUser.SelectedItem = frmHome.User;
-
-            if (Product.SearchAll(Util.ActiveStatus.Active, null, false, true))
+            if (Product.SearchAll(Util.ActiveStatus.All, null, false, true))
                 cbProduct.DataSource = Product.QueryProducts;
-            
-            cbServiceMode.SelectedIndex = 3;
-            cbStatus.SelectedIndex = 3;
+
+            if (this.Action == Util.ActionMode.New)
+            {
+                cbUser.Text = frmHome.User.Name;
+                cbServiceMode.SelectedIndex = 3;
+                cbStatus.SelectedIndex = 3;
+            }
+            else
+            {
+                if (this.ServiceOrder.User != null)
+                    cbUser.Text = this.ServiceOrder.User.Name;
+
+                if (this.ServiceOrder.Product != null)
+                    cbProduct.Text = this.ServiceOrder.Product.Name;
+            }
         }
 
         private Util.ActionMode action;
@@ -68,8 +78,7 @@ namespace Agenda
             }
             else if (this.Action == Util.ActionMode.Edit)
             {
-                ShowServiceOrder();
-                
+                ShowServiceOrder();                
             }
         }
 
@@ -78,11 +87,17 @@ namespace Agenda
             txtServiceOrderID.Text = this.ServiceOrder.ID.ToString();
             this.Customer = this.ServiceOrder.Customer;
             txtWhoRequested.Text = this.ServiceOrder.WhoRequested;
+
             cbUser.SelectedItem = this.ServiceOrder.User;
+            
             txtSubject.Text = this.ServiceOrder.Subject;
             txtDescription.Text = this.ServiceOrder.Description;
             txtSolution.Text = this.ServiceOrder.Solution;
-            cbProduct.SelectedItem = this.ServiceOrder.Product;
+            
+            if (this.ServiceOrder.Product != null)
+
+            cbProduct.Text = this.ServiceOrder.Product.Name;
+
             cbServiceMode.Text = this.ServiceOrder.Service;
             cbStatus.Text = this.ServiceOrder.Status;
             cbServiceOrderInactive.Checked = this.ServiceOrder.IsInactive;
@@ -137,8 +152,15 @@ namespace Agenda
 
             frmSearchCustomer searchCustomer = new frmSearchCustomer(search);
             if (searchCustomer.ShowDialog() == DialogResult.Yes)
+            {
                 this.Customer = searchCustomer.Customer;
-
+                if (this.Customer.Product != null)
+                {
+                    DialogResult result = MessageBox.Show("Deseja aplicar o produto: " + this.Customer.Product.Name + ", a Ordem de Serviço?","Aplicar Produto", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                        cbProduct.Text = this.Customer.Product.Name;
+                }
+            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -156,13 +178,21 @@ namespace Agenda
                 {
                     ShowServiceOrder();
                     this.Action = Util.ActionMode.Edit;
+                    labSaved.Visible = true;
+                    tShowSaved.Enabled = true;
                 }
                 else
                     MessageBox.Show(Connection.ErrorMessage);
             }
             else if (this.Action == Util.ActionMode.Edit)
             {
-                if (!this.ServiceOrder.Update())
+                if (this.ServiceOrder.Update())
+                {
+                    this.Action = Util.ActionMode.Edit;
+                    labSaved.Visible = true;
+                    tShowSaved.Enabled = true;
+                }
+                else
                     MessageBox.Show(Connection.ErrorMessage);
             }
             btnSave.Enabled = true;
@@ -182,6 +212,26 @@ namespace Agenda
         {
             if (e.KeyCode == Keys.Escape)
                 this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            cbProduct.Text = this.ServiceOrder.Product.Name;
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            frmProduct newProduct = new frmProduct(Util.ActionMode.New);
+            newProduct.ShowDialog();
+
+            if (Product.SearchAll(Util.ActiveStatus.All, null, false, true))
+                cbProduct.DataSource = Product.QueryProducts;
+        }
+
+        private void tShowSaved_Tick(object sender, EventArgs e)
+        {
+            tShowSaved.Enabled = false;
+            labSaved.Visible = false;
         }
     }
 }

@@ -28,13 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmUser));
             this.pForm = new System.Windows.Forms.Panel();
+            this.labSaved = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.tcUser = new System.Windows.Forms.TabControl();
             this.tpInfo = new System.Windows.Forms.TabPage();
             this.gbAddress = new System.Windows.Forms.GroupBox();
-            this.txtState = new System.Windows.Forms.TextBox();
+            this.cbState = new System.Windows.Forms.ComboBox();
             this.labState = new System.Windows.Forms.Label();
             this.txtCity = new System.Windows.Forms.TextBox();
             this.labCity = new System.Windows.Forms.Label();
@@ -75,6 +77,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.labTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.tShowSaved = new System.Windows.Forms.Timer(this.components);
             this.pForm.SuspendLayout();
             this.tcUser.SuspendLayout();
             this.tpInfo.SuspendLayout();
@@ -89,6 +92,7 @@
             // pForm
             // 
             this.pForm.BackColor = System.Drawing.Color.White;
+            this.pForm.Controls.Add(this.labSaved);
             this.pForm.Controls.Add(this.btnNew);
             this.pForm.Controls.Add(this.tcUser);
             this.pForm.Controls.Add(this.btnCancel);
@@ -97,6 +101,18 @@
             this.pForm.Name = "pForm";
             this.pForm.Size = new System.Drawing.Size(900, 500);
             this.pForm.TabIndex = 0;
+            // 
+            // labSaved
+            // 
+            this.labSaved.AutoSize = true;
+            this.labSaved.Font = new System.Drawing.Font("Roboto Bk", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            this.labSaved.Location = new System.Drawing.Point(54, 442);
+            this.labSaved.Name = "labSaved";
+            this.labSaved.Size = new System.Drawing.Size(142, 24);
+            this.labSaved.TabIndex = 13;
+            this.labSaved.Text = "Registro salvo!";
+            this.labSaved.Visible = false;
             // 
             // btnNew
             // 
@@ -141,7 +157,7 @@
             // 
             // gbAddress
             // 
-            this.gbAddress.Controls.Add(this.txtState);
+            this.gbAddress.Controls.Add(this.cbState);
             this.gbAddress.Controls.Add(this.labState);
             this.gbAddress.Controls.Add(this.txtCity);
             this.gbAddress.Controls.Add(this.labCity);
@@ -160,17 +176,49 @@
             this.gbAddress.TabStop = false;
             this.gbAddress.Text = "Endereço";
             // 
-            // txtState
+            // cbState
             // 
-            this.txtState.Location = new System.Drawing.Point(569, 59);
-            this.txtState.Name = "txtState";
-            this.txtState.Size = new System.Drawing.Size(183, 23);
-            this.txtState.TabIndex = 5;
+            this.cbState.DropDownHeight = 80;
+            this.cbState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbState.FormattingEnabled = true;
+            this.cbState.IntegralHeight = false;
+            this.cbState.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "PB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.cbState.Location = new System.Drawing.Point(676, 59);
+            this.cbState.Name = "cbState";
+            this.cbState.Size = new System.Drawing.Size(76, 23);
+            this.cbState.TabIndex = 30;
             // 
             // labState
             // 
             this.labState.AutoSize = true;
-            this.labState.Location = new System.Drawing.Point(514, 62);
+            this.labState.Location = new System.Drawing.Point(621, 62);
             this.labState.Name = "labState";
             this.labState.Size = new System.Drawing.Size(49, 15);
             this.labState.TabIndex = 29;
@@ -180,7 +228,7 @@
             // 
             this.txtCity.Location = new System.Drawing.Point(286, 59);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(222, 23);
+            this.txtCity.Size = new System.Drawing.Size(303, 23);
             this.txtCity.TabIndex = 4;
             // 
             // labCity
@@ -295,6 +343,7 @@
             // 
             // cbSex
             // 
+            this.cbSex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSex.FormattingEnabled = true;
             this.cbSex.Items.AddRange(new object[] {
             "Feminino",
@@ -434,6 +483,7 @@
             this.cbxIsInactive.TabIndex = 2;
             this.cbxIsInactive.Text = "Inativo";
             this.cbxIsInactive.UseVisualStyleBackColor = true;
+            this.cbxIsInactive.CheckedChanged += new System.EventHandler(this.cbxIsInactive_CheckedChanged);
             // 
             // txtID
             // 
@@ -541,11 +591,11 @@
             this.labTitle.AutoSize = true;
             this.labTitle.Font = new System.Drawing.Font("Roboto Bk", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labTitle.ForeColor = System.Drawing.Color.White;
-            this.labTitle.Location = new System.Drawing.Point(410, 14);
+            this.labTitle.Location = new System.Drawing.Point(411, 14);
             this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(80, 23);
+            this.labTitle.Size = new System.Drawing.Size(78, 23);
             this.labTitle.TabIndex = 3;
-            this.labTitle.Text = "Produto";
+            this.labTitle.Text = "Técnico";
             // 
             // btnClose
             // 
@@ -558,6 +608,11 @@
             this.btnClose.TabIndex = 1;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // tShowSaved
+            // 
+            this.tShowSaved.Interval = 2000;
+            this.tShowSaved.Tick += new System.EventHandler(this.tShowSaved_Tick);
             // 
             // frmUser
             // 
@@ -579,6 +634,7 @@
             this.Text = "frmUser";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmUser_KeyDown);
             this.pForm.ResumeLayout(false);
+            this.pForm.PerformLayout();
             this.tcUser.ResumeLayout(false);
             this.tpInfo.ResumeLayout(false);
             this.gbAddress.ResumeLayout(false);
@@ -638,12 +694,14 @@
         private System.Windows.Forms.DateTimePicker dtpBorn;
         private System.Windows.Forms.GroupBox gbAddress;
         private System.Windows.Forms.MaskedTextBox txtCEP;
-        private System.Windows.Forms.TextBox txtState;
         private System.Windows.Forms.Label labState;
         private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.Label labCity;
         private System.Windows.Forms.TextBox txtDistrict;
         private System.Windows.Forms.Label labDistrict;
         private System.Windows.Forms.Label labDev;
+        private System.Windows.Forms.ComboBox cbState;
+        private System.Windows.Forms.Timer tShowSaved;
+        private System.Windows.Forms.Label labSaved;
     }
 }

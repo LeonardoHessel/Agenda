@@ -99,13 +99,20 @@ namespace Agenda
                 {
                     ShowProduct();
                     this.Action = Util.ActionMode.Edit;
+                    labSaved.Visible = true;
+                    tShowSaved.Enabled = true;
                 }
                 else
                     MessageBox.Show(Connection.ErrorMessage);
             }
             else if (this.Action == Util.ActionMode.Edit)
             {
-                if (!this.Product.Update())
+                if (this.Product.Update())
+                {
+                    labSaved.Visible = true;
+                    tShowSaved.Enabled = true;
+                }
+                else
                     MessageBox.Show(Connection.ErrorMessage);
             }
             btnSave.Enabled = true;
@@ -125,6 +132,17 @@ namespace Agenda
             {
                 btnSave.PerformClick();
             }
+        }
+
+        private void cbxInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            txtName.Enabled = !cbxInactive.Checked;
+        }
+
+        private void tShowSaved_Tick(object sender, EventArgs e)
+        {
+            tShowSaved.Enabled = false;
+            labSaved.Visible = false;
         }
     }
 }

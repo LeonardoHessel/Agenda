@@ -17,7 +17,7 @@ namespace Agenda
         {
             InitializeComponent();
 
-            if (Product.SearchAll(Util.ActiveStatus.Active, null, false, true))
+            if (Product.SearchAll(Util.ActiveStatus.All, null, false, true))
                 cbProduct.DataSource = Product.QueryProducts;
 
             cbState.Text = "SP";

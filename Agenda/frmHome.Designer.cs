@@ -68,11 +68,12 @@
             this.pMenu.Location = new System.Drawing.Point(0, 0);
             this.pMenu.Margin = new System.Windows.Forms.Padding(0);
             this.pMenu.Name = "pMenu";
-            this.pMenu.Size = new System.Drawing.Size(180, 1024);
+            this.pMenu.Size = new System.Drawing.Size(180, 1005);
             this.pMenu.TabIndex = 0;
             // 
             // labUserName
             // 
+            this.labUserName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labUserName.AutoSize = true;
             this.labUserName.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labUserName.Location = new System.Drawing.Point(47, 944);
@@ -84,6 +85,7 @@
             // 
             // labWelcome
             // 
+            this.labWelcome.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labWelcome.AutoSize = true;
             this.labWelcome.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labWelcome.Location = new System.Drawing.Point(46, 899);
@@ -94,14 +96,16 @@
             // 
             // btnProduct
             // 
+            this.btnProduct.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnProduct.FlatAppearance.BorderSize = 0;
             this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProduct.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
             this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.Location = new System.Drawing.Point(0, 590);
+            this.btnProduct.Location = new System.Drawing.Point(0, 683);
             this.btnProduct.Margin = new System.Windows.Forms.Padding(0);
             this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnProduct.Size = new System.Drawing.Size(180, 50);
             this.btnProduct.TabIndex = 4;
             this.btnProduct.Text = "Produtos";
@@ -110,14 +114,16 @@
             // 
             // btnSchedule
             // 
+            this.btnSchedule.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSchedule.FlatAppearance.BorderSize = 0;
             this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSchedule.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSchedule.Image = ((System.Drawing.Image)(resources.GetObject("btnSchedule.Image")));
             this.btnSchedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSchedule.Location = new System.Drawing.Point(0, 410);
+            this.btnSchedule.Location = new System.Drawing.Point(0, 503);
             this.btnSchedule.Margin = new System.Windows.Forms.Padding(0);
             this.btnSchedule.Name = "btnSchedule";
+            this.btnSchedule.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnSchedule.Size = new System.Drawing.Size(180, 50);
             this.btnSchedule.TabIndex = 1;
             this.btnSchedule.Text = "Agenda";
@@ -126,14 +132,16 @@
             // 
             // btnUser
             // 
+            this.btnUser.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnUser.FlatAppearance.BorderSize = 0;
             this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUser.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUser.Image = ((System.Drawing.Image)(resources.GetObject("btnUser.Image")));
             this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.Location = new System.Drawing.Point(0, 530);
+            this.btnUser.Location = new System.Drawing.Point(0, 623);
             this.btnUser.Margin = new System.Windows.Forms.Padding(0);
             this.btnUser.Name = "btnUser";
+            this.btnUser.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnUser.Size = new System.Drawing.Size(180, 50);
             this.btnUser.TabIndex = 3;
             this.btnUser.Text = "Técnicos";
@@ -142,14 +150,16 @@
             // 
             // btnCustomer
             // 
+            this.btnCustomer.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnCustomer.FlatAppearance.BorderSize = 0;
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomer.Image")));
             this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomer.Location = new System.Drawing.Point(0, 470);
+            this.btnCustomer.Location = new System.Drawing.Point(0, 563);
             this.btnCustomer.Margin = new System.Windows.Forms.Padding(0);
             this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnCustomer.Size = new System.Drawing.Size(180, 50);
             this.btnCustomer.TabIndex = 2;
             this.btnCustomer.Text = "Clientes";
@@ -158,14 +168,16 @@
             // 
             // btnNewOS
             // 
+            this.btnNewOS.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnNewOS.FlatAppearance.BorderSize = 0;
             this.btnNewOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNewOS.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewOS.Image = ((System.Drawing.Image)(resources.GetObject("btnNewOS.Image")));
             this.btnNewOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewOS.Location = new System.Drawing.Point(0, 350);
+            this.btnNewOS.Location = new System.Drawing.Point(0, 443);
             this.btnNewOS.Margin = new System.Windows.Forms.Padding(0);
             this.btnNewOS.Name = "btnNewOS";
+            this.btnNewOS.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnNewOS.Size = new System.Drawing.Size(180, 50);
             this.btnNewOS.TabIndex = 0;
             this.btnNewOS.Text = "Nova OS";
@@ -251,11 +263,13 @@
             this.pForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pForm.Location = new System.Drawing.Point(180, 0);
             this.pForm.Name = "pForm";
-            this.pForm.Size = new System.Drawing.Size(1100, 1024);
+            this.pForm.Size = new System.Drawing.Size(1100, 1005);
             this.pForm.TabIndex = 1;
             // 
             // labTime
             // 
+            this.labTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.labTime.AutoSize = true;
             this.labTime.Font = new System.Drawing.Font("Roboto Bk", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
@@ -267,13 +281,12 @@
             // 
             // pbLogo
             // 
-            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pbLogo.Image = ((System.Drawing.Image)(resources.GetObject("pbLogo.Image")));
             this.pbLogo.Location = new System.Drawing.Point(375, 300);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(350, 350);
+            this.pbLogo.Size = new System.Drawing.Size(350, 331);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbLogo.TabIndex = 4;
             this.pbLogo.TabStop = false;
@@ -288,7 +301,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1280, 1024);
+            this.ClientSize = new System.Drawing.Size(1280, 1005);
             this.Controls.Add(this.pForm);
             this.Controls.Add(this.pMenu);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -297,7 +310,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmHome";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frmHome_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmHome_KeyDown);
             this.pMenu.ResumeLayout(false);

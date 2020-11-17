@@ -72,7 +72,7 @@ namespace Agenda
             txtNumber.Text = "";
             txtDistrict.Text = "";
             txtCity.Text = "";
-            txtState.Text = "";
+            cbState.Text = "SP";
             pbImage.Image = pbImage.InitialImage;
         }
 
@@ -95,12 +95,13 @@ namespace Agenda
                 txtNumber.Text = this.User.Address.Number;
                 txtDistrict.Text = this.User.Address.District;
                 txtCity.Text = this.User.Address.City;
-                txtState.Text = this.User.Address.State;
+                cbState.Text = this.User.Address.State;
             }
             else
             {
                 AddressIsBlock(true);
             }
+
             if (this.User.ProfileIMGAddress != null)
             {
                 //pbImage.Image = pbImage.InitialImage;
@@ -125,7 +126,7 @@ namespace Agenda
             this.User.Address.Number = txtNumber.Text;
             this.User.Address.District = txtDistrict.Text;
             this.User.Address.City = txtCity.Text;
-            this.User.Address.State = txtState.Text;
+            this.User.Address.State = cbState.Text;
             //pbImage.Image = pbImage.InitialImage;
         }
 
@@ -136,7 +137,7 @@ namespace Agenda
             txtNumber.Enabled = set;
             txtDistrict.Enabled = set;
             txtCity.Enabled = set;
-            txtState.Enabled = set;
+            cbState.Enabled = set;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -156,6 +157,8 @@ namespace Agenda
                     {
                         ShowObj();
                         this.Action = Util.ActionMode.Edit;
+                        labSaved.Visible = true;
+                        tShowSaved.Enabled = true;
                     }
                     else
                         MessageBox.Show(Connection.ErrorMessage);
@@ -171,6 +174,8 @@ namespace Agenda
                     {
                         ShowObj();
                         this.Action = Util.ActionMode.Edit;
+                        labSaved.Visible = true;
+                        tShowSaved.Enabled = true;
                     }
                     else
                         MessageBox.Show(Connection.ErrorMessage);
@@ -199,6 +204,31 @@ namespace Agenda
                 this.Close();
             else if (e.KeyCode == Keys.Enter)
                 btnSave.PerformClick();
+        }
+
+        private void cbxIsInactive_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isEnabled = !cbxIsInactive.Checked;
+            txtName.Enabled = isEnabled;
+            txtLogin.Enabled = isEnabled;
+            txtPassword.Enabled = isEnabled;
+            dtpBorn.Enabled = isEnabled;
+            cbSex.Enabled = isEnabled;
+            txtRG.Enabled = isEnabled;
+            txtCPF.Enabled = isEnabled;
+            txtCNH.Enabled = isEnabled;
+            txtCEP.Enabled = isEnabled;
+            txtStreet.Enabled = isEnabled;
+            txtNumber.Enabled = isEnabled;
+            txtDistrict.Enabled = isEnabled;
+            txtCity.Enabled = isEnabled;
+            cbState.Enabled = isEnabled;
+        }
+
+        private void tShowSaved_Tick(object sender, EventArgs e)
+        {
+            tShowSaved.Enabled = false;
+            labSaved.Visible = false;
         }
     }
 }

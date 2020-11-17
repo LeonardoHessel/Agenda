@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmServiceOrder));
             this.pForm = new System.Windows.Forms.Panel();
             this.btnNew = new System.Windows.Forms.Button();
@@ -68,6 +69,8 @@
             this.labCustomer = new System.Windows.Forms.Label();
             this.labTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
+            this.tShowSaved = new System.Windows.Forms.Timer(this.components);
+            this.labSaved = new System.Windows.Forms.Label();
             this.pForm.SuspendLayout();
             this.pTabInfo.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +78,7 @@
             // pForm
             // 
             this.pForm.BackColor = System.Drawing.Color.White;
+            this.pForm.Controls.Add(this.labSaved);
             this.pForm.Controls.Add(this.btnNew);
             this.pForm.Controls.Add(this.btnCancel);
             this.pForm.Controls.Add(this.btnSave);
@@ -205,6 +209,7 @@
             this.btnAddProduct.Size = new System.Drawing.Size(23, 23);
             this.btnAddProduct.TabIndex = 31;
             this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // cbServiceOrderInactive
             // 
@@ -506,6 +511,23 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // tShowSaved
+            // 
+            this.tShowSaved.Interval = 2000;
+            this.tShowSaved.Tick += new System.EventHandler(this.tShowSaved_Tick);
+            // 
+            // labSaved
+            // 
+            this.labSaved.AutoSize = true;
+            this.labSaved.Font = new System.Drawing.Font("Roboto Bk", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            this.labSaved.Location = new System.Drawing.Point(76, 494);
+            this.labSaved.Name = "labSaved";
+            this.labSaved.Size = new System.Drawing.Size(142, 24);
+            this.labSaved.TabIndex = 13;
+            this.labSaved.Text = "Registro salvo!";
+            this.labSaved.Visible = false;
+            // 
             // frmServiceOrder
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -574,5 +596,7 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Timer tShowSaved;
+        private System.Windows.Forms.Label labSaved;
     }
 }

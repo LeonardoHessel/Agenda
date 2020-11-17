@@ -15,6 +15,7 @@ namespace Agenda
         public ucUser()
         {
             InitializeComponent();
+            LoadUsers();
         }
 
         private static ucUser instance;
@@ -31,12 +32,35 @@ namespace Agenda
 
         private void ucUser_Load(object sender, EventArgs e)
         {
-            LoadUsers();
+            FormatDataGridView();
         }
 
         private void btnHide_Click(object sender, EventArgs e)
         {
             this.Visible = false;
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            frmUser newUser = new frmUser(Util.ActionMode.New);
+            newUser.ShowDialog();
+            LoadUsers();
+            FormatDataGridView();
+        }
+
+        private void EditUser(object sender, EventArgs e)
+        {
+            User user = dgvData.CurrentRow.DataBoundItem as User;
+            frmUser editUser = new frmUser(Util.ActionMode.Edit, user);
+            editUser.ShowDialog();
+            LoadUsers();
+            FormatDataGridView();
+        }
+
+        private void FilterChanged(object sender, EventArgs e)
+        {
+            LoadUsers();
+            FormatDataGridView();
         }
 
         private void LoadUsers()
@@ -55,32 +79,15 @@ namespace Agenda
                 MessageBox.Show(Connection.ErrorMessage);
         }
 
-        private void FilterChanged(object sender, EventArgs e)
+        private void FormatDataGridView()
         {
-            LoadUsers();
-        }
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                bool isInactive = Convert.ToBoolean(row.Cells["colIsInactive"].Value);
 
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            frmUser newUser = new frmUser(Util.ActionMode.New);
-            newUser.ShowDialog();
-            LoadUsers();
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            User user = dgvData.CurrentRow.DataBoundItem as User;
-            frmUser editUser = new frmUser(Util.ActionMode.Edit, user);
-            editUser.ShowDialog();
-            LoadUsers();
-        }
-
-        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            User user = dgvData.CurrentRow.DataBoundItem as User;
-            frmUser editUser = new frmUser(Util.ActionMode.Edit, user);
-            editUser.ShowDialog();
-            LoadUsers();
+                if (isInactive)
+                    dgvData.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Gray;
+            }
         }
     }
 }
