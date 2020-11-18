@@ -408,7 +408,7 @@
             // txtRG
             // 
             this.txtRG.Location = new System.Drawing.Point(56, 60);
-            this.txtRG.Mask = "99,999,999-00";
+            this.txtRG.Mask = "99,999,999-9";
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(121, 23);
             this.txtRG.TabIndex = 2;

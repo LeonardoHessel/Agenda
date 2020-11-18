@@ -151,7 +151,7 @@ namespace Agenda
             SetObj();
             if (this.Action == Util.ActionMode.New)
             {
-                if (this.User.Address.Insert())
+                if (!this.User.LoginExists())
                 {
                     if (this.User.Insert())
                     {
@@ -164,25 +164,22 @@ namespace Agenda
                         MessageBox.Show(Connection.ErrorMessage);
                 }
                 else
-                    MessageBox.Show(Connection.ErrorMessage);
+                    MessageBox.Show("Já existe um login com esse nome!\nAltere, para realizar o cadastro!");
             }
             else if (this.Action == Util.ActionMode.Edit)
             {
-                if (this.User.Address.Update())
+                if (this.User.Update())
                 {
-                    if (this.User.Update())
-                    {
-                        ShowObj();
-                        this.Action = Util.ActionMode.Edit;
-                        labSaved.Visible = true;
-                        tShowSaved.Enabled = true;
-                    }
-                    else
-                        MessageBox.Show(Connection.ErrorMessage);
+                    ShowObj();
+                    this.Action = Util.ActionMode.Edit;
+                    labSaved.Visible = true;
+                    tShowSaved.Enabled = true;
                 }
                 else
                     MessageBox.Show(Connection.ErrorMessage);
             }
+            
+            btnSave.Enabled = true;
         }
 
         private string rtnNoMask(MaskedTextBox mtb)

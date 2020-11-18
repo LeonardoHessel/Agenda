@@ -172,28 +172,35 @@ namespace Agenda
         {
             btnSave.Enabled = false;
             SetServiceOrder();
-            if (this.Action == Util.ActionMode.New)
+            if (this.ServiceOrder.Customer != null)
             {
-                if (this.ServiceOrder.Insert())
+                if (this.Action == Util.ActionMode.New)
                 {
-                    ShowServiceOrder();
-                    this.Action = Util.ActionMode.Edit;
-                    labSaved.Visible = true;
-                    tShowSaved.Enabled = true;
+                    if (this.ServiceOrder.Insert())
+                    {
+                        ShowServiceOrder();
+                        this.Action = Util.ActionMode.Edit;
+                        labSaved.Visible = true;
+                        tShowSaved.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show(Connection.ErrorMessage);
                 }
-                else
-                    MessageBox.Show(Connection.ErrorMessage);
+                else if (this.Action == Util.ActionMode.Edit)
+                {
+                    if (this.ServiceOrder.Update())
+                    {
+                        this.Action = Util.ActionMode.Edit;
+                        labSaved.Visible = true;
+                        tShowSaved.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show(Connection.ErrorMessage);
+                }
             }
-            else if (this.Action == Util.ActionMode.Edit)
+            else
             {
-                if (this.ServiceOrder.Update())
-                {
-                    this.Action = Util.ActionMode.Edit;
-                    labSaved.Visible = true;
-                    tShowSaved.Enabled = true;
-                }
-                else
-                    MessageBox.Show(Connection.ErrorMessage);
+                MessageBox.Show("Para criar uma nova ordem de serviço é necessário que um cliente seja selecionado");
             }
             btnSave.Enabled = true;
         }

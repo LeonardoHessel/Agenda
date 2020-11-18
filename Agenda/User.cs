@@ -28,18 +28,34 @@ namespace Agenda
 
         public bool Insert()
         {
-            string sql = @"INSERT INTO `user` (`login`,`password`,`name`,`born`,`sex`,`cpf`,`rg`,`cnh`,
-            `profile_img_address`,`address_id`) VALUES (@login,@password,@name,@born,@sex,@rg,@cpf,@cnh,
-            @profile_img_address,@address_id)";
-            TextCommand(sql);
-            Parameters("Insert");
-            if (Execute())
+            if (this.Address.Insert())
             {
-                this.ID = Connection.LastInsertID;
-                this.IsInactive = false;
-                return true;
+                string sql = @"INSERT INTO `user` (`login`,`password`,`name`,`born`,`sex`,`cpf`,`rg`,`cnh`,
+                `profile_img_address`,`address_id`) VALUES (@login,@password,@name,@born,@sex,@rg,@cpf,@cnh,
+                @profile_img_address,@address_id)";
+                TextCommand(sql);
+                Parameters("Insert");
+                if (Execute())
+                {
+                    this.ID = Connection.LastInsertID;
+                    this.IsInactive = false;
+                    return true;
+                }
             }
             return false;
+        }
+
+        public bool LoginExists()
+        {
+            string sql = "SELECT * FROM `user` WHERE `login` = @login";
+            TextCommand(sql);
+            AddParameter("login", this.Login);
+            if (ExecuteQuery())
+            {
+                List<User> userList = TableToLst(Connection.SelectedTable);
+                return userList.Count > 0;
+            }                
+            return true;
         }
 
         public static bool GetByID(long user_id)
@@ -99,13 +115,18 @@ namespace Agenda
 
         public bool Update()
         {
-            string sql = @"UPDATE `user` SET `login`=@login,`password`=@password,`name`=@name,
-            `born`=@born,`sex`=@sex,`cpf`=@cpf,`rg`=@rg,`cnh`=@cnh,
-            `profile_img_address`=@profile_img_address,`address_id`=@address_id,`is_inactive`=@is_inactive
-            WHERE `id`=@id";
-            TextCommand(sql);
-            Parameters("Update");
-            return Execute();
+
+            if (this.Address.Update())
+            {
+                string sql = @"UPDATE `user` SET `login`=@login,`password`=@password,`name`=@name,
+                `born`=@born,`sex`=@sex,`cpf`=@cpf,`rg`=@rg,`cnh`=@cnh,
+                `profile_img_address`=@profile_img_address,`address_id`=@address_id,`is_inactive`=@is_inactive
+                WHERE `id`=@id";
+                TextCommand(sql);
+                Parameters("Update");
+                return Execute();
+            }
+            return false;
         }
 
         private void Parameters(string action)
