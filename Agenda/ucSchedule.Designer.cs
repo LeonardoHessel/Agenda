@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSchedule));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pTitle = new System.Windows.Forms.Panel();
             this.labTitle = new System.Windows.Forms.Label();
             this.btnHide = new System.Windows.Forms.Button();
@@ -89,10 +89,11 @@
             // 
             // pTitle
             // 
+            this.pTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
             this.pTitle.Controls.Add(this.labTitle);
             this.pTitle.Controls.Add(this.btnHide);
-            this.pTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pTitle.Location = new System.Drawing.Point(0, 0);
             this.pTitle.Name = "pTitle";
             this.pTitle.Size = new System.Drawing.Size(1100, 60);
@@ -187,17 +188,20 @@
             this.dgvData.AllowUserToDeleteRows = false;
             this.dgvData.AllowUserToResizeColumns = false;
             this.dgvData.AllowUserToResizeRows = false;
+            this.dgvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvData.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvData.ColumnHeadersHeight = 35;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -219,7 +223,6 @@
             this.colCustomer,
             this.colProduct,
             this.colUser});
-            this.dgvData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvData.Location = new System.Drawing.Point(0, 279);
@@ -237,8 +240,8 @@
             // colID
             // 
             this.colID.DataPropertyName = "ID";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colID.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colID.DefaultCellStyle = dataGridViewCellStyle22;
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
@@ -291,8 +294,8 @@
             // colCreation
             // 
             this.colCreation.DataPropertyName = "Creation";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colCreation.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colCreation.DefaultCellStyle = dataGridViewCellStyle23;
             this.colCreation.HeaderText = "Criação";
             this.colCreation.Name = "colCreation";
             this.colCreation.ReadOnly = true;
@@ -301,8 +304,8 @@
             // colStart
             // 
             this.colStart.DataPropertyName = "Start";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colStart.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colStart.DefaultCellStyle = dataGridViewCellStyle24;
             this.colStart.HeaderText = "Início";
             this.colStart.Name = "colStart";
             this.colStart.ReadOnly = true;
@@ -311,8 +314,8 @@
             // colEnd
             // 
             this.colEnd.DataPropertyName = "End";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colEnd.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colEnd.DefaultCellStyle = dataGridViewCellStyle25;
             this.colEnd.HeaderText = "Fim";
             this.colEnd.Name = "colEnd";
             this.colEnd.ReadOnly = true;
@@ -391,7 +394,7 @@
             "Cancelado",
             "Finalizado",
             "Pendente"});
-            this.cbStatus.Location = new System.Drawing.Point(590, 100);
+            this.cbStatus.Location = new System.Drawing.Point(568, 100);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(150, 23);
             this.cbStatus.TabIndex = 1;
@@ -401,7 +404,7 @@
             // 
             this.cbUser.DisplayMember = "Login";
             this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(590, 144);
+            this.cbUser.Location = new System.Drawing.Point(568, 144);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(150, 23);
             this.cbUser.TabIndex = 2;
@@ -410,7 +413,7 @@
             // labStatusFilter
             // 
             this.labStatusFilter.AutoSize = true;
-            this.labStatusFilter.Location = new System.Drawing.Point(587, 82);
+            this.labStatusFilter.Location = new System.Drawing.Point(565, 82);
             this.labStatusFilter.Name = "labStatusFilter";
             this.labStatusFilter.Size = new System.Drawing.Size(101, 15);
             this.labStatusFilter.TabIndex = 12;
@@ -419,7 +422,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(587, 126);
+            this.label2.Location = new System.Drawing.Point(565, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 15);
             this.label2.TabIndex = 13;
@@ -428,7 +431,7 @@
             // labAfter
             // 
             this.labAfter.AutoSize = true;
-            this.labAfter.Location = new System.Drawing.Point(587, 170);
+            this.labAfter.Location = new System.Drawing.Point(565, 170);
             this.labAfter.Name = "labAfter";
             this.labAfter.Size = new System.Drawing.Size(52, 15);
             this.labAfter.TabIndex = 14;
@@ -438,7 +441,7 @@
             // 
             this.dtpAfter.Checked = false;
             this.dtpAfter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpAfter.Location = new System.Drawing.Point(590, 189);
+            this.dtpAfter.Location = new System.Drawing.Point(568, 189);
             this.dtpAfter.Name = "dtpAfter";
             this.dtpAfter.ShowCheckBox = true;
             this.dtpAfter.Size = new System.Drawing.Size(150, 23);
@@ -449,7 +452,7 @@
             // 
             this.dtpBefore.Checked = false;
             this.dtpBefore.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBefore.Location = new System.Drawing.Point(590, 234);
+            this.dtpBefore.Location = new System.Drawing.Point(568, 234);
             this.dtpBefore.Name = "dtpBefore";
             this.dtpBefore.ShowCheckBox = true;
             this.dtpBefore.Size = new System.Drawing.Size(150, 23);
@@ -459,7 +462,7 @@
             // labBefore
             // 
             this.labBefore.AutoSize = true;
-            this.labBefore.Location = new System.Drawing.Point(587, 215);
+            this.labBefore.Location = new System.Drawing.Point(565, 215);
             this.labBefore.Name = "labBefore";
             this.labBefore.Size = new System.Drawing.Size(29, 15);
             this.labBefore.TabIndex = 16;
@@ -469,7 +472,7 @@
             // 
             this.labCaption.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labCaption.AutoSize = true;
-            this.labCaption.Location = new System.Drawing.Point(971, 115);
+            this.labCaption.Location = new System.Drawing.Point(983, 115);
             this.labCaption.Name = "labCaption";
             this.labCaption.Size = new System.Drawing.Size(59, 15);
             this.labCaption.TabIndex = 17;
@@ -479,7 +482,7 @@
             // 
             this.labStatusBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labStatusBlue.AutoSize = true;
-            this.labStatusBlue.Location = new System.Drawing.Point(995, 137);
+            this.labStatusBlue.Location = new System.Drawing.Point(1007, 137);
             this.labStatusBlue.Name = "labStatusBlue";
             this.labStatusBlue.Size = new System.Drawing.Size(64, 15);
             this.labStatusBlue.TabIndex = 18;
@@ -489,7 +492,7 @@
             // 
             this.pbStatusBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbStatusBlue.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusBlue.Image")));
-            this.pbStatusBlue.Location = new System.Drawing.Point(974, 137);
+            this.pbStatusBlue.Location = new System.Drawing.Point(986, 137);
             this.pbStatusBlue.Name = "pbStatusBlue";
             this.pbStatusBlue.Size = new System.Drawing.Size(15, 15);
             this.pbStatusBlue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -500,7 +503,7 @@
             // 
             this.pbStatusRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbStatusRed.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusRed.Image")));
-            this.pbStatusRed.Location = new System.Drawing.Point(974, 158);
+            this.pbStatusRed.Location = new System.Drawing.Point(986, 158);
             this.pbStatusRed.Name = "pbStatusRed";
             this.pbStatusRed.Size = new System.Drawing.Size(15, 15);
             this.pbStatusRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -511,7 +514,7 @@
             // 
             this.labStatusRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labStatusRed.AutoSize = true;
-            this.labStatusRed.Location = new System.Drawing.Point(995, 158);
+            this.labStatusRed.Location = new System.Drawing.Point(1007, 158);
             this.labStatusRed.Name = "labStatusRed";
             this.labStatusRed.Size = new System.Drawing.Size(67, 15);
             this.labStatusRed.TabIndex = 20;
@@ -521,7 +524,7 @@
             // 
             this.pbStatusYellow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbStatusYellow.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusYellow.Image")));
-            this.pbStatusYellow.Location = new System.Drawing.Point(974, 200);
+            this.pbStatusYellow.Location = new System.Drawing.Point(986, 200);
             this.pbStatusYellow.Name = "pbStatusYellow";
             this.pbStatusYellow.Size = new System.Drawing.Size(15, 15);
             this.pbStatusYellow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -532,7 +535,7 @@
             // 
             this.labStatusYellow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labStatusYellow.AutoSize = true;
-            this.labStatusYellow.Location = new System.Drawing.Point(995, 200);
+            this.labStatusYellow.Location = new System.Drawing.Point(1007, 200);
             this.labStatusYellow.Name = "labStatusYellow";
             this.labStatusYellow.Size = new System.Drawing.Size(61, 15);
             this.labStatusYellow.TabIndex = 24;
@@ -542,7 +545,7 @@
             // 
             this.pbStatusGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbStatusGreen.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusGreen.Image")));
-            this.pbStatusGreen.Location = new System.Drawing.Point(974, 179);
+            this.pbStatusGreen.Location = new System.Drawing.Point(986, 179);
             this.pbStatusGreen.Name = "pbStatusGreen";
             this.pbStatusGreen.Size = new System.Drawing.Size(15, 15);
             this.pbStatusGreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -553,7 +556,7 @@
             // 
             this.labStatusGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labStatusGreen.AutoSize = true;
-            this.labStatusGreen.Location = new System.Drawing.Point(995, 179);
+            this.labStatusGreen.Location = new System.Drawing.Point(1007, 179);
             this.labStatusGreen.Name = "labStatusGreen";
             this.labStatusGreen.Size = new System.Drawing.Size(65, 15);
             this.labStatusGreen.TabIndex = 22;

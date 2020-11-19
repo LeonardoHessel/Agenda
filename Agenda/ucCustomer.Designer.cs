@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCustomer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbActiveStatus = new System.Windows.Forms.GroupBox();
             this.rbInactive = new System.Windows.Forms.RadioButton();
             this.rbActive = new System.Windows.Forms.RadioButton();
@@ -158,10 +158,11 @@
             // 
             // pTitle
             // 
+            this.pTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
             this.pTitle.Controls.Add(this.labTitle);
             this.pTitle.Controls.Add(this.btnHide);
-            this.pTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pTitle.Location = new System.Drawing.Point(0, 0);
             this.pTitle.Name = "pTitle";
             this.pTitle.Size = new System.Drawing.Size(1100, 60);
@@ -216,17 +217,20 @@
             this.dgvData.AllowUserToDeleteRows = false;
             this.dgvData.AllowUserToResizeColumns = false;
             this.dgvData.AllowUserToResizeRows = false;
+            this.dgvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvData.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvData.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvData.ColumnHeadersHeight = 35;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -245,7 +249,6 @@
             this.colProduct,
             this.colComponents,
             this.colIsInactive});
-            this.dgvData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dgvData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.GridColor = System.Drawing.Color.Gainsboro;
@@ -264,8 +267,8 @@
             // colID
             // 
             this.colID.DataPropertyName = "ID";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colID.DefaultCellStyle = dataGridViewCellStyle8;
             this.colID.Frozen = true;
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
