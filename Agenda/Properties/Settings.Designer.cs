@@ -49,7 +49,7 @@ namespace Agenda.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("root")]
+        [global::System.Configuration.DefaultSettingValueAttribute("user")]
         public string User {
             get {
                 return ((string)(this["User"]));
@@ -61,7 +61,7 @@ namespace Agenda.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("root")]
+        [global::System.Configuration.DefaultSettingValueAttribute("user")]
         public string Password {
             get {
                 return ((string)(this["Password"]));

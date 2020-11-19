@@ -9,10 +9,10 @@
       <Value Profile="(Default)">schedule</Value>
     </Setting>
     <Setting Name="User" Type="System.String" Scope="User">
-      <Value Profile="(Default)">root</Value>
+      <Value Profile="(Default)">user</Value>
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)">root</Value>
+      <Value Profile="(Default)">user</Value>
     </Setting>
     <Setting Name="Port" Type="System.String" Scope="User">
       <Value Profile="(Default)">3306</Value>

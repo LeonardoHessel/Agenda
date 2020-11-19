@@ -1,7 +1,7 @@
-CREATE DATABASE `schedule`;
-USE `schedule`;
+CREATE DATABASE `sso_drs`;
+USE `sso_drs`;
 
-CREATE TABLE IF NOT EXISTS `schedule`.`address` (
+CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cep` VARCHAR(8) NULL,
   `street` VARCHAR(45) NULL,
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `schedule`.`address` (
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `schedule`.`user` (
+CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `login` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
@@ -35,14 +35,14 @@ CREATE TABLE IF NOT EXISTS `schedule`.`user` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `schedule`.`module` (
+CREATE TABLE IF NOT EXISTS `module` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `restrict` TINYINT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `schedule`.`access` (
+CREATE TABLE IF NOT EXISTS `access` (
   `user_id` INT NOT NULL,
   `module_id` INT NOT NULL,
   `hasaccess` TINYINT NULL DEFAULT 1,
@@ -60,14 +60,14 @@ CREATE TABLE IF NOT EXISTS `schedule`.`access` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `schedule`.`product` (
+CREATE TABLE IF NOT EXISTS `product` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL,
   `is_inactive` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `schedule`.`customer` (
+CREATE TABLE IF NOT EXISTS `customer` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cnpj` CHAR(14) NULL,
   `ie` VARCHAR(16) NULL,
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `schedule`.`customer` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE TABLE IF NOT EXISTS `schedule`.`serviceorder` (
+CREATE TABLE IF NOT EXISTS `serviceorder` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `customer_id` INT NULL,
   `whorequested` VARCHAR(45) NULL,
