@@ -35,6 +35,8 @@ namespace Agenda
             cbStatus.SelectedIndex = 0;
             if (User.GetUsers(Util.ActiveStatus.All, null, true))
                 cbUser.DataSource = User.QueryUsers;
+
+            cbUser.Text = frmHome.User.Login;
             FormatDataGridView();
         }
 
@@ -107,6 +109,7 @@ namespace Agenda
                         break;
                     case "Pendente":
                         dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(252, 255, 86);
+                        //dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(255, 102, 102);
                         break;
                     default:
                         break;

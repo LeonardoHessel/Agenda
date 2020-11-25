@@ -84,9 +84,17 @@ namespace Agenda
             foreach (DataGridViewRow row in dgvData.Rows)
             {
                 bool isInactive = Convert.ToBoolean(row.Cells["colIsInactive"].Value);
+                bool isProspecting = Convert.ToBoolean(row.Cells["colProspecting"].Value);
+                bool isfinancialPending = Convert.ToBoolean(row.Cells["colFinancialPending"].Value);
 
                 if (isInactive)
                     dgvData.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Gray;
+
+                if (isProspecting)
+                    dgvData.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(252, 255, 86);
+
+                if (isfinancialPending)
+                    dgvData.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(255, 86, 86);
             }
         }
     }

@@ -29,11 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSchedule));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pTitle = new System.Windows.Forms.Panel();
             this.labTitle = new System.Windows.Forms.Label();
             this.btnHide = new System.Windows.Forms.Button();
@@ -44,23 +40,24 @@
             this.pbSearchImage = new System.Windows.Forms.PictureBox();
             this.dgvData = new System.Windows.Forms.DataGridView();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomerCNPJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerRazao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerCNPJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSubject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomerComponents = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCreation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colWhoRequested = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSolution = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIsInactive = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colWhoRequested = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colService = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCreation = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIsInactive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.labStatusFilter = new System.Windows.Forms.Label();
@@ -127,6 +124,7 @@
             // 
             // txtSearch
             // 
+            this.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSearch.Location = new System.Drawing.Point(111, 131);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(430, 23);
@@ -136,11 +134,12 @@
             // labSearch
             // 
             this.labSearch.AutoSize = true;
+            this.labSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
             this.labSearch.Location = new System.Drawing.Point(108, 115);
             this.labSearch.Name = "labSearch";
-            this.labSearch.Size = new System.Drawing.Size(46, 15);
+            this.labSearch.Size = new System.Drawing.Size(345, 15);
             this.labSearch.TabIndex = 3;
-            this.labSearch.Text = "Busca:";
+            this.labSearch.Text = "Pesquise por razão, fantasia, assunto, descrição, solução...";
             // 
             // btnEdit
             // 
@@ -194,35 +193,36 @@
             this.dgvData.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvData.ColumnHeadersHeight = 35;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
-            this.colCustomerCNPJ,
             this.colCustomerRazao,
-            this.colProductName,
+            this.colCustomerCNPJ,
             this.colSubject,
+            this.colProductName,
+            this.colCustomerComponents,
             this.colStatus,
-            this.colUserName,
-            this.colCreation,
             this.colStart,
             this.colEnd,
+            this.colUserName,
+            this.colCustomer,
+            this.colWhoRequested,
+            this.colUser,
             this.colDescription,
             this.colSolution,
-            this.colService,
-            this.colIsInactive,
-            this.colWhoRequested,
-            this.colCustomer,
             this.colProduct,
-            this.colUser});
+            this.colService,
+            this.colCreation,
+            this.colIsInactive});
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.GridColor = System.Drawing.Color.Gainsboro;
             this.dgvData.Location = new System.Drawing.Point(0, 279);
@@ -240,12 +240,18 @@
             // colID
             // 
             this.colID.DataPropertyName = "ID";
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colID.DefaultCellStyle = dataGridViewCellStyle22;
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
             this.colID.Width = 50;
+            // 
+            // colCustomerRazao
+            // 
+            this.colCustomerRazao.DataPropertyName = "CustomerRazao";
+            this.colCustomerRazao.HeaderText = "Razão";
+            this.colCustomerRazao.Name = "colCustomerRazao";
+            this.colCustomerRazao.ReadOnly = true;
+            this.colCustomerRazao.Width = 200;
             // 
             // colCustomerCNPJ
             // 
@@ -253,15 +259,15 @@
             this.colCustomerCNPJ.HeaderText = "CNPJ";
             this.colCustomerCNPJ.Name = "colCustomerCNPJ";
             this.colCustomerCNPJ.ReadOnly = true;
-            this.colCustomerCNPJ.Width = 120;
+            this.colCustomerCNPJ.Width = 125;
             // 
-            // colCustomerRazao
+            // colSubject
             // 
-            this.colCustomerRazao.DataPropertyName = "CustomerRazao";
-            this.colCustomerRazao.HeaderText = "Razao";
-            this.colCustomerRazao.Name = "colCustomerRazao";
-            this.colCustomerRazao.ReadOnly = true;
-            this.colCustomerRazao.Width = 150;
+            this.colSubject.DataPropertyName = "Subject";
+            this.colSubject.HeaderText = "Assunto";
+            this.colSubject.Name = "colSubject";
+            this.colSubject.ReadOnly = true;
+            this.colSubject.Width = 150;
             // 
             // colProductName
             // 
@@ -270,12 +276,12 @@
             this.colProductName.Name = "colProductName";
             this.colProductName.ReadOnly = true;
             // 
-            // colSubject
+            // colCustomerComponents
             // 
-            this.colSubject.DataPropertyName = "Subject";
-            this.colSubject.HeaderText = "Assunto";
-            this.colSubject.Name = "colSubject";
-            this.colSubject.ReadOnly = true;
+            this.colCustomerComponents.DataPropertyName = "CustomerComponents";
+            this.colCustomerComponents.HeaderText = "Modulos";
+            this.colCustomerComponents.Name = "colCustomerComponents";
+            this.colCustomerComponents.ReadOnly = true;
             // 
             // colStatus
             // 
@@ -284,42 +290,52 @@
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
             // 
-            // colUserName
-            // 
-            this.colUserName.DataPropertyName = "UserName";
-            this.colUserName.HeaderText = "Usuário";
-            this.colUserName.Name = "colUserName";
-            this.colUserName.ReadOnly = true;
-            // 
-            // colCreation
-            // 
-            this.colCreation.DataPropertyName = "Creation";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colCreation.DefaultCellStyle = dataGridViewCellStyle23;
-            this.colCreation.HeaderText = "Criação";
-            this.colCreation.Name = "colCreation";
-            this.colCreation.ReadOnly = true;
-            this.colCreation.Width = 120;
-            // 
             // colStart
             // 
             this.colStart.DataPropertyName = "Start";
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colStart.DefaultCellStyle = dataGridViewCellStyle24;
             this.colStart.HeaderText = "Início";
             this.colStart.Name = "colStart";
             this.colStart.ReadOnly = true;
-            this.colStart.Width = 120;
+            this.colStart.Width = 110;
             // 
             // colEnd
             // 
             this.colEnd.DataPropertyName = "End";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colEnd.DefaultCellStyle = dataGridViewCellStyle25;
-            this.colEnd.HeaderText = "Fim";
+            this.colEnd.HeaderText = "Final";
             this.colEnd.Name = "colEnd";
             this.colEnd.ReadOnly = true;
-            this.colEnd.Width = 120;
+            this.colEnd.Width = 110;
+            // 
+            // colUserName
+            // 
+            this.colUserName.DataPropertyName = "UserName";
+            this.colUserName.HeaderText = "Técnico";
+            this.colUserName.Name = "colUserName";
+            this.colUserName.ReadOnly = true;
+            // 
+            // colCustomer
+            // 
+            this.colCustomer.DataPropertyName = "Customer";
+            this.colCustomer.HeaderText = "Cliente";
+            this.colCustomer.Name = "colCustomer";
+            this.colCustomer.ReadOnly = true;
+            this.colCustomer.Visible = false;
+            // 
+            // colWhoRequested
+            // 
+            this.colWhoRequested.DataPropertyName = "WhoRequested";
+            this.colWhoRequested.HeaderText = "Solicitante";
+            this.colWhoRequested.Name = "colWhoRequested";
+            this.colWhoRequested.ReadOnly = true;
+            this.colWhoRequested.Visible = false;
+            // 
+            // colUser
+            // 
+            this.colUser.DataPropertyName = "User";
+            this.colUser.HeaderText = "Usuário";
+            this.colUser.Name = "colUser";
+            this.colUser.ReadOnly = true;
+            this.colUser.Visible = false;
             // 
             // colDescription
             // 
@@ -337,6 +353,14 @@
             this.colSolution.ReadOnly = true;
             this.colSolution.Visible = false;
             // 
+            // colProduct
+            // 
+            this.colProduct.DataPropertyName = "Product";
+            this.colProduct.HeaderText = "Produto";
+            this.colProduct.Name = "colProduct";
+            this.colProduct.ReadOnly = true;
+            this.colProduct.Visible = false;
+            // 
             // colService
             // 
             this.colService.DataPropertyName = "Service";
@@ -345,6 +369,14 @@
             this.colService.ReadOnly = true;
             this.colService.Visible = false;
             // 
+            // colCreation
+            // 
+            this.colCreation.DataPropertyName = "Creation";
+            this.colCreation.HeaderText = "Criação";
+            this.colCreation.Name = "colCreation";
+            this.colCreation.ReadOnly = true;
+            this.colCreation.Visible = false;
+            // 
             // colIsInactive
             // 
             this.colIsInactive.DataPropertyName = "IsInactive";
@@ -352,38 +384,6 @@
             this.colIsInactive.Name = "colIsInactive";
             this.colIsInactive.ReadOnly = true;
             this.colIsInactive.Visible = false;
-            // 
-            // colWhoRequested
-            // 
-            this.colWhoRequested.DataPropertyName = "WhoRequested";
-            this.colWhoRequested.HeaderText = "Solicitante";
-            this.colWhoRequested.Name = "colWhoRequested";
-            this.colWhoRequested.ReadOnly = true;
-            this.colWhoRequested.Visible = false;
-            // 
-            // colCustomer
-            // 
-            this.colCustomer.DataPropertyName = "Customer";
-            this.colCustomer.HeaderText = "Customer";
-            this.colCustomer.Name = "colCustomer";
-            this.colCustomer.ReadOnly = true;
-            this.colCustomer.Visible = false;
-            // 
-            // colProduct
-            // 
-            this.colProduct.DataPropertyName = "Product";
-            this.colProduct.HeaderText = "Product";
-            this.colProduct.Name = "colProduct";
-            this.colProduct.ReadOnly = true;
-            this.colProduct.Visible = false;
-            // 
-            // colUser
-            // 
-            this.colUser.DataPropertyName = "User";
-            this.colUser.HeaderText = "User";
-            this.colUser.Name = "colUser";
-            this.colUser.ReadOnly = true;
-            this.colUser.Visible = false;
             // 
             // cbStatus
             // 
@@ -636,22 +636,23 @@
         private System.Windows.Forms.PictureBox pbStatusGreen;
         private System.Windows.Forms.Label labStatusGreen;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerCNPJ;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerRazao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerCNPJ;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSubject;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colProductName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerComponents;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colUserName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCreation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEnd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colWhoRequested;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUser;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSolution;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colService;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIsInactive;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colWhoRequested;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colUser;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colService;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colCreation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIsInactive;
     }
 }

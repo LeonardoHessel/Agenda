@@ -27,6 +27,7 @@ namespace Agenda
 
         public String CustomerRazao { get { return Customer != null ? Customer.Razao : null; } }
         public String CustomerCNPJ { get { return Customer != null ? Customer.CNPJ : null; } }
+        public String CustomerComponents { get { return Customer != null ? Customer.Components : null; } }
         public string UserName { get { return User != null ? User.Name : null; } }
         public string ProductName { get { return Product != null ? Product.Name : null; } }
 
@@ -76,13 +77,13 @@ namespace Agenda
             JOIN `customer` `c` ON `c`.`id` = `so`.`customer_id`";
             if (afBool)
             {
-                sql += addSql + "`so`.`creation` >= @afDate";
+                sql += addSql + "`so`.`start` >= @afDate";
                 addSql = " AND ";
             }
 
             if (beBool)
             {
-                sql += addSql + "`so`.`creation` < @beDate";
+                sql += addSql + "`so`.`start` < @beDate";
                 addSql = " AND ";
             }
 
@@ -108,7 +109,7 @@ namespace Agenda
                 addSql = " AND ";
             }
 
-            sql += " ORDER BY `id` DESC";
+            sql += " ORDER BY `start` DESC";
 
             order.TextCommand(sql);
 
@@ -242,8 +243,6 @@ namespace Agenda
                         this.Product = Product.QueryProduct;
                 }
             }
-        }
-
-        
+        }        
     }
 }

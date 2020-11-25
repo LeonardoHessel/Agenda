@@ -62,8 +62,16 @@ namespace Agenda
             set
             {
                 this.customer = value;
-                txtCustomer.Text = this.customer.Razao;
-                txtCustomerCNPJ.Text = this.customer.CNPJ;
+                if (value != null)
+                {
+                    txtCustomer.Text = this.customer.Razao;
+                    txtCustomerCNPJ.Text = this.customer.CNPJ;
+                }
+                else
+                {
+                    txtCustomer.Text = "";
+                    txtCustomerCNPJ.Text = "";
+                }
             }
         }
 
@@ -154,7 +162,12 @@ namespace Agenda
             if (searchCustomer.ShowDialog() == DialogResult.Yes)
             {
                 this.Customer = searchCustomer.Customer;
-                if (this.Customer.Product != null)
+                if (this.Customer.FinancialPending)
+                {
+                    MessageBox.Show("Este cliente possui pendência financeira.\nSolicite que ele entre em contato com o setor Finaceiro", "Pendência");
+                    this.Customer = null;
+                }
+                else if (this.Customer.Product != null)
                 {
                     DialogResult result = MessageBox.Show("Deseja aplicar o produto: " + this.Customer.Product.Name + ", a Ordem de Serviço?","Aplicar Produto", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
@@ -219,11 +232,6 @@ namespace Agenda
         {
             if (e.KeyCode == Keys.Escape)
                 this.Close();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            cbProduct.Text = this.ServiceOrder.Product.Name;
         }
 
         private void btnAddProduct_Click(object sender, EventArgs e)

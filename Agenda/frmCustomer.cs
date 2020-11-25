@@ -44,28 +44,35 @@ namespace Agenda
         {
             btnSave.Enabled = false;
             SetCustomer();
-            if (this.Action == Util.ActionMode.New)
+            if (this.Customer.CNPJ.Length == 14)
             {
-                if (this.Customer.Insert())
+                if (this.Action == Util.ActionMode.New)
                 {
-                    this.Action = Util.ActionMode.Edit;
-                    labSaved.Visible = true;
-                    tShowSaved.Enabled = true;
+                    if (this.Customer.Insert())
+                    {
+                        this.Action = Util.ActionMode.Edit;
+                        labSaved.Visible = true;
+                        tShowSaved.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show(Connection.ErrorMessage);
                 }
-                else
-                    MessageBox.Show(Connection.ErrorMessage);
-            }
-            else if (this.Action == Util.ActionMode.Edit)
-            {
-                if (this.Customer.Update())
+                else if (this.Action == Util.ActionMode.Edit)
                 {
-                    this.Action = Util.ActionMode.Edit;
-                    labSaved.Visible = true;
-                    tShowSaved.Enabled = true;
+                    if (this.Customer.Update())
+                    {
+                        this.Action = Util.ActionMode.Edit;
+                        labSaved.Visible = true;
+                        tShowSaved.Enabled = true;
+                    }
+                    else
+                        MessageBox.Show(Connection.ErrorMessage);
                 }
-                else
-                    MessageBox.Show(Connection.ErrorMessage);
             }
+            else
+                MessageBox.Show("CNPJ Inválido");
+
+            btnSave.Enabled = true;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -122,12 +129,16 @@ namespace Agenda
         {
             // Customer
             this.Customer.IsInactive = cbxIsInactive.Checked;
+            this.Customer.Responsible = txtResponsible.Text;
             this.Customer.Razao = txtRazao.Text;
             this.Customer.Name = txtName.Text;
             this.Customer.CNPJ = Util.NoMask(mtbCNPJ);
             this.Customer.IE = Util.NoMask(mtbIE);
-            this.Customer.Telephone = txtTelephone.Text;
-            this.Customer.CellPhone = txtCellphone.Text;
+            this.Customer.Prospecting = cbxProspecting.Checked;
+            this.Customer.FinancialPending = cbxFinancialPending.Checked;
+            this.Customer.Telephone = Util.NoMask(mtbTelephone);
+            this.Customer.CellPhone = Util.NoMask(mtbCellphone);
+            this.Customer.Since = dtpSince.Value;
             this.Customer.Email = txtEmail.Text;
             this.Customer.Obs = txtObs.Text;
             // Address
@@ -143,19 +154,24 @@ namespace Agenda
             // Product
             this.Customer.Product = cbProduct.SelectedItem as Product;
             this.Customer.Components = txtModule.Text;
+            this.Customer.Terminals = Convert.ToInt32(nudTerminals.Value);
         }
 
         private void ShowCustomer()
         {
             // Customer
             txtID.Text = this.Customer.ID.ToString();
+            txtResponsible.Text = this.Customer.Responsible;
             cbxIsInactive.Checked = this.Customer.IsInactive;
             txtRazao.Text = this.Customer.Razao;
             txtName.Text = this.Customer.Name;
             mtbCNPJ.Text = this.Customer.CNPJ;
             mtbIE.Text = this.Customer.IE;
-            txtTelephone.Text = this.Customer.Telephone;
-            txtCellphone.Text = this.Customer.CellPhone;
+            cbxProspecting.Checked = this.Customer.Prospecting;
+            cbxFinancialPending.Checked = this.Customer.FinancialPending;
+            mtbTelephone.Text = this.Customer.Telephone;
+            mtbCellphone.Text = this.Customer.CellPhone;
+            dtpSince.Value = this.Customer.Since;
             txtEmail.Text = this.Customer.Email;
             txtObs.Text = this.Customer.Obs;
             // Address
@@ -171,17 +187,22 @@ namespace Agenda
             // Product
             cbProduct.Text = this.Customer.Product != null ? this.Customer.Product.Name : "Nenhum";
             txtModule.Text = this.Customer.Components;
+            nudTerminals.Value = this.Customer.Terminals;
         }
 
         private void SetFieldsAs(bool setAs)
         {
             // Customer
             txtRazao.Enabled = setAs;
+            txtResponsible.Enabled = setAs;
             txtName.Enabled = setAs;
             mtbCNPJ.Enabled = setAs;
             mtbIE.Enabled = setAs;
-            txtTelephone.Enabled = setAs;
-            txtCellphone.Enabled = setAs;
+            mtbTelephone.Enabled = setAs;
+            cbxProspecting.Enabled = setAs;
+            cbxFinancialPending.Enabled = setAs;
+            mtbCellphone.Enabled = setAs;
+            dtpSince.Enabled = setAs;
             txtEmail.Enabled = setAs;
             txtObs.Enabled = setAs;
             // Address
@@ -197,6 +218,7 @@ namespace Agenda
             // Product
             cbProduct.Enabled = setAs;
             txtModule.Enabled = setAs;
+            nudTerminals.Enabled = setAs;
         }
 
         private void CleanForm()
@@ -204,12 +226,16 @@ namespace Agenda
             // Customer
             txtID.Text = 0.ToString();
             cbxIsInactive.Checked = false;
+            txtResponsible.Text = "";
             txtRazao.Text = "";
             txtName.Text = "";
             mtbCNPJ.Text = "";
             mtbIE.Text = "";
-            txtTelephone.Text = "";
-            txtCellphone.Text = "";
+            cbxProspecting.Checked = false;
+            cbxFinancialPending.Checked = false;
+            mtbTelephone.Text = "";
+            mtbCellphone.Text = "";
+            dtpSince.Value = DateTime.Now;
             txtEmail.Text = "";
             txtObs.Text = "";
             // Adddress
@@ -225,12 +251,35 @@ namespace Agenda
             // Product
             cbProduct.SelectedIndex = 0;
             txtModule.Text = "";
+            nudTerminals.Value = 0;
         }
 
         private void tShowSaved_Tick(object sender, EventArgs e)
         {
             tShowSaved.Enabled = false;
             labSaved.Visible = false;
+        }
+
+        private void mtbCNPJ_Validated(object sender, EventArgs e)
+        {
+            if (this.Action == Util.ActionMode.New)
+            {
+                string cnpj = Util.NoMask(mtbCNPJ);
+
+                if (cnpj.Length >= 14)
+                {
+                    if (Customer.GetByCNPJ(cnpj))
+                    {
+                        if (Customer.QueryCustomers.Count > 0)
+                        {
+                            MessageBox.Show("CNPJ já cadastrado", "Aviso CNPJ");
+                            mtbCNPJ.Text = "";
+                        }
+                    }
+                    else
+                        MessageBox.Show(Connection.ErrorMessage);
+                }
+            }
         }
     }
 }

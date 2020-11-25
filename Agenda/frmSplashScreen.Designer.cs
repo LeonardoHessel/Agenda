@@ -1,6 +1,6 @@
 ﻿namespace Agenda
 {
-    partial class SplashScreen
+    partial class frmSplashScreen
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SplashScreen));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSplashScreen));
             this.pLogo = new System.Windows.Forms.PictureBox();
             this.labTitle = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -92,6 +92,7 @@
             this.labLicenseNumber.Size = new System.Drawing.Size(61, 17);
             this.labLicenseNumber.TabIndex = 4;
             this.labLicenseNumber.Text = "Licença:";
+            this.labLicenseNumber.Visible = false;
             // 
             // labLicense
             // 
@@ -102,6 +103,7 @@
             this.labLicense.Size = new System.Drawing.Size(104, 17);
             this.labLicense.TabIndex = 6;
             this.labLicense.Text = "123456789123";
+            this.labLicense.Visible = false;
             // 
             // labCompanyName
             // 
@@ -156,11 +158,13 @@
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SplashScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SplashScreen";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SplashScreen_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pLogo)).EndInit();
             this.ResumeLayout(false);

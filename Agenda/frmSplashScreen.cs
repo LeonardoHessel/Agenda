@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Agenda
 {
-    public partial class SplashScreen : Form
+    public partial class frmSplashScreen : Form
     {
-        public SplashScreen()
+        public frmSplashScreen()
         {
             InitializeComponent();
             ShowCompany();

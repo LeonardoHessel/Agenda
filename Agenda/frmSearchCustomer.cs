@@ -17,25 +17,25 @@ namespace Agenda
             InitializeComponent();
             txtSearch.Text = search;
             LoadCustomers();
+        }
+
+        public Customer Customer { set; get; }
+
+        private void frmSearchCustomer_Load(object sender, EventArgs e)
+        {
+            FormatDataGridView();
             txtSearch.Focus();
             txtSearch.SelectionStart = 0;
             txtSearch.SelectionLength = txtSearch.Text.Length;
         }
 
-        private Customer customer;
-
-        public Customer Customer
-        {
-            get { return customer; }
-            set { customer = value; }
-        }
-
         private void SearchChanged(object sender, EventArgs e)
         {
             LoadCustomers();
+            FormatDataGridView();
         }
 
-        private void btnSelect_Click(object sender, EventArgs e)
+        private void SelectCustomer(object sender, EventArgs e)
         {
             this.Customer = dgvData.CurrentRow.DataBoundItem as Customer;
             this.DialogResult = DialogResult.Yes;
@@ -46,6 +46,7 @@ namespace Agenda
             frmCustomer newCustomer = new frmCustomer(Util.ActionMode.New);
             newCustomer.ShowDialog();
             LoadCustomers();
+            FormatDataGridView();
         }
 
         private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -79,6 +80,25 @@ namespace Agenda
         {
             if (e.KeyCode == Keys.Escape)
                 this.Close();
+        }
+
+        private void FormatDataGridView()
+        {
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                bool isInactive = Convert.ToBoolean(row.Cells["colIsInactive"].Value);
+                bool isProspecting = Convert.ToBoolean(row.Cells["colProspecting"].Value);
+                bool isfinancialPending = Convert.ToBoolean(row.Cells["colFinancialPending"].Value);
+
+                if (isInactive)
+                    dgvData.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Gray;
+
+                if (isProspecting)
+                    dgvData.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(252, 255, 86);
+
+                if (isfinancialPending)
+                    dgvData.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(255, 86, 86);
+            }
         }
     }
 }

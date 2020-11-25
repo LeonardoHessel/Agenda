@@ -19,7 +19,7 @@ namespace Agenda
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             
-            if (new SplashScreen().ShowDialog() == DialogResult.OK)
+            if (new frmSplashScreen().ShowDialog() == DialogResult.OK)
             {
                 bool exit = false;
                 while (!exit)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Agenda.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,6 +43,8 @@ namespace Agenda
             LoadUsers();
             if (this.User != null)
                 cbUser.SelectedItem = this.User;
+
+            cbUser.Text = Settings.Default.LastLogin;
         }
 
         private void LoadUsers()
@@ -76,8 +79,15 @@ namespace Agenda
                 if (Access.LoadAccess(this.User.ID, this.Module.ID))
                 {
                     if (Access.QueryAccess.HasAccess)
+                    {
+                        Settings.Default.LastLogin = this.User.Name;
+                        Properties.Settings.Default.Save();
                         this.DialogResult = DialogResult.Yes;
-                    //Acesso negado.
+                    }
+                    else
+                    {
+                        MessageBox.Show("Este usuário não possui a permissão de acesso!\nTente Realizar o acesso com outro usuário");
+                    }
                 }
                 else
                     MessageBox.Show(Connection.ErrorMessage);

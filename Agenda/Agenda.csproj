@@ -129,11 +129,11 @@
       <DependentUpon>frmSearchCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="ServiceOrder.cs" />
-    <Compile Include="SplashScreen.cs">
+    <Compile Include="frmSplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SplashScreen.Designer.cs">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
+    <Compile Include="frmSplashScreen.Designer.cs">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="ucCustomer.cs">
       <SubType>UserControl</SubType>
@@ -194,8 +194,8 @@
     <EmbeddedResource Include="frmSearchCustomer.resx">
       <DependentUpon>frmSearchCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SplashScreen.resx">
-      <DependentUpon>SplashScreen.cs</DependentUpon>
+    <EmbeddedResource Include="frmSplashScreen.resx">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucCustomer.resx">
       <DependentUpon>ucCustomer.cs</DependentUpon>

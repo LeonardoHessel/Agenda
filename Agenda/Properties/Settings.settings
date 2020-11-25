@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="Server" Type="System.String" Scope="User">
-      <Value Profile="(Default)">localhost</Value>
+      <Value Profile="(Default)">suporte1</Value>
     </Setting>
     <Setting Name="Database" Type="System.String" Scope="User">
-      <Value Profile="(Default)">schedule</Value>
+      <Value Profile="(Default)">sso_drs</Value>
     </Setting>
     <Setting Name="User" Type="System.String" Scope="User">
       <Value Profile="(Default)">user</Value>
@@ -19,6 +19,9 @@
     </Setting>
     <Setting Name="Charset" Type="System.String" Scope="User">
       <Value Profile="(Default)">utf8</Value>
+    </Setting>
+    <Setting Name="LastLogin" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

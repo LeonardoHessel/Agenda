@@ -20,8 +20,6 @@ C:\DevFiles\Agenda\Agenda\bin\Debug\K4os.Hash.xxHash.dll
 C:\DevFiles\Agenda\Agenda\bin\Debug\System.Memory.dll
 C:\DevFiles\Agenda\Agenda\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\DevFiles\Agenda\Agenda\bin\Debug\MySql.Data.xml
-C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.exe.config
-C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.SplashScreen.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csproj.CopyComplete
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmDBConfig.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmHome.resources
@@ -34,3 +32,5 @@ C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmProduct.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmUser.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmCustomer.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmSearchCustomer.resources
+C:\DevFiles\Agenda\Agenda\bin\Debug\System.Numerics.Vectors.dll
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmSplashScreen.resources

@@ -14,8 +14,12 @@ namespace Agenda
         public string IE { set; get; }
         public string Razao { set; get; }
         public string Name { set; get; }
+        public string Responsible { get; set; }
+        public bool Prospecting { get; set; }
+        public bool FinancialPending { get; set; }
         public string Telephone { set; get; }
         public string CellPhone { set; get; }
+        public DateTime Since { set; get; }
         public string Email { set; get; }
         public string Obs { set; get; }
         public Address Address { set; get; }
@@ -23,6 +27,7 @@ namespace Agenda
         public string AccountantEmail { set; get; }
         public Product Product { set; get; }
         public string Components { set; get; }
+        public int Terminals { get; set; }
         public bool IsInactive { set; get; }
 
         public static Customer QueryCustomer { private set; get; }
@@ -32,9 +37,11 @@ namespace Agenda
         {
             if (this.Address.Insert())
             {
-                string sql = @"INSERT INTO `customer` (`cnpj`,`ie`,`razao`,`name`,`telephone`,`cellphone`,`email`,`obs`,
-                `address_id`,`accountant`,`accountant_email`,`product_id`,`components`) VALUES (@cnpj,@ie,@razao,@name,
-                @telephone,@cellphone,@email,@obs,@address_id,@accountant,@accountant_email,@product_id,@components)";
+                string sql = @"INSERT INTO `customer` (`cnpj`,`ie`,`razao`,`name`,`responsible`,`prospecting`,
+                `financial_pending`,`telephone`,`cellphone`,`since`,`email`,`obs`,`address_id`,`accountant`,`accountant_email`,
+                `product_id`,`components`,`terminals`) VALUES (@cnpj,@ie,@razao,@name,@responsible,@prospecting,
+                @financial_pending,@telephone,@cellphone,@since,@email,@obs,@address_id,@accountant,@accountant_email,
+                @product_id,@components,@terminals)";
                 TextCommand(sql);
                 Parameters("Insert");
                 if (Execute())
@@ -56,6 +63,20 @@ namespace Agenda
             if (customer.ExecuteQuery())
             {
                 Customer.QueryCustomer = customer.TableToList(Connection.SelectedTable)[0];
+                return true;
+            }
+            return false;
+        }
+
+        public static bool GetByCNPJ(string cnpj)
+        {
+            Customer customer = new Customer();
+            string sql = @"SELECT * FROM `customer` WHERE `cnpj`=@cnpj";
+            customer.TextCommand(sql);
+            customer.AddParameter("cnpj", cnpj);
+            if (customer.ExecuteQuery())
+            {
+                Customer.QueryCustomers = customer.TableToList(Connection.SelectedTable);
                 return true;
             }
             return false;
@@ -107,10 +128,11 @@ namespace Agenda
         {
             if (this.Address.Update())
             {
-                string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,`razao`=@razao,`name`=@name,`telephone`=@telephone,
-                `cellphone`=@cellphone,`email`=@email,`obs`=@obs,`address_id`=@address_id,`accountant`=@accountant,
-                `accountant_email`=@accountant_email,`product_id`=@product_id,`components`=@components,
-                `is_inactive`=@is_inactive WHERE `id`=@id";
+                string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,`razao`=@razao,`name`=@name,
+                `responsible`=@responsible,`prospecting`=@prospecting,`financial_pending`=@financial_pending,
+                `telephone`=@telephone,`cellphone`=@cellphone,`since`=@since,`email`=@email,`obs`=@obs,`address_id`=@address_id,
+                `accountant`=@accountant,`accountant_email`=@accountant_email,`product_id`=@product_id,
+                `components`=@components,`terminals`=@terminals,`is_inactive`=@is_inactive WHERE `id`=@id";
                 TextCommand(sql);
                 Parameters("Update");
             }
@@ -123,8 +145,12 @@ namespace Agenda
             AddParameter("ie", this.IE);
             AddParameter("razao", this.Razao);
             AddParameter("name", this.Name);
+            AddParameter("responsible", this.Responsible);
+            AddParameter("prospecting", this.Prospecting);
+            AddParameter("financial_pending", this.FinancialPending);
             AddParameter("telephone", this.Telephone);
             AddParameter("cellphone", this.CellPhone);
+            AddParameter("since", this.Since);
             AddParameter("email", this.Email);
             AddParameter("obs", this.Obs);
 
@@ -139,6 +165,7 @@ namespace Agenda
                 AddParameter("product_id", null);
 
             AddParameter("components", this.Components);
+            AddParameter("terminals", this.Terminals);
 
             if (action == "Update")
             {
@@ -160,8 +187,12 @@ namespace Agenda
                                  IE = row["ie"].ToString(),
                                  Razao = row["razao"].ToString(),
                                  Name = row["name"].ToString(),
+                                 Responsible = row["responsible"].ToString(),
+                                 Prospecting = Convert.ToBoolean(row["prospecting"]),
+                                 FinancialPending = Convert.ToBoolean(row["financial_pending"]),
                                  Telephone = row["telephone"].ToString(),
                                  CellPhone = row["cellphone"].ToString(),
+                                 Since = Convert.ToDateTime(row["since"]),
                                  Email = row["email"].ToString(),
                                  Obs = row["obs"].ToString(),
                                  GetAddress = row["address_id"],
@@ -169,6 +200,7 @@ namespace Agenda
                                  AccountantEmail = row["accountant_email"].ToString(),
                                  GetProduct = row["product_id"],
                                  Components = row["components"].ToString(),
+                                 Terminals = Convert.ToInt32(row["terminals"]),
                                  IsInactive = Convert.ToBoolean(row["is_inactive"]),
                              }).ToList();
 

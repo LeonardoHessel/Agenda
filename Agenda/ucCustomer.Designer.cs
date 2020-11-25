@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucCustomer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbActiveStatus = new System.Windows.Forms.GroupBox();
             this.rbInactive = new System.Windows.Forms.RadioButton();
             this.rbActive = new System.Windows.Forms.RadioButton();
@@ -47,10 +47,14 @@
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRazao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colResponsible = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProspecting = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colFinancialPending = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colCNPJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTelephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCellphone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSince = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObs = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +62,7 @@
             this.colAccountantEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colComponents = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTerminals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIsInactive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gbActiveStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).BeginInit();
@@ -197,14 +202,16 @@
             // labSearch
             // 
             this.labSearch.AutoSize = true;
+            this.labSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
             this.labSearch.Location = new System.Drawing.Point(108, 115);
             this.labSearch.Name = "labSearch";
-            this.labSearch.Size = new System.Drawing.Size(46, 15);
+            this.labSearch.Size = new System.Drawing.Size(335, 15);
             this.labSearch.TabIndex = 18;
-            this.labSearch.Text = "Busca:";
+            this.labSearch.Text = "Pesquisa por CNPJ, IE, razão, Fantasia, telefone e celular.";
             // 
             // txtSearch
             // 
+            this.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSearch.Location = new System.Drawing.Point(111, 131);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(430, 23);
@@ -224,23 +231,27 @@
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvData.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvData.ColumnHeadersHeight = 35;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colID,
             this.colRazao,
             this.colName,
+            this.colResponsible,
+            this.colProspecting,
+            this.colFinancialPending,
             this.colCNPJ,
             this.colIE,
             this.colTelephone,
             this.colCellphone,
+            this.colSince,
             this.colEmail,
             this.colObs,
             this.colAddress,
@@ -248,6 +259,7 @@
             this.colAccountantEmail,
             this.colProduct,
             this.colComponents,
+            this.colTerminals,
             this.colIsInactive});
             this.dgvData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvData.EnableHeadersVisualStyles = false;
@@ -267,9 +279,8 @@
             // colID
             // 
             this.colID.DataPropertyName = "ID";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colID.DefaultCellStyle = dataGridViewCellStyle8;
-            this.colID.Frozen = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colID.DefaultCellStyle = dataGridViewCellStyle2;
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
             this.colID.ReadOnly = true;
@@ -289,8 +300,31 @@
             this.colName.HeaderText = "Fantasia";
             this.colName.Name = "colName";
             this.colName.ReadOnly = true;
-            this.colName.Visible = false;
             this.colName.Width = 200;
+            // 
+            // colResponsible
+            // 
+            this.colResponsible.DataPropertyName = "Responsible";
+            this.colResponsible.HeaderText = "Responsável";
+            this.colResponsible.Name = "colResponsible";
+            this.colResponsible.ReadOnly = true;
+            this.colResponsible.Visible = false;
+            // 
+            // colProspecting
+            // 
+            this.colProspecting.DataPropertyName = "Prospecting";
+            this.colProspecting.HeaderText = "Prospecção";
+            this.colProspecting.Name = "colProspecting";
+            this.colProspecting.ReadOnly = true;
+            this.colProspecting.Visible = false;
+            // 
+            // colFinancialPending
+            // 
+            this.colFinancialPending.DataPropertyName = "FinancialPending";
+            this.colFinancialPending.HeaderText = "Pendência F.";
+            this.colFinancialPending.Name = "colFinancialPending";
+            this.colFinancialPending.ReadOnly = true;
+            this.colFinancialPending.Visible = false;
             // 
             // colCNPJ
             // 
@@ -306,6 +340,7 @@
             this.colIE.HeaderText = "IE";
             this.colIE.Name = "colIE";
             this.colIE.ReadOnly = true;
+            this.colIE.Visible = false;
             this.colIE.Width = 95;
             // 
             // colTelephone
@@ -323,6 +358,14 @@
             this.colCellphone.Name = "colCellphone";
             this.colCellphone.ReadOnly = true;
             this.colCellphone.Width = 105;
+            // 
+            // colSince
+            // 
+            this.colSince.DataPropertyName = "Since";
+            this.colSince.HeaderText = "Cli. Desde";
+            this.colSince.Name = "colSince";
+            this.colSince.ReadOnly = true;
+            this.colSince.Visible = false;
             // 
             // colEmail
             // 
@@ -380,6 +423,14 @@
             this.colComponents.ReadOnly = true;
             this.colComponents.Visible = false;
             // 
+            // colTerminals
+            // 
+            this.colTerminals.DataPropertyName = "Terminals";
+            this.colTerminals.HeaderText = "Qtd. Terminais";
+            this.colTerminals.Name = "colTerminals";
+            this.colTerminals.ReadOnly = true;
+            this.colTerminals.Visible = false;
+            // 
             // colIsInactive
             // 
             this.colIsInactive.DataPropertyName = "IsInactive";
@@ -387,6 +438,7 @@
             this.colIsInactive.Name = "colIsInactive";
             this.colIsInactive.ReadOnly = true;
             this.colIsInactive.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.colIsInactive.Visible = false;
             this.colIsInactive.Width = 70;
             // 
             // ucCustomer
@@ -402,6 +454,7 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.pTitle);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.Black;
             this.Name = "ucCustomer";
             this.Size = new System.Drawing.Size(1100, 1024);
             this.Load += new System.EventHandler(this.ucCustomer_Load);
@@ -433,10 +486,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colRazao;
         private System.Windows.Forms.DataGridViewTextBoxColumn colName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colResponsible;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colProspecting;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colFinancialPending;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCNPJ;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIE;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelephone;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCellphone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSince;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObs;
         private System.Windows.Forms.DataGridViewTextBoxColumn colAddress;
@@ -444,6 +501,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colAccountantEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn colProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn colComponents;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTerminals;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colIsInactive;
     }
 }

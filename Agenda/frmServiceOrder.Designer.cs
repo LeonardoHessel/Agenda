@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmServiceOrder));
             this.pForm = new System.Windows.Forms.Panel();
+            this.labSaved = new System.Windows.Forms.Label();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
@@ -70,7 +71,6 @@
             this.labTitle = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.tShowSaved = new System.Windows.Forms.Timer(this.components);
-            this.labSaved = new System.Windows.Forms.Label();
             this.pForm.SuspendLayout();
             this.pTabInfo.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +88,18 @@
             this.pForm.Name = "pForm";
             this.pForm.Size = new System.Drawing.Size(1024, 556);
             this.pForm.TabIndex = 0;
+            // 
+            // labSaved
+            // 
+            this.labSaved.AutoSize = true;
+            this.labSaved.Font = new System.Drawing.Font("Roboto Bk", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            this.labSaved.Location = new System.Drawing.Point(76, 494);
+            this.labSaved.Name = "labSaved";
+            this.labSaved.Size = new System.Drawing.Size(142, 24);
+            this.labSaved.TabIndex = 13;
+            this.labSaved.Text = "Registro salvo!";
+            this.labSaved.Visible = false;
             // 
             // btnNew
             // 
@@ -191,10 +203,10 @@
             // 
             // txtCustomerCNPJ
             // 
-            this.txtCustomerCNPJ.Enabled = false;
             this.txtCustomerCNPJ.Location = new System.Drawing.Point(158, 79);
-            this.txtCustomerCNPJ.Mask = "99,999,999/9999,99";
+            this.txtCustomerCNPJ.Mask = "99,999,999/9999-99";
             this.txtCustomerCNPJ.Name = "txtCustomerCNPJ";
+            this.txtCustomerCNPJ.ReadOnly = true;
             this.txtCustomerCNPJ.Size = new System.Drawing.Size(132, 23);
             this.txtCustomerCNPJ.TabIndex = 32;
             // 
@@ -516,18 +528,6 @@
             this.tShowSaved.Interval = 2000;
             this.tShowSaved.Tick += new System.EventHandler(this.tShowSaved_Tick);
             // 
-            // labSaved
-            // 
-            this.labSaved.AutoSize = true;
-            this.labSaved.Font = new System.Drawing.Font("Roboto Bk", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            this.labSaved.Location = new System.Drawing.Point(76, 494);
-            this.labSaved.Name = "labSaved";
-            this.labSaved.Size = new System.Drawing.Size(142, 24);
-            this.labSaved.TabIndex = 13;
-            this.labSaved.Text = "Registro salvo!";
-            this.labSaved.Visible = false;
-            // 
             // frmServiceOrder
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -538,12 +538,14 @@
             this.Controls.Add(this.pForm);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmServiceOrder";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Oredm de Serviço";
             this.Load += new System.EventHandler(this.frmServiceOrder_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmServiceOrder_KeyDown);
             this.pForm.ResumeLayout(false);

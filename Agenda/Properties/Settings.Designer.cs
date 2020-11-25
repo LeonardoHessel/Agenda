@@ -25,7 +25,7 @@ namespace Agenda.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("localhost")]
+        [global::System.Configuration.DefaultSettingValueAttribute("suporte1")]
         public string Server {
             get {
                 return ((string)(this["Server"]));
@@ -37,7 +37,7 @@ namespace Agenda.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("schedule")]
+        [global::System.Configuration.DefaultSettingValueAttribute("sso_drs")]
         public string Database {
             get {
                 return ((string)(this["Database"]));
@@ -92,6 +92,18 @@ namespace Agenda.Properties {
             }
             set {
                 this["Charset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastLogin {
+            get {
+                return ((string)(this["LastLogin"]));
+            }
+            set {
+                this["LastLogin"] = value;
             }
         }
     }

@@ -1,5 +1,5 @@
-CREATE DATABASE `sso_drs`;
-USE `sso_drs`;
+CREATE DATABASE `update`;
+USE `update`;
 
 CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   INDEX `fk_address_idx` (`address_id` ASC) VISIBLE,
   CONSTRAINT `fk_address_user`
     FOREIGN KEY (`address_id`)
-    REFERENCES `schedule`.`address` (`id`)
+    REFERENCES `address` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -50,12 +50,12 @@ CREATE TABLE IF NOT EXISTS `access` (
   INDEX `Module_FK_idx` (`module_id` ASC) VISIBLE,
   CONSTRAINT `fk_user_access`
     FOREIGN KEY (`user_id`)
-    REFERENCES `schedule`.`user` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_module_access`
     FOREIGN KEY (`module_id`)
-    REFERENCES `schedule`.`module` (`id`)
+    REFERENCES `module` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -69,31 +69,35 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `customer` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `cnpj` CHAR(14) NULL,
-  `ie` VARCHAR(16) NULL,
-  `razao` VARCHAR(45) NULL,
-  `name` VARCHAR(45) NULL,
-  `telephone` VARCHAR(45) NULL,
-  `cellphone` VARCHAR(45) NULL,
-  `email` VARCHAR(250) NULL,
-  `obs` TEXT NULL,
-  `address_id` INT NULL,
-  `accountant` VARCHAR(45) NULL,
-  `accountant_email` VARCHAR(45) NULL,
-  `product_id` INT NULL,
-  `components` VARCHAR(45) NULL,
+  `cnpj` CHAR(14),
+  `ie` VARCHAR(16),
+  `razao` VARCHAR(250),
+  `name` VARCHAR(250),
+  `responsible` VARCHAR(45),
+  `prospecting` BOOL DEFAULT FALSE,
+  `financial_pending` BOOL DEFAULT FALSE,
+  `telephone` VARCHAR(45),
+  `cellphone` VARCHAR(45),
+  `email` VARCHAR(250),
+  `obs` TEXT,
+  `address_id` INT,
+  `accountant` VARCHAR(45),
+  `accountant_email` VARCHAR(250),
+  `product_id` INT,
+  `components` VARCHAR(45),
+  `terminals` INT DEFAULT 0,
   `is_inactive` TINYINT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_address_idx` (`address_id` ASC) VISIBLE,
   INDEX `fk_product_idx` (`product_id` ASC) VISIBLE,
   CONSTRAINT `fk_address_customer`
     FOREIGN KEY (`address_id`)
-    REFERENCES `schedule`.`address` (`id`)
+    REFERENCES `address` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_product_customer`
     FOREIGN KEY (`product_id`)
-    REFERENCES `schedule`.`product` (`id`)
+    REFERENCES `product` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -112,14 +116,14 @@ CREATE TABLE IF NOT EXISTS `serviceorder` (
   `creation` DATETIME NULL,
   `start` DATETIME NULL,
   `end` DATETIME NULL,
-  `active` TINYINT NULL,
+  `is_inactive` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_customer_idx` (`customer_id` ASC) VISIBLE,
   INDEX `fk_user_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_product_idx` (`product_id` ASC) VISIBLE,
   CONSTRAINT `fk_customer_serviceorder`
     FOREIGN KEY (`customer_id`)
-    REFERENCES `schedule`.`customer` (`id`)
+    REFERENCES `customer` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_serviceorder`
@@ -129,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `serviceorder` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_product_serviceorder`
     FOREIGN KEY (`product_id`)
-    REFERENCES `schedule`.`product` (`id`)
+    REFERENCES `product` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -190,4 +194,9 @@ BEGIN
 	END LOOP SearchLoop;
 END $$
 DELIMITER ;
+
+INSERT INTO `module` (`name`, `restrict`) VALUES ("Login", FALSE);
+INSERT INTO `address` VALUES (0,"18271790","José Oliviéri","233","Parque Santa Maria","Tatuí","São Paulo");
+INSERT INTO `user` VALUES (0,"Default", "123", "Default","2020-01-01","Masculino","12345678900","12345678901","12345678912",null,1,false);
+
 

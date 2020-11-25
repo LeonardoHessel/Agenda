@@ -165,11 +165,11 @@
             this.labVersion.AutoSize = true;
             this.labVersion.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.labVersion.Location = new System.Drawing.Point(158, 433);
+            this.labVersion.Location = new System.Drawing.Point(153, 433);
             this.labVersion.Name = "labVersion";
-            this.labVersion.Size = new System.Drawing.Size(85, 19);
+            this.labVersion.Size = new System.Drawing.Size(94, 19);
             this.labVersion.TabIndex = 1;
-            this.labVersion.Text = "Versão 0.5";
+            this.labVersion.Text = "Versão 0.83";
             // 
             // frmLogin
             // 
@@ -182,12 +182,14 @@
             this.Controls.Add(this.pBackColor);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyDown);
             this.pBackColor.ResumeLayout(false);
