@@ -13,6 +13,7 @@ namespace Agenda
         public long ID { set; get; }
         public Customer Customer { set; get; }
         public string WhoRequested { set; get; }
+        public User WhoLaunched { get; set; }
         public User User { set; get; }
         public string Subject { set; get; }
         public string Description { set; get; }
@@ -36,9 +37,9 @@ namespace Agenda
 
         public bool Insert()
         {
-            string sql = @"INSERT INTO `serviceorder` (`customer_id`,`whorequested`,`user_id`,`subject`,
+            string sql = @"INSERT INTO `serviceorder` (`customer_id`,`whorequested`,`launched_id`,`user_id`,`subject`,
             `description`,`solution`,`product_id`,`service`,`status`,`creation`,`start`,`end`) 
-            VALUES (@customer_id,@whorequested,@user_id,@subject,@description,@solution,@product_id,
+            VALUES (@customer_id,@whorequested,@launched_id,@user_id,@subject,@description,@solution,@product_id,
             @service,@status,@creation,@start,@end)";
             TextCommand(sql);
             Parameters("Insert");
@@ -75,21 +76,28 @@ namespace Agenda
             string addSql = " WHERE ";
             string sql = @"SELECT `so`.* FROM `serviceorder` `so`
             JOIN `customer` `c` ON `c`.`id` = `so`.`customer_id`";
-            if (afBool)
+            if (afBool && status != "Atrasado")
             {
                 sql += addSql + "`so`.`start` >= @afDate";
                 addSql = " AND ";
             }
 
-            if (beBool)
+            if (beBool && status != "Atrasado")
             {
                 sql += addSql + "`so`.`start` < @beDate";
                 addSql = " AND ";
             }
 
+            if (status == "Atrasado")
+            {
+                sql += addSql + "`so`.`end` < @late";
+                addSql = " AND ";
+            }
+
             if (search != null && search != "")
             {
-                sql += addSql + @"(`so`.`subject` LIKE CONCAT('%', @search,'%') OR 
+                sql += addSql + @"(`c`.`responsible` LIKE CONCAT('%', @search,'%') OR
+                `so`.`subject` LIKE CONCAT('%', @search,'%') OR 
                 `so`.`description` LIKE CONCAT('%', @search,'%') OR 
                 `c`.`razao` LIKE CONCAT('%', @search,'%') OR 
                 `c`.`name` LIKE CONCAT('%', @search,'%') OR 
@@ -99,7 +107,10 @@ namespace Agenda
 
             if (status != "Todos" && status != "")
             {
-                sql += addSql + "`status` = @status";
+                if (status == "Atrasado")
+                    sql += addSql + "`status` <> 'Finalizado'";
+                else
+                    sql += addSql + "`status` = @status";
                 addSql = " AND ";
             }
 
@@ -118,6 +129,9 @@ namespace Agenda
 
             if (beBool)
                 order.AddParameter("beDate", beDate);
+            
+            if (status == "Atrasado")
+                order.AddParameter("late", DateTime.Now);
 
             if (search != null && search != "")
                 order.AddParameter("search", search);
@@ -151,7 +165,10 @@ namespace Agenda
         {
             AddParameter("customer_id", this.Customer.ID);
             AddParameter("whorequested", this.WhoRequested);
-            
+
+            if (action == "Insert")
+                AddParameter("launched_id", this.WhoLaunched.ID);
+
             if (this.User != null && this.User.ID > 0)
                 AddParameter("user_id", this.User.ID);
             else
@@ -192,6 +209,7 @@ namespace Agenda
                     ID = Convert.ToInt64(row["id"]),
                     GetCustomer = row["customer_id"],
                     WhoRequested = row["whorequested"].ToString(),
+                    GetLauncher = row["launched_id"],
                     GetUser = row["user_id"],
                     Subject = row["subject"].ToString(),
                     Description = row["description"].ToString(),
@@ -217,6 +235,18 @@ namespace Agenda
                 {
                     if (Customer.GetByID(Convert.ToInt64(value)))
                         this.Customer = Customer.QueryCustomer;
+                }
+            }
+        }
+
+        private object GetLauncher
+        {
+            set
+            {
+                if (value is int || value is long)
+                {
+                    if (User.GetByID(Convert.ToInt64(value)))
+                        this.WhoLaunched = User.QueryUser;
                 }
             }
         }

@@ -37,6 +37,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.labTabInfo = new System.Windows.Forms.Label();
             this.pTabInfo = new System.Windows.Forms.Panel();
+            this.cbWhoLaunched = new System.Windows.Forms.ComboBox();
+            this.labWhoLaunch = new System.Windows.Forms.Label();
             this.txtCustomerCNPJ = new System.Windows.Forms.MaskedTextBox();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.cbServiceOrderInactive = new System.Windows.Forms.CheckBox();
@@ -112,7 +114,7 @@
             this.btnNew.Margin = new System.Windows.Forms.Padding(5);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(90, 30);
-            this.btnNew.TabIndex = 20;
+            this.btnNew.TabIndex = 1;
             this.btnNew.Text = "Novo";
             this.btnNew.UseVisualStyleBackColor = false;
             this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
@@ -128,7 +130,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 30);
-            this.btnCancel.TabIndex = 19;
+            this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -144,7 +146,7 @@
             this.btnSave.Margin = new System.Windows.Forms.Padding(5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(90, 30);
-            this.btnSave.TabIndex = 18;
+            this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Salvar";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -164,6 +166,8 @@
             // pTabInfo
             // 
             this.pTabInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.pTabInfo.Controls.Add(this.cbWhoLaunched);
+            this.pTabInfo.Controls.Add(this.labWhoLaunch);
             this.pTabInfo.Controls.Add(this.txtCustomerCNPJ);
             this.pTabInfo.Controls.Add(this.btnAddProduct);
             this.pTabInfo.Controls.Add(this.cbServiceOrderInactive);
@@ -199,16 +203,38 @@
             this.pTabInfo.Margin = new System.Windows.Forms.Padding(0);
             this.pTabInfo.Name = "pTabInfo";
             this.pTabInfo.Size = new System.Drawing.Size(870, 424);
-            this.pTabInfo.TabIndex = 17;
+            this.pTabInfo.TabIndex = 0;
+            // 
+            // cbWhoLaunched
+            // 
+            this.cbWhoLaunched.DisplayMember = "Name";
+            this.cbWhoLaunched.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbWhoLaunched.Enabled = false;
+            this.cbWhoLaunched.FormattingEnabled = true;
+            this.cbWhoLaunched.Location = new System.Drawing.Point(630, 65);
+            this.cbWhoLaunched.Name = "cbWhoLaunched";
+            this.cbWhoLaunched.Size = new System.Drawing.Size(170, 23);
+            this.cbWhoLaunched.TabIndex = 34;
+            this.cbWhoLaunched.TabStop = false;
+            // 
+            // labWhoLaunch
+            // 
+            this.labWhoLaunch.AutoSize = true;
+            this.labWhoLaunch.Location = new System.Drawing.Point(543, 68);
+            this.labWhoLaunch.Name = "labWhoLaunch";
+            this.labWhoLaunch.Size = new System.Drawing.Size(81, 15);
+            this.labWhoLaunch.TabIndex = 33;
+            this.labWhoLaunch.Text = "Lançado por:";
             // 
             // txtCustomerCNPJ
             // 
-            this.txtCustomerCNPJ.Location = new System.Drawing.Point(158, 79);
+            this.txtCustomerCNPJ.Location = new System.Drawing.Point(158, 62);
             this.txtCustomerCNPJ.Mask = "99,999,999/9999-99";
             this.txtCustomerCNPJ.Name = "txtCustomerCNPJ";
             this.txtCustomerCNPJ.ReadOnly = true;
             this.txtCustomerCNPJ.Size = new System.Drawing.Size(132, 23);
-            this.txtCustomerCNPJ.TabIndex = 32;
+            this.txtCustomerCNPJ.TabIndex = 1;
+            this.txtCustomerCNPJ.TabStop = false;
             // 
             // btnAddProduct
             // 
@@ -216,10 +242,11 @@
             this.btnAddProduct.FlatAppearance.BorderSize = 0;
             this.btnAddProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnAddProduct.Image")));
-            this.btnAddProduct.Location = new System.Drawing.Point(346, 303);
+            this.btnAddProduct.Location = new System.Drawing.Point(346, 286);
             this.btnAddProduct.Name = "btnAddProduct";
             this.btnAddProduct.Size = new System.Drawing.Size(23, 23);
-            this.btnAddProduct.TabIndex = 31;
+            this.btnAddProduct.TabIndex = 9;
+            this.btnAddProduct.TabStop = false;
             this.btnAddProduct.UseVisualStyleBackColor = false;
             this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
@@ -227,7 +254,7 @@
             // 
             this.cbServiceOrderInactive.AutoSize = true;
             this.cbServiceOrderInactive.Font = new System.Drawing.Font("Roboto", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbServiceOrderInactive.Location = new System.Drawing.Point(740, 20);
+            this.cbServiceOrderInactive.Location = new System.Drawing.Point(740, 30);
             this.cbServiceOrderInactive.Name = "cbServiceOrderInactive";
             this.cbServiceOrderInactive.Size = new System.Drawing.Size(60, 17);
             this.cbServiceOrderInactive.TabIndex = 30;
@@ -241,10 +268,11 @@
             this.btnSearchCustomer.FlatAppearance.BorderSize = 0;
             this.btnSearchCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchCustomer.Image")));
-            this.btnSearchCustomer.Location = new System.Drawing.Point(543, 43);
+            this.btnSearchCustomer.Location = new System.Drawing.Point(543, 26);
             this.btnSearchCustomer.Name = "btnSearchCustomer";
             this.btnSearchCustomer.Size = new System.Drawing.Size(23, 23);
-            this.btnSearchCustomer.TabIndex = 29;
+            this.btnSearchCustomer.TabIndex = 3;
+            this.btnSearchCustomer.TabStop = false;
             this.btnSearchCustomer.UseVisualStyleBackColor = false;
             this.btnSearchCustomer.Click += new System.EventHandler(this.btnSearchCustomer_Click);
             // 
@@ -252,34 +280,35 @@
             // 
             this.dtpServiceEndDate.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dtpServiceEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpServiceEndDate.Location = new System.Drawing.Point(643, 370);
+            this.dtpServiceEndDate.Location = new System.Drawing.Point(660, 353);
             this.dtpServiceEndDate.Name = "dtpServiceEndDate";
-            this.dtpServiceEndDate.Size = new System.Drawing.Size(157, 23);
-            this.dtpServiceEndDate.TabIndex = 28;
+            this.dtpServiceEndDate.Size = new System.Drawing.Size(140, 23);
+            this.dtpServiceEndDate.TabIndex = 11;
             // 
             // dtpServiceCreationDate
             // 
             this.dtpServiceCreationDate.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dtpServiceCreationDate.Enabled = false;
             this.dtpServiceCreationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpServiceCreationDate.Location = new System.Drawing.Point(643, 300);
+            this.dtpServiceCreationDate.Location = new System.Drawing.Point(660, 286);
             this.dtpServiceCreationDate.Name = "dtpServiceCreationDate";
-            this.dtpServiceCreationDate.Size = new System.Drawing.Size(157, 23);
-            this.dtpServiceCreationDate.TabIndex = 27;
+            this.dtpServiceCreationDate.Size = new System.Drawing.Size(140, 23);
+            this.dtpServiceCreationDate.TabIndex = 9;
+            this.dtpServiceCreationDate.TabStop = false;
             // 
             // dtpServiceStartDate
             // 
             this.dtpServiceStartDate.CustomFormat = "dd/MM/yyyy HH:mm";
             this.dtpServiceStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpServiceStartDate.Location = new System.Drawing.Point(643, 335);
+            this.dtpServiceStartDate.Location = new System.Drawing.Point(660, 319);
             this.dtpServiceStartDate.Name = "dtpServiceStartDate";
-            this.dtpServiceStartDate.Size = new System.Drawing.Size(157, 23);
-            this.dtpServiceStartDate.TabIndex = 26;
+            this.dtpServiceStartDate.Size = new System.Drawing.Size(140, 23);
+            this.dtpServiceStartDate.TabIndex = 10;
             // 
             // labServiceEndDate
             // 
             this.labServiceEndDate.AutoSize = true;
-            this.labServiceEndDate.Location = new System.Drawing.Point(555, 376);
+            this.labServiceEndDate.Location = new System.Drawing.Point(596, 356);
             this.labServiceEndDate.Name = "labServiceEndDate";
             this.labServiceEndDate.Size = new System.Drawing.Size(58, 15);
             this.labServiceEndDate.TabIndex = 25;
@@ -287,6 +316,7 @@
             // 
             // cbServiceMode
             // 
+            this.cbServiceMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbServiceMode.FormattingEnabled = true;
             this.cbServiceMode.Items.AddRange(new object[] {
             "E-mail",
@@ -294,15 +324,15 @@
             "Telefone",
             "WhatsApp",
             "Local"});
-            this.cbServiceMode.Location = new System.Drawing.Point(158, 336);
+            this.cbServiceMode.Location = new System.Drawing.Point(158, 319);
             this.cbServiceMode.Name = "cbServiceMode";
             this.cbServiceMode.Size = new System.Drawing.Size(182, 23);
-            this.cbServiceMode.TabIndex = 19;
+            this.cbServiceMode.TabIndex = 7;
             // 
             // labServiceMode
             // 
             this.labServiceMode.AutoSize = true;
-            this.labServiceMode.Location = new System.Drawing.Point(70, 339);
+            this.labServiceMode.Location = new System.Drawing.Point(70, 322);
             this.labServiceMode.Name = "labServiceMode";
             this.labServiceMode.Size = new System.Drawing.Size(82, 15);
             this.labServiceMode.TabIndex = 22;
@@ -311,7 +341,7 @@
             // labServiceStartDate
             // 
             this.labServiceStartDate.AutoSize = true;
-            this.labServiceStartDate.Location = new System.Drawing.Point(555, 341);
+            this.labServiceStartDate.Location = new System.Drawing.Point(596, 325);
             this.labServiceStartDate.Name = "labServiceStartDate";
             this.labServiceStartDate.Size = new System.Drawing.Size(41, 15);
             this.labServiceStartDate.TabIndex = 24;
@@ -320,7 +350,7 @@
             // labServiceCreationDate
             // 
             this.labServiceCreationDate.AutoSize = true;
-            this.labServiceCreationDate.Location = new System.Drawing.Point(555, 306);
+            this.labServiceCreationDate.Location = new System.Drawing.Point(596, 292);
             this.labServiceCreationDate.Name = "labServiceCreationDate";
             this.labServiceCreationDate.Size = new System.Drawing.Size(54, 15);
             this.labServiceCreationDate.TabIndex = 23;
@@ -329,7 +359,7 @@
             // labStatus
             // 
             this.labStatus.AutoSize = true;
-            this.labStatus.Location = new System.Drawing.Point(70, 373);
+            this.labStatus.Location = new System.Drawing.Point(70, 356);
             this.labStatus.Name = "labStatus";
             this.labStatus.Size = new System.Drawing.Size(47, 15);
             this.labStatus.TabIndex = 21;
@@ -338,7 +368,7 @@
             // labProduct
             // 
             this.labProduct.AutoSize = true;
-            this.labProduct.Location = new System.Drawing.Point(70, 306);
+            this.labProduct.Location = new System.Drawing.Point(70, 289);
             this.labProduct.Name = "labProduct";
             this.labProduct.Size = new System.Drawing.Size(57, 15);
             this.labProduct.TabIndex = 20;
@@ -346,49 +376,51 @@
             // 
             // cbStatus
             // 
+            this.cbStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatus.FormattingEnabled = true;
             this.cbStatus.Items.AddRange(new object[] {
             "Agendado",
             "Cancelado",
             "Finalizado",
             "Pendente"});
-            this.cbStatus.Location = new System.Drawing.Point(158, 370);
+            this.cbStatus.Location = new System.Drawing.Point(158, 353);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(182, 23);
-            this.cbStatus.TabIndex = 18;
+            this.cbStatus.TabIndex = 8;
             // 
             // cbProduct
             // 
             this.cbProduct.DisplayMember = "Name";
             this.cbProduct.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProduct.FormattingEnabled = true;
-            this.cbProduct.Location = new System.Drawing.Point(158, 303);
+            this.cbProduct.Location = new System.Drawing.Point(158, 286);
             this.cbProduct.Name = "cbProduct";
             this.cbProduct.Size = new System.Drawing.Size(182, 23);
-            this.cbProduct.TabIndex = 17;
+            this.cbProduct.TabIndex = 6;
             // 
             // cbUser
             // 
             this.cbUser.DisplayMember = "Name";
             this.cbUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(630, 79);
+            this.cbUser.Location = new System.Drawing.Point(630, 97);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(170, 23);
-            this.cbUser.TabIndex = 16;
+            this.cbUser.TabIndex = 3;
             // 
             // txtSolution
             // 
-            this.txtSolution.Location = new System.Drawing.Point(158, 226);
+            this.txtSolution.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSolution.Location = new System.Drawing.Point(158, 209);
             this.txtSolution.Multiline = true;
             this.txtSolution.Name = "txtSolution";
             this.txtSolution.Size = new System.Drawing.Size(642, 62);
-            this.txtSolution.TabIndex = 15;
+            this.txtSolution.TabIndex = 5;
             // 
             // labSolution
             // 
             this.labSolution.AutoSize = true;
-            this.labSolution.Location = new System.Drawing.Point(70, 229);
+            this.labSolution.Location = new System.Drawing.Point(70, 212);
             this.labSolution.Name = "labSolution";
             this.labSolution.Size = new System.Drawing.Size(56, 15);
             this.labSolution.TabIndex = 14;
@@ -396,16 +428,17 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(158, 149);
+            this.txtDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDescription.Location = new System.Drawing.Point(158, 132);
             this.txtDescription.Multiline = true;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(642, 62);
-            this.txtDescription.TabIndex = 13;
+            this.txtDescription.TabIndex = 4;
             // 
             // labDescription
             // 
             this.labDescription.AutoSize = true;
-            this.labDescription.Location = new System.Drawing.Point(70, 152);
+            this.labDescription.Location = new System.Drawing.Point(70, 135);
             this.labDescription.Name = "labDescription";
             this.labDescription.Size = new System.Drawing.Size(69, 15);
             this.labDescription.TabIndex = 12;
@@ -413,15 +446,16 @@
             // 
             // txtSubject
             // 
-            this.txtSubject.Location = new System.Drawing.Point(158, 114);
+            this.txtSubject.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSubject.Location = new System.Drawing.Point(158, 97);
             this.txtSubject.Name = "txtSubject";
             this.txtSubject.Size = new System.Drawing.Size(379, 23);
-            this.txtSubject.TabIndex = 11;
+            this.txtSubject.TabIndex = 2;
             // 
             // labSubject
             // 
             this.labSubject.AutoSize = true;
-            this.labSubject.Location = new System.Drawing.Point(70, 117);
+            this.labSubject.Location = new System.Drawing.Point(70, 100);
             this.labSubject.Name = "labSubject";
             this.labSubject.Size = new System.Drawing.Size(57, 15);
             this.labSubject.TabIndex = 10;
@@ -430,7 +464,7 @@
             // labUser
             // 
             this.labUser.AutoSize = true;
-            this.labUser.Location = new System.Drawing.Point(568, 82);
+            this.labUser.Location = new System.Drawing.Point(543, 100);
             this.labUser.Name = "labUser";
             this.labUser.Size = new System.Drawing.Size(56, 15);
             this.labUser.TabIndex = 8;
@@ -438,15 +472,16 @@
             // 
             // txtWhoRequested
             // 
-            this.txtWhoRequested.Location = new System.Drawing.Point(372, 79);
+            this.txtWhoRequested.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtWhoRequested.Location = new System.Drawing.Point(372, 62);
             this.txtWhoRequested.Name = "txtWhoRequested";
             this.txtWhoRequested.Size = new System.Drawing.Size(165, 23);
-            this.txtWhoRequested.TabIndex = 7;
+            this.txtWhoRequested.TabIndex = 1;
             // 
             // labWhoRequested
             // 
             this.labWhoRequested.AutoSize = true;
-            this.labWhoRequested.Location = new System.Drawing.Point(296, 82);
+            this.labWhoRequested.Location = new System.Drawing.Point(296, 65);
             this.labWhoRequested.Name = "labWhoRequested";
             this.labWhoRequested.Size = new System.Drawing.Size(70, 15);
             this.labWhoRequested.TabIndex = 6;
@@ -455,7 +490,7 @@
             // labCustomerCNPJ
             // 
             this.labCustomerCNPJ.AutoSize = true;
-            this.labCustomerCNPJ.Location = new System.Drawing.Point(70, 82);
+            this.labCustomerCNPJ.Location = new System.Drawing.Point(70, 65);
             this.labCustomerCNPJ.Name = "labCustomerCNPJ";
             this.labCustomerCNPJ.Size = new System.Drawing.Size(42, 15);
             this.labCustomerCNPJ.TabIndex = 4;
@@ -464,17 +499,18 @@
             // txtServiceOrderID
             // 
             this.txtServiceOrderID.Enabled = false;
-            this.txtServiceOrderID.Location = new System.Drawing.Point(700, 43);
+            this.txtServiceOrderID.Location = new System.Drawing.Point(630, 27);
             this.txtServiceOrderID.Name = "txtServiceOrderID";
             this.txtServiceOrderID.Size = new System.Drawing.Size(100, 23);
             this.txtServiceOrderID.TabIndex = 3;
+            this.txtServiceOrderID.TabStop = false;
             this.txtServiceOrderID.Text = "0";
             this.txtServiceOrderID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labIServiceOrderID
             // 
             this.labIServiceOrderID.AutoSize = true;
-            this.labIServiceOrderID.Location = new System.Drawing.Point(671, 46);
+            this.labIServiceOrderID.Location = new System.Drawing.Point(601, 30);
             this.labIServiceOrderID.Name = "labIServiceOrderID";
             this.labIServiceOrderID.Size = new System.Drawing.Size(23, 15);
             this.labIServiceOrderID.TabIndex = 2;
@@ -482,16 +518,17 @@
             // 
             // txtCustomer
             // 
-            this.txtCustomer.Location = new System.Drawing.Point(158, 43);
+            this.txtCustomer.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCustomer.Location = new System.Drawing.Point(158, 26);
             this.txtCustomer.Name = "txtCustomer";
             this.txtCustomer.Size = new System.Drawing.Size(379, 23);
-            this.txtCustomer.TabIndex = 1;
+            this.txtCustomer.TabIndex = 0;
             this.txtCustomer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCustomer_KeyDown);
             // 
             // labCustomer
             // 
             this.labCustomer.AutoSize = true;
-            this.labCustomer.Location = new System.Drawing.Point(70, 46);
+            this.labCustomer.Location = new System.Drawing.Point(70, 29);
             this.labCustomer.Name = "labCustomer";
             this.labCustomer.Size = new System.Drawing.Size(61, 15);
             this.labCustomer.TabIndex = 0;
@@ -508,7 +545,7 @@
             this.labTitle.Location = new System.Drawing.Point(426, 18);
             this.labTitle.Name = "labTitle";
             this.labTitle.Size = new System.Drawing.Size(163, 24);
-            this.labTitle.TabIndex = 1;
+            this.labTitle.TabIndex = 2;
             this.labTitle.Text = "Ordem de serviço";
             // 
             // btnClose
@@ -519,7 +556,7 @@
             this.btnClose.Location = new System.Drawing.Point(964, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(60, 60);
-            this.btnClose.TabIndex = 2;
+            this.btnClose.TabIndex = 1;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -545,7 +582,6 @@
             this.Name = "frmServiceOrder";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Oredm de Serviço";
             this.Load += new System.EventHandler(this.frmServiceOrder_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmServiceOrder_KeyDown);
             this.pForm.ResumeLayout(false);
@@ -600,5 +636,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Timer tShowSaved;
         private System.Windows.Forms.Label labSaved;
+        private System.Windows.Forms.ComboBox cbWhoLaunched;
+        private System.Windows.Forms.Label labWhoLaunch;
     }
 }

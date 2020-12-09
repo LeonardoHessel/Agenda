@@ -100,6 +100,7 @@ namespace Agenda
                 `ie` LIKE CONCAT('%', @search,'%') OR 
                 `razao` LIKE CONCAT('%', @search,'%') OR 
                 `name` LIKE CONCAT('%', @search,'%') OR 
+                `responsible` LIKE CONCAT('%', @search,'%') OR 
                 `telephone` LIKE CONCAT('%', @search,'%') OR 
                 `cellphone` LIKE CONCAT('%', @search,'%') OR 
                 `email` LIKE CONCAT('%', @search,'%') OR 

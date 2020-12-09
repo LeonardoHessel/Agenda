@@ -107,7 +107,8 @@
             this.cbUser.MaxDropDownItems = 4;
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(275, 31);
-            this.cbUser.TabIndex = 0;
+            this.cbUser.TabIndex = 1;
+            this.cbUser.TabStop = false;
             // 
             // txtPassword
             // 
@@ -120,7 +121,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
             this.txtPassword.Size = new System.Drawing.Size(275, 30);
-            this.txtPassword.TabIndex = 1;
+            this.txtPassword.TabIndex = 0;
             // 
             // labPassword
             // 
@@ -169,7 +170,7 @@
             this.labVersion.Name = "labVersion";
             this.labVersion.Size = new System.Drawing.Size(94, 19);
             this.labVersion.TabIndex = 1;
-            this.labVersion.Text = "Versão 0.83";
+            this.labVersion.Text = "Versão 0.84";
             // 
             // frmLogin
             // 

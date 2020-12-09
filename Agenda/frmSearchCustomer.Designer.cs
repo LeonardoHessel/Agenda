@@ -138,8 +138,9 @@
             this.dgvData.RowTemplate.Height = 35;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(1280, 500);
-            this.dgvData.TabIndex = 25;
+            this.dgvData.TabIndex = 1;
             this.dgvData.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectCustomer);
+            this.dgvData.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvData_KeyDown);
             // 
             // colID
             // 
@@ -323,6 +324,7 @@
             this.txtSearch.Size = new System.Drawing.Size(430, 23);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.SearchChanged);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             // 
             // gbActiveStatus
             // 
@@ -333,7 +335,7 @@
             this.gbActiveStatus.Location = new System.Drawing.Point(850, 85);
             this.gbActiveStatus.Name = "gbActiveStatus";
             this.gbActiveStatus.Size = new System.Drawing.Size(210, 48);
-            this.gbActiveStatus.TabIndex = 1;
+            this.gbActiveStatus.TabIndex = 4;
             this.gbActiveStatus.TabStop = false;
             this.gbActiveStatus.Text = "Status";
             // 

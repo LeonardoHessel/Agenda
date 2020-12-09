@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSchedule));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pTitle = new System.Windows.Forms.Panel();
             this.labTitle = new System.Windows.Forms.Label();
             this.btnHide = new System.Windows.Forms.Button();
@@ -46,9 +46,10 @@
             this.colProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomerComponents = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStart = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colEnd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colUserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colWhoLaunched = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colWhoRequested = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,28 +61,40 @@
             this.colIsInactive = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.cbUser = new System.Windows.Forms.ComboBox();
-            this.labStatusFilter = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labStatus = new System.Windows.Forms.Label();
+            this.labUser = new System.Windows.Forms.Label();
             this.labAfter = new System.Windows.Forms.Label();
             this.dtpAfter = new System.Windows.Forms.DateTimePicker();
             this.dtpBefore = new System.Windows.Forms.DateTimePicker();
             this.labBefore = new System.Windows.Forms.Label();
-            this.labCaption = new System.Windows.Forms.Label();
-            this.labStatusBlue = new System.Windows.Forms.Label();
-            this.pbStatusBlue = new System.Windows.Forms.PictureBox();
-            this.pbStatusRed = new System.Windows.Forms.PictureBox();
-            this.labStatusRed = new System.Windows.Forms.Label();
-            this.pbStatusYellow = new System.Windows.Forms.PictureBox();
-            this.labStatusYellow = new System.Windows.Forms.Label();
-            this.pbStatusGreen = new System.Windows.Forms.PictureBox();
-            this.labStatusGreen = new System.Windows.Forms.Label();
+            this.labGreen = new System.Windows.Forms.Label();
+            this.labYellow = new System.Windows.Forms.Label();
+            this.labBabyBlue = new System.Windows.Forms.Label();
+            this.labRed = new System.Windows.Forms.Label();
+            this.pGreen = new System.Windows.Forms.Panel();
+            this.labSTGreen = new System.Windows.Forms.Label();
+            this.labTGreen = new System.Windows.Forms.Label();
+            this.pBlue = new System.Windows.Forms.Panel();
+            this.labSTBlue = new System.Windows.Forms.Label();
+            this.labTBlue = new System.Windows.Forms.Label();
+            this.pYellow = new System.Windows.Forms.Panel();
+            this.labSTYellow = new System.Windows.Forms.Label();
+            this.labTYellow = new System.Windows.Forms.Label();
+            this.pRed = new System.Windows.Forms.Panel();
+            this.labSTRed = new System.Windows.Forms.Label();
+            this.labTRed = new System.Windows.Forms.Label();
+            this.pAll = new System.Windows.Forms.Panel();
+            this.labTAll = new System.Windows.Forms.Label();
+            this.labSTall = new System.Windows.Forms.Label();
+            this.labAll = new System.Windows.Forms.Label();
             this.pTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatusBlue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatusRed)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatusYellow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatusGreen)).BeginInit();
+            this.pGreen.SuspendLayout();
+            this.pBlue.SuspendLayout();
+            this.pYellow.SuspendLayout();
+            this.pRed.SuspendLayout();
+            this.pAll.SuspendLayout();
             this.SuspendLayout();
             // 
             // pTitle
@@ -125,9 +138,9 @@
             // txtSearch
             // 
             this.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSearch.Location = new System.Drawing.Point(111, 131);
+            this.txtSearch.Location = new System.Drawing.Point(111, 106);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(430, 23);
+            this.txtSearch.Size = new System.Drawing.Size(350, 23);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.Search_Changed);
             // 
@@ -135,7 +148,7 @@
             // 
             this.labSearch.AutoSize = true;
             this.labSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labSearch.Location = new System.Drawing.Point(108, 115);
+            this.labSearch.Location = new System.Drawing.Point(108, 90);
             this.labSearch.Name = "labSearch";
             this.labSearch.Size = new System.Drawing.Size(345, 15);
             this.labSearch.TabIndex = 3;
@@ -190,17 +203,17 @@
             this.dgvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvData.BackgroundColor = System.Drawing.Color.Gainsboro;
+            this.dgvData.BackgroundColor = System.Drawing.Color.White;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvData.ColumnHeadersHeight = 35;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -211,9 +224,10 @@
             this.colProductName,
             this.colCustomerComponents,
             this.colStatus,
+            this.colUserName,
             this.colStart,
             this.colEnd,
-            this.colUserName,
+            this.colWhoLaunched,
             this.colCustomer,
             this.colWhoRequested,
             this.colUser,
@@ -290,6 +304,13 @@
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
             // 
+            // colUserName
+            // 
+            this.colUserName.DataPropertyName = "UserName";
+            this.colUserName.HeaderText = "Técnico";
+            this.colUserName.Name = "colUserName";
+            this.colUserName.ReadOnly = true;
+            // 
             // colStart
             // 
             this.colStart.DataPropertyName = "Start";
@@ -306,12 +327,13 @@
             this.colEnd.ReadOnly = true;
             this.colEnd.Width = 110;
             // 
-            // colUserName
+            // colWhoLaunched
             // 
-            this.colUserName.DataPropertyName = "UserName";
-            this.colUserName.HeaderText = "Técnico";
-            this.colUserName.Name = "colUserName";
-            this.colUserName.ReadOnly = true;
+            this.colWhoLaunched.DataPropertyName = "WhoLaunched";
+            this.colWhoLaunched.HeaderText = "Quem Lançou";
+            this.colWhoLaunched.Name = "colWhoLaunched";
+            this.colWhoLaunched.ReadOnly = true;
+            this.colWhoLaunched.Visible = false;
             // 
             // colCustomer
             // 
@@ -391,47 +413,52 @@
             this.cbStatus.Items.AddRange(new object[] {
             "Todos",
             "Agendado",
-            "Cancelado",
             "Finalizado",
-            "Pendente"});
-            this.cbStatus.Location = new System.Drawing.Point(568, 100);
+            "Pendente",
+            "Atrasado"});
+            this.cbStatus.Location = new System.Drawing.Point(467, 106);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(150, 23);
+            this.cbStatus.Size = new System.Drawing.Size(123, 23);
             this.cbStatus.TabIndex = 1;
+            this.cbStatus.Visible = false;
             this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.Search_Changed);
             // 
             // cbUser
             // 
             this.cbUser.DisplayMember = "Login";
             this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(568, 144);
+            this.cbUser.Location = new System.Drawing.Point(111, 150);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(150, 23);
             this.cbUser.TabIndex = 2;
             this.cbUser.SelectedIndexChanged += new System.EventHandler(this.Search_Changed);
             // 
-            // labStatusFilter
+            // labStatus
             // 
-            this.labStatusFilter.AutoSize = true;
-            this.labStatusFilter.Location = new System.Drawing.Point(565, 82);
-            this.labStatusFilter.Name = "labStatusFilter";
-            this.labStatusFilter.Size = new System.Drawing.Size(101, 15);
-            this.labStatusFilter.TabIndex = 12;
-            this.labStatusFilter.Text = "Filtro por Status:";
+            this.labStatus.AutoSize = true;
+            this.labStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            this.labStatus.Location = new System.Drawing.Point(464, 88);
+            this.labStatus.Name = "labStatus";
+            this.labStatus.Size = new System.Drawing.Size(47, 15);
+            this.labStatus.TabIndex = 12;
+            this.labStatus.Text = "Status:";
+            this.labStatus.Visible = false;
             // 
-            // label2
+            // labUser
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(565, 126);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 15);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Filtro por Técnico:";
+            this.labUser.AutoSize = true;
+            this.labUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            this.labUser.Location = new System.Drawing.Point(108, 132);
+            this.labUser.Name = "labUser";
+            this.labUser.Size = new System.Drawing.Size(56, 15);
+            this.labUser.TabIndex = 13;
+            this.labUser.Text = "Técnico:";
             // 
             // labAfter
             // 
             this.labAfter.AutoSize = true;
-            this.labAfter.Location = new System.Drawing.Point(565, 170);
+            this.labAfter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            this.labAfter.Location = new System.Drawing.Point(264, 132);
             this.labAfter.Name = "labAfter";
             this.labAfter.Size = new System.Drawing.Size(52, 15);
             this.labAfter.TabIndex = 14;
@@ -441,7 +468,7 @@
             // 
             this.dtpAfter.Checked = false;
             this.dtpAfter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpAfter.Location = new System.Drawing.Point(568, 189);
+            this.dtpAfter.Location = new System.Drawing.Point(267, 150);
             this.dtpAfter.Name = "dtpAfter";
             this.dtpAfter.ShowCheckBox = true;
             this.dtpAfter.Size = new System.Drawing.Size(150, 23);
@@ -452,7 +479,7 @@
             // 
             this.dtpBefore.Checked = false;
             this.dtpBefore.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBefore.Location = new System.Drawing.Point(568, 234);
+            this.dtpBefore.Location = new System.Drawing.Point(423, 150);
             this.dtpBefore.Name = "dtpBefore";
             this.dtpBefore.ShowCheckBox = true;
             this.dtpBefore.Size = new System.Drawing.Size(150, 23);
@@ -462,125 +489,256 @@
             // labBefore
             // 
             this.labBefore.AutoSize = true;
-            this.labBefore.Location = new System.Drawing.Point(565, 215);
+            this.labBefore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            this.labBefore.Location = new System.Drawing.Point(422, 132);
             this.labBefore.Name = "labBefore";
             this.labBefore.Size = new System.Drawing.Size(29, 15);
             this.labBefore.TabIndex = 16;
             this.labBefore.Text = "Até:";
             // 
-            // labCaption
+            // labGreen
             // 
-            this.labCaption.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labCaption.AutoSize = true;
-            this.labCaption.Location = new System.Drawing.Point(983, 115);
-            this.labCaption.Name = "labCaption";
-            this.labCaption.Size = new System.Drawing.Size(59, 15);
-            this.labCaption.TabIndex = 17;
-            this.labCaption.Text = "Legenda:";
+            this.labGreen.AutoSize = true;
+            this.labGreen.Location = new System.Drawing.Point(3, 5);
+            this.labGreen.Name = "labGreen";
+            this.labGreen.Size = new System.Drawing.Size(64, 15);
+            this.labGreen.TabIndex = 18;
+            this.labGreen.Text = "Agendado";
+            this.labGreen.Click += new System.EventHandler(this.pGreen_Click);
             // 
-            // labStatusBlue
+            // labYellow
             // 
-            this.labStatusBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labStatusBlue.AutoSize = true;
-            this.labStatusBlue.Location = new System.Drawing.Point(1007, 137);
-            this.labStatusBlue.Name = "labStatusBlue";
-            this.labStatusBlue.Size = new System.Drawing.Size(64, 15);
-            this.labStatusBlue.TabIndex = 18;
-            this.labStatusBlue.Text = "Agendado";
+            this.labYellow.AutoSize = true;
+            this.labYellow.Location = new System.Drawing.Point(3, 5);
+            this.labYellow.Name = "labYellow";
+            this.labYellow.Size = new System.Drawing.Size(61, 15);
+            this.labYellow.TabIndex = 24;
+            this.labYellow.Text = "Pendente";
+            this.labYellow.Click += new System.EventHandler(this.pYellow_Click);
             // 
-            // pbStatusBlue
+            // labBabyBlue
             // 
-            this.pbStatusBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbStatusBlue.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusBlue.Image")));
-            this.pbStatusBlue.Location = new System.Drawing.Point(986, 137);
-            this.pbStatusBlue.Name = "pbStatusBlue";
-            this.pbStatusBlue.Size = new System.Drawing.Size(15, 15);
-            this.pbStatusBlue.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbStatusBlue.TabIndex = 19;
-            this.pbStatusBlue.TabStop = false;
+            this.labBabyBlue.AutoSize = true;
+            this.labBabyBlue.Location = new System.Drawing.Point(3, 5);
+            this.labBabyBlue.Name = "labBabyBlue";
+            this.labBabyBlue.Size = new System.Drawing.Size(65, 15);
+            this.labBabyBlue.TabIndex = 22;
+            this.labBabyBlue.Text = "Finalizado";
+            this.labBabyBlue.Click += new System.EventHandler(this.pBlue_Click);
             // 
-            // pbStatusRed
+            // labRed
             // 
-            this.pbStatusRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbStatusRed.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusRed.Image")));
-            this.pbStatusRed.Location = new System.Drawing.Point(986, 158);
-            this.pbStatusRed.Name = "pbStatusRed";
-            this.pbStatusRed.Size = new System.Drawing.Size(15, 15);
-            this.pbStatusRed.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbStatusRed.TabIndex = 21;
-            this.pbStatusRed.TabStop = false;
+            this.labRed.AutoSize = true;
+            this.labRed.Location = new System.Drawing.Point(3, 5);
+            this.labRed.Name = "labRed";
+            this.labRed.Size = new System.Drawing.Size(59, 15);
+            this.labRed.TabIndex = 20;
+            this.labRed.Text = "Atrasado";
+            this.labRed.Click += new System.EventHandler(this.pRed_Click);
             // 
-            // labStatusRed
+            // pGreen
             // 
-            this.labStatusRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labStatusRed.AutoSize = true;
-            this.labStatusRed.Location = new System.Drawing.Point(1007, 158);
-            this.labStatusRed.Name = "labStatusRed";
-            this.labStatusRed.Size = new System.Drawing.Size(67, 15);
-            this.labStatusRed.TabIndex = 20;
-            this.labStatusRed.Text = "Cancelado";
+            this.pGreen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(254)))), ((int)(((byte)(90)))));
+            this.pGreen.Controls.Add(this.labSTGreen);
+            this.pGreen.Controls.Add(this.labTGreen);
+            this.pGreen.Controls.Add(this.labGreen);
+            this.pGreen.Location = new System.Drawing.Point(267, 182);
+            this.pGreen.Name = "pGreen";
+            this.pGreen.Size = new System.Drawing.Size(80, 80);
+            this.pGreen.TabIndex = 26;
+            this.pGreen.Click += new System.EventHandler(this.pGreen_Click);
             // 
-            // pbStatusYellow
+            // labSTGreen
             // 
-            this.pbStatusYellow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbStatusYellow.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusYellow.Image")));
-            this.pbStatusYellow.Location = new System.Drawing.Point(986, 200);
-            this.pbStatusYellow.Name = "pbStatusYellow";
-            this.pbStatusYellow.Size = new System.Drawing.Size(15, 15);
-            this.pbStatusYellow.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbStatusYellow.TabIndex = 25;
-            this.pbStatusYellow.TabStop = false;
+            this.labSTGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labSTGreen.Font = new System.Drawing.Font("Roboto", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSTGreen.Location = new System.Drawing.Point(0, 47);
+            this.labSTGreen.Name = "labSTGreen";
+            this.labSTGreen.Size = new System.Drawing.Size(80, 33);
+            this.labSTGreen.TabIndex = 29;
+            this.labSTGreen.Text = "0";
+            this.labSTGreen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labSTGreen.Click += new System.EventHandler(this.pGreen_Click);
             // 
-            // labStatusYellow
+            // labTGreen
             // 
-            this.labStatusYellow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labStatusYellow.AutoSize = true;
-            this.labStatusYellow.Location = new System.Drawing.Point(1007, 200);
-            this.labStatusYellow.Name = "labStatusYellow";
-            this.labStatusYellow.Size = new System.Drawing.Size(61, 15);
-            this.labStatusYellow.TabIndex = 24;
-            this.labStatusYellow.Text = "Pendente";
+            this.labTGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labTGreen.Location = new System.Drawing.Point(0, 25);
+            this.labTGreen.Name = "labTGreen";
+            this.labTGreen.Size = new System.Drawing.Size(80, 15);
+            this.labTGreen.TabIndex = 28;
+            this.labTGreen.Text = "0";
+            this.labTGreen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labTGreen.Click += new System.EventHandler(this.pGreen_Click);
             // 
-            // pbStatusGreen
+            // pBlue
             // 
-            this.pbStatusGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbStatusGreen.Image = ((System.Drawing.Image)(resources.GetObject("pbStatusGreen.Image")));
-            this.pbStatusGreen.Location = new System.Drawing.Point(986, 179);
-            this.pbStatusGreen.Name = "pbStatusGreen";
-            this.pbStatusGreen.Size = new System.Drawing.Size(15, 15);
-            this.pbStatusGreen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pbStatusGreen.TabIndex = 23;
-            this.pbStatusGreen.TabStop = false;
+            this.pBlue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.pBlue.Controls.Add(this.labSTBlue);
+            this.pBlue.Controls.Add(this.labTBlue);
+            this.pBlue.Controls.Add(this.labBabyBlue);
+            this.pBlue.Location = new System.Drawing.Point(353, 182);
+            this.pBlue.Name = "pBlue";
+            this.pBlue.Size = new System.Drawing.Size(80, 80);
+            this.pBlue.TabIndex = 30;
+            this.pBlue.Click += new System.EventHandler(this.pBlue_Click);
             // 
-            // labStatusGreen
+            // labSTBlue
             // 
-            this.labStatusGreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labStatusGreen.AutoSize = true;
-            this.labStatusGreen.Location = new System.Drawing.Point(1007, 179);
-            this.labStatusGreen.Name = "labStatusGreen";
-            this.labStatusGreen.Size = new System.Drawing.Size(65, 15);
-            this.labStatusGreen.TabIndex = 22;
-            this.labStatusGreen.Text = "Finalizado";
+            this.labSTBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labSTBlue.Font = new System.Drawing.Font("Roboto", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSTBlue.Location = new System.Drawing.Point(0, 47);
+            this.labSTBlue.Name = "labSTBlue";
+            this.labSTBlue.Size = new System.Drawing.Size(80, 33);
+            this.labSTBlue.TabIndex = 29;
+            this.labSTBlue.Text = "0";
+            this.labSTBlue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labSTBlue.Click += new System.EventHandler(this.pBlue_Click);
+            // 
+            // labTBlue
+            // 
+            this.labTBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labTBlue.Location = new System.Drawing.Point(0, 25);
+            this.labTBlue.Name = "labTBlue";
+            this.labTBlue.Size = new System.Drawing.Size(80, 15);
+            this.labTBlue.TabIndex = 28;
+            this.labTBlue.Text = "0";
+            this.labTBlue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labTBlue.Click += new System.EventHandler(this.pBlue_Click);
+            // 
+            // pYellow
+            // 
+            this.pYellow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(255)))), ((int)(((byte)(86)))));
+            this.pYellow.Controls.Add(this.labSTYellow);
+            this.pYellow.Controls.Add(this.labTYellow);
+            this.pYellow.Controls.Add(this.labYellow);
+            this.pYellow.Location = new System.Drawing.Point(439, 182);
+            this.pYellow.Name = "pYellow";
+            this.pYellow.Size = new System.Drawing.Size(80, 80);
+            this.pYellow.TabIndex = 31;
+            this.pYellow.Click += new System.EventHandler(this.pYellow_Click);
+            // 
+            // labSTYellow
+            // 
+            this.labSTYellow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labSTYellow.Font = new System.Drawing.Font("Roboto", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSTYellow.Location = new System.Drawing.Point(0, 47);
+            this.labSTYellow.Name = "labSTYellow";
+            this.labSTYellow.Size = new System.Drawing.Size(80, 33);
+            this.labSTYellow.TabIndex = 29;
+            this.labSTYellow.Text = "0";
+            this.labSTYellow.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labSTYellow.Click += new System.EventHandler(this.pYellow_Click);
+            // 
+            // labTYellow
+            // 
+            this.labTYellow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labTYellow.Location = new System.Drawing.Point(0, 25);
+            this.labTYellow.Name = "labTYellow";
+            this.labTYellow.Size = new System.Drawing.Size(80, 15);
+            this.labTYellow.TabIndex = 28;
+            this.labTYellow.Text = "0";
+            this.labTYellow.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labTYellow.Click += new System.EventHandler(this.pYellow_Click);
+            // 
+            // pRed
+            // 
+            this.pRed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.pRed.Controls.Add(this.labSTRed);
+            this.pRed.Controls.Add(this.labTRed);
+            this.pRed.Controls.Add(this.labRed);
+            this.pRed.Location = new System.Drawing.Point(525, 182);
+            this.pRed.Name = "pRed";
+            this.pRed.Size = new System.Drawing.Size(80, 80);
+            this.pRed.TabIndex = 31;
+            this.pRed.Click += new System.EventHandler(this.pRed_Click);
+            // 
+            // labSTRed
+            // 
+            this.labSTRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labSTRed.Font = new System.Drawing.Font("Roboto", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSTRed.Location = new System.Drawing.Point(0, 47);
+            this.labSTRed.Name = "labSTRed";
+            this.labSTRed.Size = new System.Drawing.Size(80, 33);
+            this.labSTRed.TabIndex = 29;
+            this.labSTRed.Text = "0";
+            this.labSTRed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labSTRed.Click += new System.EventHandler(this.pRed_Click);
+            // 
+            // labTRed
+            // 
+            this.labTRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labTRed.Location = new System.Drawing.Point(0, 25);
+            this.labTRed.Name = "labTRed";
+            this.labTRed.Size = new System.Drawing.Size(80, 15);
+            this.labTRed.TabIndex = 28;
+            this.labTRed.Text = "0";
+            this.labTRed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labTRed.Click += new System.EventHandler(this.pRed_Click);
+            // 
+            // pAll
+            // 
+            this.pAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            this.pAll.Controls.Add(this.labTAll);
+            this.pAll.Controls.Add(this.labSTall);
+            this.pAll.Controls.Add(this.labAll);
+            this.pAll.Location = new System.Drawing.Point(611, 182);
+            this.pAll.Name = "pAll";
+            this.pAll.Size = new System.Drawing.Size(80, 80);
+            this.pAll.TabIndex = 32;
+            this.pAll.Click += new System.EventHandler(this.pAll_Click);
+            // 
+            // labTAll
+            // 
+            this.labTAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labTAll.ForeColor = System.Drawing.Color.White;
+            this.labTAll.Location = new System.Drawing.Point(0, 25);
+            this.labTAll.Name = "labTAll";
+            this.labTAll.Size = new System.Drawing.Size(80, 15);
+            this.labTAll.TabIndex = 30;
+            this.labTAll.Text = "0";
+            this.labTAll.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labTAll.Click += new System.EventHandler(this.pAll_Click);
+            // 
+            // labSTall
+            // 
+            this.labSTall.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labSTall.Font = new System.Drawing.Font("Roboto", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labSTall.ForeColor = System.Drawing.Color.White;
+            this.labSTall.Location = new System.Drawing.Point(0, 47);
+            this.labSTall.Name = "labSTall";
+            this.labSTall.Size = new System.Drawing.Size(80, 33);
+            this.labSTall.TabIndex = 29;
+            this.labSTall.Text = "0";
+            this.labSTall.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labSTall.Click += new System.EventHandler(this.pAll_Click);
+            // 
+            // labAll
+            // 
+            this.labAll.AutoSize = true;
+            this.labAll.ForeColor = System.Drawing.Color.White;
+            this.labAll.Location = new System.Drawing.Point(3, 5);
+            this.labAll.Name = "labAll";
+            this.labAll.Size = new System.Drawing.Size(36, 15);
+            this.labAll.TabIndex = 20;
+            this.labAll.Text = "Total";
+            this.labAll.Click += new System.EventHandler(this.pAll_Click);
             // 
             // ucSchedule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.pbStatusYellow);
-            this.Controls.Add(this.labStatusYellow);
-            this.Controls.Add(this.pbStatusGreen);
-            this.Controls.Add(this.labStatusGreen);
-            this.Controls.Add(this.pbStatusRed);
-            this.Controls.Add(this.labStatusRed);
-            this.Controls.Add(this.pbStatusBlue);
-            this.Controls.Add(this.labStatusBlue);
-            this.Controls.Add(this.labCaption);
+            this.Controls.Add(this.pAll);
+            this.Controls.Add(this.pRed);
+            this.Controls.Add(this.pYellow);
+            this.Controls.Add(this.pBlue);
+            this.Controls.Add(this.pGreen);
             this.Controls.Add(this.dtpBefore);
             this.Controls.Add(this.labBefore);
             this.Controls.Add(this.dtpAfter);
             this.Controls.Add(this.labAfter);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.labStatusFilter);
+            this.Controls.Add(this.labUser);
+            this.Controls.Add(this.labStatus);
             this.Controls.Add(this.cbUser);
             this.Controls.Add(this.cbStatus);
             this.Controls.Add(this.dgvData);
@@ -598,10 +756,16 @@
             this.pTitle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatusBlue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatusRed)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatusYellow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatusGreen)).EndInit();
+            this.pGreen.ResumeLayout(false);
+            this.pGreen.PerformLayout();
+            this.pBlue.ResumeLayout(false);
+            this.pBlue.PerformLayout();
+            this.pYellow.ResumeLayout(false);
+            this.pYellow.PerformLayout();
+            this.pRed.ResumeLayout(false);
+            this.pRed.PerformLayout();
+            this.pAll.ResumeLayout(false);
+            this.pAll.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -620,21 +784,16 @@
         private System.Windows.Forms.DataGridView dgvData;
         private System.Windows.Forms.ComboBox cbStatus;
         private System.Windows.Forms.ComboBox cbUser;
-        private System.Windows.Forms.Label labStatusFilter;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labStatus;
+        private System.Windows.Forms.Label labUser;
         private System.Windows.Forms.Label labAfter;
         private System.Windows.Forms.DateTimePicker dtpAfter;
         private System.Windows.Forms.DateTimePicker dtpBefore;
         private System.Windows.Forms.Label labBefore;
-        private System.Windows.Forms.Label labCaption;
-        private System.Windows.Forms.Label labStatusBlue;
-        private System.Windows.Forms.PictureBox pbStatusBlue;
-        private System.Windows.Forms.PictureBox pbStatusRed;
-        private System.Windows.Forms.Label labStatusRed;
-        private System.Windows.Forms.PictureBox pbStatusYellow;
-        private System.Windows.Forms.Label labStatusYellow;
-        private System.Windows.Forms.PictureBox pbStatusGreen;
-        private System.Windows.Forms.Label labStatusGreen;
+        private System.Windows.Forms.Label labGreen;
+        private System.Windows.Forms.Label labYellow;
+        private System.Windows.Forms.Label labBabyBlue;
+        private System.Windows.Forms.Label labRed;
         private System.Windows.Forms.DataGridViewTextBoxColumn colID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerRazao;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerCNPJ;
@@ -642,9 +801,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomerComponents;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colUserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStart;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEnd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colUserName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colWhoLaunched;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCustomer;
         private System.Windows.Forms.DataGridViewTextBoxColumn colWhoRequested;
         private System.Windows.Forms.DataGridViewTextBoxColumn colUser;
@@ -654,5 +814,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colService;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCreation;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIsInactive;
+        private System.Windows.Forms.Panel pGreen;
+        private System.Windows.Forms.Label labSTGreen;
+        private System.Windows.Forms.Label labTGreen;
+        private System.Windows.Forms.Panel pBlue;
+        private System.Windows.Forms.Label labSTBlue;
+        private System.Windows.Forms.Label labTBlue;
+        private System.Windows.Forms.Panel pYellow;
+        private System.Windows.Forms.Label labSTYellow;
+        private System.Windows.Forms.Label labTYellow;
+        private System.Windows.Forms.Panel pRed;
+        private System.Windows.Forms.Label labSTRed;
+        private System.Windows.Forms.Label labTRed;
+        private System.Windows.Forms.Panel pAll;
+        private System.Windows.Forms.Label labSTall;
+        private System.Windows.Forms.Label labAll;
+        private System.Windows.Forms.Label labTAll;
     }
 }

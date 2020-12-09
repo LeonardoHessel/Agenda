@@ -106,6 +106,7 @@ CREATE TABLE IF NOT EXISTS `serviceorder` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `customer_id` INT NULL,
   `whorequested` VARCHAR(45) NULL,
+  `launched_id` INT NULL,
   `user_id` INT NULL,
   `subject` VARCHAR(45) NULL,
   `description` TEXT NULL,
@@ -119,6 +120,7 @@ CREATE TABLE IF NOT EXISTS `serviceorder` (
   `is_inactive` TINYINT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_customer_idx` (`customer_id` ASC) VISIBLE,
+  INDEX `fk_launched_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_user_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_product_idx` (`product_id` ASC) VISIBLE,
   CONSTRAINT `fk_customer_serviceorder`
@@ -126,9 +128,14 @@ CREATE TABLE IF NOT EXISTS `serviceorder` (
     REFERENCES `customer` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
+  CONSTRAINT `fk_launched_serviceorder`
+    FOREIGN KEY (`launched_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_user_serviceorder`
     FOREIGN KEY (`user_id`)
-    REFERENCES `schedule`.`user` (`id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_product_serviceorder`

@@ -12,14 +12,7 @@ namespace Agenda
 {
     public partial class ucSchedule : UserControl
     {
-        public ucSchedule()
-        {
-            InitializeComponent();
-            LoadSchedule();
-        }
-
         private static ucSchedule instance;
-
         public static ucSchedule Instance
         {
             get
@@ -30,6 +23,11 @@ namespace Agenda
             }
         }
 
+        public ucSchedule()
+        {
+            InitializeComponent();
+        }
+
         private void ucSchedule_Load(object sender, EventArgs e)
         {
             cbStatus.SelectedIndex = 0;
@@ -37,38 +35,13 @@ namespace Agenda
                 cbUser.DataSource = User.QueryUsers;
 
             cbUser.Text = frmHome.User.Login;
+
+            LoadServiceOrders();
             FormatDataGridView();
+            FormatNumbers(true);
         }
 
-        private void btnHide_Click(object sender, EventArgs e)
-        {
-            this.Visible = false;
-        }
-
-        private void btnNew_Click(object sender, EventArgs e)
-        {
-            frmServiceOrder newServiceOrder = new frmServiceOrder(Util.ActionMode.New);
-            newServiceOrder.ShowDialog();
-            LoadSchedule();
-            FormatDataGridView();
-        }
-
-        private void EditServiceOrder(object sender, EventArgs e)
-        {
-            ServiceOrder serviceOrder = dgvData.CurrentRow.DataBoundItem as ServiceOrder;
-            frmServiceOrder editServiceOrder = new frmServiceOrder(Util.ActionMode.Edit, serviceOrder);
-            editServiceOrder.ShowDialog();
-            LoadSchedule();
-            FormatDataGridView();
-        }
-
-        private void Search_Changed(object sender, EventArgs e)
-        {
-            LoadSchedule();
-            FormatDataGridView();
-        }
-
-        private void LoadSchedule()
+        private void LoadServiceOrders()
         {
             string status = "Todos";
             long user_id = 0;
@@ -93,33 +66,159 @@ namespace Agenda
         {
             foreach (DataGridViewRow row in dgvData.Rows)
             {
-                DataGridViewCell cell = row.Cells["colStatus"];
                 int rowIndex = row.Index;
+                string status = row.Cells["colStatus"].Value.ToString();
+                DateTime end = Convert.ToDateTime(row.Cells["colEnd"].Value);
+                int difference = DateTime.Compare(end, DateTime.Now);
+                bool isInactive = Convert.ToBoolean(row.Cells["colIsInactive"].Value);
 
-                switch (cell.Value.ToString())
+                switch (status)
                 {
                     case "Agendado":
-                        dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(86, 164, 255);
-                        break;
-                    case "Cancelado":
-                        dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(255, 86, 86);
+                        dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(72, 254, 90);
                         break;
                     case "Finalizado":
-                        dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(72, 254, 90);
+                        dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(207, 255, 255);
                         break;
                     case "Pendente":
                         dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(252, 255, 86);
-                        //dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(255, 102, 102);
-                        break;
-                    default:
                         break;
                 }
 
-                bool isInactive = Convert.ToBoolean(row.Cells["colIsInactive"].Value);
+                if (difference < 0 && status != "Finalizado")
+                {
+                    dgvData.Rows[rowIndex].Cells["colID"].Style.BackColor = Color.FromArgb(255, 102, 102);
+                }
 
                 if (isInactive)
                     dgvData.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Gray;
             }
+        }
+
+        private void FormatNumbers(bool setTotal = false)
+        {
+            int greenT = 0, blueT = 0, yellowT = 0, redT = 0;
+            int greenST = 0, blueST = 0, yellowST = 0, redST = 0;
+
+            if (setTotal)
+            {
+                long userID = (cbUser.SelectedItem as User).ID;
+                List<ServiceOrder> serviceOrders = new List<ServiceOrder>();
+
+                if (ServiceOrder.SearchAll(DateTime.Now, DateTime.Now, false, false, null, "Todos", userID))
+                    serviceOrders = ServiceOrder.QueryServiceOrders;
+
+                foreach (ServiceOrder so in serviceOrders)
+                {
+                    switch (so.Status)
+                    {
+                        case "Agendado":
+                            greenT++;
+                            break;
+                        case "Finalizado":
+                            blueT++;
+                            break;
+                        case "Pendente":
+                            yellowT++;
+                            break;
+                    }
+
+                    int difference = DateTime.Compare(so.End, DateTime.Now);
+                    if (difference < 0 && so.Status != "Finalizado")
+                        redT++;
+                }
+
+                labTGreen.Text = greenT.ToString();
+                labTBlue.Text = blueT.ToString();
+                labTYellow.Text = yellowT.ToString();
+                labTRed.Text = redT.ToString();
+                labTAll.Text = serviceOrders.Count.ToString();
+            }
+
+            foreach (DataGridViewRow row in dgvData.Rows)
+            {
+                string status = row.Cells["colStatus"].Value.ToString();
+                DateTime end = Convert.ToDateTime(row.Cells["colEnd"].Value);
+                int difference = DateTime.Compare(end, DateTime.Now);
+
+                switch (status)
+                {
+                    case "Agendado":
+                        greenST++;
+                        break;
+                    case "Finalizado":
+                        blueST++;
+                        break;
+                    case "Pendente":
+                        yellowST++;
+                        break;
+                }
+
+                if (difference < 0 && status != "Finalizado")
+                    redST++;
+            }
+
+            labSTGreen.Text = greenST.ToString();
+            labSTBlue.Text = blueST.ToString();
+            labSTYellow.Text = yellowST.ToString();
+            labSTRed.Text = redST.ToString();
+            labSTall.Text = dgvData.RowCount.ToString();
+        }
+
+        private void Search_Changed(object sender, EventArgs e)
+        {
+            LoadServiceOrders();
+            FormatDataGridView();
+            FormatNumbers(sender.Equals(cbUser));
+        }
+
+        private void btnHide_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
+
+        private void EditServiceOrder(object sender, EventArgs e)
+        {
+            ServiceOrder serviceOrder = dgvData.CurrentRow.DataBoundItem as ServiceOrder;
+            frmServiceOrder editServiceOrder = new frmServiceOrder(Util.ActionMode.Edit, serviceOrder);
+            editServiceOrder.ShowDialog();
+            LoadServiceOrders();
+            FormatDataGridView();
+            FormatNumbers(true);
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            frmServiceOrder newServiceOrder = new frmServiceOrder(Util.ActionMode.New);
+            newServiceOrder.ShowDialog();
+            LoadServiceOrders();
+            FormatDataGridView();
+            FormatNumbers(true);
+        }
+
+        private void pGreen_Click(object sender, EventArgs e)
+        {
+            cbStatus.SelectedIndex = 1;
+        }
+
+        private void pBlue_Click(object sender, EventArgs e)
+        {
+            cbStatus.SelectedIndex = 2;
+        }
+
+        private void pYellow_Click(object sender, EventArgs e)
+        {
+            cbStatus.SelectedIndex = 3;
+        }
+
+        private void pRed_Click(object sender, EventArgs e)
+        {
+            cbStatus.SelectedIndex = 4;
+        }
+
+        private void pAll_Click(object sender, EventArgs e)
+        {
+            cbStatus.SelectedIndex = 0;
         }
     }
 }

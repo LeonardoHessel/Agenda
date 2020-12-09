@@ -12,140 +12,44 @@ namespace Agenda
 {
     public partial class frmServiceOrder : Form
     {
+        private Util.ActionMode Action { get; set; }
+        
+        private Customer customer;
+        
+        private Customer Customer
+        {
+            get { return customer; }
+            set
+            {
+                customer = value;
+                if (customer != null)
+                {
+                    txtCustomer.Text = customer.Razao;
+                    txtCustomerCNPJ.Text = customer.CNPJ;
+                }
+            }
+        }
+        
+        public ServiceOrder ServiceOrder { get; set; }
+
         public frmServiceOrder(Util.ActionMode action, ServiceOrder serviceOrder = null)
         {
             InitializeComponent();
+            LoadComponentData();
+
             this.ServiceOrder = serviceOrder;
             this.Action = action;
         }
-
+        
         private void frmServiceOrder_Load(object sender, EventArgs e)
         {
-            if (User.GetUsers(Util.ActiveStatus.All))
-                cbUser.DataSource = User.QueryUsers;
-
-            if (Product.SearchAll(Util.ActiveStatus.All, null, false, true))
-                cbProduct.DataSource = Product.QueryProducts;
-
-            if (this.Action == Util.ActionMode.New)
-            {
-                cbUser.Text = frmHome.User.Name;
-                cbServiceMode.SelectedIndex = 3;
-                cbStatus.SelectedIndex = 3;
-            }
-            else
-            {
-                if (this.ServiceOrder.User != null)
-                    cbUser.Text = this.ServiceOrder.User.Name;
-
-                if (this.ServiceOrder.Product != null)
-                    cbProduct.Text = this.ServiceOrder.Product.Name;
-            }
-        }
-
-        private Util.ActionMode action;
-        private Customer customer;
-        
-        private Util.ActionMode Action
-        {
-            get { return this.action; }
-            set 
-            {
-                this.action = value;
-                SetForm();
-            }
-        }
-
-        private Customer Customer
-        {
-            get { return this.customer; }
-            set
-            {
-                this.customer = value;
-                if (value != null)
-                {
-                    txtCustomer.Text = this.customer.Razao;
-                    txtCustomerCNPJ.Text = this.customer.CNPJ;
-                }
-                else
-                {
-                    txtCustomer.Text = "";
-                    txtCustomerCNPJ.Text = "";
-                }
-            }
-        }
-
-        public ServiceOrder ServiceOrder { get; set; }
-
-        private void SetForm()
-        {
-            if (this.Action == Util.ActionMode.New)
-            {
-                this.ServiceOrder = new ServiceOrder();
-                btnSave.Enabled = true;
-            }
-            else if (this.Action == Util.ActionMode.Edit)
-            {
-                ShowServiceOrder();                
-            }
-        }
-
-        private void ShowServiceOrder()
-        {
-            txtServiceOrderID.Text = this.ServiceOrder.ID.ToString();
-            this.Customer = this.ServiceOrder.Customer;
-            txtWhoRequested.Text = this.ServiceOrder.WhoRequested;
-
-            cbUser.SelectedItem = this.ServiceOrder.User;
-            
-            txtSubject.Text = this.ServiceOrder.Subject;
-            txtDescription.Text = this.ServiceOrder.Description;
-            txtSolution.Text = this.ServiceOrder.Solution;
-            
-            if (this.ServiceOrder.Product != null)
-
-            cbProduct.Text = this.ServiceOrder.Product.Name;
-
-            cbServiceMode.Text = this.ServiceOrder.Service;
-            cbStatus.Text = this.ServiceOrder.Status;
-            cbServiceOrderInactive.Checked = this.ServiceOrder.IsInactive;
-            dtpServiceCreationDate.Value = this.ServiceOrder.Creation;
-            dtpServiceStartDate.Value = this.ServiceOrder.Start;
-            dtpServiceEndDate.Value = this.ServiceOrder.End;
-        }
-
-        private void SetServiceOrder()
-        {
-            this.ServiceOrder.Customer = this.Customer;
-            this.ServiceOrder.IsInactive = cbServiceOrderInactive.Checked;
-            this.ServiceOrder.WhoRequested = txtWhoRequested.Text;
-            this.ServiceOrder.User = cbUser.SelectedItem as User;
-            this.ServiceOrder.Subject = txtSubject.Text;
-            this.ServiceOrder.Description = txtDescription.Text;
-            this.ServiceOrder.Solution = txtSolution.Text;
-            this.ServiceOrder.Product = cbProduct.SelectedItem as Product;
-            this.ServiceOrder.Service = cbServiceMode.Text;
-            this.ServiceOrder.Status = cbStatus.Text;
-            this.ServiceOrder.Creation = dtpServiceCreationDate.Value;
-            this.ServiceOrder.Start = dtpServiceStartDate.Value;
-            this.ServiceOrder.End = dtpServiceEndDate.Value;
+            SetForm();
         }
 
         private void cbServiceOrderInactive_CheckedChanged(object sender, EventArgs e)
         {
-            bool enabled = !cbServiceOrderInactive.Checked;
-            txtCustomer.Enabled = enabled;
-            btnSearchCustomer.Enabled = enabled;
-            txtWhoRequested.Enabled = enabled;
-            cbUser.Enabled = enabled;
-            txtSubject.Enabled = enabled;
-            txtDescription.Enabled = enabled;
-            txtSolution.Enabled = enabled;
-            cbProduct.Enabled = enabled;
-            cbServiceMode.Enabled = enabled;
-            cbStatus.Enabled = enabled;
-            dtpServiceStartDate.Enabled = enabled;
-            dtpServiceEndDate.Enabled = enabled;
+            bool setAs = !cbServiceOrderInactive.Checked;
+            EnableDisabledFields(setAs);
         }
 
         private void txtCustomer_KeyDown(object sender, KeyEventArgs e)
@@ -173,12 +77,38 @@ namespace Agenda
                     if (result == DialogResult.Yes)
                         cbProduct.Text = this.Customer.Product.Name;
                 }
+
+                if (this.Customer != null)
+                    MessageBox.Show("Observações do Cliente:\n" + this.Customer.Obs);
             }
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            frmProduct newProduct = new frmProduct(Util.ActionMode.New);
+            newProduct.ShowDialog();
+
+            if (Product.SearchAll(Util.ActiveStatus.All, null, false, true))
+                cbProduct.DataSource = Product.QueryProducts;
+        }
+
+        private void frmServiceOrder_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.Close();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            this.Action = Util.ActionMode.New;
+
+            ResetFields();
+            SetForm();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -195,17 +125,19 @@ namespace Agenda
                         this.Action = Util.ActionMode.Edit;
                         labSaved.Visible = true;
                         tShowSaved.Enabled = true;
+                        SetForm();
                     }
                     else
                         MessageBox.Show(Connection.ErrorMessage);
                 }
-                else if (this.Action == Util.ActionMode.Edit)
+                else
                 {
                     if (this.ServiceOrder.Update())
                     {
                         this.Action = Util.ActionMode.Edit;
                         labSaved.Visible = true;
                         tShowSaved.Enabled = true;
+                        SetForm();
                     }
                     else
                         MessageBox.Show(Connection.ErrorMessage);
@@ -215,12 +147,14 @@ namespace Agenda
             {
                 MessageBox.Show("Para criar uma nova ordem de serviço é necessário que um cliente seja selecionado");
             }
-            btnSave.Enabled = true;
+            if (this.ServiceOrder.Status == "Finalizado")
+                btnSave.Enabled = true;
         }
 
-        private void btnNew_Click(object sender, EventArgs e)
+        private void tShowSaved_Tick(object sender, EventArgs e)
         {
-            this.Action = Util.ActionMode.New;
+            tShowSaved.Enabled = false;
+            labSaved.Visible = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -228,25 +162,158 @@ namespace Agenda
             ShowServiceOrder();
         }
 
-        private void frmServiceOrder_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-                this.Close();
-        }
+        // Functions/Methods
 
-        private void btnAddProduct_Click(object sender, EventArgs e)
+        private void LoadComponentData()
         {
-            frmProduct newProduct = new frmProduct(Util.ActionMode.New);
-            newProduct.ShowDialog();
+            Util.ActiveStatus status = Util.ActiveStatus.All;
+            if (this.Action == Util.ActionMode.New)
+            {
+                status = Util.ActiveStatus.Active;
+            }
 
-            if (Product.SearchAll(Util.ActiveStatus.All, null, false, true))
+            if (User.GetUsers(status))
+            {
+                cbWhoLaunched.DataSource = User.QueryUsers;
+                cbUser.DataSource = User.QueryUsers;
+            }
+
+            if (Product.SearchAll(status, null, false, true))
+            {
                 cbProduct.DataSource = Product.QueryProducts;
+            }
         }
 
-        private void tShowSaved_Tick(object sender, EventArgs e)
+        private void SetForm()
         {
-            tShowSaved.Enabled = false;
-            labSaved.Visible = false;
+            if (this.Action == Util.ActionMode.New)
+            {
+                this.ServiceOrder = new ServiceOrder();
+                DefaultValues();
+                btnSave.Enabled = true;
+                btnCancel.Enabled = false;
+                cbServiceOrderInactive.Enabled = false;
+            }
+            else if (this.Action == Util.ActionMode.Edit)
+            {
+                btnSave.Enabled = true;
+                btnCancel.Enabled = true;
+                cbServiceOrderInactive.Enabled = true;
+                ShowServiceOrder();
+                if (this.ServiceOrder.Status == "Finalizado")
+                {
+                    EnableDisabledFields(false);
+                    cbServiceOrderInactive.Enabled = false;
+                    btnSave.Enabled = false;
+                    btnCancel.Enabled = false;
+                }
+            }
+        }
+
+        private void DefaultValues()
+        {
+            cbUser.Text = frmHome.User.Name;
+            cbServiceMode.SelectedIndex = 3;
+            cbStatus.SelectedIndex = 3;
+            cbWhoLaunched.SelectedItem = frmHome.User;
+        }
+
+        private void ShowServiceOrder()
+        {
+            ServiceOrder SO = this.ServiceOrder;
+            //
+            cbServiceOrderInactive.Checked = SO.IsInactive;
+            txtServiceOrderID.Text = SO.ID.ToString();
+            this.Customer = SO.Customer;
+            txtWhoRequested.Text = SO.WhoRequested;
+            //
+            if (SO.WhoLaunched != null)
+                cbWhoLaunched.Text = SO.WhoLaunched.Name;
+            if (SO.User != null)
+                cbUser.SelectedItem = SO.User;
+            //
+            txtSubject.Text = SO.Subject;
+            txtDescription.Text = SO.Description;
+            txtSolution.Text = SO.Solution;
+
+            if (SO.Product != null)
+                cbProduct.SelectedItem = SO.Product;
+
+            cbServiceMode.Text = SO.Service;
+            cbStatus.Text = SO.Status;
+            //
+            dtpServiceCreationDate.Value = SO.Creation;
+            dtpServiceStartDate.Value = SO.Start;
+            dtpServiceEndDate.Value = SO.End;
+        }
+
+        private void SetServiceOrder()
+        {
+            this.ServiceOrder.Customer = this.Customer;
+            this.ServiceOrder.IsInactive = cbServiceOrderInactive.Checked;
+            this.ServiceOrder.WhoRequested = txtWhoRequested.Text;
+            //
+            this.ServiceOrder.WhoLaunched = cbWhoLaunched.SelectedItem as User;
+            this.ServiceOrder.User = cbUser.SelectedItem as User;
+            //
+            this.ServiceOrder.Subject = txtSubject.Text;
+            this.ServiceOrder.Description = txtDescription.Text;
+            this.ServiceOrder.Solution = txtSolution.Text;
+            //
+            this.ServiceOrder.Product = cbProduct.SelectedItem as Product;
+            this.ServiceOrder.Service = cbServiceMode.Text;
+            this.ServiceOrder.Status = cbStatus.Text;
+            //
+            this.ServiceOrder.Creation = dtpServiceCreationDate.Value;
+            this.ServiceOrder.Start = dtpServiceStartDate.Value;
+            this.ServiceOrder.End = dtpServiceEndDate.Value;
+        }
+
+        private void EnableDisabledFields(bool setAs)
+        {
+            txtCustomer.Enabled = setAs;
+            btnSearchCustomer.Enabled = setAs;
+            txtWhoRequested.Enabled = setAs;
+            //
+            cbUser.Enabled = setAs;
+            //
+            txtSubject.Enabled = setAs;
+            txtDescription.Enabled = setAs;
+            txtSolution.Enabled = setAs;
+            //
+            cbProduct.Enabled = setAs;
+            cbServiceMode.Enabled = setAs;
+            cbStatus.Enabled = setAs;
+            //
+            dtpServiceStartDate.Enabled = setAs;
+            dtpServiceEndDate.Enabled = setAs;
+        }
+
+        private void ResetFields()
+        {
+            this.Customer = null;
+            txtServiceOrderID.Text = "0";
+            cbServiceOrderInactive.Checked = false;
+            //
+            txtCustomer.Text = "";
+            txtCustomerCNPJ.Text = "";
+            txtWhoRequested.Text = "";
+            //
+            cbWhoLaunched.SelectedItem = frmHome.User;
+            cbUser.SelectedItem = frmHome.User;
+            //
+            txtSubject.Text = "";
+            txtDescription.Text = "";
+            txtSolution.Text = "";
+            //
+            cbProduct.SelectedIndex = 0;
+            cbServiceMode.SelectedIndex = 3;
+            cbStatus.SelectedIndex = 3;
+            //
+            dtpServiceCreationDate.Value = DateTime.Now;
+            dtpServiceStartDate.Value = DateTime.Now;
+            dtpServiceEndDate.Value = DateTime.Now;
+            EnableDisabledFields(true);
         }
     }
 }

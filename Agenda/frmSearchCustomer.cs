@@ -100,5 +100,23 @@ namespace Agenda
                     dgvData.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(255, 86, 86);
             }
         }
+
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && dgvData.Rows.Count > 0)
+            {
+                btnSelect.PerformClick();
+            }
+            if (e.KeyCode == Keys.Down || e.KeyCode == Keys.Up)
+            {
+                dgvData.Select();
+            }
+        }
+
+        private void dgvData_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnSelect.PerformClick();
+        }
     }
 }
