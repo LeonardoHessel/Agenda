@@ -23,22 +23,43 @@ namespace Agenda
             }
         }
 
+        public ServiceOrder PreViewSO
+        {
+            set
+            {
+                if (dgvData.Rows.Count > 0)
+                {
+                    txtDescription.Text = value.Description;
+                    txtID.Text = value.ID.ToString();
+                    txtSubject.Text = value.Subject;
+                    txtSolution.Text = value.Solution;
+                }
+                else
+                {
+                    txtDescription.Text = "";
+                    txtID.Text = "";
+                    txtSubject.Text = "";
+                    txtSolution.Text = "";
+                }
+            }
+        }
+
         public ucSchedule()
         {
             InitializeComponent();
-        }
-
-        private void ucSchedule_Load(object sender, EventArgs e)
-        {
             cbStatus.SelectedIndex = 0;
             if (User.GetUsers(Util.ActiveStatus.All, null, true))
                 cbUser.DataSource = User.QueryUsers;
 
             cbUser.Text = frmHome.User.Login;
+        }
 
+        private void ucSchedule_Load(object sender, EventArgs e)
+        {
             LoadServiceOrders();
-            FormatDataGridView();
             FormatNumbers(true);
+            FormatDataGridView();
+            cbxPreViewSO.Checked = Properties.Settings.Default.PreViewSO;
         }
 
         private void LoadServiceOrders()
@@ -60,6 +81,15 @@ namespace Agenda
                 dgvData.DataSource = ServiceOrder.QueryServiceOrders;
             else
                 MessageBox.Show(Connection.ErrorMessage);
+
+            if (cbxPreViewSO.Checked && dgvData.Rows.Count > 0)
+            {
+                PreViewSO = dgvData.CurrentRow.DataBoundItem as ServiceOrder;
+            }
+            else if (cbxPreViewSO.Checked && dgvData.Rows.Count == 0)
+            {
+                PreViewSO = null;
+            }
         }
 
         private void FormatDataGridView()
@@ -219,6 +249,33 @@ namespace Agenda
         private void pAll_Click(object sender, EventArgs e)
         {
             cbStatus.SelectedIndex = 0;
+        }
+
+        private void cbxPreViewSO_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.PreViewSO = cbxPreViewSO.Checked;
+            Properties.Settings.Default.Save();
+            pPreViewSO.Visible = cbxPreViewSO.Checked;
+            if (cbxPreViewSO.Checked && dgvData.Rows.Count > 0)
+            {
+                PreViewSO = dgvData.CurrentRow.DataBoundItem as ServiceOrder;
+            }
+            else if (cbxPreViewSO.Checked && dgvData.Rows.Count == 0)
+            {
+                PreViewSO = null;
+            }
+        }
+
+        private void dgvData_SelectionChanged(object sender, EventArgs e)
+        {
+            if (cbxPreViewSO.Checked && dgvData.Rows.Count > 0)
+            {
+                PreViewSO = dgvData.CurrentRow.DataBoundItem as ServiceOrder;
+            }
+            else if (cbxPreViewSO.Checked && dgvData.Rows.Count == 0)
+            {
+                PreViewSO = null;
+            }
         }
     }
 }

@@ -168,9 +168,9 @@
             this.labVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.labVersion.Location = new System.Drawing.Point(153, 433);
             this.labVersion.Name = "labVersion";
-            this.labVersion.Size = new System.Drawing.Size(94, 19);
+            this.labVersion.Size = new System.Drawing.Size(107, 19);
             this.labVersion.TabIndex = 1;
-            this.labVersion.Text = "Versão 0.84";
+            this.labVersion.Text = "Versão 0.85.1";
             // 
             // frmLogin
             // 

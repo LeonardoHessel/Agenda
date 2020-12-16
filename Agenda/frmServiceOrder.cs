@@ -168,20 +168,16 @@ namespace Agenda
         {
             Util.ActiveStatus status = Util.ActiveStatus.All;
             if (this.Action == Util.ActionMode.New)
-            {
                 status = Util.ActiveStatus.Active;
-            }
 
             if (User.GetUsers(status))
-            {
-                cbWhoLaunched.DataSource = User.QueryUsers;
                 cbUser.DataSource = User.QueryUsers;
-            }
+
+            if (User.GetUsers(status))
+                cbWhoLaunched.DataSource = User.QueryUsers;
 
             if (Product.SearchAll(status, null, false, true))
-            {
                 cbProduct.DataSource = Product.QueryProducts;
-            }
         }
 
         private void SetForm()
@@ -213,9 +209,10 @@ namespace Agenda
         private void DefaultValues()
         {
             cbUser.Text = frmHome.User.Name;
+            cbWhoLaunched.Text = frmHome.User.Name;
             cbServiceMode.SelectedIndex = 3;
             cbStatus.SelectedIndex = 3;
-            cbWhoLaunched.SelectedItem = frmHome.User;
+            
         }
 
         private void ShowServiceOrder()
@@ -230,7 +227,7 @@ namespace Agenda
             if (SO.WhoLaunched != null)
                 cbWhoLaunched.Text = SO.WhoLaunched.Name;
             if (SO.User != null)
-                cbUser.SelectedItem = SO.User;
+                cbUser.Text = SO.User.Name;
             //
             txtSubject.Text = SO.Subject;
             txtDescription.Text = SO.Description;

@@ -92,6 +92,12 @@ namespace Agenda
                 else
                     MessageBox.Show(Connection.ErrorMessage);
             }
+            else
+            {
+                MessageBox.Show("Senha incorreta!");
+                txtPassword.SelectionStart = 0;
+                txtPassword.SelectionLength = txtPassword.Text.Length;
+            }
         }
     }
 }

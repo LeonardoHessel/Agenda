@@ -99,6 +99,7 @@ namespace Agenda
         {
             frmServiceOrder newServiceOrder = new frmServiceOrder(Util.ActionMode.New);
             newServiceOrder.ShowDialog();
+            btnSchedule.PerformClick();
         }
 
         private void frmHome_KeyDown(object sender, KeyEventArgs e)

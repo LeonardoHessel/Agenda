@@ -87,6 +87,17 @@
             this.labTAll = new System.Windows.Forms.Label();
             this.labSTall = new System.Windows.Forms.Label();
             this.labAll = new System.Windows.Forms.Label();
+            this.cbxPreViewSO = new System.Windows.Forms.CheckBox();
+            this.pBackground = new System.Windows.Forms.Panel();
+            this.pPreViewSO = new System.Windows.Forms.Panel();
+            this.labSubject = new System.Windows.Forms.Label();
+            this.labSolution = new System.Windows.Forms.Label();
+            this.txtSubject = new System.Windows.Forms.TextBox();
+            this.labID = new System.Windows.Forms.Label();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.labDescription = new System.Windows.Forms.Label();
+            this.txtSolution = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.pTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
@@ -95,6 +106,8 @@
             this.pYellow.SuspendLayout();
             this.pRed.SuspendLayout();
             this.pAll.SuspendLayout();
+            this.pBackground.SuspendLayout();
+            this.pPreViewSO.SuspendLayout();
             this.SuspendLayout();
             // 
             // pTitle
@@ -200,9 +213,6 @@
             this.dgvData.AllowUserToDeleteRows = false;
             this.dgvData.AllowUserToResizeColumns = false;
             this.dgvData.AllowUserToResizeRows = false;
-            this.dgvData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvData.BackgroundColor = System.Drawing.Color.White;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -237,9 +247,10 @@
             this.colService,
             this.colCreation,
             this.colIsInactive});
+            this.dgvData.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvData.Location = new System.Drawing.Point(0, 279);
+            this.dgvData.Location = new System.Drawing.Point(0, 0);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
@@ -247,9 +258,10 @@
             this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvData.RowTemplate.Height = 35;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvData.Size = new System.Drawing.Size(1100, 745);
+            this.dgvData.Size = new System.Drawing.Size(1100, 565);
             this.dgvData.TabIndex = 7;
             this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditServiceOrder);
+            this.dgvData.SelectionChanged += new System.EventHandler(this.dgvData_SelectionChanged);
             // 
             // colID
             // 
@@ -416,9 +428,9 @@
             "Finalizado",
             "Pendente",
             "Atrasado"});
-            this.cbStatus.Location = new System.Drawing.Point(467, 106);
+            this.cbStatus.Location = new System.Drawing.Point(111, 194);
             this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(123, 23);
+            this.cbStatus.Size = new System.Drawing.Size(150, 23);
             this.cbStatus.TabIndex = 1;
             this.cbStatus.Visible = false;
             this.cbStatus.SelectedIndexChanged += new System.EventHandler(this.Search_Changed);
@@ -437,7 +449,7 @@
             // 
             this.labStatus.AutoSize = true;
             this.labStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labStatus.Location = new System.Drawing.Point(464, 88);
+            this.labStatus.Location = new System.Drawing.Point(108, 176);
             this.labStatus.Name = "labStatus";
             this.labStatus.Size = new System.Drawing.Size(47, 15);
             this.labStatus.TabIndex = 12;
@@ -466,7 +478,6 @@
             // 
             // dtpAfter
             // 
-            this.dtpAfter.Checked = false;
             this.dtpAfter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpAfter.Location = new System.Drawing.Point(267, 150);
             this.dtpAfter.Name = "dtpAfter";
@@ -724,10 +735,130 @@
             this.labAll.Text = "Total";
             this.labAll.Click += new System.EventHandler(this.pAll_Click);
             // 
+            // cbxPreViewSO
+            // 
+            this.cbxPreViewSO.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbxPreViewSO.AutoSize = true;
+            this.cbxPreViewSO.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbxPreViewSO.Checked = true;
+            this.cbxPreViewSO.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbxPreViewSO.Location = new System.Drawing.Point(963, 66);
+            this.cbxPreViewSO.Name = "cbxPreViewSO";
+            this.cbxPreViewSO.Size = new System.Drawing.Size(125, 19);
+            this.cbxPreViewSO.TabIndex = 33;
+            this.cbxPreViewSO.Text = "Pré-Visualização";
+            this.cbxPreViewSO.UseVisualStyleBackColor = true;
+            this.cbxPreViewSO.CheckedChanged += new System.EventHandler(this.cbxPreViewSO_CheckedChanged);
+            // 
+            // pBackground
+            // 
+            this.pBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pBackground.BackColor = System.Drawing.Color.White;
+            this.pBackground.Controls.Add(this.dgvData);
+            this.pBackground.Controls.Add(this.pPreViewSO);
+            this.pBackground.Location = new System.Drawing.Point(0, 278);
+            this.pBackground.Name = "pBackground";
+            this.pBackground.Size = new System.Drawing.Size(1100, 746);
+            this.pBackground.TabIndex = 34;
+            // 
+            // pPreViewSO
+            // 
+            this.pPreViewSO.BackColor = System.Drawing.Color.White;
+            this.pPreViewSO.Controls.Add(this.labSubject);
+            this.pPreViewSO.Controls.Add(this.labSolution);
+            this.pPreViewSO.Controls.Add(this.txtSubject);
+            this.pPreViewSO.Controls.Add(this.labID);
+            this.pPreViewSO.Controls.Add(this.txtDescription);
+            this.pPreViewSO.Controls.Add(this.labDescription);
+            this.pPreViewSO.Controls.Add(this.txtSolution);
+            this.pPreViewSO.Controls.Add(this.txtID);
+            this.pPreViewSO.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pPreViewSO.Location = new System.Drawing.Point(0, 565);
+            this.pPreViewSO.Name = "pPreViewSO";
+            this.pPreViewSO.Size = new System.Drawing.Size(1100, 181);
+            this.pPreViewSO.TabIndex = 8;
+            // 
+            // labSubject
+            // 
+            this.labSubject.AutoSize = true;
+            this.labSubject.Location = new System.Drawing.Point(13, 12);
+            this.labSubject.Name = "labSubject";
+            this.labSubject.Size = new System.Drawing.Size(57, 15);
+            this.labSubject.TabIndex = 4;
+            this.labSubject.Text = "Assunto:";
+            // 
+            // labSolution
+            // 
+            this.labSolution.AutoSize = true;
+            this.labSolution.Location = new System.Drawing.Point(557, 62);
+            this.labSolution.Name = "labSolution";
+            this.labSolution.Size = new System.Drawing.Size(56, 15);
+            this.labSolution.TabIndex = 7;
+            this.labSolution.Text = "Solução:";
+            // 
+            // txtSubject
+            // 
+            this.txtSubject.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSubject.Location = new System.Drawing.Point(16, 30);
+            this.txtSubject.Name = "txtSubject";
+            this.txtSubject.ReadOnly = true;
+            this.txtSubject.Size = new System.Drawing.Size(500, 23);
+            this.txtSubject.TabIndex = 0;
+            // 
+            // labID
+            // 
+            this.labID.AutoSize = true;
+            this.labID.Location = new System.Drawing.Point(557, 12);
+            this.labID.Name = "labID";
+            this.labID.Size = new System.Drawing.Size(23, 15);
+            this.labID.TabIndex = 6;
+            this.labID.Text = "ID:";
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDescription.Location = new System.Drawing.Point(16, 80);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.ReadOnly = true;
+            this.txtDescription.Size = new System.Drawing.Size(500, 86);
+            this.txtDescription.TabIndex = 1;
+            // 
+            // labDescription
+            // 
+            this.labDescription.AutoSize = true;
+            this.labDescription.Location = new System.Drawing.Point(13, 62);
+            this.labDescription.Name = "labDescription";
+            this.labDescription.Size = new System.Drawing.Size(69, 15);
+            this.labDescription.TabIndex = 5;
+            this.labDescription.Text = "Descrição:";
+            // 
+            // txtSolution
+            // 
+            this.txtSolution.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSolution.Location = new System.Drawing.Point(560, 80);
+            this.txtSolution.Multiline = true;
+            this.txtSolution.Name = "txtSolution";
+            this.txtSolution.ReadOnly = true;
+            this.txtSolution.Size = new System.Drawing.Size(500, 86);
+            this.txtSolution.TabIndex = 2;
+            // 
+            // txtID
+            // 
+            this.txtID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtID.Location = new System.Drawing.Point(560, 30);
+            this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
+            this.txtID.Size = new System.Drawing.Size(148, 23);
+            this.txtID.TabIndex = 3;
+            // 
             // ucSchedule
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.cbxPreViewSO);
             this.Controls.Add(this.pAll);
             this.Controls.Add(this.pRed);
             this.Controls.Add(this.pYellow);
@@ -741,13 +872,13 @@
             this.Controls.Add(this.labStatus);
             this.Controls.Add(this.cbUser);
             this.Controls.Add(this.cbStatus);
-            this.Controls.Add(this.dgvData);
             this.Controls.Add(this.pbSearchImage);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.labSearch);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.pTitle);
+            this.Controls.Add(this.pBackground);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ucSchedule";
             this.Size = new System.Drawing.Size(1100, 1024);
@@ -766,6 +897,9 @@
             this.pRed.PerformLayout();
             this.pAll.ResumeLayout(false);
             this.pAll.PerformLayout();
+            this.pBackground.ResumeLayout(false);
+            this.pPreViewSO.ResumeLayout(false);
+            this.pPreViewSO.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -830,5 +964,16 @@
         private System.Windows.Forms.Label labSTall;
         private System.Windows.Forms.Label labAll;
         private System.Windows.Forms.Label labTAll;
+        private System.Windows.Forms.CheckBox cbxPreViewSO;
+        private System.Windows.Forms.Panel pBackground;
+        private System.Windows.Forms.TextBox txtSolution;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox txtSubject;
+        private System.Windows.Forms.Label labSolution;
+        private System.Windows.Forms.Label labID;
+        private System.Windows.Forms.Label labDescription;
+        private System.Windows.Forms.Label labSubject;
+        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.Panel pPreViewSO;
     }
 }
