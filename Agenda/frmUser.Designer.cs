@@ -36,6 +36,7 @@
             this.tcUser = new System.Windows.Forms.TabControl();
             this.tpInfo = new System.Windows.Forms.TabPage();
             this.gbAddress = new System.Windows.Forms.GroupBox();
+            this.btnQueryCEP = new System.Windows.Forms.Button();
             this.cbState = new System.Windows.Forms.ComboBox();
             this.labState = new System.Windows.Forms.Label();
             this.txtCity = new System.Windows.Forms.TextBox();
@@ -60,6 +61,7 @@
             this.labRG = new System.Windows.Forms.Label();
             this.txtRG = new System.Windows.Forms.MaskedTextBox();
             this.gbLogin = new System.Windows.Forms.GroupBox();
+            this.btnShowHide = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.labPassword = new System.Windows.Forms.Label();
@@ -97,9 +99,9 @@
             this.pForm.Controls.Add(this.tcUser);
             this.pForm.Controls.Add(this.btnCancel);
             this.pForm.Controls.Add(this.btnSave);
-            this.pForm.Location = new System.Drawing.Point(0, 50);
+            this.pForm.Location = new System.Drawing.Point(1, 50);
             this.pForm.Name = "pForm";
-            this.pForm.Size = new System.Drawing.Size(900, 500);
+            this.pForm.Size = new System.Drawing.Size(822, 483);
             this.pForm.TabIndex = 0;
             // 
             // labSaved
@@ -107,7 +109,7 @@
             this.labSaved.AutoSize = true;
             this.labSaved.Font = new System.Drawing.Font("Roboto Bk", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            this.labSaved.Location = new System.Drawing.Point(54, 442);
+            this.labSaved.Location = new System.Drawing.Point(13, 445);
             this.labSaved.Name = "labSaved";
             this.labSaved.Size = new System.Drawing.Size(142, 24);
             this.labSaved.TabIndex = 13;
@@ -121,7 +123,7 @@
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Font = new System.Drawing.Font("Roboto Bk", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(552, 439);
+            this.btnNew.Location = new System.Drawing.Point(515, 442);
             this.btnNew.Margin = new System.Windows.Forms.Padding(5);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(90, 30);
@@ -134,10 +136,11 @@
             // 
             this.tcUser.Controls.Add(this.tpInfo);
             this.tcUser.Controls.Add(this.tpAccess);
-            this.tcUser.Location = new System.Drawing.Point(54, 30);
+            this.tcUser.Location = new System.Drawing.Point(13, 10);
+            this.tcUser.Margin = new System.Windows.Forms.Padding(5, 10, 5, 5);
             this.tcUser.Name = "tcUser";
             this.tcUser.SelectedIndex = 0;
-            this.tcUser.Size = new System.Drawing.Size(792, 388);
+            this.tcUser.Size = new System.Drawing.Size(792, 422);
             this.tcUser.TabIndex = 0;
             // 
             // tpInfo
@@ -151,12 +154,13 @@
             this.tpInfo.Location = new System.Drawing.Point(4, 24);
             this.tpInfo.Name = "tpInfo";
             this.tpInfo.Padding = new System.Windows.Forms.Padding(3);
-            this.tpInfo.Size = new System.Drawing.Size(784, 360);
+            this.tpInfo.Size = new System.Drawing.Size(784, 394);
             this.tpInfo.TabIndex = 0;
             this.tpInfo.Text = "Informações";
             // 
             // gbAddress
             // 
+            this.gbAddress.Controls.Add(this.btnQueryCEP);
             this.gbAddress.Controls.Add(this.cbState);
             this.gbAddress.Controls.Add(this.labState);
             this.gbAddress.Controls.Add(this.txtCity);
@@ -171,10 +175,21 @@
             this.gbAddress.Controls.Add(this.txtNumber);
             this.gbAddress.Location = new System.Drawing.Point(6, 253);
             this.gbAddress.Name = "gbAddress";
-            this.gbAddress.Size = new System.Drawing.Size(771, 100);
+            this.gbAddress.Size = new System.Drawing.Size(771, 135);
             this.gbAddress.TabIndex = 3;
             this.gbAddress.TabStop = false;
             this.gbAddress.Text = "Endereço";
+            // 
+            // btnQueryCEP
+            // 
+            this.btnQueryCEP.Location = new System.Drawing.Point(177, 26);
+            this.btnQueryCEP.Margin = new System.Windows.Forms.Padding(5);
+            this.btnQueryCEP.Name = "btnQueryCEP";
+            this.btnQueryCEP.Size = new System.Drawing.Size(102, 23);
+            this.btnQueryCEP.TabIndex = 43;
+            this.btnQueryCEP.Text = "Consulta CEP";
+            this.btnQueryCEP.UseVisualStyleBackColor = true;
+            this.btnQueryCEP.Click += new System.EventHandler(this.btnQueryCEP_Click);
             // 
             // cbState
             // 
@@ -210,7 +225,8 @@
             "SP",
             "SE",
             "TO"});
-            this.cbState.Location = new System.Drawing.Point(676, 59);
+            this.cbState.Location = new System.Drawing.Point(540, 29);
+            this.cbState.Margin = new System.Windows.Forms.Padding(5);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(76, 23);
             this.cbState.TabIndex = 30;
@@ -218,7 +234,7 @@
             // labState
             // 
             this.labState.AutoSize = true;
-            this.labState.Location = new System.Drawing.Point(621, 62);
+            this.labState.Location = new System.Drawing.Point(483, 32);
             this.labState.Name = "labState";
             this.labState.Size = new System.Drawing.Size(49, 15);
             this.labState.TabIndex = 29;
@@ -226,15 +242,17 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(286, 59);
+            this.txtCity.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCity.Location = new System.Drawing.Point(63, 59);
+            this.txtCity.Margin = new System.Windows.Forms.Padding(5);
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(303, 23);
+            this.txtCity.Size = new System.Drawing.Size(416, 23);
             this.txtCity.TabIndex = 4;
             // 
             // labCity
             // 
             this.labCity.AutoSize = true;
-            this.labCity.Location = new System.Drawing.Point(231, 62);
+            this.labCity.Location = new System.Drawing.Point(6, 62);
             this.labCity.Name = "labCity";
             this.labCity.Size = new System.Drawing.Size(49, 15);
             this.labCity.TabIndex = 27;
@@ -242,15 +260,17 @@
             // 
             // txtDistrict
             // 
-            this.txtDistrict.Location = new System.Drawing.Point(56, 59);
+            this.txtDistrict.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDistrict.Location = new System.Drawing.Point(540, 62);
+            this.txtDistrict.Margin = new System.Windows.Forms.Padding(5);
             this.txtDistrict.Name = "txtDistrict";
-            this.txtDistrict.Size = new System.Drawing.Size(167, 23);
+            this.txtDistrict.Size = new System.Drawing.Size(223, 23);
             this.txtDistrict.TabIndex = 3;
             // 
             // labDistrict
             // 
             this.labDistrict.AutoSize = true;
-            this.labDistrict.Location = new System.Drawing.Point(6, 62);
+            this.labDistrict.Location = new System.Drawing.Point(487, 65);
             this.labDistrict.Name = "labDistrict";
             this.labDistrict.Size = new System.Drawing.Size(45, 15);
             this.labDistrict.TabIndex = 25;
@@ -258,7 +278,8 @@
             // 
             // txtCEP
             // 
-            this.txtCEP.Location = new System.Drawing.Point(56, 26);
+            this.txtCEP.Location = new System.Drawing.Point(63, 26);
+            this.txtCEP.Margin = new System.Windows.Forms.Padding(5);
             this.txtCEP.Mask = "99,999-999";
             this.txtCEP.Name = "txtCEP";
             this.txtCEP.Size = new System.Drawing.Size(104, 23);
@@ -276,7 +297,7 @@
             // labStreet
             // 
             this.labStreet.AutoSize = true;
-            this.labStreet.Location = new System.Drawing.Point(166, 29);
+            this.labStreet.Location = new System.Drawing.Point(6, 95);
             this.labStreet.Name = "labStreet";
             this.labStreet.Size = new System.Drawing.Size(32, 15);
             this.labStreet.TabIndex = 8;
@@ -284,15 +305,17 @@
             // 
             // txtStreet
             // 
-            this.txtStreet.Location = new System.Drawing.Point(204, 26);
+            this.txtStreet.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtStreet.Location = new System.Drawing.Point(63, 92);
+            this.txtStreet.Margin = new System.Windows.Forms.Padding(5);
             this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(370, 23);
+            this.txtStreet.Size = new System.Drawing.Size(416, 23);
             this.txtStreet.TabIndex = 1;
             // 
             // labNumber
             // 
             this.labNumber.AutoSize = true;
-            this.labNumber.Location = new System.Drawing.Point(595, 29);
+            this.labNumber.Location = new System.Drawing.Point(508, 95);
             this.labNumber.Name = "labNumber";
             this.labNumber.Size = new System.Drawing.Size(24, 15);
             this.labNumber.TabIndex = 10;
@@ -300,9 +323,11 @@
             // 
             // txtNumber
             // 
-            this.txtNumber.Location = new System.Drawing.Point(625, 26);
+            this.txtNumber.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNumber.Location = new System.Drawing.Point(540, 92);
+            this.txtNumber.Margin = new System.Windows.Forms.Padding(5);
             this.txtNumber.Name = "txtNumber";
-            this.txtNumber.Size = new System.Drawing.Size(127, 23);
+            this.txtNumber.Size = new System.Drawing.Size(223, 23);
             this.txtNumber.TabIndex = 2;
             // 
             // gbDocs
@@ -327,7 +352,7 @@
             // labCNH
             // 
             this.labCNH.AutoSize = true;
-            this.labCNH.Location = new System.Drawing.Point(389, 63);
+            this.labCNH.Location = new System.Drawing.Point(375, 60);
             this.labCNH.Name = "labCNH";
             this.labCNH.Size = new System.Drawing.Size(36, 15);
             this.labCNH.TabIndex = 22;
@@ -335,7 +360,8 @@
             // 
             // txtCNH
             // 
-            this.txtCNH.Location = new System.Drawing.Point(440, 60);
+            this.txtCNH.Location = new System.Drawing.Point(419, 57);
+            this.txtCNH.Margin = new System.Windows.Forms.Padding(5);
             this.txtCNH.Mask = "999 999 999 99";
             this.txtCNH.Name = "txtCNH";
             this.txtCNH.Size = new System.Drawing.Size(134, 23);
@@ -348,7 +374,8 @@
             this.cbSex.Items.AddRange(new object[] {
             "Feminino",
             "Masculino"});
-            this.cbSex.Location = new System.Drawing.Point(267, 26);
+            this.cbSex.Location = new System.Drawing.Point(63, 24);
+            this.cbSex.Margin = new System.Windows.Forms.Padding(5);
             this.cbSex.Name = "cbSex";
             this.cbSex.Size = new System.Drawing.Size(198, 23);
             this.cbSex.TabIndex = 1;
@@ -356,14 +383,16 @@
             // dtpBorn
             // 
             this.dtpBorn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBorn.Location = new System.Drawing.Point(56, 26);
+            this.dtpBorn.Location = new System.Drawing.Point(366, 21);
+            this.dtpBorn.Margin = new System.Windows.Forms.Padding(5);
             this.dtpBorn.Name = "dtpBorn";
             this.dtpBorn.Size = new System.Drawing.Size(134, 23);
             this.dtpBorn.TabIndex = 0;
             // 
             // txtCPF
             // 
-            this.txtCPF.Location = new System.Drawing.Point(240, 60);
+            this.txtCPF.Location = new System.Drawing.Point(233, 57);
+            this.txtCPF.Margin = new System.Windows.Forms.Padding(5);
             this.txtCPF.Mask = "999,999,999-99";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(134, 23);
@@ -372,7 +401,7 @@
             // labSex
             // 
             this.labSex.AutoSize = true;
-            this.labSex.Location = new System.Drawing.Point(222, 28);
+            this.labSex.Location = new System.Drawing.Point(6, 29);
             this.labSex.Name = "labSex";
             this.labSex.Size = new System.Drawing.Size(39, 15);
             this.labSex.TabIndex = 6;
@@ -381,7 +410,7 @@
             // labCPF
             // 
             this.labCPF.AutoSize = true;
-            this.labCPF.Location = new System.Drawing.Point(192, 63);
+            this.labCPF.Location = new System.Drawing.Point(192, 60);
             this.labCPF.Name = "labCPF";
             this.labCPF.Size = new System.Drawing.Size(33, 15);
             this.labCPF.TabIndex = 20;
@@ -390,16 +419,16 @@
             // labBorn
             // 
             this.labBorn.AutoSize = true;
-            this.labBorn.Location = new System.Drawing.Point(6, 32);
+            this.labBorn.Location = new System.Drawing.Point(285, 27);
             this.labBorn.Name = "labBorn";
-            this.labBorn.Size = new System.Drawing.Size(43, 15);
+            this.labBorn.Size = new System.Drawing.Size(73, 15);
             this.labBorn.TabIndex = 4;
-            this.labBorn.Text = "Nasc.:";
+            this.labBorn.Text = "Data Nasc.:";
             // 
             // labRG
             // 
             this.labRG.AutoSize = true;
-            this.labRG.Location = new System.Drawing.Point(6, 63);
+            this.labRG.Location = new System.Drawing.Point(6, 60);
             this.labRG.Name = "labRG";
             this.labRG.Size = new System.Drawing.Size(27, 15);
             this.labRG.TabIndex = 18;
@@ -407,7 +436,8 @@
             // 
             // txtRG
             // 
-            this.txtRG.Location = new System.Drawing.Point(56, 60);
+            this.txtRG.Location = new System.Drawing.Point(63, 57);
+            this.txtRG.Margin = new System.Windows.Forms.Padding(5);
             this.txtRG.Mask = "99,999,999-9";
             this.txtRG.Name = "txtRG";
             this.txtRG.Size = new System.Drawing.Size(121, 23);
@@ -415,6 +445,7 @@
             // 
             // gbLogin
             // 
+            this.gbLogin.Controls.Add(this.btnShowHide);
             this.gbLogin.Controls.Add(this.txtPassword);
             this.gbLogin.Controls.Add(this.txtLogin);
             this.gbLogin.Controls.Add(this.labPassword);
@@ -426,17 +457,32 @@
             this.gbLogin.TabStop = false;
             this.gbLogin.Text = "Login";
             // 
+            // btnShowHide
+            // 
+            this.btnShowHide.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHide.Image")));
+            this.btnShowHide.Location = new System.Drawing.Point(551, 24);
+            this.btnShowHide.Margin = new System.Windows.Forms.Padding(5);
+            this.btnShowHide.Name = "btnShowHide";
+            this.btnShowHide.Size = new System.Drawing.Size(30, 23);
+            this.btnShowHide.TabIndex = 44;
+            this.btnShowHide.UseVisualStyleBackColor = true;
+            this.btnShowHide.Click += new System.EventHandler(this.btnShowHide_Click);
+            // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(355, 27);
+            this.txtPassword.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPassword.Location = new System.Drawing.Point(366, 24);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '•';
-            this.txtPassword.Size = new System.Drawing.Size(221, 23);
+            this.txtPassword.Size = new System.Drawing.Size(175, 23);
             this.txtPassword.TabIndex = 1;
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(56, 27);
+            this.txtLogin.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtLogin.Location = new System.Drawing.Point(63, 24);
+            this.txtLogin.Margin = new System.Windows.Forms.Padding(5);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(241, 23);
             this.txtLogin.TabIndex = 0;
@@ -444,7 +490,7 @@
             // labPassword
             // 
             this.labPassword.AutoSize = true;
-            this.labPassword.Location = new System.Drawing.Point(303, 30);
+            this.labPassword.Location = new System.Drawing.Point(312, 27);
             this.labPassword.Name = "labPassword";
             this.labPassword.Size = new System.Drawing.Size(46, 15);
             this.labPassword.TabIndex = 6;
@@ -453,7 +499,7 @@
             // labLogin
             // 
             this.labLogin.AutoSize = true;
-            this.labLogin.Location = new System.Drawing.Point(6, 30);
+            this.labLogin.Location = new System.Drawing.Point(6, 27);
             this.labLogin.Name = "labLogin";
             this.labLogin.Size = new System.Drawing.Size(41, 15);
             this.labLogin.TabIndex = 4;
@@ -477,7 +523,8 @@
             // 
             this.cbxIsInactive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbxIsInactive.AutoSize = true;
-            this.cbxIsInactive.Location = new System.Drawing.Point(511, 29);
+            this.cbxIsInactive.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cbxIsInactive.Location = new System.Drawing.Point(510, 26);
             this.cbxIsInactive.Name = "cbxIsInactive";
             this.cbxIsInactive.Size = new System.Drawing.Size(65, 19);
             this.cbxIsInactive.TabIndex = 2;
@@ -487,9 +534,12 @@
             // 
             // txtID
             // 
-            this.txtID.Enabled = false;
-            this.txtID.Location = new System.Drawing.Point(391, 27);
+            this.txtID.BackColor = System.Drawing.SystemColors.Info;
+            this.txtID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtID.Location = new System.Drawing.Point(402, 24);
+            this.txtID.Margin = new System.Windows.Forms.Padding(5);
             this.txtID.Name = "txtID";
+            this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(100, 23);
             this.txtID.TabIndex = 1;
             this.txtID.Text = "0";
@@ -497,7 +547,9 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(56, 27);
+            this.txtName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtName.Location = new System.Drawing.Point(63, 24);
+            this.txtName.Margin = new System.Windows.Forms.Padding(5);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(300, 23);
             this.txtName.TabIndex = 0;
@@ -505,7 +557,7 @@
             // labID
             // 
             this.labID.AutoSize = true;
-            this.labID.Location = new System.Drawing.Point(362, 30);
+            this.labID.Location = new System.Drawing.Point(371, 27);
             this.labID.Name = "labID";
             this.labID.Size = new System.Drawing.Size(23, 15);
             this.labID.TabIndex = 0;
@@ -514,7 +566,7 @@
             // labName
             // 
             this.labName.AutoSize = true;
-            this.labName.Location = new System.Drawing.Point(6, 30);
+            this.labName.Location = new System.Drawing.Point(6, 27);
             this.labName.Name = "labName";
             this.labName.Size = new System.Drawing.Size(44, 15);
             this.labName.TabIndex = 2;
@@ -537,10 +589,10 @@
             // 
             this.tpAccess.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.tpAccess.Controls.Add(this.labDev);
-            this.tpAccess.Location = new System.Drawing.Point(4, 22);
+            this.tpAccess.Location = new System.Drawing.Point(4, 24);
             this.tpAccess.Name = "tpAccess";
             this.tpAccess.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAccess.Size = new System.Drawing.Size(784, 362);
+            this.tpAccess.Size = new System.Drawing.Size(784, 394);
             this.tpAccess.TabIndex = 1;
             this.tpAccess.Text = "Permissões";
             // 
@@ -562,13 +614,14 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Roboto Bk", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(752, 439);
+            this.btnCancel.Location = new System.Drawing.Point(715, 442);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 30);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -577,7 +630,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Roboto Bk", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(652, 439);
+            this.btnSave.Location = new System.Drawing.Point(615, 442);
             this.btnSave.Margin = new System.Windows.Forms.Padding(5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(90, 30);
@@ -588,21 +641,23 @@
             // 
             // labTitle
             // 
-            this.labTitle.AutoSize = true;
+            this.labTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.labTitle.Font = new System.Drawing.Font("Roboto Bk", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labTitle.ForeColor = System.Drawing.Color.White;
-            this.labTitle.Location = new System.Drawing.Point(411, 14);
+            this.labTitle.Location = new System.Drawing.Point(0, 0);
             this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(78, 23);
+            this.labTitle.Size = new System.Drawing.Size(824, 50);
             this.labTitle.TabIndex = 3;
             this.labTitle.Text = "Técnico";
+            this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(850, 0);
+            this.btnClose.Location = new System.Drawing.Point(774, 0);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(50, 50);
             this.btnClose.TabIndex = 1;
@@ -618,11 +673,11 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            this.ClientSize = new System.Drawing.Size(900, 600);
+            this.ClientSize = new System.Drawing.Size(824, 534);
             this.ControlBox = false;
-            this.Controls.Add(this.labTitle);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pForm);
+            this.Controls.Add(this.labTitle);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(67)))), ((int)(((byte)(67)))));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -650,7 +705,6 @@
             this.tpAccess.ResumeLayout(false);
             this.tpAccess.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -704,5 +758,7 @@
         private System.Windows.Forms.ComboBox cbState;
         private System.Windows.Forms.Timer tShowSaved;
         private System.Windows.Forms.Label labSaved;
+        private System.Windows.Forms.Button btnQueryCEP;
+        private System.Windows.Forms.Button btnShowHide;
     }
 }

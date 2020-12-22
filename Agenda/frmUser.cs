@@ -145,8 +145,58 @@ namespace Agenda
             this.Close();
         }
 
+        private void btnQueryCEP_Click(object sender, EventArgs e)
+        {
+            string cep = Util.NoMask(txtCEP);
+            if (!string.IsNullOrWhiteSpace(cep))
+            {
+                using (var ws = new WSCorreios.AtendeClienteClient())
+                {
+                    try
+                    {
+                        var endereco = ws.consultaCEP(cep.Trim());
+                        cbState.Text = endereco.uf;
+                        txtCity.Text = endereco.cidade;
+                        txtDistrict.Text = endereco.bairro;
+                        txtStreet.Text = endereco.end;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe um CEP válido...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnShowHide_Click(object sender, EventArgs e)
+        {
+            if (frmHome.User.ID == this.User.ID || this.Action == Util.ActionMode.New)
+            {
+                if (txtPassword.PasswordChar == '•')
+                {
+                    btnShowHide.Image = Properties.Resources.eye;
+                    txtPassword.PasswordChar = default(char);
+                }
+                else
+                {
+                    txtPassword.PasswordChar = '•';
+                    btnShowHide.Image = Properties.Resources.hide_eye;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Somente o prorio usuário pode ver a propria senha!");
+            }
+        }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (txtPassword.PasswordChar == default(char))
+                btnShowHide.PerformClick();
             btnSave.Enabled = false;
             SetObj();
             if (this.Action == Util.ActionMode.New)
@@ -226,6 +276,11 @@ namespace Agenda
         {
             tShowSaved.Enabled = false;
             labSaved.Visible = false;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Action = Util.ActionMode.Edit;
         }
     }
 }

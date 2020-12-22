@@ -103,6 +103,33 @@ namespace Agenda
             SetFieldsAs(!cbxIsInactive.Checked);
         }
 
+        private void btnQueryCEP_Click(object sender, EventArgs e)
+        {
+            string cep = Util.NoMask(mtbCEP);
+            if (!string.IsNullOrWhiteSpace(cep))
+            {
+                using (var ws = new WSCorreios.AtendeClienteClient())
+                {
+                    try
+                    {
+                        var endereco = ws.consultaCEP(cep.Trim());
+                        cbState.Text = endereco.uf;
+                        txtCity.Text = endereco.cidade;
+                        txtDistrict.Text = endereco.bairro;
+                        txtStreet.Text = endereco.end;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Informe um CEP válido...", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void SetForm()
         {
             if (Action == Util.ActionMode.New)

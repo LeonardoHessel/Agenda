@@ -163,22 +163,23 @@
             // 
             // labVersion
             // 
-            this.labVersion.AutoSize = true;
+            this.labVersion.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.labVersion.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.labVersion.Location = new System.Drawing.Point(153, 433);
+            this.labVersion.Location = new System.Drawing.Point(0, 420);
             this.labVersion.Name = "labVersion";
-            this.labVersion.Size = new System.Drawing.Size(107, 19);
+            this.labVersion.Size = new System.Drawing.Size(400, 80);
             this.labVersion.TabIndex = 1;
-            this.labVersion.Text = "Versão 0.85.1";
+            this.labVersion.Text = "Versão 0.86.0";
+            this.labVersion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // frmLogin
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(400, 500);
-            this.Controls.Add(this.labVersion);
             this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.labVersion);
             this.Controls.Add(this.pLogin);
             this.Controls.Add(this.pBackColor);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -198,7 +199,6 @@
             this.pLogin.ResumeLayout(false);
             this.pLogin.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

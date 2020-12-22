@@ -90,6 +90,7 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.tShowSaved = new System.Windows.Forms.Timer(this.components);
+            this.btnQueryCEP = new System.Windows.Forms.Button();
             this.pTitle.SuspendLayout();
             this.pBG.SuspendLayout();
             this.gbxAddress.SuspendLayout();
@@ -132,7 +133,7 @@
             this.pTitle.Controls.Add(this.btnSave);
             this.pTitle.Location = new System.Drawing.Point(0, 50);
             this.pTitle.Name = "pTitle";
-            this.pTitle.Size = new System.Drawing.Size(900, 600);
+            this.pTitle.Size = new System.Drawing.Size(900, 623);
             this.pTitle.TabIndex = 0;
             // 
             // pBG
@@ -142,13 +143,14 @@
             this.pBG.Controls.Add(this.gbxBasicInfo);
             this.pBG.Controls.Add(this.gbxProduct);
             this.pBG.Controls.Add(this.gbxAccountantOffice);
-            this.pBG.Location = new System.Drawing.Point(89, 13);
+            this.pBG.Location = new System.Drawing.Point(108, 13);
             this.pBG.Name = "pBG";
-            this.pBG.Size = new System.Drawing.Size(726, 535);
+            this.pBG.Size = new System.Drawing.Size(684, 560);
             this.pBG.TabIndex = 0;
             // 
             // gbxAddress
             // 
+            this.gbxAddress.Controls.Add(this.btnQueryCEP);
             this.gbxAddress.Controls.Add(this.mtbCEP);
             this.gbxAddress.Controls.Add(this.cbState);
             this.gbxAddress.Controls.Add(this.txtNumber);
@@ -161,9 +163,9 @@
             this.gbxAddress.Controls.Add(this.txtDistrict);
             this.gbxAddress.Controls.Add(this.labCity);
             this.gbxAddress.Controls.Add(this.txtCity);
-            this.gbxAddress.Location = new System.Drawing.Point(29, 292);
+            this.gbxAddress.Location = new System.Drawing.Point(8, 284);
             this.gbxAddress.Name = "gbxAddress";
-            this.gbxAddress.Size = new System.Drawing.Size(667, 86);
+            this.gbxAddress.Size = new System.Drawing.Size(667, 119);
             this.gbxAddress.TabIndex = 1;
             this.gbxAddress.TabStop = false;
             this.gbxAddress.Text = "Endereço";
@@ -210,7 +212,7 @@
             "SP",
             "SE",
             "TO"});
-            this.cbState.Location = new System.Drawing.Point(581, 51);
+            this.cbState.Location = new System.Drawing.Point(433, 22);
             this.cbState.Name = "cbState";
             this.cbState.Size = new System.Drawing.Size(76, 23);
             this.cbState.TabIndex = 5;
@@ -218,17 +220,17 @@
             // txtNumber
             // 
             this.txtNumber.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtNumber.Location = new System.Drawing.Point(581, 22);
+            this.txtNumber.Location = new System.Drawing.Point(433, 80);
             this.txtNumber.MaxLength = 45;
             this.txtNumber.Name = "txtNumber";
-            this.txtNumber.Size = new System.Drawing.Size(76, 23);
+            this.txtNumber.Size = new System.Drawing.Size(97, 23);
             this.txtNumber.TabIndex = 2;
             this.txtNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // labNumber
             // 
             this.labNumber.AutoSize = true;
-            this.labNumber.Location = new System.Drawing.Point(551, 25);
+            this.labNumber.Location = new System.Drawing.Point(387, 83);
             this.labNumber.Name = "labNumber";
             this.labNumber.Size = new System.Drawing.Size(24, 15);
             this.labNumber.TabIndex = 37;
@@ -236,16 +238,17 @@
             // 
             // txtStreet
             // 
-            this.txtStreet.Location = new System.Drawing.Point(247, 22);
+            this.txtStreet.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtStreet.Location = new System.Drawing.Point(99, 80);
             this.txtStreet.MaxLength = 45;
             this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(298, 23);
+            this.txtStreet.Size = new System.Drawing.Size(277, 23);
             this.txtStreet.TabIndex = 1;
             // 
             // labState
             // 
             this.labState.AutoSize = true;
-            this.labState.Location = new System.Drawing.Point(526, 54);
+            this.labState.Location = new System.Drawing.Point(378, 25);
             this.labState.Name = "labState";
             this.labState.Size = new System.Drawing.Size(49, 15);
             this.labState.TabIndex = 41;
@@ -254,7 +257,7 @@
             // labStreet
             // 
             this.labStreet.AutoSize = true;
-            this.labStreet.Location = new System.Drawing.Point(209, 25);
+            this.labStreet.Location = new System.Drawing.Point(13, 93);
             this.labStreet.Name = "labStreet";
             this.labStreet.Size = new System.Drawing.Size(32, 15);
             this.labStreet.TabIndex = 36;
@@ -272,7 +275,7 @@
             // labDistrict
             // 
             this.labDistrict.AutoSize = true;
-            this.labDistrict.Location = new System.Drawing.Point(13, 54);
+            this.labDistrict.Location = new System.Drawing.Point(382, 54);
             this.labDistrict.Name = "labDistrict";
             this.labDistrict.Size = new System.Drawing.Size(45, 15);
             this.labDistrict.TabIndex = 39;
@@ -280,16 +283,17 @@
             // 
             // txtDistrict
             // 
-            this.txtDistrict.Location = new System.Drawing.Point(99, 51);
+            this.txtDistrict.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDistrict.Location = new System.Drawing.Point(433, 51);
             this.txtDistrict.MaxLength = 45;
             this.txtDistrict.Name = "txtDistrict";
-            this.txtDistrict.Size = new System.Drawing.Size(147, 23);
+            this.txtDistrict.Size = new System.Drawing.Size(224, 23);
             this.txtDistrict.TabIndex = 3;
             // 
             // labCity
             // 
             this.labCity.AutoSize = true;
-            this.labCity.Location = new System.Drawing.Point(252, 54);
+            this.labCity.Location = new System.Drawing.Point(13, 54);
             this.labCity.Name = "labCity";
             this.labCity.Size = new System.Drawing.Size(49, 15);
             this.labCity.TabIndex = 40;
@@ -297,10 +301,11 @@
             // 
             // txtCity
             // 
-            this.txtCity.Location = new System.Drawing.Point(307, 51);
+            this.txtCity.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCity.Location = new System.Drawing.Point(99, 51);
             this.txtCity.MaxLength = 45;
             this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(212, 23);
+            this.txtCity.Size = new System.Drawing.Size(277, 23);
             this.txtCity.TabIndex = 4;
             // 
             // gbxBasicInfo
@@ -330,7 +335,7 @@
             this.gbxBasicInfo.Controls.Add(this.cbxIsInactive);
             this.gbxBasicInfo.Controls.Add(this.mtbIE);
             this.gbxBasicInfo.Controls.Add(this.labID);
-            this.gbxBasicInfo.Location = new System.Drawing.Point(29, 15);
+            this.gbxBasicInfo.Location = new System.Drawing.Point(8, 7);
             this.gbxBasicInfo.Name = "gbxBasicInfo";
             this.gbxBasicInfo.Size = new System.Drawing.Size(667, 271);
             this.gbxBasicInfo.TabIndex = 0;
@@ -429,7 +434,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
+            this.txtEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEmail.Location = new System.Drawing.Point(99, 167);
             this.txtEmail.MaxLength = 250;
             this.txtEmail.Name = "txtEmail";
@@ -465,6 +470,7 @@
             // 
             // txtObs
             // 
+            this.txtObs.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtObs.Location = new System.Drawing.Point(99, 196);
             this.txtObs.MaxLength = 65535;
             this.txtObs.Multiline = true;
@@ -572,7 +578,7 @@
             this.gbxProduct.Controls.Add(this.labTerminals);
             this.gbxProduct.Controls.Add(this.txtModule);
             this.gbxProduct.Controls.Add(this.nudTerminals);
-            this.gbxProduct.Location = new System.Drawing.Point(29, 449);
+            this.gbxProduct.Location = new System.Drawing.Point(8, 474);
             this.gbxProduct.Name = "gbxProduct";
             this.gbxProduct.Size = new System.Drawing.Size(667, 69);
             this.gbxProduct.TabIndex = 3;
@@ -620,6 +626,7 @@
             // 
             // txtModule
             // 
+            this.txtModule.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtModule.Location = new System.Drawing.Point(304, 30);
             this.txtModule.MaxLength = 45;
             this.txtModule.Name = "txtModule";
@@ -639,7 +646,7 @@
             this.gbxAccountantOffice.Controls.Add(this.labAccountant);
             this.gbxAccountantOffice.Controls.Add(this.labAcconuntantEmail);
             this.gbxAccountantOffice.Controls.Add(this.txtAccountantEmail);
-            this.gbxAccountantOffice.Location = new System.Drawing.Point(29, 384);
+            this.gbxAccountantOffice.Location = new System.Drawing.Point(8, 409);
             this.gbxAccountantOffice.Name = "gbxAccountantOffice";
             this.gbxAccountantOffice.Size = new System.Drawing.Size(667, 59);
             this.gbxAccountantOffice.TabIndex = 2;
@@ -648,6 +655,7 @@
             // 
             // txtAccountant
             // 
+            this.txtAccountant.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAccountant.Location = new System.Drawing.Point(99, 22);
             this.txtAccountant.MaxLength = 45;
             this.txtAccountant.Name = "txtAccountant";
@@ -674,6 +682,7 @@
             // 
             // txtAccountantEmail
             // 
+            this.txtAccountantEmail.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtAccountantEmail.Location = new System.Drawing.Point(353, 22);
             this.txtAccountantEmail.MaxLength = 250;
             this.txtAccountantEmail.Name = "txtAccountantEmail";
@@ -685,7 +694,7 @@
             this.labSaved.AutoSize = true;
             this.labSaved.Font = new System.Drawing.Font("Roboto Bk", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            this.labSaved.Location = new System.Drawing.Point(85, 561);
+            this.labSaved.Location = new System.Drawing.Point(104, 582);
             this.labSaved.Name = "labSaved";
             this.labSaved.Size = new System.Drawing.Size(142, 24);
             this.labSaved.TabIndex = 12;
@@ -700,7 +709,7 @@
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Font = new System.Drawing.Font("Roboto Bk", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(525, 558);
+            this.btnNew.Location = new System.Drawing.Point(502, 581);
             this.btnNew.Margin = new System.Windows.Forms.Padding(5);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(90, 30);
@@ -717,7 +726,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Roboto Bk", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(725, 558);
+            this.btnCancel.Location = new System.Drawing.Point(702, 581);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(5);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 30);
@@ -734,7 +743,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Roboto Bk", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(625, 558);
+            this.btnSave.Location = new System.Drawing.Point(602, 581);
             this.btnSave.Margin = new System.Windows.Forms.Padding(5);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(90, 30);
@@ -747,6 +756,16 @@
             // 
             this.tShowSaved.Interval = 2000;
             this.tShowSaved.Tick += new System.EventHandler(this.tShowSaved_Tick);
+            // 
+            // btnQueryCEP
+            // 
+            this.btnQueryCEP.Location = new System.Drawing.Point(210, 22);
+            this.btnQueryCEP.Name = "btnQueryCEP";
+            this.btnQueryCEP.Size = new System.Drawing.Size(102, 23);
+            this.btnQueryCEP.TabIndex = 42;
+            this.btnQueryCEP.Text = "Consulta CEP";
+            this.btnQueryCEP.UseVisualStyleBackColor = true;
+            this.btnQueryCEP.Click += new System.EventHandler(this.btnQueryCEP_Click);
             // 
             // frmCustomer
             // 
@@ -847,5 +866,6 @@
         private System.Windows.Forms.CheckBox cbxProspecting;
         private System.Windows.Forms.Label labSince;
         private System.Windows.Forms.DateTimePicker dtpSince;
+        private System.Windows.Forms.Button btnQueryCEP;
     }
 }

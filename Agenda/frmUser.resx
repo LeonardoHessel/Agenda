@@ -118,6 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnShowHide.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAD6SURBVDhP3dO/SwJxGMfxyyCiVocgQWhtU8KlFhvFOdv9B6KlUGjtD4gaQgfB1cgig/6dcGjo
+        B9Wm2ft9XsJBLddNfuAF3/v1PM/3uAvSyiG2p8tkKeARu+FRwqRSZAdDdPGGL4zxikts4M9ksAUn8KFr
+        bKKIc3zgGadYQiyr6OEOJVThJA3sYQHH6OMWA6wgjJ3v0cEiHNeCNbiFSbReh9e8p4UbWDg8YeeL6MQ7
+        1mAOYJETZPEC72/DaVyHWcYVrGqxI/xkH27H9+B7cdoHOGUsVrOTY37iDDlYvIIRntDErPNvycNuFnL/
+        bqGOMpxkjr5Yf8D/Jgi+AcOaONuMwSnFAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="pbImage.ErrorImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEYAAABGCAYAAABxLuKEAAAABGdBTUEAALGPC/xhBQAAApdJREFUeF7t
