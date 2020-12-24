@@ -35,6 +35,8 @@
             this.btnNew = new System.Windows.Forms.Button();
             this.tcUser = new System.Windows.Forms.TabControl();
             this.tpInfo = new System.Windows.Forms.TabPage();
+            this.btnDropIMG = new System.Windows.Forms.Button();
+            this.btnAddIMG = new System.Windows.Forms.Button();
             this.gbAddress = new System.Windows.Forms.GroupBox();
             this.btnQueryCEP = new System.Windows.Forms.Button();
             this.cbState = new System.Windows.Forms.ComboBox();
@@ -99,9 +101,9 @@
             this.pForm.Controls.Add(this.tcUser);
             this.pForm.Controls.Add(this.btnCancel);
             this.pForm.Controls.Add(this.btnSave);
-            this.pForm.Location = new System.Drawing.Point(1, 50);
+            this.pForm.Location = new System.Drawing.Point(1, 42);
             this.pForm.Name = "pForm";
-            this.pForm.Size = new System.Drawing.Size(822, 483);
+            this.pForm.Size = new System.Drawing.Size(818, 483);
             this.pForm.TabIndex = 0;
             // 
             // labSaved
@@ -109,7 +111,7 @@
             this.labSaved.AutoSize = true;
             this.labSaved.Font = new System.Drawing.Font("Roboto Bk", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labSaved.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            this.labSaved.Location = new System.Drawing.Point(13, 445);
+            this.labSaved.Location = new System.Drawing.Point(9, 443);
             this.labSaved.Name = "labSaved";
             this.labSaved.Size = new System.Drawing.Size(142, 24);
             this.labSaved.TabIndex = 13;
@@ -146,6 +148,8 @@
             // tpInfo
             // 
             this.tpInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
+            this.tpInfo.Controls.Add(this.btnDropIMG);
+            this.tpInfo.Controls.Add(this.btnAddIMG);
             this.tpInfo.Controls.Add(this.gbAddress);
             this.tpInfo.Controls.Add(this.gbDocs);
             this.tpInfo.Controls.Add(this.gbLogin);
@@ -157,6 +161,28 @@
             this.tpInfo.Size = new System.Drawing.Size(784, 394);
             this.tpInfo.TabIndex = 0;
             this.tpInfo.Text = "Informações";
+            // 
+            // btnDropIMG
+            // 
+            this.btnDropIMG.Enabled = false;
+            this.btnDropIMG.FlatAppearance.BorderSize = 0;
+            this.btnDropIMG.Location = new System.Drawing.Point(702, 232);
+            this.btnDropIMG.Name = "btnDropIMG";
+            this.btnDropIMG.Size = new System.Drawing.Size(75, 23);
+            this.btnDropIMG.TabIndex = 6;
+            this.btnDropIMG.Text = "Excluir";
+            this.btnDropIMG.UseVisualStyleBackColor = true;
+            // 
+            // btnAddIMG
+            // 
+            this.btnAddIMG.Enabled = false;
+            this.btnAddIMG.FlatAppearance.BorderSize = 0;
+            this.btnAddIMG.Location = new System.Drawing.Point(602, 232);
+            this.btnAddIMG.Name = "btnAddIMG";
+            this.btnAddIMG.Size = new System.Drawing.Size(75, 23);
+            this.btnAddIMG.TabIndex = 5;
+            this.btnAddIMG.Text = "Adicionar";
+            this.btnAddIMG.UseVisualStyleBackColor = true;
             // 
             // gbAddress
             // 
@@ -182,6 +208,7 @@
             // 
             // btnQueryCEP
             // 
+            this.btnQueryCEP.FlatAppearance.BorderSize = 0;
             this.btnQueryCEP.Location = new System.Drawing.Point(177, 26);
             this.btnQueryCEP.Margin = new System.Windows.Forms.Padding(5);
             this.btnQueryCEP.Name = "btnQueryCEP";
@@ -228,7 +255,7 @@
             this.cbState.Location = new System.Drawing.Point(540, 29);
             this.cbState.Margin = new System.Windows.Forms.Padding(5);
             this.cbState.Name = "cbState";
-            this.cbState.Size = new System.Drawing.Size(76, 23);
+            this.cbState.Size = new System.Drawing.Size(92, 23);
             this.cbState.TabIndex = 30;
             // 
             // labState
@@ -459,6 +486,8 @@
             // 
             // btnShowHide
             // 
+            this.btnShowHide.Enabled = false;
+            this.btnShowHide.FlatAppearance.BorderSize = 0;
             this.btnShowHide.Image = ((System.Drawing.Image)(resources.GetObject("btnShowHide.Image")));
             this.btnShowHide.Location = new System.Drawing.Point(551, 24);
             this.btnShowHide.Margin = new System.Windows.Forms.Padding(5);
@@ -471,6 +500,7 @@
             // txtPassword
             // 
             this.txtPassword.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPassword.Enabled = false;
             this.txtPassword.Location = new System.Drawing.Point(366, 24);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(5);
             this.txtPassword.Name = "txtPassword";
@@ -481,6 +511,7 @@
             // txtLogin
             // 
             this.txtLogin.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtLogin.Enabled = false;
             this.txtLogin.Location = new System.Drawing.Point(63, 24);
             this.txtLogin.Margin = new System.Windows.Forms.Padding(5);
             this.txtLogin.Name = "txtLogin";
@@ -490,6 +521,7 @@
             // labPassword
             // 
             this.labPassword.AutoSize = true;
+            this.labPassword.Enabled = false;
             this.labPassword.Location = new System.Drawing.Point(312, 27);
             this.labPassword.Name = "labPassword";
             this.labPassword.Size = new System.Drawing.Size(46, 15);
@@ -499,6 +531,7 @@
             // labLogin
             // 
             this.labLogin.AutoSize = true;
+            this.labLogin.Enabled = false;
             this.labLogin.Location = new System.Drawing.Point(6, 27);
             this.labLogin.Name = "labLogin";
             this.labLogin.Size = new System.Drawing.Size(41, 15);
@@ -575,12 +608,14 @@
             // pbImage
             // 
             this.pbImage.BackColor = System.Drawing.Color.White;
+            this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbImage.Enabled = false;
             this.pbImage.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbImage.ErrorImage")));
             this.pbImage.Image = ((System.Drawing.Image)(resources.GetObject("pbImage.Image")));
             this.pbImage.InitialImage = ((System.Drawing.Image)(resources.GetObject("pbImage.InitialImage")));
             this.pbImage.Location = new System.Drawing.Point(602, 6);
             this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(175, 241);
+            this.pbImage.Size = new System.Drawing.Size(175, 220);
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbImage.TabIndex = 4;
             this.pbImage.TabStop = false;
@@ -589,10 +624,10 @@
             // 
             this.tpAccess.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(241)))), ((int)(((byte)(241)))));
             this.tpAccess.Controls.Add(this.labDev);
-            this.tpAccess.Location = new System.Drawing.Point(4, 24);
+            this.tpAccess.Location = new System.Drawing.Point(4, 22);
             this.tpAccess.Name = "tpAccess";
             this.tpAccess.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAccess.Size = new System.Drawing.Size(784, 394);
+            this.tpAccess.Size = new System.Drawing.Size(784, 396);
             this.tpAccess.TabIndex = 1;
             this.tpAccess.Text = "Permissões";
             // 
@@ -646,20 +681,22 @@
             this.labTitle.ForeColor = System.Drawing.Color.White;
             this.labTitle.Location = new System.Drawing.Point(0, 0);
             this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(824, 50);
+            this.labTitle.Size = new System.Drawing.Size(820, 40);
             this.labTitle.TabIndex = 3;
             this.labTitle.Text = "Técnico";
             this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseDown);
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(774, 0);
+            this.btnClose.Location = new System.Drawing.Point(774, 1);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(50, 50);
+            this.btnClose.Size = new System.Drawing.Size(45, 40);
             this.btnClose.TabIndex = 1;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -673,7 +710,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            this.ClientSize = new System.Drawing.Size(824, 534);
+            this.ClientSize = new System.Drawing.Size(820, 526);
             this.ControlBox = false;
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pForm);
@@ -760,5 +797,7 @@
         private System.Windows.Forms.Label labSaved;
         private System.Windows.Forms.Button btnQueryCEP;
         private System.Windows.Forms.Button btnShowHide;
+        private System.Windows.Forms.Button btnDropIMG;
+        private System.Windows.Forms.Button btnAddIMG;
     }
 }
