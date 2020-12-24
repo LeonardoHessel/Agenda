@@ -681,7 +681,7 @@
             this.labTitle.ForeColor = System.Drawing.Color.White;
             this.labTitle.Location = new System.Drawing.Point(0, 0);
             this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(820, 40);
+            this.labTitle.Size = new System.Drawing.Size(820, 42);
             this.labTitle.TabIndex = 3;
             this.labTitle.Text = "Técnico";
             this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
