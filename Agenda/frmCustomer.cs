@@ -44,7 +44,7 @@ namespace Agenda
         {
             btnSave.Enabled = false;
             SetCustomer();
-            if (this.Customer.CNPJ.Length == 14)
+            if (this.Customer.CNPJ.Length == 14 || cbxInfoPending.Checked)
             {
                 if (this.Action == Util.ActionMode.New)
                 {
@@ -163,6 +163,7 @@ namespace Agenda
             this.Customer.IE = Util.NoMask(mtbIE);
             this.Customer.Prospecting = cbxProspecting.Checked;
             this.Customer.FinancialPending = cbxFinancialPending.Checked;
+            this.Customer.InfoPending = cbxInfoPending.Checked;
             this.Customer.Telephone = Util.NoMask(mtbTelephone);
             this.Customer.CellPhone = Util.NoMask(mtbCellphone);
             this.Customer.Since = dtpSince.Value;
@@ -196,6 +197,7 @@ namespace Agenda
             mtbIE.Text = this.Customer.IE;
             cbxProspecting.Checked = this.Customer.Prospecting;
             cbxFinancialPending.Checked = this.Customer.FinancialPending;
+            cbxInfoPending.Checked = this.Customer.InfoPending;
             mtbTelephone.Text = this.Customer.Telephone;
             mtbCellphone.Text = this.Customer.CellPhone;
             dtpSince.Value = this.Customer.Since;
@@ -228,6 +230,7 @@ namespace Agenda
             mtbTelephone.Enabled = setAs;
             cbxProspecting.Enabled = setAs;
             cbxFinancialPending.Enabled = setAs;
+            cbxInfoPending.Enabled = setAs;
             mtbCellphone.Enabled = setAs;
             dtpSince.Enabled = setAs;
             txtEmail.Enabled = setAs;
@@ -260,6 +263,7 @@ namespace Agenda
             mtbIE.Text = "";
             cbxProspecting.Checked = false;
             cbxFinancialPending.Checked = false;
+            cbxInfoPending.Checked = false;
             mtbTelephone.Text = "";
             mtbCellphone.Text = "";
             dtpSince.Value = DateTime.Now;
@@ -289,7 +293,7 @@ namespace Agenda
 
         private void mtbCNPJ_Validated(object sender, EventArgs e)
         {
-            if (this.Action == Util.ActionMode.New)
+            if (this.Action == Util.ActionMode.New && !cbxInfoPending.Checked)
             {
                 string cnpj = Util.NoMask(mtbCNPJ);
 
@@ -308,5 +312,23 @@ namespace Agenda
                 }
             }
         }
+
+        // Move Form START
+        public const int WM_NCLBUTTONDOWN = 0xA1;
+        public const int HT_CAPTION = 0x2;
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+
+        private void labTitle_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+            }
+        }
+        // Move Form END
     }
 }

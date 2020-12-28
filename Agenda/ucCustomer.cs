@@ -15,6 +15,7 @@ namespace Agenda
         public ucCustomer()
         {
             InitializeComponent();
+            cbFilter.SelectedIndex = 0;
             LoadCustomers();
         }
 
@@ -71,9 +72,11 @@ namespace Agenda
             else if (rbInactive.Checked)
                 status = Util.ActiveStatus.Disabled;
 
+            string type = cbFilter.Text;
+
             string search = txtSearch.Text == "" ? null : txtSearch.Text;
 
-            if (Customer.SearchAll(status, search))
+            if (Customer.SearchAll(status, search, type))
                 dgvData.DataSource = Customer.QueryCustomers;
             else
                 MessageBox.Show(Connection.ErrorMessage);
@@ -96,6 +99,30 @@ namespace Agenda
                 if (isfinancialPending)
                     dgvData.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(255, 86, 86);
             }
+        }
+
+        private void Yellow_Click(object sender, EventArgs e)
+        {
+            cbFilter.SelectedIndex = 3;
+            LoadCustomers();
+        }
+
+        private void Red_Click(object sender, EventArgs e)
+        {
+            cbFilter.SelectedIndex = 2;
+            LoadCustomers();
+        }
+
+        private void Blue_Click(object sender, EventArgs e)
+        {
+            cbFilter.SelectedIndex = 1;
+            LoadCustomers();
+        }
+
+        private void All_Click(object sender, EventArgs e)
+        {
+            cbFilter.SelectedIndex = 0;
+            LoadCustomers();
         }
     }
 }

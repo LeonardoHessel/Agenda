@@ -17,6 +17,7 @@ namespace Agenda
         public string Responsible { get; set; }
         public bool Prospecting { get; set; }
         public bool FinancialPending { get; set; }
+        public bool InfoPending { get; set; }
         public string Telephone { set; get; }
         public string CellPhone { set; get; }
         public DateTime Since { set; get; }
@@ -38,9 +39,9 @@ namespace Agenda
             if (this.Address.Insert())
             {
                 string sql = @"INSERT INTO `customer` (`cnpj`,`ie`,`razao`,`name`,`responsible`,`prospecting`,
-                `financial_pending`,`telephone`,`cellphone`,`since`,`email`,`obs`,`address_id`,`accountant`,`accountant_email`,
+                `financial_pending`,`info_pending`,`telephone`,`cellphone`,`since`,`email`,`obs`,`address_id`,`accountant`,`accountant_email`,
                 `product_id`,`components`,`terminals`) VALUES (@cnpj,@ie,@razao,@name,@responsible,@prospecting,
-                @financial_pending,@telephone,@cellphone,@since,@email,@obs,@address_id,@accountant,@accountant_email,
+                @financial_pending,@info_pending,@telephone,@cellphone,@since,@email,@obs,@address_id,@accountant,@accountant_email,
                 @product_id,@components,@terminals)";
                 TextCommand(sql);
                 Parameters("Insert");
@@ -82,7 +83,7 @@ namespace Agenda
             return false;
         }
 
-        public static bool SearchAll(Util.ActiveStatus status, string search = null, bool addAll = false, bool addNone = false)
+        public static bool SearchAll(Util.ActiveStatus status, string search = null, string type = null, bool addAll = false, bool addNone = false)
         {
             string addSQL = " WHERE ";
             Customer customer = new Customer();
@@ -105,6 +106,23 @@ namespace Agenda
                 `cellphone` LIKE CONCAT('%', @search,'%') OR 
                 `email` LIKE CONCAT('%', @search,'%') OR 
                 `obs` LIKE CONCAT('%', @search,'%'))";
+                addSQL = " AND ";
+            }
+
+            if (type != null)
+            {
+                switch (type)
+                {
+                    case "Data":
+                        sql += addSQL + "`da`"
+                        break;
+                    case "Financial":
+                        break;
+                    case "Prospection":
+                        break;
+                    case "All":
+                        break;
+                }
             }
 
             customer.TextCommand(sql);
@@ -131,9 +149,10 @@ namespace Agenda
             {
                 string sql = @"UPDATE `customer` SET `cnpj`=@cnpj,`ie`=@ie,`razao`=@razao,`name`=@name,
                 `responsible`=@responsible,`prospecting`=@prospecting,`financial_pending`=@financial_pending,
-                `telephone`=@telephone,`cellphone`=@cellphone,`since`=@since,`email`=@email,`obs`=@obs,`address_id`=@address_id,
-                `accountant`=@accountant,`accountant_email`=@accountant_email,`product_id`=@product_id,
-                `components`=@components,`terminals`=@terminals,`is_inactive`=@is_inactive WHERE `id`=@id";
+                `info_pending`=@info_pending,`telephone`=@telephone,`cellphone`=@cellphone,`since`=@since,
+                `email`=@email,`obs`=@obs,`address_id`=@address_id,`accountant`=@accountant,
+                `accountant_email`=@accountant_email,`product_id`=@product_id,`components`=@components,
+                `terminals`=@terminals,`is_inactive`=@is_inactive WHERE `id`=@id";
                 TextCommand(sql);
                 Parameters("Update");
             }
@@ -149,6 +168,7 @@ namespace Agenda
             AddParameter("responsible", this.Responsible);
             AddParameter("prospecting", this.Prospecting);
             AddParameter("financial_pending", this.FinancialPending);
+            AddParameter("info_pending", this.InfoPending);
             AddParameter("telephone", this.Telephone);
             AddParameter("cellphone", this.CellPhone);
             AddParameter("since", this.Since);
@@ -191,6 +211,7 @@ namespace Agenda
                                  Responsible = row["responsible"].ToString(),
                                  Prospecting = Convert.ToBoolean(row["prospecting"]),
                                  FinancialPending = Convert.ToBoolean(row["financial_pending"]),
+                                 InfoPending = Convert.ToBoolean(row["info_pending"]),
                                  Telephone = row["telephone"].ToString(),
                                  CellPhone = row["cellphone"].ToString(),
                                  Since = Convert.ToDateTime(row["since"]),
