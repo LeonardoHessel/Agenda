@@ -1,5 +1,5 @@
-CREATE DATABASE `update`;
-USE `update`;
+CREATE DATABASE `agenda`;
+USE `agenda`;
 
 CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `serviceorder` (
   PRIMARY KEY (`id`),
   INDEX `fk_customer_idx` (`customer_id` ASC) VISIBLE,
   INDEX `fk_launched_idx` (`user_id` ASC) VISIBLE,
-  INDEX `fk_user_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_user_so_idx` (`user_id` ASC) VISIBLE,
   INDEX `fk_product_idx` (`product_id` ASC) VISIBLE,
   CONSTRAINT `fk_customer_serviceorder`
     FOREIGN KEY (`customer_id`)
