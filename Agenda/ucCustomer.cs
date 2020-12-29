@@ -12,13 +12,6 @@ namespace Agenda
 {
     public partial class ucCustomer : UserControl
     {
-        public ucCustomer()
-        {
-            InitializeComponent();
-            cbFilter.SelectedIndex = 0;
-            LoadCustomers();
-        }
-
         private static ucCustomer instance;
 
         public static ucCustomer Instance
@@ -31,9 +24,16 @@ namespace Agenda
             }
         }
 
+        public ucCustomer()
+        {
+            InitializeComponent();
+            cbFilter.SelectedIndex = 0;
+        }        
+
         private void ucCustomer_Load(object sender, EventArgs e)
         {
             FormatDataGridView();
+            FormatNumbers(true);
         }
 
         private void btnHide_Click(object sender, EventArgs e)
@@ -47,6 +47,7 @@ namespace Agenda
             newCustomer.ShowDialog();
             LoadCustomers();
             FormatDataGridView();
+            FormatNumbers(true);
         }
 
         private void EditCustomer(object sender, EventArgs e)
@@ -56,12 +57,14 @@ namespace Agenda
             editCustomer.ShowDialog();
             LoadCustomers();
             FormatDataGridView();
+            FormatNumbers(true);
         }
 
         private void SearchChanged(object sender, EventArgs e)
         {
             LoadCustomers();
             FormatDataGridView();
+            FormatNumbers(false);
         }
 
         private void LoadCustomers()
@@ -80,6 +83,7 @@ namespace Agenda
                 dgvData.DataSource = Customer.QueryCustomers;
             else
                 MessageBox.Show(Connection.ErrorMessage);
+            FormatNumbers();
         }
 
         private void FormatDataGridView()
@@ -104,25 +108,73 @@ namespace Agenda
         private void Yellow_Click(object sender, EventArgs e)
         {
             cbFilter.SelectedIndex = 3;
-            LoadCustomers();
         }
 
         private void Red_Click(object sender, EventArgs e)
         {
             cbFilter.SelectedIndex = 2;
-            LoadCustomers();
         }
 
         private void Blue_Click(object sender, EventArgs e)
         {
             cbFilter.SelectedIndex = 1;
-            LoadCustomers();
         }
 
         private void All_Click(object sender, EventArgs e)
         {
             cbFilter.SelectedIndex = 0;
-            LoadCustomers();
+        }
+
+        private void FormatNumbers(bool setTotal = false)
+        {
+            int greenT = 0, blueT = 0, yellowT = 0, redT = 0;
+            int greenST = 0, blueST = 0, yellowST = 0, redST = 0;
+
+            List<Customer> customers = new List<Customer>();
+
+            if (setTotal)
+            {
+                if (Customer.SearchAll(Util.ActiveStatus.All))
+                {
+                    customers = Customer.QueryCustomers;
+
+                    foreach (Customer customer in customers)
+                    {
+                        if (customer.FinancialPending)
+                            redT++;
+
+                        if (customer.Prospecting)
+                            yellowT++;
+
+                        if (customer.InfoPending)
+                            blueT++;
+                    }
+
+                    labTBlue.Text = blueT.ToString();
+                    labTYellow.Text = yellowT.ToString();
+                    labTRed.Text = redT.ToString();
+                    labTAll.Text = customers.Count.ToString();
+                }
+            }
+
+            customers = dgvData.DataSource as List<Customer>;
+
+            foreach (Customer customer in customers)
+            {
+                if (customer.FinancialPending)
+                    redST++;
+
+                if (customer.Prospecting)
+                    yellowST++;
+
+                if (customer.InfoPending)
+                    blueST++;
+            }
+
+            labSTBlue.Text = blueST.ToString();
+            labSTYellow.Text = yellowST.ToString();
+            labSTRed.Text = redST.ToString();
+            labSTall.Text = dgvData.RowCount.ToString();
         }
     }
 }

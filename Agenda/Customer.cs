@@ -114,13 +114,13 @@ namespace Agenda
                 switch (type)
                 {
                     case "Data":
-                        sql += addSQL + "`da`"
+                        sql += addSQL + "`info_pending` = true";
                         break;
                     case "Financial":
+                        sql += addSQL + "`financial_pending` = true";
                         break;
                     case "Prospection":
-                        break;
-                    case "All":
+                        sql += addSQL + "`prospecting` = true";
                         break;
                 }
             }
