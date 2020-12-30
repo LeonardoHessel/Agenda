@@ -49,12 +49,6 @@ namespace Agenda
             FormatDataGridView();
         }
 
-        private void dgvData_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.Customer = dgvData.CurrentRow.DataBoundItem as Customer;
-            this.DialogResult = DialogResult.Yes;
-        }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
