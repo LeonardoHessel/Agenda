@@ -118,5 +118,17 @@ namespace Agenda.Properties {
                 this["PreViewSO"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SmallMenu {
+            get {
+                return ((bool)(this["SmallMenu"]));
+            }
+            set {
+                this["SmallMenu"] = value;
+            }
+        }
     }
 }

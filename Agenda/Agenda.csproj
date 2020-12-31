@@ -398,6 +398,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Agenda_Icon.ico" />
+    <None Include="Resources\double_arrow_rigth_32px.png" />
+    <None Include="Resources\double_arrow_left_32px.png" />
     <None Include="Resources\hide_eye.png" />
     <None Include="Resources\eye.png" />
     <None Include="Connected Services\WSCorreios\Reference.svcmap">
