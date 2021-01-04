@@ -31,15 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.pMenu = new System.Windows.Forms.Panel();
+            this.pMenuButtons = new System.Windows.Forms.Panel();
             this.pSlide = new System.Windows.Forms.Panel();
             this.btnHideMenu = new System.Windows.Forms.Button();
+            this.btnNewOS = new System.Windows.Forms.Button();
+            this.btnCustomer = new System.Windows.Forms.Button();
+            this.btnUser = new System.Windows.Forms.Button();
+            this.btnSchedule = new System.Windows.Forms.Button();
+            this.btnProduct = new System.Windows.Forms.Button();
             this.labUserName = new System.Windows.Forms.Label();
             this.labWelcome = new System.Windows.Forms.Label();
-            this.btnProduct = new System.Windows.Forms.Button();
-            this.btnSchedule = new System.Windows.Forms.Button();
-            this.btnUser = new System.Windows.Forms.Button();
-            this.btnCustomer = new System.Windows.Forms.Button();
-            this.btnNewOS = new System.Windows.Forms.Button();
             this.pbLogoHome = new System.Windows.Forms.PictureBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnMinimize = new System.Windows.Forms.Button();
@@ -49,11 +50,11 @@
             this.tMoment = new System.Windows.Forms.Timer(this.components);
             this.pTitleBar = new System.Windows.Forms.Panel();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.pMenuButtons = new System.Windows.Forms.Panel();
+            this.labTitle = new System.Windows.Forms.Label();
             this.pMenu.SuspendLayout();
+            this.pMenuButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoHome)).BeginInit();
             this.pTitleBar.SuspendLayout();
-            this.pMenuButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // pMenu
@@ -70,6 +71,22 @@
             this.pMenu.Name = "pMenu";
             this.pMenu.Size = new System.Drawing.Size(180, 1005);
             this.pMenu.TabIndex = 0;
+            // 
+            // pMenuButtons
+            // 
+            this.pMenuButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pMenuButtons.Controls.Add(this.pSlide);
+            this.pMenuButtons.Controls.Add(this.btnHideMenu);
+            this.pMenuButtons.Controls.Add(this.btnNewOS);
+            this.pMenuButtons.Controls.Add(this.btnCustomer);
+            this.pMenuButtons.Controls.Add(this.btnUser);
+            this.pMenuButtons.Controls.Add(this.btnSchedule);
+            this.pMenuButtons.Controls.Add(this.btnProduct);
+            this.pMenuButtons.Location = new System.Drawing.Point(0, 180);
+            this.pMenuButtons.Name = "pMenuButtons";
+            this.pMenuButtons.Size = new System.Drawing.Size(180, 361);
+            this.pMenuButtons.TabIndex = 10;
             // 
             // pSlide
             // 
@@ -99,91 +116,26 @@
             this.btnHideMenu.UseVisualStyleBackColor = true;
             this.btnHideMenu.Click += new System.EventHandler(this.btnHideMenu_Click);
             // 
-            // labUserName
+            // btnNewOS
             // 
-            this.labUserName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.labUserName.AutoSize = true;
-            this.labUserName.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labUserName.Location = new System.Drawing.Point(47, 944);
-            this.labUserName.Name = "labUserName";
-            this.labUserName.Size = new System.Drawing.Size(87, 19);
-            this.labUserName.TabIndex = 7;
-            this.labUserName.Text = "User Name";
-            this.labUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // labWelcome
-            // 
-            this.labWelcome.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.labWelcome.AutoSize = true;
-            this.labWelcome.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labWelcome.Location = new System.Drawing.Point(46, 899);
-            this.labWelcome.Name = "labWelcome";
-            this.labWelcome.Size = new System.Drawing.Size(88, 19);
-            this.labWelcome.TabIndex = 6;
-            this.labWelcome.Text = "Bem vindo!";
-            // 
-            // btnProduct
-            // 
-            this.btnProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnNewOS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnProduct.FlatAppearance.BorderSize = 0;
-            this.btnProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(92)))));
-            this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProduct.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
-            this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.Location = new System.Drawing.Point(0, 219);
-            this.btnProduct.Margin = new System.Windows.Forms.Padding(0);
-            this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Padding = new System.Windows.Forms.Padding(8, 0, 10, 0);
-            this.btnProduct.Size = new System.Drawing.Size(180, 50);
-            this.btnProduct.TabIndex = 4;
-            this.btnProduct.Text = "Produtos";
-            this.btnProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnProduct.UseVisualStyleBackColor = true;
-            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
-            // 
-            // btnSchedule
-            // 
-            this.btnSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSchedule.FlatAppearance.BorderSize = 0;
-            this.btnSchedule.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(92)))));
-            this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSchedule.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedule.Image = ((System.Drawing.Image)(resources.GetObject("btnSchedule.Image")));
-            this.btnSchedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSchedule.Location = new System.Drawing.Point(0, 69);
-            this.btnSchedule.Margin = new System.Windows.Forms.Padding(0);
-            this.btnSchedule.Name = "btnSchedule";
-            this.btnSchedule.Padding = new System.Windows.Forms.Padding(8, 0, 10, 0);
-            this.btnSchedule.Size = new System.Drawing.Size(180, 50);
-            this.btnSchedule.TabIndex = 1;
-            this.btnSchedule.Text = "Agenda";
-            this.btnSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSchedule.UseVisualStyleBackColor = true;
-            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
-            // 
-            // btnUser
-            // 
-            this.btnUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnUser.FlatAppearance.BorderSize = 0;
-            this.btnUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(92)))));
-            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUser.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUser.Image = ((System.Drawing.Image)(resources.GetObject("btnUser.Image")));
-            this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.Location = new System.Drawing.Point(0, 169);
-            this.btnUser.Margin = new System.Windows.Forms.Padding(0);
-            this.btnUser.Name = "btnUser";
-            this.btnUser.Padding = new System.Windows.Forms.Padding(8, 0, 10, 0);
-            this.btnUser.Size = new System.Drawing.Size(180, 50);
-            this.btnUser.TabIndex = 3;
-            this.btnUser.Text = "Técnicos";
-            this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnUser.UseVisualStyleBackColor = true;
-            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            this.btnNewOS.FlatAppearance.BorderSize = 0;
+            this.btnNewOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(92)))));
+            this.btnNewOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNewOS.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewOS.Image = ((System.Drawing.Image)(resources.GetObject("btnNewOS.Image")));
+            this.btnNewOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNewOS.Location = new System.Drawing.Point(0, 19);
+            this.btnNewOS.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNewOS.Name = "btnNewOS";
+            this.btnNewOS.Padding = new System.Windows.Forms.Padding(8, 0, 10, 0);
+            this.btnNewOS.Size = new System.Drawing.Size(180, 50);
+            this.btnNewOS.TabIndex = 0;
+            this.btnNewOS.Text = "Nova OS";
+            this.btnNewOS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnNewOS.UseVisualStyleBackColor = true;
+            this.btnNewOS.Click += new System.EventHandler(this.btnNewOS_Click);
             // 
             // btnCustomer
             // 
@@ -206,26 +158,91 @@
             this.btnCustomer.UseVisualStyleBackColor = true;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
-            // btnNewOS
+            // btnUser
             // 
-            this.btnNewOS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNewOS.FlatAppearance.BorderSize = 0;
-            this.btnNewOS.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(92)))));
-            this.btnNewOS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNewOS.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewOS.Image = ((System.Drawing.Image)(resources.GetObject("btnNewOS.Image")));
-            this.btnNewOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNewOS.Location = new System.Drawing.Point(0, 19);
-            this.btnNewOS.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNewOS.Name = "btnNewOS";
-            this.btnNewOS.Padding = new System.Windows.Forms.Padding(8, 0, 10, 0);
-            this.btnNewOS.Size = new System.Drawing.Size(180, 50);
-            this.btnNewOS.TabIndex = 0;
-            this.btnNewOS.Text = "Nova OS";
-            this.btnNewOS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnNewOS.UseVisualStyleBackColor = true;
-            this.btnNewOS.Click += new System.EventHandler(this.btnNewOS_Click);
+            this.btnUser.FlatAppearance.BorderSize = 0;
+            this.btnUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(92)))));
+            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUser.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUser.Image = ((System.Drawing.Image)(resources.GetObject("btnUser.Image")));
+            this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUser.Location = new System.Drawing.Point(0, 169);
+            this.btnUser.Margin = new System.Windows.Forms.Padding(0);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Padding = new System.Windows.Forms.Padding(8, 0, 10, 0);
+            this.btnUser.Size = new System.Drawing.Size(180, 50);
+            this.btnUser.TabIndex = 3;
+            this.btnUser.Text = "Técnicos";
+            this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
+            // 
+            // btnSchedule
+            // 
+            this.btnSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSchedule.FlatAppearance.BorderSize = 0;
+            this.btnSchedule.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(92)))));
+            this.btnSchedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSchedule.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedule.Image = ((System.Drawing.Image)(resources.GetObject("btnSchedule.Image")));
+            this.btnSchedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSchedule.Location = new System.Drawing.Point(0, 69);
+            this.btnSchedule.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSchedule.Name = "btnSchedule";
+            this.btnSchedule.Padding = new System.Windows.Forms.Padding(8, 0, 10, 0);
+            this.btnSchedule.Size = new System.Drawing.Size(180, 50);
+            this.btnSchedule.TabIndex = 1;
+            this.btnSchedule.Text = "Agenda";
+            this.btnSchedule.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSchedule.UseVisualStyleBackColor = true;
+            this.btnSchedule.Click += new System.EventHandler(this.btnSchedule_Click);
+            // 
+            // btnProduct
+            // 
+            this.btnProduct.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProduct.FlatAppearance.BorderSize = 0;
+            this.btnProduct.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(80)))), ((int)(((byte)(92)))));
+            this.btnProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduct.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
+            this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProduct.Location = new System.Drawing.Point(0, 219);
+            this.btnProduct.Margin = new System.Windows.Forms.Padding(0);
+            this.btnProduct.Name = "btnProduct";
+            this.btnProduct.Padding = new System.Windows.Forms.Padding(8, 0, 10, 0);
+            this.btnProduct.Size = new System.Drawing.Size(180, 50);
+            this.btnProduct.TabIndex = 4;
+            this.btnProduct.Text = "Produtos";
+            this.btnProduct.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProduct.UseVisualStyleBackColor = true;
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            // 
+            // labUserName
+            // 
+            this.labUserName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labUserName.AutoSize = true;
+            this.labUserName.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labUserName.Location = new System.Drawing.Point(47, 944);
+            this.labUserName.Name = "labUserName";
+            this.labUserName.Size = new System.Drawing.Size(87, 19);
+            this.labUserName.TabIndex = 7;
+            this.labUserName.Text = "User Name";
+            this.labUserName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labWelcome
+            // 
+            this.labWelcome.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.labWelcome.AutoSize = true;
+            this.labWelcome.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labWelcome.Location = new System.Drawing.Point(46, 899);
+            this.labWelcome.Name = "labWelcome";
+            this.labWelcome.Size = new System.Drawing.Size(88, 19);
+            this.labWelcome.TabIndex = 6;
+            this.labWelcome.Text = "Bem vindo!";
             // 
             // pbLogoHome
             // 
@@ -326,6 +343,7 @@
             // pTitleBar
             // 
             this.pTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            this.pTitleBar.Controls.Add(this.labTitle);
             this.pTitleBar.Controls.Add(this.btnReturn);
             this.pTitleBar.Controls.Add(this.labTime);
             this.pTitleBar.Controls.Add(this.btnLogout);
@@ -355,21 +373,17 @@
             this.btnReturn.Visible = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
-            // pMenuButtons
+            // labTitle
             // 
-            this.pMenuButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pMenuButtons.Controls.Add(this.pSlide);
-            this.pMenuButtons.Controls.Add(this.btnHideMenu);
-            this.pMenuButtons.Controls.Add(this.btnNewOS);
-            this.pMenuButtons.Controls.Add(this.btnCustomer);
-            this.pMenuButtons.Controls.Add(this.btnUser);
-            this.pMenuButtons.Controls.Add(this.btnSchedule);
-            this.pMenuButtons.Controls.Add(this.btnProduct);
-            this.pMenuButtons.Location = new System.Drawing.Point(0, 180);
-            this.pMenuButtons.Name = "pMenuButtons";
-            this.pMenuButtons.Size = new System.Drawing.Size(180, 361);
-            this.pMenuButtons.TabIndex = 10;
+            this.labTitle.AutoSize = true;
+            this.labTitle.Font = new System.Drawing.Font("Roboto Bk", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTitle.ForeColor = System.Drawing.Color.White;
+            this.labTitle.Location = new System.Drawing.Point(73, 9);
+            this.labTitle.Name = "labTitle";
+            this.labTitle.Size = new System.Drawing.Size(54, 25);
+            this.labTitle.TabIndex = 7;
+            this.labTitle.Text = "Title";
+            this.labTitle.Visible = false;
             // 
             // frmHome
             // 
@@ -392,10 +406,10 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmHome_KeyDown);
             this.pMenu.ResumeLayout(false);
             this.pMenu.PerformLayout();
+            this.pMenuButtons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoHome)).EndInit();
             this.pTitleBar.ResumeLayout(false);
             this.pTitleBar.PerformLayout();
-            this.pMenuButtons.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -422,5 +436,6 @@
         private System.Windows.Forms.Panel pSlide;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Panel pMenuButtons;
+        private System.Windows.Forms.Label labTitle;
     }
 }

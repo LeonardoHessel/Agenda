@@ -44,6 +44,7 @@ namespace Agenda
             }
             else
             {
+                labTitle.Visible = false;
                 btnNewOS.BackColor = Color.FromArgb(2, 104, 120);
                 btnSchedule.BackColor = Color.FromArgb(2, 104, 120);
                 btnCustomer.BackColor = Color.FromArgb(2, 104, 120);
@@ -56,24 +57,32 @@ namespace Agenda
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
+            labTitle.Text = "Clientes";
+            labTitle.Visible = true;
             SetSlide(sender as Button);
             HideAllAndShowUserControl(ucCustomer.Instance);
         }
 
         private void btnSchedule_Click(object sender, EventArgs e)
         {
+            labTitle.Text = "Agenda";
+            labTitle.Visible = true;
             SetSlide(sender as Button);
             HideAllAndShowUserControl(ucSchedule.Instance);
         }
 
         private void btnUser_Click(object sender, EventArgs e)
         {
+            labTitle.Text = "Usuários";
+            labTitle.Visible = true;
             SetSlide(sender as Button);
             HideAllAndShowUserControl(ucUser.Instance);
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
+            labTitle.Text = "Produtos";
+            labTitle.Visible = true;
             SetSlide(sender as Button);
             HideAllAndShowUserControl(ucProduct.Instance);
         }
@@ -115,6 +124,8 @@ namespace Agenda
 
         private void btnNewOS_Click(object sender, EventArgs e)
         {
+            labTitle.Text = "Nova Ordem de Serviço";
+            labTitle.Visible = true;
             SetSlide(btnNewOS);
             frmServiceOrder newServiceOrder = new frmServiceOrder(Util.ActionMode.New);
             newServiceOrder.ShowDialog();
