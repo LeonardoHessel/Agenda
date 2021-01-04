@@ -30,9 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSchedule));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.pTitle = new System.Windows.Forms.Panel();
-            this.labTitle = new System.Windows.Forms.Label();
-            this.btnHide = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.labSearch = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
@@ -98,7 +95,6 @@
             this.labDescription = new System.Windows.Forms.Label();
             this.txtSolution = new System.Windows.Forms.TextBox();
             this.txtID = new System.Windows.Forms.TextBox();
-            this.pTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.pGreen.SuspendLayout();
@@ -110,48 +106,10 @@
             this.pPreViewSO.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pTitle
-            // 
-            this.pTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            this.pTitle.Controls.Add(this.labTitle);
-            this.pTitle.Controls.Add(this.btnHide);
-            this.pTitle.Location = new System.Drawing.Point(0, 0);
-            this.pTitle.Name = "pTitle";
-            this.pTitle.Size = new System.Drawing.Size(1100, 60);
-            this.pTitle.TabIndex = 8;
-            // 
-            // labTitle
-            // 
-            this.labTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labTitle.AutoSize = true;
-            this.labTitle.Font = new System.Drawing.Font("Roboto Bk", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTitle.ForeColor = System.Drawing.Color.White;
-            this.labTitle.Location = new System.Drawing.Point(505, 16);
-            this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(90, 28);
-            this.labTitle.TabIndex = 1;
-            this.labTitle.Text = "Agenda";
-            // 
-            // btnHide
-            // 
-            this.btnHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHide.FlatAppearance.BorderSize = 0;
-            this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHide.Image = ((System.Drawing.Image)(resources.GetObject("btnHide.Image")));
-            this.btnHide.Location = new System.Drawing.Point(1030, 0);
-            this.btnHide.Name = "btnHide";
-            this.btnHide.Size = new System.Drawing.Size(70, 60);
-            this.btnHide.TabIndex = 0;
-            this.btnHide.UseVisualStyleBackColor = true;
-            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
-            // 
             // txtSearch
             // 
             this.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSearch.Location = new System.Drawing.Point(111, 106);
+            this.txtSearch.Location = new System.Drawing.Point(89, 52);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(350, 23);
             this.txtSearch.TabIndex = 0;
@@ -161,7 +119,7 @@
             // 
             this.labSearch.AutoSize = true;
             this.labSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labSearch.Location = new System.Drawing.Point(108, 90);
+            this.labSearch.Location = new System.Drawing.Point(86, 36);
             this.labSearch.Name = "labSearch";
             this.labSearch.Size = new System.Drawing.Size(345, 15);
             this.labSearch.TabIndex = 3;
@@ -174,7 +132,7 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(26, 220);
+            this.btnEdit.Location = new System.Drawing.Point(26, 156);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 35);
             this.btnEdit.TabIndex = 5;
@@ -189,7 +147,7 @@
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(134, 220);
+            this.btnNew.Location = new System.Drawing.Point(134, 156);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(100, 35);
             this.btnNew.TabIndex = 6;
@@ -200,7 +158,7 @@
             // pbSearchImage
             // 
             this.pbSearchImage.Image = ((System.Drawing.Image)(resources.GetObject("pbSearchImage.Image")));
-            this.pbSearchImage.Location = new System.Drawing.Point(30, 90);
+            this.pbSearchImage.Location = new System.Drawing.Point(13, 13);
             this.pbSearchImage.Name = "pbSearchImage";
             this.pbSearchImage.Size = new System.Drawing.Size(64, 64);
             this.pbSearchImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -213,7 +171,7 @@
             this.dgvData.AllowUserToDeleteRows = false;
             this.dgvData.AllowUserToResizeColumns = false;
             this.dgvData.AllowUserToResizeRows = false;
-            this.dgvData.BackgroundColor = System.Drawing.Color.White;
+            this.dgvData.BackgroundColor = System.Drawing.Color.Gainsboro;
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -258,7 +216,7 @@
             this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvData.RowTemplate.Height = 35;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvData.Size = new System.Drawing.Size(1100, 565);
+            this.dgvData.Size = new System.Drawing.Size(800, 201);
             this.dgvData.TabIndex = 7;
             this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditServiceOrder);
             this.dgvData.SelectionChanged += new System.EventHandler(this.dgvData_SelectionChanged);
@@ -428,7 +386,7 @@
             "Finalizado",
             "Pendente",
             "Atrasado"});
-            this.cbStatus.Location = new System.Drawing.Point(111, 194);
+            this.cbStatus.Location = new System.Drawing.Point(445, 52);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(150, 23);
             this.cbStatus.TabIndex = 1;
@@ -439,7 +397,7 @@
             // 
             this.cbUser.DisplayMember = "Login";
             this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(111, 150);
+            this.cbUser.Location = new System.Drawing.Point(89, 96);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(150, 23);
             this.cbUser.TabIndex = 2;
@@ -449,7 +407,7 @@
             // 
             this.labStatus.AutoSize = true;
             this.labStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labStatus.Location = new System.Drawing.Point(108, 176);
+            this.labStatus.Location = new System.Drawing.Point(442, 34);
             this.labStatus.Name = "labStatus";
             this.labStatus.Size = new System.Drawing.Size(47, 15);
             this.labStatus.TabIndex = 12;
@@ -460,7 +418,7 @@
             // 
             this.labUser.AutoSize = true;
             this.labUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labUser.Location = new System.Drawing.Point(108, 132);
+            this.labUser.Location = new System.Drawing.Point(86, 78);
             this.labUser.Name = "labUser";
             this.labUser.Size = new System.Drawing.Size(56, 15);
             this.labUser.TabIndex = 13;
@@ -470,7 +428,7 @@
             // 
             this.labAfter.AutoSize = true;
             this.labAfter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labAfter.Location = new System.Drawing.Point(264, 132);
+            this.labAfter.Location = new System.Drawing.Point(242, 78);
             this.labAfter.Name = "labAfter";
             this.labAfter.Size = new System.Drawing.Size(52, 15);
             this.labAfter.TabIndex = 14;
@@ -479,7 +437,7 @@
             // dtpAfter
             // 
             this.dtpAfter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpAfter.Location = new System.Drawing.Point(267, 150);
+            this.dtpAfter.Location = new System.Drawing.Point(245, 96);
             this.dtpAfter.Name = "dtpAfter";
             this.dtpAfter.ShowCheckBox = true;
             this.dtpAfter.Size = new System.Drawing.Size(150, 23);
@@ -490,7 +448,7 @@
             // 
             this.dtpBefore.Checked = false;
             this.dtpBefore.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBefore.Location = new System.Drawing.Point(423, 150);
+            this.dtpBefore.Location = new System.Drawing.Point(401, 96);
             this.dtpBefore.Name = "dtpBefore";
             this.dtpBefore.ShowCheckBox = true;
             this.dtpBefore.Size = new System.Drawing.Size(150, 23);
@@ -501,7 +459,7 @@
             // 
             this.labBefore.AutoSize = true;
             this.labBefore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labBefore.Location = new System.Drawing.Point(422, 132);
+            this.labBefore.Location = new System.Drawing.Point(400, 78);
             this.labBefore.Name = "labBefore";
             this.labBefore.Size = new System.Drawing.Size(29, 15);
             this.labBefore.TabIndex = 16;
@@ -553,7 +511,7 @@
             this.pGreen.Controls.Add(this.labSTGreen);
             this.pGreen.Controls.Add(this.labTGreen);
             this.pGreen.Controls.Add(this.labGreen);
-            this.pGreen.Location = new System.Drawing.Point(267, 182);
+            this.pGreen.Location = new System.Drawing.Point(248, 132);
             this.pGreen.Name = "pGreen";
             this.pGreen.Size = new System.Drawing.Size(80, 80);
             this.pGreen.TabIndex = 26;
@@ -588,7 +546,7 @@
             this.pBlue.Controls.Add(this.labSTBlue);
             this.pBlue.Controls.Add(this.labTBlue);
             this.pBlue.Controls.Add(this.labBabyBlue);
-            this.pBlue.Location = new System.Drawing.Point(353, 182);
+            this.pBlue.Location = new System.Drawing.Point(334, 132);
             this.pBlue.Name = "pBlue";
             this.pBlue.Size = new System.Drawing.Size(80, 80);
             this.pBlue.TabIndex = 30;
@@ -623,7 +581,7 @@
             this.pYellow.Controls.Add(this.labSTYellow);
             this.pYellow.Controls.Add(this.labTYellow);
             this.pYellow.Controls.Add(this.labYellow);
-            this.pYellow.Location = new System.Drawing.Point(439, 182);
+            this.pYellow.Location = new System.Drawing.Point(420, 132);
             this.pYellow.Name = "pYellow";
             this.pYellow.Size = new System.Drawing.Size(80, 80);
             this.pYellow.TabIndex = 31;
@@ -658,7 +616,7 @@
             this.pRed.Controls.Add(this.labSTRed);
             this.pRed.Controls.Add(this.labTRed);
             this.pRed.Controls.Add(this.labRed);
-            this.pRed.Location = new System.Drawing.Point(525, 182);
+            this.pRed.Location = new System.Drawing.Point(506, 132);
             this.pRed.Name = "pRed";
             this.pRed.Size = new System.Drawing.Size(80, 80);
             this.pRed.TabIndex = 31;
@@ -693,7 +651,7 @@
             this.pAll.Controls.Add(this.labTAll);
             this.pAll.Controls.Add(this.labSTall);
             this.pAll.Controls.Add(this.labAll);
-            this.pAll.Location = new System.Drawing.Point(611, 182);
+            this.pAll.Location = new System.Drawing.Point(592, 132);
             this.pAll.Name = "pAll";
             this.pAll.Size = new System.Drawing.Size(80, 80);
             this.pAll.TabIndex = 32;
@@ -742,7 +700,7 @@
             this.cbxPreViewSO.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cbxPreViewSO.Checked = true;
             this.cbxPreViewSO.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbxPreViewSO.Location = new System.Drawing.Point(963, 66);
+            this.cbxPreViewSO.Location = new System.Drawing.Point(663, 66);
             this.cbxPreViewSO.Name = "cbxPreViewSO";
             this.cbxPreViewSO.Size = new System.Drawing.Size(125, 19);
             this.cbxPreViewSO.TabIndex = 33;
@@ -758,9 +716,9 @@
             this.pBackground.BackColor = System.Drawing.Color.White;
             this.pBackground.Controls.Add(this.dgvData);
             this.pBackground.Controls.Add(this.pPreViewSO);
-            this.pBackground.Location = new System.Drawing.Point(0, 278);
+            this.pBackground.Location = new System.Drawing.Point(0, 218);
             this.pBackground.Name = "pBackground";
-            this.pBackground.Size = new System.Drawing.Size(1100, 746);
+            this.pBackground.Size = new System.Drawing.Size(800, 382);
             this.pBackground.TabIndex = 34;
             // 
             // pPreViewSO
@@ -775,9 +733,9 @@
             this.pPreViewSO.Controls.Add(this.txtSolution);
             this.pPreViewSO.Controls.Add(this.txtID);
             this.pPreViewSO.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pPreViewSO.Location = new System.Drawing.Point(0, 565);
+            this.pPreViewSO.Location = new System.Drawing.Point(0, 201);
             this.pPreViewSO.Name = "pPreViewSO";
-            this.pPreViewSO.Size = new System.Drawing.Size(1100, 181);
+            this.pPreViewSO.Size = new System.Drawing.Size(800, 181);
             this.pPreViewSO.TabIndex = 8;
             // 
             // labSubject
@@ -877,14 +835,11 @@
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.labSearch);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.pTitle);
             this.Controls.Add(this.pBackground);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ucSchedule";
-            this.Size = new System.Drawing.Size(1100, 1024);
+            this.Size = new System.Drawing.Size(800, 600);
             this.Load += new System.EventHandler(this.ucSchedule_Load);
-            this.pTitle.ResumeLayout(false);
-            this.pTitle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.pGreen.ResumeLayout(false);
@@ -906,10 +861,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel pTitle;
-        private System.Windows.Forms.Button btnHide;
-        private System.Windows.Forms.Label labTitle;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label labSearch;
         private System.Windows.Forms.Button btnEdit;
