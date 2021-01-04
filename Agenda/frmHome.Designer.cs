@@ -49,8 +49,8 @@
             this.labTime = new System.Windows.Forms.Label();
             this.tMoment = new System.Windows.Forms.Timer(this.components);
             this.pTitleBar = new System.Windows.Forms.Panel();
-            this.btnReturn = new System.Windows.Forms.Button();
             this.labTitle = new System.Windows.Forms.Label();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.pMenu.SuspendLayout();
             this.pMenuButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoHome)).BeginInit();
@@ -355,6 +355,18 @@
             this.pTitleBar.Size = new System.Drawing.Size(1100, 42);
             this.pTitleBar.TabIndex = 3;
             // 
+            // labTitle
+            // 
+            this.labTitle.AutoSize = true;
+            this.labTitle.Font = new System.Drawing.Font("Roboto Bk", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTitle.ForeColor = System.Drawing.Color.White;
+            this.labTitle.Location = new System.Drawing.Point(73, 9);
+            this.labTitle.Name = "labTitle";
+            this.labTitle.Size = new System.Drawing.Size(54, 25);
+            this.labTitle.TabIndex = 7;
+            this.labTitle.Text = "Title";
+            this.labTitle.Visible = false;
+            // 
             // btnReturn
             // 
             this.btnReturn.FlatAppearance.BorderSize = 0;
@@ -372,18 +384,6 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Visible = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
-            // 
-            // labTitle
-            // 
-            this.labTitle.AutoSize = true;
-            this.labTitle.Font = new System.Drawing.Font("Roboto Bk", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTitle.ForeColor = System.Drawing.Color.White;
-            this.labTitle.Location = new System.Drawing.Point(73, 9);
-            this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(54, 25);
-            this.labTitle.TabIndex = 7;
-            this.labTitle.Text = "Title";
-            this.labTitle.Visible = false;
             // 
             // frmHome
             // 
