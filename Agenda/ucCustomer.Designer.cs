@@ -38,9 +38,6 @@
             this.pbSearchImage = new System.Windows.Forms.PictureBox();
             this.btnNew = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.pTitle = new System.Windows.Forms.Panel();
-            this.labTitle = new System.Windows.Forms.Label();
-            this.btnHide = new System.Windows.Forms.Button();
             this.labSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.dgvData = new System.Windows.Forms.DataGridView();
@@ -85,7 +82,6 @@
             this.labFilter = new System.Windows.Forms.Label();
             this.gbActiveStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).BeginInit();
-            this.pTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.pAll.SuspendLayout();
             this.pRed.SuspendLayout();
@@ -98,7 +94,7 @@
             this.gbActiveStatus.Controls.Add(this.rbInactive);
             this.gbActiveStatus.Controls.Add(this.rbActive);
             this.gbActiveStatus.Controls.Add(this.rbAll);
-            this.gbActiveStatus.Location = new System.Drawing.Point(26, 166);
+            this.gbActiveStatus.Location = new System.Drawing.Point(21, 86);
             this.gbActiveStatus.Name = "gbActiveStatus";
             this.gbActiveStatus.Size = new System.Drawing.Size(210, 48);
             this.gbActiveStatus.TabIndex = 1;
@@ -146,7 +142,7 @@
             // pbSearchImage
             // 
             this.pbSearchImage.Image = ((System.Drawing.Image)(resources.GetObject("pbSearchImage.Image")));
-            this.pbSearchImage.Location = new System.Drawing.Point(30, 90);
+            this.pbSearchImage.Location = new System.Drawing.Point(13, 13);
             this.pbSearchImage.Name = "pbSearchImage";
             this.pbSearchImage.Size = new System.Drawing.Size(64, 64);
             this.pbSearchImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -160,7 +156,7 @@
             this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNew.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(134, 220);
+            this.btnNew.Location = new System.Drawing.Point(129, 140);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(100, 35);
             this.btnNew.TabIndex = 3;
@@ -175,7 +171,7 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(26, 220);
+            this.btnEdit.Location = new System.Drawing.Point(21, 140);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(100, 35);
             this.btnEdit.TabIndex = 2;
@@ -183,49 +179,11 @@
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.EditCustomer);
             // 
-            // pTitle
-            // 
-            this.pTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            this.pTitle.Controls.Add(this.labTitle);
-            this.pTitle.Controls.Add(this.btnHide);
-            this.pTitle.Location = new System.Drawing.Point(0, 0);
-            this.pTitle.Name = "pTitle";
-            this.pTitle.Size = new System.Drawing.Size(1100, 60);
-            this.pTitle.TabIndex = 5;
-            // 
-            // labTitle
-            // 
-            this.labTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.labTitle.AutoSize = true;
-            this.labTitle.Font = new System.Drawing.Font("Roboto Bk", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTitle.ForeColor = System.Drawing.Color.White;
-            this.labTitle.Location = new System.Drawing.Point(502, 16);
-            this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(96, 28);
-            this.labTitle.TabIndex = 1;
-            this.labTitle.Text = "Clientes";
-            // 
-            // btnHide
-            // 
-            this.btnHide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnHide.FlatAppearance.BorderSize = 0;
-            this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHide.Image = ((System.Drawing.Image)(resources.GetObject("btnHide.Image")));
-            this.btnHide.Location = new System.Drawing.Point(1030, 0);
-            this.btnHide.Name = "btnHide";
-            this.btnHide.Size = new System.Drawing.Size(70, 60);
-            this.btnHide.TabIndex = 0;
-            this.btnHide.UseVisualStyleBackColor = true;
-            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
-            // 
             // labSearch
             // 
             this.labSearch.AutoSize = true;
             this.labSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labSearch.Location = new System.Drawing.Point(108, 115);
+            this.labSearch.Location = new System.Drawing.Point(90, 38);
             this.labSearch.Name = "labSearch";
             this.labSearch.Size = new System.Drawing.Size(335, 15);
             this.labSearch.TabIndex = 18;
@@ -234,7 +192,7 @@
             // txtSearch
             // 
             this.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSearch.Location = new System.Drawing.Point(111, 131);
+            this.txtSearch.Location = new System.Drawing.Point(93, 54);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(430, 23);
             this.txtSearch.TabIndex = 0;
@@ -287,7 +245,7 @@
             this.dgvData.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvData.EnableHeadersVisualStyles = false;
             this.dgvData.GridColor = System.Drawing.Color.Gainsboro;
-            this.dgvData.Location = new System.Drawing.Point(0, 279);
+            this.dgvData.Location = new System.Drawing.Point(0, 201);
             this.dgvData.MultiSelect = false;
             this.dgvData.Name = "dgvData";
             this.dgvData.ReadOnly = true;
@@ -295,7 +253,7 @@
             this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvData.RowTemplate.Height = 35;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvData.Size = new System.Drawing.Size(1100, 745);
+            this.dgvData.Size = new System.Drawing.Size(800, 399);
             this.dgvData.TabIndex = 4;
             this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditCustomer);
             // 
@@ -480,7 +438,7 @@
             this.pAll.Controls.Add(this.labTAll);
             this.pAll.Controls.Add(this.labSTall);
             this.pAll.Controls.Add(this.labAll);
-            this.pAll.Location = new System.Drawing.Point(525, 182);
+            this.pAll.Location = new System.Drawing.Point(520, 102);
             this.pAll.Name = "pAll";
             this.pAll.Size = new System.Drawing.Size(80, 80);
             this.pAll.TabIndex = 35;
@@ -528,7 +486,7 @@
             this.pRed.Controls.Add(this.labSTRed);
             this.pRed.Controls.Add(this.labTRed);
             this.pRed.Controls.Add(this.labRed);
-            this.pRed.Location = new System.Drawing.Point(353, 182);
+            this.pRed.Location = new System.Drawing.Point(348, 102);
             this.pRed.Name = "pRed";
             this.pRed.Size = new System.Drawing.Size(80, 80);
             this.pRed.TabIndex = 33;
@@ -573,7 +531,7 @@
             this.pYellow.Controls.Add(this.labSTYellow);
             this.pYellow.Controls.Add(this.labTYellow);
             this.pYellow.Controls.Add(this.labYellow);
-            this.pYellow.Location = new System.Drawing.Point(267, 182);
+            this.pYellow.Location = new System.Drawing.Point(262, 102);
             this.pYellow.Name = "pYellow";
             this.pYellow.Size = new System.Drawing.Size(80, 80);
             this.pYellow.TabIndex = 34;
@@ -654,7 +612,7 @@
             this.pBlue.Controls.Add(this.labTBlue);
             this.pBlue.Controls.Add(this.labSTBlue);
             this.pBlue.Controls.Add(this.labBlue);
-            this.pBlue.Location = new System.Drawing.Point(439, 182);
+            this.pBlue.Location = new System.Drawing.Point(434, 102);
             this.pBlue.Name = "pBlue";
             this.pBlue.Size = new System.Drawing.Size(80, 80);
             this.pBlue.TabIndex = 36;
@@ -668,7 +626,7 @@
             "Data",
             "Financial",
             "Prospection"});
-            this.cbFilter.Location = new System.Drawing.Point(547, 131);
+            this.cbFilter.Location = new System.Drawing.Point(529, 54);
             this.cbFilter.Name = "cbFilter";
             this.cbFilter.Size = new System.Drawing.Size(121, 23);
             this.cbFilter.TabIndex = 37;
@@ -679,7 +637,7 @@
             // 
             this.labFilter.AutoSize = true;
             this.labFilter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labFilter.Location = new System.Drawing.Point(544, 113);
+            this.labFilter.Location = new System.Drawing.Point(526, 36);
             this.labFilter.Name = "labFilter";
             this.labFilter.Size = new System.Drawing.Size(89, 15);
             this.labFilter.TabIndex = 38;
@@ -703,17 +661,14 @@
             this.Controls.Add(this.pbSearchImage);
             this.Controls.Add(this.btnNew);
             this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.pTitle);
             this.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "ucCustomer";
-            this.Size = new System.Drawing.Size(1100, 1024);
+            this.Size = new System.Drawing.Size(800, 600);
             this.Load += new System.EventHandler(this.ucCustomer_Load);
             this.gbActiveStatus.ResumeLayout(false);
             this.gbActiveStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).EndInit();
-            this.pTitle.ResumeLayout(false);
-            this.pTitle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
             this.pAll.ResumeLayout(false);
             this.pAll.PerformLayout();
@@ -736,9 +691,6 @@
         private System.Windows.Forms.PictureBox pbSearchImage;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Panel pTitle;
-        private System.Windows.Forms.Label labTitle;
-        private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Label labSearch;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.DataGridView dgvData;

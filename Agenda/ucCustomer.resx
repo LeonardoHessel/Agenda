@@ -153,30 +153,6 @@
         9E7Qi1Gjg4bIhkw7eyedHf8D+mDpY+ByhnoAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnHide.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAABDVJREFUaEPtWktrE1EUrg9U6hsUURAVURf6FxQFf4Bi0SJSEVHRLly4caEgIm7F
-        hQtBELStUERU3LgUH8UXLnwturCLtsTU5jFz09Im6fU747FJ75yZzGRmkiz6wUeGyTnn++beO/fezKRt
-        HgGgtV6g0+kVemxsJR3z6daGnpjYXLKsUyWl7pVsewD8A5ZBzaRjOvfGiVHqJOVwenOhx8dXlW27Gxfw
-        scpwWL6lGjqVWs5lGwedza4p2vY1mMgYpqIwTTUxBNtZJllgSByH6G/DRHy0rCHSYLn4QTcthPpcwsmx
-        jzRZPh7ofH4HxvFXQSxRkqYuFDayjWiYsu3dKJo2RRpGpX6RB7ZTH5wp1baHXcUbz+G6p2qamZoxnLzo
-        DDOtl7K94EDyE7NYs4np+TbbCwYkdZhFWogdbNMfNKQQPGok10UMh2/4LJrnI3KUPLJdb6D7bgjJYUl7
-        qqNUD59Hqs7HQvLomPUCL3qRth3ohc/VMwxu0MVSXERmfBdLmDgnJAUndrXSXkmMjUjyyuXdQABtv8XE
-        WkR3X+cyLkjxMXCAy88FbqCtQnAQzvi2DiDkxELyzBIVYNd5RgquwSKGUxeX8ISQFw/hmSUqwBc9rkB/
-        TqPQIU73BXrsfNmyLheVuom8O8h7iAZ4juPXGJI/8Uk/C0qgpOPHHpaoAGKfhEAvToPO9BoXMEks1Ept
-        KFrWXtR+VKXlSfLM6RXgi5wZ6MEZ8BinJQJt2+uhMVGl6cUcp/wDWmORECQSrdDNaYkCWi9NbYnknVNw
-        IbncWilI4DNOSRzQumtoiyTvnBLqQh5zSuKAVh0XEnxozWC2OcFpiQJarwxtkXOGFgEn82aQB6cxZR7g
-        tESAVt4OnSDTcZ5TKgg5/dpYEw5yamSgVdthfhsaaB+tOagfaKvkNf32moG+VEpBeD+n+wKCF8CriL+F
-        xfABcl+gxjtwELRna4ZnL0tUAKGzQmAtTsLYYS7hCSEvFpJnlqiAulYKDsASWtj3yaCQEwvJM0vMBQy9
-        lxICsIzWucJlXBDioxNeubwbMEM3mpwYhNgM6kxmNZebhRgbkeSVy7tBL2QQlDWTQnJQW9YuLulsBoWY
-        qMySV5aQwVttKTkMLboRcRFLykpdEr6PRPLIdr1BSz6CU2ZynYz7URAxRR7Zrj8Q3GkktxI72WYwIOGp
-        UaDpxIIa7pEpgboPid+lgs0gecE9t4zthYOenNyCIiNm0SZwhLywrfowZdt7UGjMKNw4WtYQeWA70YB1
-        YSe69ocolCBJUxcKm9hGPODFst8US5D9NRe9KMAepwsi44ZonBwmDZZLFhhq69Dt9Poh6COkIMxQzUR7
-        wQvOe0alLmI78kUwFozYxVIN+jsIl20u6LcB7a9g7D5mmg8wSe9Z6GHef9N0TOcGOOa05++JVgPtfKml
-        HeKYT8/DG21tfwG1TzqAcNGHGwAAAABJRU5ErkJggg==
-</value>
-  </data>
   <metadata name="colID.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
