@@ -255,7 +255,7 @@ namespace Agenda
         {
             Properties.Settings.Default.PreViewSO = cbxPreViewSO.Checked;
             Properties.Settings.Default.Save();
-            pPreViewSO.Visible = cbxPreViewSO.Checked;
+            flpPreviewSO.Visible = cbxPreViewSO.Checked;
             if (cbxPreViewSO.Checked && dgvData.Rows.Count > 0)
             {
                 PreViewSO = dgvData.CurrentRow.DataBoundItem as ServiceOrder;

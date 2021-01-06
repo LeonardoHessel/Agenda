@@ -234,7 +234,7 @@ namespace Agenda
             txtSolution.Text = SO.Solution;
 
             if (SO.Product != null)
-                cbProduct.SelectedItem = SO.Product;
+                cbProduct.Text = SO.Product.Name;
 
             cbServiceMode.Text = SO.Service;
             cbStatus.Text = SO.Status;

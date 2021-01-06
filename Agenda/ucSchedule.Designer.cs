@@ -86,15 +86,17 @@
             this.labAll = new System.Windows.Forms.Label();
             this.cbxPreViewSO = new System.Windows.Forms.CheckBox();
             this.pBackground = new System.Windows.Forms.Panel();
-            this.pPreViewSO = new System.Windows.Forms.Panel();
+            this.flpPreviewSO = new System.Windows.Forms.FlowLayoutPanel();
+            this.pStrutA = new System.Windows.Forms.Panel();
             this.labSubject = new System.Windows.Forms.Label();
-            this.labSolution = new System.Windows.Forms.Label();
-            this.txtSubject = new System.Windows.Forms.TextBox();
-            this.labID = new System.Windows.Forms.Label();
-            this.txtDescription = new System.Windows.Forms.TextBox();
             this.labDescription = new System.Windows.Forms.Label();
-            this.txtSolution = new System.Windows.Forms.TextBox();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtSubject = new System.Windows.Forms.TextBox();
+            this.pStrutB = new System.Windows.Forms.Panel();
+            this.labID = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
+            this.labSolution = new System.Windows.Forms.Label();
+            this.txtSolution = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbSearchImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.pGreen.SuspendLayout();
@@ -103,7 +105,9 @@
             this.pRed.SuspendLayout();
             this.pAll.SuspendLayout();
             this.pBackground.SuspendLayout();
-            this.pPreViewSO.SuspendLayout();
+            this.flpPreviewSO.SuspendLayout();
+            this.pStrutA.SuspendLayout();
+            this.pStrutB.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSearch
@@ -216,7 +220,7 @@
             this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvData.RowTemplate.Height = 35;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvData.Size = new System.Drawing.Size(800, 201);
+            this.dgvData.Size = new System.Drawing.Size(800, 202);
             this.dgvData.TabIndex = 7;
             this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EditServiceOrder);
             this.dgvData.SelectionChanged += new System.EventHandler(this.dgvData_SelectionChanged);
@@ -715,102 +719,136 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pBackground.BackColor = System.Drawing.Color.White;
             this.pBackground.Controls.Add(this.dgvData);
-            this.pBackground.Controls.Add(this.pPreViewSO);
+            this.pBackground.Controls.Add(this.flpPreviewSO);
             this.pBackground.Location = new System.Drawing.Point(0, 218);
             this.pBackground.Name = "pBackground";
             this.pBackground.Size = new System.Drawing.Size(800, 382);
             this.pBackground.TabIndex = 34;
             // 
-            // pPreViewSO
+            // flpPreviewSO
             // 
-            this.pPreViewSO.BackColor = System.Drawing.Color.White;
-            this.pPreViewSO.Controls.Add(this.labSubject);
-            this.pPreViewSO.Controls.Add(this.labSolution);
-            this.pPreViewSO.Controls.Add(this.txtSubject);
-            this.pPreViewSO.Controls.Add(this.labID);
-            this.pPreViewSO.Controls.Add(this.txtDescription);
-            this.pPreViewSO.Controls.Add(this.labDescription);
-            this.pPreViewSO.Controls.Add(this.txtSolution);
-            this.pPreViewSO.Controls.Add(this.txtID);
-            this.pPreViewSO.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pPreViewSO.Location = new System.Drawing.Point(0, 201);
-            this.pPreViewSO.Name = "pPreViewSO";
-            this.pPreViewSO.Size = new System.Drawing.Size(800, 181);
-            this.pPreViewSO.TabIndex = 8;
+            this.flpPreviewSO.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.flpPreviewSO.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpPreviewSO.Controls.Add(this.pStrutA);
+            this.flpPreviewSO.Controls.Add(this.pStrutB);
+            this.flpPreviewSO.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.flpPreviewSO.Location = new System.Drawing.Point(0, 202);
+            this.flpPreviewSO.Name = "flpPreviewSO";
+            this.flpPreviewSO.Size = new System.Drawing.Size(800, 180);
+            this.flpPreviewSO.TabIndex = 8;
+            // 
+            // pStrutA
+            // 
+            this.pStrutA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pStrutA.Controls.Add(this.labSubject);
+            this.pStrutA.Controls.Add(this.labDescription);
+            this.pStrutA.Controls.Add(this.txtDescription);
+            this.pStrutA.Controls.Add(this.txtSubject);
+            this.pStrutA.Location = new System.Drawing.Point(10, 10);
+            this.pStrutA.Margin = new System.Windows.Forms.Padding(10);
+            this.pStrutA.Name = "pStrutA";
+            this.pStrutA.Size = new System.Drawing.Size(375, 160);
+            this.pStrutA.TabIndex = 8;
             // 
             // labSubject
             // 
             this.labSubject.AutoSize = true;
-            this.labSubject.Location = new System.Drawing.Point(13, 12);
+            this.labSubject.Location = new System.Drawing.Point(-3, 0);
             this.labSubject.Name = "labSubject";
             this.labSubject.Size = new System.Drawing.Size(57, 15);
             this.labSubject.TabIndex = 4;
             this.labSubject.Text = "Assunto:";
             // 
-            // labSolution
-            // 
-            this.labSolution.AutoSize = true;
-            this.labSolution.Location = new System.Drawing.Point(557, 62);
-            this.labSolution.Name = "labSolution";
-            this.labSolution.Size = new System.Drawing.Size(56, 15);
-            this.labSolution.TabIndex = 7;
-            this.labSolution.Text = "Solução:";
-            // 
-            // txtSubject
-            // 
-            this.txtSubject.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSubject.Location = new System.Drawing.Point(16, 30);
-            this.txtSubject.Name = "txtSubject";
-            this.txtSubject.ReadOnly = true;
-            this.txtSubject.Size = new System.Drawing.Size(500, 23);
-            this.txtSubject.TabIndex = 0;
-            // 
-            // labID
-            // 
-            this.labID.AutoSize = true;
-            this.labID.Location = new System.Drawing.Point(557, 12);
-            this.labID.Name = "labID";
-            this.labID.Size = new System.Drawing.Size(23, 15);
-            this.labID.TabIndex = 6;
-            this.labID.Text = "ID:";
-            // 
-            // txtDescription
-            // 
-            this.txtDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtDescription.Location = new System.Drawing.Point(16, 80);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.ReadOnly = true;
-            this.txtDescription.Size = new System.Drawing.Size(500, 86);
-            this.txtDescription.TabIndex = 1;
-            // 
             // labDescription
             // 
             this.labDescription.AutoSize = true;
-            this.labDescription.Location = new System.Drawing.Point(13, 62);
+            this.labDescription.Location = new System.Drawing.Point(-3, 50);
             this.labDescription.Name = "labDescription";
             this.labDescription.Size = new System.Drawing.Size(69, 15);
             this.labDescription.TabIndex = 5;
             this.labDescription.Text = "Descrição:";
             // 
-            // txtSolution
+            // txtDescription
             // 
-            this.txtSolution.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSolution.Location = new System.Drawing.Point(560, 80);
-            this.txtSolution.Multiline = true;
-            this.txtSolution.Name = "txtSolution";
-            this.txtSolution.ReadOnly = true;
-            this.txtSolution.Size = new System.Drawing.Size(500, 86);
-            this.txtSolution.TabIndex = 2;
+            this.txtDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescription.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtDescription.Location = new System.Drawing.Point(0, 68);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.ReadOnly = true;
+            this.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtDescription.Size = new System.Drawing.Size(375, 92);
+            this.txtDescription.TabIndex = 1;
+            // 
+            // txtSubject
+            // 
+            this.txtSubject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubject.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSubject.Location = new System.Drawing.Point(0, 18);
+            this.txtSubject.Name = "txtSubject";
+            this.txtSubject.ReadOnly = true;
+            this.txtSubject.Size = new System.Drawing.Size(375, 23);
+            this.txtSubject.TabIndex = 0;
+            // 
+            // pStrutB
+            // 
+            this.pStrutB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pStrutB.Controls.Add(this.labID);
+            this.pStrutB.Controls.Add(this.txtID);
+            this.pStrutB.Controls.Add(this.labSolution);
+            this.pStrutB.Controls.Add(this.txtSolution);
+            this.pStrutB.Location = new System.Drawing.Point(405, 10);
+            this.pStrutB.Margin = new System.Windows.Forms.Padding(10);
+            this.pStrutB.Name = "pStrutB";
+            this.pStrutB.Size = new System.Drawing.Size(375, 160);
+            this.pStrutB.TabIndex = 9;
+            // 
+            // labID
+            // 
+            this.labID.AutoSize = true;
+            this.labID.Location = new System.Drawing.Point(3, 0);
+            this.labID.Name = "labID";
+            this.labID.Size = new System.Drawing.Size(23, 15);
+            this.labID.TabIndex = 6;
+            this.labID.Text = "ID:";
             // 
             // txtID
             // 
+            this.txtID.BackColor = System.Drawing.SystemColors.Info;
             this.txtID.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtID.Location = new System.Drawing.Point(560, 30);
+            this.txtID.Location = new System.Drawing.Point(0, 18);
             this.txtID.Name = "txtID";
             this.txtID.ReadOnly = true;
             this.txtID.Size = new System.Drawing.Size(148, 23);
             this.txtID.TabIndex = 3;
+            // 
+            // labSolution
+            // 
+            this.labSolution.AutoSize = true;
+            this.labSolution.Location = new System.Drawing.Point(-3, 50);
+            this.labSolution.Name = "labSolution";
+            this.labSolution.Size = new System.Drawing.Size(56, 15);
+            this.labSolution.TabIndex = 7;
+            this.labSolution.Text = "Solução:";
+            // 
+            // txtSolution
+            // 
+            this.txtSolution.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSolution.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSolution.Location = new System.Drawing.Point(0, 68);
+            this.txtSolution.Multiline = true;
+            this.txtSolution.Name = "txtSolution";
+            this.txtSolution.ReadOnly = true;
+            this.txtSolution.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtSolution.Size = new System.Drawing.Size(375, 92);
+            this.txtSolution.TabIndex = 2;
             // 
             // ucSchedule
             // 
@@ -853,8 +891,11 @@
             this.pAll.ResumeLayout(false);
             this.pAll.PerformLayout();
             this.pBackground.ResumeLayout(false);
-            this.pPreViewSO.ResumeLayout(false);
-            this.pPreViewSO.PerformLayout();
+            this.flpPreviewSO.ResumeLayout(false);
+            this.pStrutA.ResumeLayout(false);
+            this.pStrutA.PerformLayout();
+            this.pStrutB.ResumeLayout(false);
+            this.pStrutB.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -925,6 +966,8 @@
         private System.Windows.Forms.Label labDescription;
         private System.Windows.Forms.Label labSubject;
         private System.Windows.Forms.TextBox txtID;
-        private System.Windows.Forms.Panel pPreViewSO;
+        private System.Windows.Forms.Panel pStrutB;
+        private System.Windows.Forms.Panel pStrutA;
+        private System.Windows.Forms.FlowLayoutPanel flpPreviewSO;
     }
 }
