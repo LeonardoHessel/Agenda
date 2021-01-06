@@ -51,6 +51,7 @@
             this.pTitleBar = new System.Windows.Forms.Panel();
             this.labTitle = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.labVersion = new System.Windows.Forms.Label();
             this.pMenu.SuspendLayout();
             this.pMenuButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoHome)).BeginInit();
@@ -60,6 +61,7 @@
             // pMenu
             // 
             this.pMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            this.pMenu.Controls.Add(this.labVersion);
             this.pMenu.Controls.Add(this.pMenuButtons);
             this.pMenu.Controls.Add(this.labUserName);
             this.pMenu.Controls.Add(this.labWelcome);
@@ -226,7 +228,7 @@
             this.labUserName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labUserName.AutoSize = true;
             this.labUserName.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labUserName.Location = new System.Drawing.Point(47, 944);
+            this.labUserName.Location = new System.Drawing.Point(47, 927);
             this.labUserName.Name = "labUserName";
             this.labUserName.Size = new System.Drawing.Size(87, 19);
             this.labUserName.TabIndex = 7;
@@ -238,7 +240,7 @@
             this.labWelcome.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.labWelcome.AutoSize = true;
             this.labWelcome.Font = new System.Drawing.Font("Roboto Bk", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labWelcome.Location = new System.Drawing.Point(46, 899);
+            this.labWelcome.Location = new System.Drawing.Point(46, 893);
             this.labWelcome.Name = "labWelcome";
             this.labWelcome.Size = new System.Drawing.Size(88, 19);
             this.labWelcome.TabIndex = 6;
@@ -385,6 +387,18 @@
             this.btnReturn.Visible = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
+            // labVersion
+            // 
+            this.labVersion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labVersion.Font = new System.Drawing.Font("Roboto Bk", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labVersion.ForeColor = System.Drawing.Color.DarkGray;
+            this.labVersion.Location = new System.Drawing.Point(0, 965);
+            this.labVersion.Name = "labVersion";
+            this.labVersion.Size = new System.Drawing.Size(180, 40);
+            this.labVersion.TabIndex = 11;
+            this.labVersion.Text = "Versão\r\n2.0.0";
+            this.labVersion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
             // frmHome
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -437,5 +451,6 @@
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.Panel pMenuButtons;
         private System.Windows.Forms.Label labTitle;
+        private System.Windows.Forms.Label labVersion;
     }
 }
