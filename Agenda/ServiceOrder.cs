@@ -150,6 +150,50 @@ namespace Agenda
             return false;
         }
 
+        public static (long finalized, long pending, long late, long schedule, long total) Count(long user_id = 0)
+        {
+            ServiceOrder conn = new ServiceOrder();
+            string sql;
+
+            if (user_id == 0)
+            {
+                sql = @"SELECT
+                (SELECT COUNT(*) FROM `serviceorder` WHERE `status` = 'Finalizado') AS 'Finalized', 
+                (SELECT COUNT(*) FROM `serviceorder` WHERE `status` = 'Pendente') AS 'Pending', 
+                (SELECT COUNT(*) FROM `serviceorder` WHERE `status` <> 'Finalizado' AND `end` < NOW()) AS 'Late', 
+                (SELECT COUNT(*) FROM `serviceorder` WHERE `status` = 'Agendado') AS 'Scheduled', 
+                (SELECT COUNT(*) FROM `serviceorder`) as 'Total'";
+            }
+            else
+            {
+                sql = @"SELECT
+                (SELECT COUNT(*) FROM serviceorder WHERE `status` = 'Finalizado' AND `user_id` = @user_id) AS 'Finalized', 
+                (SELECT COUNT(*) FROM serviceorder WHERE `status` = 'Pendente' AND `user_id` = @user_id) AS 'Pending', 
+                (SELECT COUNT(*) FROM serviceorder WHERE `status` <> 'Finalizado' AND `end` < NOW() AND `user_id` = @user_id) AS 'Late', 
+                (SELECT COUNT(*) FROM serviceorder WHERE `status` = 'Agendado' AND `user_id` = @user_id) AS 'Scheduled', 
+                (SELECT COUNT(*) FROM serviceorder WHERE `user_id` = @user_id) as 'Total'";
+            }
+
+            conn.TextCommand(sql);
+
+            if (user_id != 0)
+                conn.AddParameter("user_id",user_id);
+
+            if (conn.ExecuteQuery())
+            {
+                DataTable table = Connection.SelectedTable;
+
+                long finalized = table.Rows[0].Field<long>("Finalized");
+                long pending = table.Rows[0].Field<long>("Pending");
+                long late = table.Rows[0].Field<long>("Late");
+                long schedule = table.Rows[0].Field<long>("Scheduled");
+                long total = table.Rows[0].Field<long>("Total");
+                
+                return (finalized, pending, late, schedule, total);
+            }
+            return (0, 0, 0, 0, 0);
+        }
+
         public bool Update()
         {
             string sql = @"UPDATE `serviceorder` SET `customer_id`=@customer_id,`whorequested`=@whorequested,

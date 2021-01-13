@@ -330,5 +330,14 @@ namespace Agenda
             }
         }
         // Move Form END
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+            //foreach (Form frm in Application.OpenForms)
+            //{
+            //    frm.WindowState = FormWindowState.Minimized;
+            //}
+        }
     }
 }

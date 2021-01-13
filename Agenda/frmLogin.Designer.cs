@@ -171,7 +171,7 @@
             this.labVersion.Name = "labVersion";
             this.labVersion.Size = new System.Drawing.Size(350, 80);
             this.labVersion.TabIndex = 1;
-            this.labVersion.Text = "Versão 2.0.0";
+            this.labVersion.Text = "Versão 2.1.0";
             this.labVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmLogin

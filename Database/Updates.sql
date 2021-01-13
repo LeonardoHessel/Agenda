@@ -28,5 +28,5 @@ update `serviceorder` set `launched_id` = `user_id`;
 
 -- Agenda v0.86 --
 
-alter table `customer` add column `info_pending` BOOL AFTER `financial_pending`;
+alter table `customer` add column `info_pending` BOOL DEFAULT FALSE AFTER `financial_pending`;
 update customer set info_pending = false;

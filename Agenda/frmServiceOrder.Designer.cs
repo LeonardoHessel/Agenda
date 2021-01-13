@@ -73,6 +73,7 @@
             this.tShowSaved = new System.Windows.Forms.Timer(this.components);
             this.btnClose = new System.Windows.Forms.Button();
             this.labTitle = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.pForm.SuspendLayout();
             this.tcSO.SuspendLayout();
             this.tpSO.SuspendLayout();
@@ -145,7 +146,7 @@
             this.tpSO.Padding = new System.Windows.Forms.Padding(3);
             this.tpSO.Size = new System.Drawing.Size(765, 382);
             this.tpSO.TabIndex = 0;
-            this.tpSO.Text = "Orden de Serviço";
+            this.tpSO.Text = "Ordem de Serviço";
             // 
             // cbWhoLaunched
             // 
@@ -583,15 +584,27 @@
             this.labTitle.Name = "labTitle";
             this.labTitle.Size = new System.Drawing.Size(800, 42);
             this.labTitle.TabIndex = 7;
-            this.labTitle.Text = "Orden de Serviço";
+            this.labTitle.Text = "Ordem de Serviço";
             this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.labTitle_MouseDown);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(497, 10);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(166, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Teste Minimizar tudo";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmServiceOrder
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
             this.ClientSize = new System.Drawing.Size(800, 515);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.labTitle);
             this.Controls.Add(this.pForm);
@@ -660,5 +673,6 @@
         private System.Windows.Forms.TabPage tpSO;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label labTitle;
+        private System.Windows.Forms.Button button1;
     }
 }

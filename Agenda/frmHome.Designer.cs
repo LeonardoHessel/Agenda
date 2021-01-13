@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHome));
             this.pMenu = new System.Windows.Forms.Panel();
+            this.labVersion = new System.Windows.Forms.Label();
             this.pMenuButtons = new System.Windows.Forms.Panel();
             this.pSlide = new System.Windows.Forms.Panel();
             this.btnHideMenu = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@
             this.pTitleBar = new System.Windows.Forms.Panel();
             this.labTitle = new System.Windows.Forms.Label();
             this.btnReturn = new System.Windows.Forms.Button();
-            this.labVersion = new System.Windows.Forms.Label();
             this.pMenu.SuspendLayout();
             this.pMenuButtons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLogoHome)).BeginInit();
@@ -73,6 +73,18 @@
             this.pMenu.Name = "pMenu";
             this.pMenu.Size = new System.Drawing.Size(180, 1005);
             this.pMenu.TabIndex = 0;
+            // 
+            // labVersion
+            // 
+            this.labVersion.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.labVersion.Font = new System.Drawing.Font("Roboto Bk", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labVersion.ForeColor = System.Drawing.Color.DarkGray;
+            this.labVersion.Location = new System.Drawing.Point(0, 965);
+            this.labVersion.Name = "labVersion";
+            this.labVersion.Size = new System.Drawing.Size(180, 40);
+            this.labVersion.TabIndex = 11;
+            this.labVersion.Text = "Versão\r\n2.1.0";
+            this.labVersion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // pMenuButtons
             // 
@@ -386,18 +398,6 @@
             this.btnReturn.UseVisualStyleBackColor = true;
             this.btnReturn.Visible = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
-            // 
-            // labVersion
-            // 
-            this.labVersion.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.labVersion.Font = new System.Drawing.Font("Roboto Bk", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labVersion.ForeColor = System.Drawing.Color.DarkGray;
-            this.labVersion.Location = new System.Drawing.Point(0, 965);
-            this.labVersion.Name = "labVersion";
-            this.labVersion.Size = new System.Drawing.Size(180, 40);
-            this.labVersion.TabIndex = 11;
-            this.labVersion.Text = "Versão\r\n2.0.0";
-            this.labVersion.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // frmHome
             // 

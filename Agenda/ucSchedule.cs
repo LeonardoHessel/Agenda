@@ -23,27 +23,6 @@ namespace Agenda
             }
         }
 
-        public ServiceOrder PreViewSO
-        {
-            set
-            {
-                if (dgvData.Rows.Count > 0)
-                {
-                    txtDescription.Text = value.Description;
-                    txtID.Text = value.ID.ToString();
-                    txtSubject.Text = value.Subject;
-                    txtSolution.Text = value.Solution;
-                }
-                else
-                {
-                    txtDescription.Text = "";
-                    txtID.Text = "";
-                    txtSubject.Text = "";
-                    txtSolution.Text = "";
-                }
-            }
-        }
-
         public ucSchedule()
         {
             InitializeComponent();
@@ -54,8 +33,10 @@ namespace Agenda
             cbUser.Text = frmHome.User.Login;
         }
 
+        private bool ready = false;
         private void ucSchedule_Load(object sender, EventArgs e)
         {
+            ready = true;
             LoadServiceOrders();
             FormatNumbers(true);
             FormatDataGridView();
@@ -64,135 +45,131 @@ namespace Agenda
 
         private void LoadServiceOrders()
         {
-            string status = "Todos";
-            long user_id = 0;
-            DateTime afD, beD;
-
-            if (cbStatus.Text != null)
-                status = cbStatus.Text;
-
-            if (cbUser.SelectedItem != null)
-                user_id = (cbUser.SelectedItem as User).ID;
-
-            afD = dtpAfter.Value;
-            beD = dtpBefore.Value;
-
-            if (ServiceOrder.SearchAll(afD, beD, dtpAfter.Checked, dtpBefore.Checked, txtSearch.Text, status, user_id))
-                dgvData.DataSource = ServiceOrder.QueryServiceOrders;
-            else
-                MessageBox.Show(Connection.ErrorMessage);
-
-            if (cbxPreViewSO.Checked && dgvData.Rows.Count > 0)
+            if (ready)
             {
-                PreViewSO = dgvData.CurrentRow.DataBoundItem as ServiceOrder;
+                string status = "Todos";
+                long user_id = 0;
+                DateTime afD, beD;
+
+                if (cbStatus.Text != null)
+                    status = cbStatus.Text;
+
+                if (cbUser.SelectedItem != null)
+                    user_id = (cbUser.SelectedItem as User).ID;
+
+                afD = dtpAfter.Value;
+                beD = dtpBefore.Value;
+
+                if (ServiceOrder.SearchAll(afD, beD, dtpAfter.Checked, dtpBefore.Checked, txtSearch.Text, status, user_id))
+                    dgvData.DataSource = ServiceOrder.QueryServiceOrders;
+                else
+                    MessageBox.Show(Connection.ErrorMessage);
+
+                PreViewSO();
+
+                if (cbxPreViewSO.Checked && dgvData.Rows.Count > 0)
+                    PreViewSO(dgvData.CurrentRow.DataBoundItem as ServiceOrder);
             }
-            else if (cbxPreViewSO.Checked && dgvData.Rows.Count == 0)
+        }
+
+        private void PreViewSO(ServiceOrder so = null)
+        {
+            txtDescription.Text = string.Empty;
+            txtID.Text = string.Empty;
+            txtSubject.Text = string.Empty;
+            txtSolution.Text = string.Empty;
+
+            if (so != null)
             {
-                PreViewSO = null;
+                txtDescription.Text = so.Description;
+                txtID.Text = so.ID.ToString();
+                txtSubject.Text = so.Subject;
+                txtSolution.Text = so.Solution;
             }
         }
 
         private void FormatDataGridView()
         {
-            foreach (DataGridViewRow row in dgvData.Rows)
+            if (ready)
             {
-                int rowIndex = row.Index;
-                string status = row.Cells["colStatus"].Value.ToString();
-                DateTime end = Convert.ToDateTime(row.Cells["colEnd"].Value);
-                int difference = DateTime.Compare(end, DateTime.Now);
-                bool isInactive = Convert.ToBoolean(row.Cells["colIsInactive"].Value);
-
-                switch (status)
+                foreach (DataGridViewRow row in dgvData.Rows)
                 {
-                    case "Agendado":
-                        dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(72, 254, 90);
-                        break;
-                    case "Finalizado":
-                        dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(207, 255, 255);
-                        break;
-                    case "Pendente":
-                        dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(252, 255, 86);
-                        break;
-                }
+                    int rowIndex = row.Index;
+                    string status = row.Cells["colStatus"].Value.ToString();
+                    DateTime end = Convert.ToDateTime(row.Cells["colEnd"].Value);
+                    int difference = DateTime.Compare(end, DateTime.Now);
+                    bool isInactive = Convert.ToBoolean(row.Cells["colIsInactive"].Value);
 
-                if (difference < 0 && status != "Finalizado")
-                {
-                    dgvData.Rows[rowIndex].Cells["colID"].Style.BackColor = Color.FromArgb(255, 102, 102);
-                }
+                    switch (status)
+                    {
+                        case "Agendado":
+                            dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(72, 254, 90);
+                            break;
+                        case "Finalizado":
+                            dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(207, 255, 255);
+                            break;
+                        case "Pendente":
+                            dgvData.Rows[rowIndex].DefaultCellStyle.BackColor = Color.FromArgb(252, 255, 86);
+                            break;
+                    }
 
-                if (isInactive)
-                    dgvData.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Gray;
+                    if (difference < 0 && status != "Finalizado")
+                    {
+                        dgvData.Rows[rowIndex].Cells["colID"].Style.BackColor = Color.FromArgb(255, 102, 102);
+                    }
+
+                    if (isInactive)
+                        dgvData.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Gray;
+                }
             }
         }
 
         private void FormatNumbers(bool setTotal = false)
         {
-            int greenT = 0, blueT = 0, yellowT = 0, redT = 0;
-            int greenST = 0, blueST = 0, yellowST = 0, redST = 0;
-
-            if (setTotal)
+            if (ready)
             {
-                long userID = (cbUser.SelectedItem as User).ID;
-                List<ServiceOrder> serviceOrders = new List<ServiceOrder>();
+                int greenST = 0, blueST = 0, yellowST = 0, redST = 0;
 
-                if (ServiceOrder.SearchAll(DateTime.Now, DateTime.Now, false, false, null, "Todos", userID))
-                    serviceOrders = ServiceOrder.QueryServiceOrders;
-
-                foreach (ServiceOrder so in serviceOrders)
+                if (setTotal)
                 {
-                    switch (so.Status)
+                    var values = ServiceOrder.Count((cbUser.SelectedItem as User).ID);
+
+                    labTGreen.Text = values.schedule.ToString();
+                    labTBlue.Text = values.finalized.ToString();
+                    labTYellow.Text = values.pending.ToString();
+                    labTRed.Text = values.late.ToString();
+                    labTAll.Text = values.total.ToString();
+                }
+
+                foreach (DataGridViewRow row in dgvData.Rows)
+                {
+                    string status = row.Cells["colStatus"].Value.ToString();
+                    DateTime end = Convert.ToDateTime(row.Cells["colEnd"].Value);
+                    int difference = DateTime.Compare(end, DateTime.Now);
+
+                    switch (status)
                     {
                         case "Agendado":
-                            greenT++;
+                            greenST++;
                             break;
                         case "Finalizado":
-                            blueT++;
+                            blueST++;
                             break;
                         case "Pendente":
-                            yellowT++;
+                            yellowST++;
                             break;
                     }
 
-                    int difference = DateTime.Compare(so.End, DateTime.Now);
-                    if (difference < 0 && so.Status != "Finalizado")
-                        redT++;
+                    if (difference < 0 && status != "Finalizado")
+                        redST++;
                 }
 
-                labTGreen.Text = greenT.ToString();
-                labTBlue.Text = blueT.ToString();
-                labTYellow.Text = yellowT.ToString();
-                labTRed.Text = redT.ToString();
-                labTAll.Text = serviceOrders.Count.ToString();
+                labSTGreen.Text = greenST.ToString();
+                labSTBlue.Text = blueST.ToString();
+                labSTYellow.Text = yellowST.ToString();
+                labSTRed.Text = redST.ToString();
+                labSTall.Text = dgvData.RowCount.ToString();
             }
-
-            foreach (DataGridViewRow row in dgvData.Rows)
-            {
-                string status = row.Cells["colStatus"].Value.ToString();
-                DateTime end = Convert.ToDateTime(row.Cells["colEnd"].Value);
-                int difference = DateTime.Compare(end, DateTime.Now);
-
-                switch (status)
-                {
-                    case "Agendado":
-                        greenST++;
-                        break;
-                    case "Finalizado":
-                        blueST++;
-                        break;
-                    case "Pendente":
-                        yellowST++;
-                        break;
-                }
-
-                if (difference < 0 && status != "Finalizado")
-                    redST++;
-            }
-
-            labSTGreen.Text = greenST.ToString();
-            labSTBlue.Text = blueST.ToString();
-            labSTYellow.Text = yellowST.ToString();
-            labSTRed.Text = redST.ToString();
-            labSTall.Text = dgvData.RowCount.ToString();
         }
 
         private void Search_Changed(object sender, EventArgs e)
@@ -256,26 +233,15 @@ namespace Agenda
             Properties.Settings.Default.PreViewSO = cbxPreViewSO.Checked;
             Properties.Settings.Default.Save();
             flpPreviewSO.Visible = cbxPreViewSO.Checked;
+
             if (cbxPreViewSO.Checked && dgvData.Rows.Count > 0)
-            {
-                PreViewSO = dgvData.CurrentRow.DataBoundItem as ServiceOrder;
-            }
-            else if (cbxPreViewSO.Checked && dgvData.Rows.Count == 0)
-            {
-                PreViewSO = null;
-            }
+                PreViewSO(dgvData.CurrentRow.DataBoundItem as ServiceOrder);
         }
 
         private void dgvData_SelectionChanged(object sender, EventArgs e)
         {
             if (cbxPreViewSO.Checked && dgvData.Rows.Count > 0)
-            {
-                PreViewSO = dgvData.CurrentRow.DataBoundItem as ServiceOrder;
-            }
-            else if (cbxPreViewSO.Checked && dgvData.Rows.Count == 0)
-            {
-                PreViewSO = null;
-            }
+                PreViewSO(dgvData.CurrentRow.DataBoundItem as ServiceOrder);
         }
     }
 }
