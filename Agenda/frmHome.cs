@@ -15,6 +15,7 @@ namespace Agenda
         public frmHome()
         {
             InitializeComponent();
+            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
         }
 
         public static User User;

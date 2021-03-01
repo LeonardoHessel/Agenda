@@ -34,3 +34,4 @@ C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmCustomer.resources
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmSearchCustomer.resources
 C:\DevFiles\Agenda\Agenda\bin\Debug\System.Numerics.Vectors.dll
 C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.frmSplashScreen.resources
+C:\DevFiles\Agenda\Agenda\obj\Debug\Agenda.csprojAssemblyReference.cache
