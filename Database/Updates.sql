@@ -30,3 +30,7 @@ update `serviceorder` set `launched_id` = `user_id`;
 
 alter table `customer` add column `info_pending` BOOL DEFAULT FALSE AFTER `financial_pending`;
 update customer set info_pending = false;
+
+-- Agenda v2.0.1 --
+
+alter table `address` change column `district` `district` VARCHAR(100);

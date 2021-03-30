@@ -352,7 +352,7 @@
             this.txtDistrict.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtDistrict.Location = new System.Drawing.Point(485, 47);
             this.txtDistrict.Margin = new System.Windows.Forms.Padding(5);
-            this.txtDistrict.MaxLength = 45;
+            this.txtDistrict.MaxLength = 100;
             this.txtDistrict.Name = "txtDistrict";
             this.txtDistrict.Size = new System.Drawing.Size(334, 22);
             this.txtDistrict.TabIndex = 4;
