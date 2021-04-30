@@ -44,6 +44,8 @@ namespace Agenda
         private void frmServiceOrder_Load(object sender, EventArgs e)
         {
             SetForm();
+            txtCustomer.SelectionStart = 0;
+            txtCustomer.SelectionLength = txtCustomer.Text.Length;
         }
 
         private void cbServiceOrderInactive_CheckedChanged(object sender, EventArgs e)
@@ -65,21 +67,22 @@ namespace Agenda
             frmSearchCustomer searchCustomer = new frmSearchCustomer(search);
             if (searchCustomer.ShowDialog() == DialogResult.Yes)
             {
-                this.Customer = searchCustomer.Customer;
-                if (this.Customer.FinancialPending)
+                if (searchCustomer.Customer != null)
                 {
-                    MessageBox.Show("Este cliente possui pendência financeira.\nSolicite que ele entre em contato com o setor Finaceiro", "Pendência");
-                    this.Customer = null;
-                }
-                else if (this.Customer.Product != null)
-                {
-                    DialogResult result = MessageBox.Show("Deseja aplicar o produto: " + this.Customer.Product.Name + ", a Ordem de Serviço?","Aplicar Produto", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
-                        cbProduct.Text = this.Customer.Product.Name;
-                }
-
-                if (this.Customer != null)
+                    this.Customer = searchCustomer.Customer;
+                    if (this.Customer.FinancialPending)
+                    {
+                        MessageBox.Show("Este cliente possui pendência financeira.\nSolicite que ele entre em contato com o setor Finaceiro", "Pendência");
+                        this.Customer = null;
+                    }
+                    else if (this.Customer.Product != null)
+                    {
+                        DialogResult result = MessageBox.Show("Deseja aplicar o produto: " + this.Customer.Product.Name + ", a Ordem de Serviço?", "Aplicar Produto", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                            cbProduct.Text = this.Customer.Product.Name;
+                    }
                     MessageBox.Show("Observações do Cliente:\n" + this.Customer.Obs);
+                }
             }
         }
 
@@ -106,7 +109,6 @@ namespace Agenda
         private void btnNew_Click(object sender, EventArgs e)
         {
             this.Action = Util.ActionMode.New;
-
             ResetFields();
             SetForm();
         }
@@ -123,29 +125,36 @@ namespace Agenda
                     {
                         ShowServiceOrder();
                         this.Action = Util.ActionMode.Edit;
-                        labSaved.Visible = true;
+                        labAlert.Text = "Ordem de serviço salva!";
+                        labAlert.Visible = true;
                         tShowSaved.Enabled = true;
                         SetForm();
                     }
                     else
+                    {
                         MessageBox.Show(Connection.ErrorMessage);
+                    }
                 }
                 else
                 {
                     if (this.ServiceOrder.Update())
                     {
                         this.Action = Util.ActionMode.Edit;
-                        labSaved.Visible = true;
+                        labAlert.Text = "Ordem de serviço atualizada!";
+                        labAlert.Visible = true;
                         tShowSaved.Enabled = true;
                         SetForm();
                     }
                     else
+                    {
                         MessageBox.Show(Connection.ErrorMessage);
+                    }
                 }
             }
             else
             {
                 MessageBox.Show("Para criar uma nova ordem de serviço é necessário que um cliente seja selecionado");
+                btnSave.Enabled = true;
             }
             if (this.ServiceOrder.Status == "Finalizado")
                 btnSave.Enabled = true;
@@ -154,7 +163,7 @@ namespace Agenda
         private void tShowSaved_Tick(object sender, EventArgs e)
         {
             tShowSaved.Enabled = false;
-            labSaved.Visible = false;
+            labAlert.Visible = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -189,11 +198,14 @@ namespace Agenda
                 btnSave.Enabled = true;
                 btnCancel.Enabled = false;
                 cbServiceOrderInactive.Enabled = false;
+                txtCustomer.SelectionStart = 0;
+                txtCustomer.SelectionLength = txtCustomer.Text.Length;
             }
             else if (this.Action == Util.ActionMode.Edit)
             {
                 btnSave.Enabled = true;
                 btnCancel.Enabled = true;
+                btnNew.Enabled = true;
                 cbServiceOrderInactive.Enabled = true;
                 ShowServiceOrder();
                 if (this.ServiceOrder.Status == "Finalizado")
@@ -330,14 +342,5 @@ namespace Agenda
             }
         }
         // Move Form END
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-            //foreach (Form frm in Application.OpenForms)
-            //{
-            //    frm.WindowState = FormWindowState.Minimized;
-            //}
-        }
     }
 }

@@ -113,7 +113,7 @@
             // txtSearch
             // 
             this.txtSearch.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtSearch.Location = new System.Drawing.Point(89, 52);
+            this.txtSearch.Location = new System.Drawing.Point(89, 31);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(350, 23);
             this.txtSearch.TabIndex = 0;
@@ -123,7 +123,7 @@
             // 
             this.labSearch.AutoSize = true;
             this.labSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labSearch.Location = new System.Drawing.Point(86, 36);
+            this.labSearch.Location = new System.Drawing.Point(86, 15);
             this.labSearch.Name = "labSearch";
             this.labSearch.Size = new System.Drawing.Size(345, 15);
             this.labSearch.TabIndex = 3;
@@ -390,7 +390,7 @@
             "Finalizado",
             "Pendente",
             "Atrasado"});
-            this.cbStatus.Location = new System.Drawing.Point(445, 52);
+            this.cbStatus.Location = new System.Drawing.Point(445, 31);
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(150, 23);
             this.cbStatus.TabIndex = 1;
@@ -401,7 +401,7 @@
             // 
             this.cbUser.DisplayMember = "Login";
             this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(89, 96);
+            this.cbUser.Location = new System.Drawing.Point(89, 75);
             this.cbUser.Name = "cbUser";
             this.cbUser.Size = new System.Drawing.Size(150, 23);
             this.cbUser.TabIndex = 2;
@@ -411,7 +411,7 @@
             // 
             this.labStatus.AutoSize = true;
             this.labStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labStatus.Location = new System.Drawing.Point(442, 34);
+            this.labStatus.Location = new System.Drawing.Point(442, 13);
             this.labStatus.Name = "labStatus";
             this.labStatus.Size = new System.Drawing.Size(47, 15);
             this.labStatus.TabIndex = 12;
@@ -422,7 +422,7 @@
             // 
             this.labUser.AutoSize = true;
             this.labUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labUser.Location = new System.Drawing.Point(86, 78);
+            this.labUser.Location = new System.Drawing.Point(86, 57);
             this.labUser.Name = "labUser";
             this.labUser.Size = new System.Drawing.Size(56, 15);
             this.labUser.TabIndex = 13;
@@ -432,7 +432,7 @@
             // 
             this.labAfter.AutoSize = true;
             this.labAfter.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labAfter.Location = new System.Drawing.Point(242, 78);
+            this.labAfter.Location = new System.Drawing.Point(242, 57);
             this.labAfter.Name = "labAfter";
             this.labAfter.Size = new System.Drawing.Size(52, 15);
             this.labAfter.TabIndex = 14;
@@ -441,7 +441,7 @@
             // dtpAfter
             // 
             this.dtpAfter.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpAfter.Location = new System.Drawing.Point(245, 96);
+            this.dtpAfter.Location = new System.Drawing.Point(245, 75);
             this.dtpAfter.Name = "dtpAfter";
             this.dtpAfter.ShowCheckBox = true;
             this.dtpAfter.Size = new System.Drawing.Size(150, 23);
@@ -452,7 +452,7 @@
             // 
             this.dtpBefore.Checked = false;
             this.dtpBefore.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpBefore.Location = new System.Drawing.Point(401, 96);
+            this.dtpBefore.Location = new System.Drawing.Point(401, 75);
             this.dtpBefore.Name = "dtpBefore";
             this.dtpBefore.ShowCheckBox = true;
             this.dtpBefore.Size = new System.Drawing.Size(150, 23);
@@ -463,7 +463,7 @@
             // 
             this.labBefore.AutoSize = true;
             this.labBefore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labBefore.Location = new System.Drawing.Point(400, 78);
+            this.labBefore.Location = new System.Drawing.Point(400, 57);
             this.labBefore.Name = "labBefore";
             this.labBefore.Size = new System.Drawing.Size(29, 15);
             this.labBefore.TabIndex = 16;

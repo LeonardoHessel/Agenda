@@ -15,6 +15,7 @@ namespace Agenda
         public frmSearchCustomer(string search = null)
         {
             InitializeComponent();
+            this.MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
             txtSearch.Text = search;
             LoadCustomers();
         }

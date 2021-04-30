@@ -28,22 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSearchCustomer));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pForm = new System.Windows.Forms.Panel();
             this.dgvData = new System.Windows.Forms.DataGridView();
-            this.labSearch = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.gbActiveStatus = new System.Windows.Forms.GroupBox();
-            this.rbInactive = new System.Windows.Forms.RadioButton();
-            this.rbActive = new System.Windows.Forms.RadioButton();
-            this.rbAll = new System.Windows.Forms.RadioButton();
-            this.pbSearchImage = new System.Windows.Forms.PictureBox();
-            this.btnNew = new System.Windows.Forms.Button();
-            this.btnSelect = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.labTitle = new System.Windows.Forms.Label();
             this.colID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colRazao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +54,17 @@
             this.colComponents = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTerminals = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colIsInactive = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.labSearch = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.gbActiveStatus = new System.Windows.Forms.GroupBox();
+            this.rbInactive = new System.Windows.Forms.RadioButton();
+            this.rbActive = new System.Windows.Forms.RadioButton();
+            this.rbAll = new System.Windows.Forms.RadioButton();
+            this.pbSearchImage = new System.Windows.Forms.PictureBox();
+            this.btnNew = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.labTitle = new System.Windows.Forms.Label();
             this.pForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
             this.gbActiveStatus.SuspendLayout();
@@ -84,9 +84,9 @@
             this.pForm.Controls.Add(this.pbSearchImage);
             this.pForm.Controls.Add(this.btnNew);
             this.pForm.Controls.Add(this.btnSelect);
-            this.pForm.Location = new System.Drawing.Point(1, 42);
+            this.pForm.Location = new System.Drawing.Point(1, 37);
             this.pForm.Name = "pForm";
-            this.pForm.Size = new System.Drawing.Size(898, 501);
+            this.pForm.Size = new System.Drawing.Size(798, 562);
             this.pForm.TabIndex = 0;
             // 
             // dgvData
@@ -102,13 +102,13 @@
             this.dgvData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvData.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgvData.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Roboto", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgvData.ColumnHeadersHeight = 35;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -144,152 +144,16 @@
             this.dgvData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvData.RowTemplate.Height = 35;
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvData.Size = new System.Drawing.Size(898, 347);
+            this.dgvData.Size = new System.Drawing.Size(798, 408);
             this.dgvData.TabIndex = 25;
             this.dgvData.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SelectCustomer);
             this.dgvData.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvData_KeyDown);
             // 
-            // labSearch
-            // 
-            this.labSearch.AutoSize = true;
-            this.labSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
-            this.labSearch.Location = new System.Drawing.Point(92, 38);
-            this.labSearch.Name = "labSearch";
-            this.labSearch.Size = new System.Drawing.Size(325, 15);
-            this.labSearch.TabIndex = 24;
-            this.labSearch.Text = "Pesquise por CNPJ, IE, razão, fantasia, telefone, celular.";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(95, 54);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(430, 23);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.SearchChanged);
-            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
-            // 
-            // gbActiveStatus
-            // 
-            this.gbActiveStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbActiveStatus.Controls.Add(this.rbInactive);
-            this.gbActiveStatus.Controls.Add(this.rbActive);
-            this.gbActiveStatus.Controls.Add(this.rbAll);
-            this.gbActiveStatus.Location = new System.Drawing.Point(531, 38);
-            this.gbActiveStatus.Name = "gbActiveStatus";
-            this.gbActiveStatus.Size = new System.Drawing.Size(210, 48);
-            this.gbActiveStatus.TabIndex = 4;
-            this.gbActiveStatus.TabStop = false;
-            this.gbActiveStatus.Text = "Status";
-            // 
-            // rbInactive
-            // 
-            this.rbInactive.AutoSize = true;
-            this.rbInactive.Location = new System.Drawing.Point(140, 19);
-            this.rbInactive.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.rbInactive.Name = "rbInactive";
-            this.rbInactive.Size = new System.Drawing.Size(64, 19);
-            this.rbInactive.TabIndex = 2;
-            this.rbInactive.Text = "Inativo";
-            this.rbInactive.UseVisualStyleBackColor = true;
-            this.rbInactive.CheckedChanged += new System.EventHandler(this.SearchChanged);
-            // 
-            // rbActive
-            // 
-            this.rbActive.AutoSize = true;
-            this.rbActive.Checked = true;
-            this.rbActive.Location = new System.Drawing.Point(73, 19);
-            this.rbActive.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.rbActive.Name = "rbActive";
-            this.rbActive.Size = new System.Drawing.Size(61, 19);
-            this.rbActive.TabIndex = 1;
-            this.rbActive.TabStop = true;
-            this.rbActive.Text = "Ativos";
-            this.rbActive.UseVisualStyleBackColor = true;
-            this.rbActive.CheckedChanged += new System.EventHandler(this.SearchChanged);
-            // 
-            // rbAll
-            // 
-            this.rbAll.AutoSize = true;
-            this.rbAll.Location = new System.Drawing.Point(6, 19);
-            this.rbAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
-            this.rbAll.Name = "rbAll";
-            this.rbAll.Size = new System.Drawing.Size(61, 19);
-            this.rbAll.TabIndex = 0;
-            this.rbAll.Text = "Todos";
-            this.rbAll.UseVisualStyleBackColor = true;
-            this.rbAll.CheckedChanged += new System.EventHandler(this.SearchChanged);
-            // 
-            // pbSearchImage
-            // 
-            this.pbSearchImage.Image = ((System.Drawing.Image)(resources.GetObject("pbSearchImage.Image")));
-            this.pbSearchImage.Location = new System.Drawing.Point(14, 13);
-            this.pbSearchImage.Name = "pbSearchImage";
-            this.pbSearchImage.Size = new System.Drawing.Size(64, 64);
-            this.pbSearchImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbSearchImage.TabIndex = 23;
-            this.pbSearchImage.TabStop = false;
-            // 
-            // btnNew
-            // 
-            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(81)))), ((int)(((byte)(89)))));
-            this.btnNew.FlatAppearance.BorderSize = 0;
-            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNew.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNew.ForeColor = System.Drawing.Color.White;
-            this.btnNew.Location = new System.Drawing.Point(144, 95);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(100, 35);
-            this.btnNew.TabIndex = 3;
-            this.btnNew.Text = "Novo";
-            this.btnNew.UseVisualStyleBackColor = false;
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnSelect
-            // 
-            this.btnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(81)))), ((int)(((byte)(89)))));
-            this.btnSelect.FlatAppearance.BorderSize = 0;
-            this.btnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSelect.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelect.ForeColor = System.Drawing.Color.White;
-            this.btnSelect.Location = new System.Drawing.Point(15, 95);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(120, 35);
-            this.btnSelect.TabIndex = 2;
-            this.btnSelect.Text = "Selecionar";
-            this.btnSelect.UseVisualStyleBackColor = false;
-            this.btnSelect.Click += new System.EventHandler(this.SelectCustomer);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
-            this.btnClose.Location = new System.Drawing.Point(854, 1);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(45, 40);
-            this.btnClose.TabIndex = 6;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // labTitle
-            // 
-            this.labTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.labTitle.Font = new System.Drawing.Font("Roboto Bk", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labTitle.ForeColor = System.Drawing.Color.White;
-            this.labTitle.Location = new System.Drawing.Point(0, 0);
-            this.labTitle.Name = "labTitle";
-            this.labTitle.Size = new System.Drawing.Size(900, 42);
-            this.labTitle.TabIndex = 7;
-            this.labTitle.Text = "Sistema";
-            this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // colID
             // 
             this.colID.DataPropertyName = "ID";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colID.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colID.DefaultCellStyle = dataGridViewCellStyle6;
             this.colID.Frozen = true;
             this.colID.HeaderText = "ID";
             this.colID.Name = "colID";
@@ -479,11 +343,147 @@
             this.colIsInactive.Visible = false;
             this.colIsInactive.Width = 70;
             // 
+            // labSearch
+            // 
+            this.labSearch.AutoSize = true;
+            this.labSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(147)))), ((int)(((byte)(147)))), ((int)(((byte)(147)))));
+            this.labSearch.Location = new System.Drawing.Point(92, 38);
+            this.labSearch.Name = "labSearch";
+            this.labSearch.Size = new System.Drawing.Size(325, 15);
+            this.labSearch.TabIndex = 24;
+            this.labSearch.Text = "Pesquise por CNPJ, IE, razão, fantasia, telefone, celular.";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(95, 54);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(430, 23);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.SearchChanged);
+            this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
+            // 
+            // gbActiveStatus
+            // 
+            this.gbActiveStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbActiveStatus.Controls.Add(this.rbInactive);
+            this.gbActiveStatus.Controls.Add(this.rbActive);
+            this.gbActiveStatus.Controls.Add(this.rbAll);
+            this.gbActiveStatus.Location = new System.Drawing.Point(562, 38);
+            this.gbActiveStatus.Name = "gbActiveStatus";
+            this.gbActiveStatus.Size = new System.Drawing.Size(210, 48);
+            this.gbActiveStatus.TabIndex = 4;
+            this.gbActiveStatus.TabStop = false;
+            this.gbActiveStatus.Text = "Status";
+            // 
+            // rbInactive
+            // 
+            this.rbInactive.AutoSize = true;
+            this.rbInactive.Location = new System.Drawing.Point(140, 19);
+            this.rbInactive.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.rbInactive.Name = "rbInactive";
+            this.rbInactive.Size = new System.Drawing.Size(64, 19);
+            this.rbInactive.TabIndex = 2;
+            this.rbInactive.Text = "Inativo";
+            this.rbInactive.UseVisualStyleBackColor = true;
+            this.rbInactive.CheckedChanged += new System.EventHandler(this.SearchChanged);
+            // 
+            // rbActive
+            // 
+            this.rbActive.AutoSize = true;
+            this.rbActive.Checked = true;
+            this.rbActive.Location = new System.Drawing.Point(73, 19);
+            this.rbActive.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.rbActive.Name = "rbActive";
+            this.rbActive.Size = new System.Drawing.Size(61, 19);
+            this.rbActive.TabIndex = 1;
+            this.rbActive.TabStop = true;
+            this.rbActive.Text = "Ativos";
+            this.rbActive.UseVisualStyleBackColor = true;
+            this.rbActive.CheckedChanged += new System.EventHandler(this.SearchChanged);
+            // 
+            // rbAll
+            // 
+            this.rbAll.AutoSize = true;
+            this.rbAll.Location = new System.Drawing.Point(6, 19);
+            this.rbAll.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
+            this.rbAll.Name = "rbAll";
+            this.rbAll.Size = new System.Drawing.Size(61, 19);
+            this.rbAll.TabIndex = 0;
+            this.rbAll.Text = "Todos";
+            this.rbAll.UseVisualStyleBackColor = true;
+            this.rbAll.CheckedChanged += new System.EventHandler(this.SearchChanged);
+            // 
+            // pbSearchImage
+            // 
+            this.pbSearchImage.Image = ((System.Drawing.Image)(resources.GetObject("pbSearchImage.Image")));
+            this.pbSearchImage.Location = new System.Drawing.Point(14, 13);
+            this.pbSearchImage.Name = "pbSearchImage";
+            this.pbSearchImage.Size = new System.Drawing.Size(64, 64);
+            this.pbSearchImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbSearchImage.TabIndex = 23;
+            this.pbSearchImage.TabStop = false;
+            // 
+            // btnNew
+            // 
+            this.btnNew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(81)))), ((int)(((byte)(89)))));
+            this.btnNew.FlatAppearance.BorderSize = 0;
+            this.btnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNew.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNew.ForeColor = System.Drawing.Color.White;
+            this.btnNew.Location = new System.Drawing.Point(144, 95);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(100, 35);
+            this.btnNew.TabIndex = 3;
+            this.btnNew.Text = "Novo";
+            this.btnNew.UseVisualStyleBackColor = false;
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(81)))), ((int)(((byte)(89)))));
+            this.btnSelect.FlatAppearance.BorderSize = 0;
+            this.btnSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSelect.Font = new System.Drawing.Font("Roboto Bk", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSelect.ForeColor = System.Drawing.Color.White;
+            this.btnSelect.Location = new System.Drawing.Point(15, 95);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(120, 35);
+            this.btnSelect.TabIndex = 2;
+            this.btnSelect.Text = "Selecionar";
+            this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.Click += new System.EventHandler(this.SelectCustomer);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
+            this.btnClose.Location = new System.Drawing.Point(754, 1);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(45, 35);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // labTitle
+            // 
+            this.labTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.labTitle.Font = new System.Drawing.Font("Roboto Bk", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labTitle.ForeColor = System.Drawing.Color.White;
+            this.labTitle.Location = new System.Drawing.Point(0, 0);
+            this.labTitle.Name = "labTitle";
+            this.labTitle.Size = new System.Drawing.Size(800, 35);
+            this.labTitle.TabIndex = 7;
+            this.labTitle.Text = "Sistema";
+            this.labTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmSearchCustomer
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(104)))), ((int)(((byte)(120)))));
-            this.ClientSize = new System.Drawing.Size(900, 543);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.labTitle);
             this.Controls.Add(this.pForm);
