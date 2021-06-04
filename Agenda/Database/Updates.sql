@@ -1,4 +1,4 @@
--- Lançamento Agenda v0.82 --
+-- Lançamento Agenda v1.82 --
 
 alter table `customer` add column `financial_pending` BOOL DEFAULT FALSE AFTER `name`;
 alter table `customer` add column `prospecting` BOOL DEFAULT FALSE AFTER `name`;
@@ -13,7 +13,7 @@ alter table `customer` change column `razao` `razao` VARCHAR(250);
 alter table `customer` change column `name` `name` VARCHAR(250);
 alter table `customer` change column `accountant_email` `accountant_email` VARCHAR(250);
 
--- Lançamento Agenda v0.83 --
+-- Lançamento Agenda v1.83 --
 
 alter table `serviceorder` change column `subject` `subject` VARCHAR(250);
 
@@ -26,7 +26,7 @@ references `user`(`id`);
 
 update `serviceorder` set `launched_id` = `user_id`;
 
--- Agenda v0.86 --
+-- Agenda v1.86 --
 
 alter table `customer` add column `info_pending` BOOL DEFAULT FALSE AFTER `financial_pending`;
 update customer set info_pending = false;
